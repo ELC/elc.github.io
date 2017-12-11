@@ -17,6 +17,17 @@ PATH = 'content'
 TIMEZONE = 'America/Argentina/Buenos_Aires'
 PAGE_ORDER_BY = 'order'
 
+
+# Plugins
+
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['pelican-ert', 'backreftranslate', 'summary']
+
+# ERT
+
+ERT_WPM = 150
+ERT_FORMAT = '{time}'
+
 # Localization
 
 DEFAULT_LANG = 'en'

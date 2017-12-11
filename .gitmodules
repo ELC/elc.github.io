@@ -1,0 +1,4 @@
+[submodule "theme"]
+	path = theme
+	url = https://github.com/ELC/MinimalXYZ.git
+	branch = master
