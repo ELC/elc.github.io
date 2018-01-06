@@ -5,9 +5,9 @@ Tags: probability
 Slug: probability-world
 Authors: Ezequiel Castaño
 Lang: en
-HeaderImage: 
+HeaderImage:
 level:
-jupyternotebook: 
+jupyternotebook:
 
 How I re-discover probability and statistics even after taking a course at university thanks to the book "Bayesian Methods for Hackers"
 
@@ -27,17 +27,21 @@ Doing a bit of research and watching some of the tutorials and talks at conferen
 
 After reading the first chapter I thought I missed somehting, I could understand everything but yet I wasn't able to understand the thinking process behind the scenes. I knew what have been done but I didn't understand why and how exactly. So as a python programmer my first attempt to understand was to do everything from scratch, experiment a bit and see the dinamics.
 
-# The notebook 
+# The notebook
 
-My approach was the following, I re-read the chapter and as soon as I found something I could transform into an image, I do it. 
+My approach was the following, I re-read the chapter and as soon as I found something I could transform into an image, I do it.
 
 The result was a notebook with interactive features to understand what happen when you change the parameters dinamically, how that impact on the image and why that matters. I was trying to understand the behaviour of the model and I succedded in doing so.
 
-I want to share with you the notebook and give all the possibility to play with it as I'd like when reading the book. In order to get interactivity in the notebook 
+I want to share with you the notebook and give all the possibility to play with it as I'd like when reading the book. In order to get interactivity in the notebook.
 
 # The experience
 
-The best way to get your hands dirty is to download the notebook and run it on your computer, I will provide a link to play with it online through binder but the main limitation is that inside binder notebook you cannot reproduce animations (becuase it lacks ffmpeg, if you know how to fix it, post it on the comments). To fill this gap I'm going to put all animations as GIF in this article
+From now on you will have 3 ways to continue:
+
+- Active: If you already know a bit of jupyter notebooks you can just downlaod the files from the repository (see the badge at the top) and run them in your computer
+- New: In case you aren't familiar with notebooks or maybe you just couldn't do it right now, you have the option of opening notebook in an interactive session through binder (much like try jupyter), this will create a completely provided environment for trying and experimenting, be careful, none of what you do will be save, you have to download the file manually if you want to save your changes
+- Passive: If you rather prefer a passive role, continue reading and you will find images (SVGs) and animations (GIFs) that reflect what's written in the notebook. However, reading the notebook would be the only option to see the code that generate those outputs (this is mainly for easy update and fix the code in only one place)
 
 # Understanding random variables
 
@@ -50,13 +54,13 @@ Typically random variables are divided in two categories:
 
 # Discrete random variables
 
-Discrete random variables can only take integer values (like when we count), typically used on sales, populations and stock managment. There are specific distributions for this type of random variables. 
+Discrete random variables can only take integer values (like when we count), typically used on sales, populations and stock managment. There are specific distributions for this type of random variables.
 
 Each distribution has several properties that are not only interesting but also provided a better understanding of the behaviour but to keep it as simple as possible I want to focus on a single aspect: How does the shape of a particular distribution change when we vary the parameters?
 
 There are lots of distributions both discrete and continous, here we will look at just a few, namely:
 
-- Bernoulli 
+- Bernoulli
 - Discrete uniform
 - Binomial
 - Poisson
@@ -67,9 +71,12 @@ We will see each in order, since they are all discrete we will use a very handy 
 
 ## Bernoulli
 
-It's the simplest of all, just one parameter as input, two possible values ($0$ and $1$) as outputs. It's often used to model yes/no questions.
-The parameter $p$ represents the probability of getting a $1$ and $q$ represents the probability of getting $0$ but since there is no other possibility and probabilities always add to $1$ so: $q = 1 - p$
+It's the simplest of all, just one parameter ($p$) as input, two possible values ($0$ and $1$) as outputs. It's often used to model yes/no questions.
+
+The parameter $p$ represents the probability of getting a $1$ and $q$ represents the probability of getting $0$ but since there is no other possibility and probabilities always add to $1$: $q = 1 - p$
 
 Here is how it looks like for $p = 0.2$
 
 ![images]({attach}images/chapter-1-1.svg)
+
+It might seem trivial but lets see how it changes as we change $p$
