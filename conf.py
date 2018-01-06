@@ -20,11 +20,29 @@ TIMEZONE = 'America/Argentina/Buenos_Aires'
 PAGE_ORDER_BY = 'order'
 
 RELATED_POSTS_MAX = 3
+STATIC_PATHS = ['blog']
+
+# Markdown Extensions
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight w3-round-xlarge w3-card-4'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {'anchorlink': True},
+    },
+    'output_format': 'html5',
+}
 
 # Plugins
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors', 'related_posts']
+PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors', 'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math']
+
+# GITHUB Plugins
+
+GITHUB_USER = 'ELC'
+STABLE_REPOS = ['Always-Learning']
 
 # ERT
 
