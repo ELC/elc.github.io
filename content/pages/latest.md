@@ -2,6 +2,7 @@ Title: Lastest
 Slug: lastest
 Lang: en
 order: 5
+status: hidden
 
 # TODOs:
 - Improve the [MinimalXYZ](https://github.com/ELC/MinimalXYZ) theme

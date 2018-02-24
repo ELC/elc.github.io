@@ -8,6 +8,7 @@ Lang: en
 HeaderImage:
 level:
 jupyternotebook:
+Status: draft
 
 How I re-discover probability and statistics even after taking a course at university thanks to the book "Bayesian Methods for Hackers"
 
