@@ -37,12 +37,17 @@ MARKDOWN = {
 # Plugins
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors', 'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math']
+PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors',
+           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math']
 
 # GITHUB Plugins
 
 GITHUB_USER = 'ELC'
-STABLE_REPOS = ['Always-Learning']
+STABLE_REPOS = ['comparisons',
+                'utn-genetic-algorithms',
+                'utn-java-final-assignment',
+                'utn-java-final-assignment-web',
+                'ML-Tutorial']
 
 # ERT
 
