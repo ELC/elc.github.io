@@ -94,8 +94,8 @@ AUTHORS_SAVE_AS = 'authors/index.html'
 
 CATEGORY_URL = 'category/{slug}/'
 CATEGORY_SAVE_AS = 'category/{slug}/index.html'
-CATEGORYS_URL = 'categories/'
-CATEGORYS_SAVE_AS = 'categories/index.html'
+CATEGORIES_URL = 'categories/'
+CATEGORIES_SAVE_AS  = 'categories/index.html'
 
 # Blogroll 
 
