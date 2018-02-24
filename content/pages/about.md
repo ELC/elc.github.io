@@ -7,13 +7,13 @@ Hello visitor, my name is Ezequiel Castaño, I'm a follower of Jesus and I decid
 
 ## My lifestyle
 
-Following Jesus is not something one can only say and live their way, following Jesus is a choice one made and that choice change their entire life, this is what Bible teaches. I, in response to such a great act of love, decide to surrender myself, to willingly become his servant. 
+Following Jesus is not something one can only say and live their way, following Jesus is a choice one made and that choice change their entire life, this is what Bible teaches. I, in response to such a great act of love, decide to surrender myself, to willingly become his servant.
 
 He gave his life for me in the cross because I sinned I deserved that punishment and He, even knowing that I was completely against His will, came, suffer and died so I could have a now restored relationship with God. How wouldn't I adore that mercy God?
 
 ## My studies
 
-I started studying engineering in 2015, the degree is translated as "Information Systems Engineering" which is in the middle of Compute Science and Management. THe idea is the be close to the non-developers while still able to understand technical information, math and programming.
+I started studying engineering in 2015, the degree is translated as "Information Systems Engineering" which is in the middle of Compute Science and Management. The idea is the be close to the non-developers while still able to understand technical information, math and programming.
 
 This is my fourth year and I expect to finish it in 2020.
 
