@@ -12,8 +12,10 @@ SITEURL = 'https://elc.github.io'
 RELATIVE_URLS = False
 AUTHOR = 'Ezequiel Castaño'
 AUTHOR_EMAIL = 'skielcast@gmail.com'
-AUTHOR_AVATAR = "https://s.gravatar.com/avatar/a8cb2c3394122f262cbb143e700b1beb?s=80"
-SITENAME = 'ELCWeb'
+AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
+SITESUBTITLE = "In this website you will find post about christianity, programming and math"
+SITENAME = 'Ezequiel Castaño Personal Website'
+SITEIMAGE = r"https://i.imgur.com/6xypjCl.png"
 DELETE_OUTPUT_DIRECTORY = True
 PATH = 'content'
 TIMEZONE = 'America/Argentina/Buenos_Aires'
