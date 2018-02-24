@@ -73,11 +73,17 @@ DISPLAY_CATEGORIES_ON_MENU = False
 ARTICLE_URL = 'posts/{slug}'
 ARTICLE_SAVE_AS = 'posts/{slug}/index.html'
 
+ARTICLE_LANG_URL = 'posts/{slug}/{lang}'
+ARTICLE_LANG_SAVE_AS = 'posts/{slug}/{lang}/index.html'
+
 ARCHIVES_URL = 'archives/'
 ARCHIVES_SAVE_AS = 'archives/index.html'
 
 PAGE_URL = 'pages/{slug}/'
 PAGE_SAVE_AS = 'pages/{slug}/index.html'
+
+PAGE_LANG_URL = 'pages/{slug}/{lang}'
+PAGE_LANG_SAVE_AS = 'pages/{slug}/{lang}/index.html'
 
 YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
