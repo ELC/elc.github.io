@@ -1,2 +1,5 @@
 pelican==3.7.1
 markdown==2.6.11
+pelican-githubprojects
+pelican-gist
+Typogrify 
