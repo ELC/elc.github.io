@@ -7,7 +7,7 @@ Authors: Ezequiel Castaño
 Lang: en
 level: Begginer
 
-I started to learn a bit of Haskell and one its features amazed me: Pattern Matching. Then, unexpectably, I notice Python 3 have them too but with a different name: Extended Tuple Unpacking. Okay, it's not exactly the same but you can get quite similar functionalities if you master it. This post is inspired by this [question](https://stackoverflow.com/questions/6967632/unpacking-extended-unpacking-and-nested-extended-unpacking)
+I started to learn a bit of Haskell and one of its features amazed me: Pattern Matching. Then, unexpectably, I notice Python 3 have them too but with a different name: Extended Tuple Unpacking. Okay, it's not exactly the same but you can get quite similar functionalities if you master it. This post is inspired by this [question](https://stackoverflow.com/questions/6967632/unpacking-extended-unpacking-and-nested-extended-unpacking)
 
 <!-- PELICAN_END_SUMMARY -->
 

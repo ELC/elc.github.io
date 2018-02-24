@@ -2,20 +2,20 @@ Title: Lastest
 Slug: lastest
 Lang: en
 order: 5
-status: hidden
 
-# TODOs:
-- Improve the [MinimalXYZ](https://github.com/ELC/MinimalXYZ) theme
-- Add the Table of Contents of the Python Course
-- Add content to the basic pages
-- Create a list of tags and categories
-- Create custom avatar
+These are the projects I'm currently working on:
 
+# Doing
 
-# Changelog
+- [MinimalXYZ](https://github.com/ELC/MinimalXYZ) theme: fixing and adapting it for this blog
+- Prepare a Python course
+- Contributing to [PyFladesk](https://github.com/smoqadam/PyFladesk)
+- Practice Machine Learning and Computer Vision
+- Read Books:
+    - [Expositional Preaching, David Helm](https://www.amazon.com/Predicaci%C3%B3n-Expositiva-Expositional-Preaching-Edificando/dp/194000943X)
+    - [Linux Essentials, Linup Front](http://www.lpi.org/how-to-get-certified/free-training-materials)
 
-This is how the website evolved since its inception.
+# Plan to Do
 
-### Version 0.1
-- First version, no content yet release
-- Creation of custom theme based on [MinimalXY](https://github.com/petrnohejl/MinimalXY), published as [MinimalXYZ](https://github.com/ELC/MinimalXYZ). Some ideas were taken from other themes such as: attila, MinimalXY, niu-x2, pelican-striped-html5up, PjPort, Plumage, pelican-semantic-ui, pelican-clean-blog, bootlex
+- Learn Haskell
+- Learn Vim
