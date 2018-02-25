@@ -9,7 +9,7 @@ sys.path.append(os.curdir)
 # Server
 
 SITEURL = 'https://elc.github.io'
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 AUTHOR = 'Ezequiel Castaño'
 AUTHOR_EMAIL = 'skielcast@gmail.com'
 AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
@@ -40,7 +40,21 @@ MARKDOWN = {
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors',
-           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math']
+           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math', 'sitemap']
+
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.99,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'daily',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
 
 # GITHUB Plugins
 
