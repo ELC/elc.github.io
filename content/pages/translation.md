@@ -1,6 +1,7 @@
 Title: Translate
 Slug: translate
 Lang: en
+order: 6
 
 Translation is one way you can help and contribute to this project, this is a short tutorial of how you can do it
 
