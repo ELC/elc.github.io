@@ -24,6 +24,13 @@ PAGE_ORDER_BY = 'order'
 RELATED_POSTS_MAX = 3
 STATIC_PATHS = ['blog']
 
+# Feed
+
+FEED_DOMAIN = 'http://feeds.feedburner.com'
+FEED_ALL_ATOM  = 'ELCWEB'
+FEED_ATOM  = 'feeds/all.atom.xml'
+
+
 # Markdown Extensions
 
 MARKDOWN = {
