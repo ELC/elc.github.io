@@ -3,7 +3,7 @@ language: python
 sudo: false
 
 script:
-    - pelican -s conf.py -o output -t theme content
+    - invoke build
 
 deploy:
   provider: pages
