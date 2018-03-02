@@ -9,7 +9,7 @@ sys.path.append(os.curdir)
 # Server
 
 SITEURL = 'https://elc.github.io'
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 AUTHOR = 'Ezequiel Castaño'
 AUTHOR_EMAIL = 'skielcast@gmail.com'
 AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
