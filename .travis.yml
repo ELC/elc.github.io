@@ -4,24 +4,36 @@ python: "3.6"
 
 cache: pip
 
-script:
-    - invoke build
-
-deploy:
-  - provider: pages
-    repo: elc/elc.github.io
-    target_branch: test
-    skip_cleanup: true
-    local_dir: output
-    github_token: $GITHUB_TOKEN
-    on:
-      branch: develop
-  - provider: pages
-    repo: elc/elc.github.io
-    target_branch: master
-    skip_cleanup: true
-    local_dir: output
-    github_token: $GITHUB_TOKEN
-    on:
-      branch: master
+jobs:
+  include:
+    - stage: deploy-test
+      if: branch = develop
+      env: name=Netlify-Testing
+      script:
+        - invoke download
+        - invoke buildDevelop
+      deploy:
+        provider: pages
+        repo: elc/elc.github.io
+        target_branch: test
+        skip_cleanup: true
+        local_dir: output
+        github_token: $GITHUB_TOKEN
+        on:
+            branch: develop
+    - stage: deploy
+      if: branch = master
+      env: name=GitHub Pages
+      script:
+        - invoke download
+        - invoke buildProduction
+      deploy:
+        provider: pages
+        repo: elc/elc.github.io
+        target_branch: master
+        skip_cleanup: true
+        local_dir: output
+        github_token: $GITHUB_TOKEN
+        on:
+            branch: master
     
