@@ -21,8 +21,8 @@ jobs:
     - stage: Deplot-Netlify-Test
       if: branch = develop
       script:
-        - pipenv run invoke download
-        - pipenv run invoke buildDevelop
+        - pipenv run download
+        - pipenv run build-develop
       deploy:
         provider: pages
         repo: elc/elc.github.io
@@ -35,8 +35,8 @@ jobs:
     - stage: Deploy-GitHub-Pages
       if: branch = master
       script:
-        - pipenv run invoke download
-        - pipenv run invoke buildProduction
+        - pipenv run download
+        - pipenv run build-production
       deploy:
         provider: pages
         repo: elc/elc.github.io
