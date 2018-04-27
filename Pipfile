@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pelican = ">=3.7.1"
+pelican-githubprojects = ">=0.1.1"
+pelican-gist = ">=0.3.3"
+Markdown = ">=2.6.11"
+
+[dev-packages]
+
+[scripts]
+build = "pelican -s conf.py -o output -t theme content"
+download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
+test = "pelican -s devconf.py -o output -t theme content"
+
+[requires]
+python_version = "3.6"

@@ -1,16 +1,51 @@
 language: python
 
-sudo: false
+python: "3.6"
 
-script:
-    - invoke build
+cache: 
+  - pip
+  - directories:
+    - ./.venv
 
-deploy:
-  provider: pages
-  repo: elc/elc.github.io
-  target_branch: master
-  skip_cleanup: true
-  local_dir: output
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
+install:
+  - pip install pipenv
+  - pipenv install --ignore-pipfile
+
+env:
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - PIPENV_VENV_IN_PROJECT=1
+
+jobs:
+  include:
+    - stage: Deplot-Netlify-Test
+      if: branch = develop
+      env: DEVELOP=1
+      script:
+        - pipenv run download
+        - pipenv run build
+      deploy:
+        provider: pages
+        repo: elc/elc.github.io
+        target_branch: test
+        skip_cleanup: true
+        local_dir: output
+        github_token: $GITHUB_TOKEN
+        on:
+            branch: develop
+    - stage: Deploy-GitHub-Pages
+      if: branch = master
+      env: PRODUCTION=1
+      script:
+        - pipenv run download
+        - pipenv run build
+      deploy:
+        provider: pages
+        repo: elc/elc.github.io
+        target_branch: master
+        skip_cleanup: true
+        local_dir: output
+        github_token: $GITHUB_TOKEN
+        on:
+            branch: master
+    
