@@ -5,11 +5,24 @@ from __future__ import unicode_literals
 import os
 import sys
 sys.path.append(os.curdir)
+import os
+
+PRODUCTION = os.environ.get('PRODUCTION', None)
+LOCAL = os.environ.get('LOCAL', None)
+DEVELOP = os.environ.get('DEVELOP', None)
 
 # Server
 
-SITEURL = 'https://elc.github.io'
 RELATIVE_URLS = False
+
+if PRODUCTION is not None:
+    SITEURL = 'https://elc.github.io'
+elif DEVELOP is not None:
+    SITEURL = 'https://elcweb.netlify.com'
+elif LOCAL is not None:
+    SITEURL = ''
+    RELATIVE_URLS = True
+
 AUTHOR = 'Ezequiel Leonardo Castaño'
 AUTHOR_EMAIL = 'skielcast@gmail.com'
 AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
@@ -126,8 +139,12 @@ CATEGORIES_SAVE_AS  = 'categories/index.html'
 
 # Blogroll 
 
-DISQUS_SITENAME = "elcweb"
-GOOGLE_ANALYTICS = "UA-71773079-3"
+if PRODUCTION:
+    DISQUS_SITENAME = "elcweb"
+    GOOGLE_ANALYTICS = "UA-71773079-3"
+else:
+    DISQUS_SITENAME = ""
+    GOOGLE_ANALYTICS = ""
 
 SOCIAL = (
     ('twitter', 'https://twitter.com/eze_leo_'),

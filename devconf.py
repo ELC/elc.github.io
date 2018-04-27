@@ -7,6 +7,4 @@ import sys
 sys.path.append(os.curdir)
 from conf import *
 
-SITEURL = 'https://elcweb.netlify.com'
-GOOGLE_ANALYTICS = ""
-DISQUS_SITENAME = ""
+

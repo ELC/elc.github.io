@@ -20,9 +20,10 @@ jobs:
   include:
     - stage: Deplot-Netlify-Test
       if: branch = develop
+      env: DEVELOP=1
       script:
         - pipenv run download
-        - pipenv run build-develop
+        - pipenv run build
       deploy:
         provider: pages
         repo: elc/elc.github.io
@@ -34,9 +35,10 @@ jobs:
             branch: develop
     - stage: Deploy-GitHub-Pages
       if: branch = master
+      env: PRODUCTION=1
       script:
         - pipenv run download
-        - pipenv run build-production
+        - pipenv run build
       deploy:
         provider: pages
         repo: elc/elc.github.io
