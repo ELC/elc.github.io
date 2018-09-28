@@ -115,3 +115,7 @@ output/*
 
 # Draft
 content/draft/*
+
+theme-dev/
+
+\.vscode/
