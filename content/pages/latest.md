@@ -2,6 +2,7 @@ Title: Lastest
 Slug: lastest
 Lang: en
 order: 5
+status: hidden
 
 These are the projects I'm currently working on:
 
