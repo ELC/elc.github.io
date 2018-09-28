@@ -7,20 +7,18 @@ import sys
 sys.path.append(os.curdir)
 import os
 
-PRODUCTION = os.environ.get('PRODUCTION', None)
-LOCAL = os.environ.get('LOCAL', None)
-DEVELOP = os.environ.get('DEVELOP', None)
+ENVIRONMENT = os.environ.get('ENVIRONMENT', None)
 
 # Server
 
 RELATIVE_URLS = False
 
-if PRODUCTION is not None:
+if ENVIRONMENT == "PRODUCTION":
     SITEURL = 'https://elc.github.io'
-elif DEVELOP is not None:
+elif ENVIRONMENT == "DEVELOPMENT":
     SITEURL = 'https://elcweb.netlify.com'
-elif LOCAL is not None:
-    SITEURL = ''
+else:
+    SITEURL = 'http://localhost:5500'
     RELATIVE_URLS = True
 
 AUTHOR = 'Ezequiel Leonardo Castaño'
@@ -139,7 +137,7 @@ CATEGORIES_SAVE_AS  = 'categories/index.html'
 
 # Blogroll 
 
-if PRODUCTION:
+if ENVIRONMENT == "PRODUCTION":
     DISQUS_SITENAME = "elcweb"
     GOOGLE_ANALYTICS = "UA-71773079-3"
 else:
