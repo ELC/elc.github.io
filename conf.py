@@ -36,7 +36,7 @@ RELATED_POSTS_MAX = 3
 STATIC_PATHS = ['blog', 'extra/favicon.ico', 'extra/android-chrome-192x192.png', 'extra/android-chrome-512x512.png', 
                 'extra/apple-touch-icon.png', 'extra/apple-touch-icon.png', 'extra/favicon-16x16.png', 
                 'extra/favicon-32x32.png', 'extra/favicon.ico', 'extra/mstile-150x150.png', 'extra/mstile-310x310.png', 
-                'extra/safari-pinned-tab.svg', 'extra/site.webmanifest',]
+                'extra/safari-pinned-tab.svg', 'extra/site.webmanifest', 'extra/sw.js', ]
 
 # Extra files
 
@@ -50,7 +50,8 @@ EXTRA_PATH_METADATA = {'extra/android-chrome-192x192.png': {'path': 'android-chr
                        'extra/mstile-150x150.png': {'path': 'mstile-150x150.png'},
                        'extra/mstile-310x310.png': {'path': 'mstile-310x310.png'},
                        'extra/safari-pinned-tab.svg': {'path': 'safari-pinned-tab.svg'},
-                       'extra/site.webmanifest': {'path': 'site.webmanifest'},                      
+                       'extra/site.webmanifest': {'path': 'site.webmanifest'},
+                       'extra/sw.js': {'path': 'sw.js'},
                        }
 
 
