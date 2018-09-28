@@ -1,8 +1,8 @@
-Title: Haskell pattern matching in Python
-Date: 2018-02-18
+Title: Haskell Pattern Matching - Python Style
+Date: 2018-09-28
 Category: Programming
 Tags: Haskell, Python, Tuple Unpacking
-Slug: haskell-pattern-matching-in-python
+slug: haskell-python-pattern-matching
 Authors: Ezequiel Castaño
 Lang: en
 level: Begginer
