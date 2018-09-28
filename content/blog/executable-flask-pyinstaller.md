@@ -2,7 +2,7 @@ Title: Create one executable file for a Flask app with PyInstaller
 Date: 2018-02-24
 Category: Programming
 Tags: Python, Flask, PyInstaller
-slug: executable-flask-pyinstaller
+Slug: executable-flask-pyinstaller
 Authors: Ezequiel Castaño
 Lang: en
 level: Begginer
