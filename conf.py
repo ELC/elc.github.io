@@ -102,7 +102,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 
 # URL Settings
 
-ARTICLE_URL = 'posts/{slug}'
+ARTICLE_URL = 'posts/{slug}' # Remember to Update Disqus
 ARTICLE_SAVE_AS = 'posts/{slug}/index.html'
 
 ARTICLE_LANG_URL = 'posts/{slug}/{lang}'
@@ -138,7 +138,7 @@ CATEGORIES_SAVE_AS  = 'categories/index.html'
 # Blogroll 
 
 if ENVIRONMENT == "PRODUCTION":
-    DISQUS_SITENAME = "elcweb"
+    DISQUS_SITENAME = "elcgweb"
     GOOGLE_ANALYTICS = "UA-71773079-3"
 else:
     DISQUS_SITENAME = ""
