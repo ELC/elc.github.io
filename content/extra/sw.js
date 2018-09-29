@@ -17,14 +17,12 @@
  *
  */
 
-const version = "0.6.11";
-const cacheName = `airhorner-${version}`;
+const version = "0.1";
+const cacheName = `ELCWEB-${version}`;
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        '/',
-        '/index.html',
         '/theme/css/style.css',
         '/theme/js/smoothScroll.js',
         '/theme/fonts/fontawesome-webfont.eot',
@@ -33,8 +31,7 @@ self.addEventListener('install', e => {
         '/theme/fonts/fontawesome-webfont.woff',
         '/theme/fonts/fontawesome-webfont.woff2',
         '/theme/fonts/FontAwesome.otf',
-      ])
-          .then(() => self.skipWaiting());
+      ]).then(() => self.skipWaiting());
     })
   );
 });
