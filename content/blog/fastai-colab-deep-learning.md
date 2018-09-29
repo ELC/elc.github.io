@@ -6,6 +6,7 @@ Slug: fastai-colab-deep-learning
 Authors: Ezequiel Castaño
 Lang: en
 level: Begginer
+jupyternotebook: https://gist.github.com/ELC/756040fe84a8bb3d14c59b0e997c84e9
 
 Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.
 
@@ -47,14 +48,15 @@ First you will need to learn programming basics, control flow structures and dec
 
 ![data-science-tools]({attach}images/data-science-tools.png)
 
-
-Once you know this prerequirements, you can follow this tutorial to learn how to start without paying a thing.
+Once you know this prerequirements, you will face a very common dilemma, which Deep Learning Framework should you use? Using a framework is recommended (although doing it manually help a lot to understand the underlying process) so for this tutorial I chose fastai because it's built over PyTorch which is known for being the most pythonic and thus the friendlier to begginers.
 
 ## Tutorial
 
-Before we start doing some Deep Learning it is recommended to use a framework (although doing it manually help a lot to understand the underlying process), I chose fastai because it's built over PyTorch which is known for being the most pythonic and thus the friendlier to begginers.
+In case you want to see the final result, this is the final notebook:
 
-This is a simple tutorial where we set Google Colaboratory to use GPU and Fastai.
+<script src="https://gist.github.com/ELC/756040fe84a8bb3d14c59b0e997c84e9.js"></script>
+
+Now I'm going to explain how that notebook works.
 
 First we have to make sure GPU acceleration is enabled, to achieved this by setting "Hardware Accelerator" to GPU in the menu: `Edit > Notebook settings > set "Hardware Accelerator" to GPU`.
 
@@ -62,7 +64,7 @@ First we have to make sure GPU acceleration is enabled, to achieved this by sett
 
 ![Colab GPU]({attach}images/colab-gpu.png)
 
-Since Fastai is not built in, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.
+Since Fastai is not built in Colaboratory, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.
 
     :::bash
     %%bash
@@ -76,12 +78,11 @@ Since Fastai is not built in, we have to install it manually, the best way is by
 
     git pull
 
-    pip -q install . 
+    pip -q install .
 
-    pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl 
+    pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
 
     pip -q install torchvision
-
 
 Now we can import fastai with all its modules
 
