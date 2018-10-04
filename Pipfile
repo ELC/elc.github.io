@@ -16,7 +16,7 @@ invoke = "*"
 build = "pelican -s conf.py -o output -t theme content"
 download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
 compile-css = 'sass "theme/static/css/style.scss" "theme/static/css/style.css"'
-copy-windows = 'xcopy /E /I /Y "D:\Repositories\personal\MinimalXYZ" theme\ '
+copy-windows = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
 test = 'pelican -s conf.py -o output -t theme content'
 test-theme = "pelican -s conf.py -o output -t theme-dev content"
 
