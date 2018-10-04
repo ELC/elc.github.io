@@ -66,7 +66,7 @@ FEED_ATOM  = 'feeds/all.atom.xml'
 
 MARKDOWN = {
     'extension_configs': {
-        'markdown.extensions.codehilite': {'css_class': 'highlight w3-round-xlarge w3-card-4'},
+        'markdown.extensions.codehilite': {'css_class': 'highlight '},
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
         'markdown.extensions.toc': {'anchorlink': True},

@@ -14,7 +14,10 @@ Markdown = ">=2.6.11"
 [scripts]
 build = "pelican -s conf.py -o output -t theme content"
 download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
-test = "pelican -s conf.py -o output -t theme-dev content"
+copy-windows = 'xcopy /E /I /Y "D:\Repositories\personal\MinimalXYZ" theme\ '
+test-windows = 'pelican -s conf.py -o output -t theme content'
+test-online = "pipenv run download && pelican -s conf.py -o output -t theme content"
+test-theme = "pelican -s conf.py -o output -t theme-dev content"
 
 [requires]
 python_version = "3.6"
