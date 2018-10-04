@@ -6,6 +6,8 @@ import os
 import sys
 sys.path.append(os.curdir)
 import os
+import json
+import hashlib
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', None)
 
@@ -180,3 +182,49 @@ PAGINATION_PATTERNS = (
     (1, '{base_name}/', '{base_name}/index.html'),
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
 )
+
+
+# Update Service Worker and Cache Bursting
+
+def hash_file(filename):
+    hasher = hashlib.md5()
+    with open(filename, 'rb') as f:
+        buf = f.read()
+        hasher.update(buf)
+    return hasher.hexdigest()
+
+FILES = (
+        'css/style.css',
+        'js/smoothScroll.js',
+    )
+
+files_to_cache = []
+
+for filename in FILES:
+    hash_digest = hash_file(f'theme/static/{filename}')[-7:]
+    path = f'/theme/{filename}?v={hash_digest}'
+    files_to_cache.append(path)
+
+FILES_TO_CACHE = tuple(files_to_cache)
+
+version_hash = str(hash(FILES_TO_CACHE))[-7:]
+
+
+with open('./theme/templates/base.html', 'r+') as f:
+    contents = f.read()
+    
+    for raw_filename, hashed_filename in zip(FILES, FILES_TO_CACHE):
+        raw_namefile = raw_filename.split("/")[-1]
+        hashed_namefile = hashed_filename.split("/")[-1]
+        contents = contents.replace(raw_namefile, hashed_namefile)
+
+with open('./theme/templates/base.html', 'w') as f:
+    f.write(contents)
+
+with open('./content/extra/sw_template.js', 'r+') as f:
+    contents = f.read()
+    replaced_contents = contents.replace('$VERSION$', version_hash)
+    replaced_contents = replaced_contents.replace('"$FILES_TO_CACHE$"', json.dumps(FILES_TO_CACHE, sort_keys=True, indent=4))
+    with open('./content/extra/sw.js','w') as f2: 
+        f2.write(replaced_contents)
+
