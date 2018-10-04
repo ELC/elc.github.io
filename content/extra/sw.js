@@ -17,7 +17,7 @@
  *
  */
 
-const version = "0.1";
+const version = "0.2";
 const cacheName = `ELCWEB-${version}`;
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -37,15 +37,23 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys()
+    .then(keys => Promise.all(
+          keys.map(key => {
+            if (!expectedCaches.includes(key)) {
+              return caches.delete(key);
+            }
+          })
+        )
+    )
+  );
 });
 
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName)
-      .then(cache => cache.match(event.request, {ignoreSearch: true}))
-      .then(response => {
-      return response || fetch(event.request);
-    })
+      .then(cache => cache.match(event.request, {ignoreSearch: true}) )
+      .then(response => { return response || fetch(event.request); }  )
   );
 });
