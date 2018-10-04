@@ -8,15 +8,16 @@ pelican = ">=3.7.1"
 pelican-githubprojects = ">=0.1.1"
 pelican-gist = ">=0.3.3"
 Markdown = ">=2.6.11"
+invoke = "*"
 
 [dev-packages]
 
 [scripts]
 build = "pelican -s conf.py -o output -t theme content"
 download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
+compile-css = 'sass "theme/static/css/style.scss" "theme/static/css/style.css"'
 copy-windows = 'xcopy /E /I /Y "D:\Repositories\personal\MinimalXYZ" theme\ '
-test-windows = 'pelican -s conf.py -o output -t theme content'
-test-online = "pipenv run download && pelican -s conf.py -o output -t theme content"
+test = 'pelican -s conf.py -o output -t theme content'
 test-theme = "pelican -s conf.py -o output -t theme-dev content"
 
 [requires]

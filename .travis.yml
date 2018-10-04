@@ -10,6 +10,7 @@ cache:
 install:
   - pip install pipenv
   - pipenv install --ignore-pipfile
+  - npm install -g sass
 
 env:
   global:
@@ -21,9 +22,7 @@ jobs:
     - stage: Deplot-Netlify-Test
       if: branch = develop
       env: ENVIRONMENT=DEVELOPMENT
-      script:
-        - pipenv run download
-        - pipenv run build
+      script: pipenv run invoke build
       deploy:
         provider: pages
         repo: elc/elc.github.io
@@ -36,9 +35,7 @@ jobs:
     - stage: Deploy-GitHub-Pages
       if: branch = master
       env: ENVIRONMENT=PRODUCTION
-      script:
-        - pipenv run download
-        - pipenv run build
+      script: pipenv run invoke build
       deploy:
         provider: pages
         repo: elc/elc.github.io
@@ -48,4 +45,3 @@ jobs:
         github_token: $GITHUB_TOKEN
         on:
             branch: master
-    

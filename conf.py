@@ -13,9 +13,9 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', None)
 
 RELATIVE_URLS = False
 
-if ENVIRONMENT == "PRODUCTION":
+if ENVIRONMENT == 'PRODUCTION':
     SITEURL = 'https://elc.github.io'
-elif ENVIRONMENT == "DEVELOPMENT":
+elif ENVIRONMENT == 'DEVELOPMENT':
     SITEURL = 'https://elcweb.netlify.com'
 else:
     SITEURL = 'http://localhost:5500'
@@ -23,10 +23,10 @@ else:
 
 AUTHOR = 'Ezequiel Leonardo Castaño'
 AUTHOR_EMAIL = 'skielcast@gmail.com'
-AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
-SITESUBTITLE = "Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math"
+AUTHOR_AVATAR = r'https://i.imgur.com/6xypjCl.png'
+SITESUBTITLE = 'Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math'
 SITENAME = 'Ezequiel Leonardo Castaño Personal Website'
-SITEIMAGE = r"https://i.imgur.com/6xypjCl.png"
+SITEIMAGE = r'https://i.imgur.com/6xypjCl.png'
 DELETE_OUTPUT_DIRECTORY = True
 PATH = 'content'
 TIMEZONE = 'America/Argentina/Buenos_Aires'
@@ -78,7 +78,8 @@ MARKDOWN = {
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors',
-           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math', 'sitemap']
+           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math', 
+           'sitemap']
 
 SITEMAP = {
     'format': 'xml',
@@ -157,12 +158,12 @@ CATEGORIES_SAVE_AS  = 'categories/index.html'
 
 # Blogroll 
 
-if ENVIRONMENT == "PRODUCTION":
-    DISQUS_SITENAME = "elcgweb"
-    GOOGLE_ANALYTICS = "UA-71773079-3"
+if ENVIRONMENT == 'PRODUCTION':
+    DISQUS_SITENAME = 'elcgweb'
+    GOOGLE_ANALYTICS = 'UA-71773079-3'
 else:
-    DISQUS_SITENAME = ""
-    GOOGLE_ANALYTICS = ""
+    DISQUS_SITENAME = ''
+    GOOGLE_ANALYTICS = ''
 
 SOCIAL = (
     ('twitter', 'https://twitter.com/eze_leo_'),
