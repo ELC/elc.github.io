@@ -9,6 +9,7 @@ def buildWin(c):
     c.run("pipenv run copy-windows")
     c.run("pipenv run compile-css")
     c.run("pipenv run test")
+    c.run("pipenv run clean")
     end_time = time()
     print('Elapsed Time: {:.2f} seconds'.format(end_time - start_time))
 
@@ -17,9 +18,11 @@ def buildTheme(c):
     c.run("pipenv run copy-windows")
     c.run("pipenv run compile-css")
     c.run("pipenv run test-theme")
+    c.run("pipenv run clean")
 
 @task
 def build(c):
     c.run("pipenv run download")
     c.run("pipenv run compile-css")
     c.run("pipenv run build")
+    c.run("pipenv run clean")
