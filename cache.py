@@ -43,7 +43,7 @@ def hash_file(filename):
 
 
 def create_service_worker():
-    extensions = ['js', 'html', 'css']
+    extensions = ['js', 'html', 'css', 'svg']
     ignores = ['sw.js']
 
     FILES = get_filepaths("output", extensions, ignores=ignores)
