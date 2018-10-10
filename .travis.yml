@@ -7,41 +7,25 @@ cache:
   - directories:
     - ./.venv
 
+env:
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - PIPENV_VENV_IN_PROJECT=1
+    - ENVIRONMENT=PRODUCTION
+
 install:
   - pip install pipenv
   - pipenv install --ignore-pipfile
   - npm install -g sass
 
-env:
-  global:
-    - PIPENV_IGNORE_VIRTUALENVS=1
-    - PIPENV_VENV_IN_PROJECT=1
+script: pipenv run invoke build
 
-jobs:
-  include:
-    - stage: Deplot-Netlify-Test
-      if: branch = develop
-      env: ENVIRONMENT=DEVELOPMENT
-      script: pipenv run invoke build
-      deploy:
-        provider: pages
-        repo: elc/elc.github.io
-        target_branch: test
-        skip_cleanup: true
-        local_dir: output
-        github_token: $GITHUB_TOKEN
-        on:
-            branch: develop
-    - stage: Deploy-GitHub-Pages
-      if: branch = master
-      env: ENVIRONMENT=PRODUCTION
-      script: pipenv run invoke build
-      deploy:
-        provider: pages
-        repo: elc/elc.github.io
-        target_branch: master
-        skip_cleanup: true
-        local_dir: output
-        github_token: $GITHUB_TOKEN
-        on:
-            branch: master
+deploy:
+  provider: pages
+  repo: elc/elc.github.io
+  target_branch: master
+  skip_cleanup: true
+  local_dir: output
+  github_token: $GITHUB_TOKEN
+  on:
+      branch: master
