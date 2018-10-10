@@ -15,7 +15,6 @@ invoke = "*"
 [scripts]
 build = "pelican -s conf.py -o output -t theme content"
 download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
-compile-css = 'sass "theme/static/css/style.scss" "theme/static/css/style.css"'
 clean = 'python cache.py'
 copy-windows = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
 test = 'pelican -s conf.py -o output -t theme content'
