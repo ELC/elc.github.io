@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.curdir)
 import os
 import json
-from cache import hash_file
+from cache import hash_file, get_filepaths
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', None)
 
@@ -183,11 +183,37 @@ PAGINATION_PATTERNS = (
 )
 
 
+# Create bundles for CSS and JS
+
+def create_bundle(files, output):
+    with open(output, 'w') as outfile:
+        for fname in files:
+            with open(fname) as infile:
+                outfile.write('\n\n')
+                for line in infile:
+                    outfile.write(line)
+
+
+js_bundle = 'theme/static/js/scripts.js'
+js_filenames = get_filepaths('theme', 'js')
+create_bundle(js_filenames, js_bundle)
+
+css_bundle = 'theme/static/css/style.css'
+css_filenames = get_filepaths('theme', 'css')
+create_bundle(css_filenames, css_bundle)
+
+bundles = [js_bundle.split('/')[-1], css_bundle.split('/')[-1]]
+
+delete_files = get_filepaths('theme', ['css', 'js', 'scss', 'map'], bundles)
+
+for filename in delete_files:
+    os.remove(filename)
+
 # Update JS and CSS in Base.html
 
 FILES = (
-        'css/style.css',
-        'js/smoothScroll.js',
+        f'js/{bundles[0]}',
+        f'css/{bundles[1]}',
     )
 
 files_to_cache = []
