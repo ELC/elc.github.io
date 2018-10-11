@@ -53,14 +53,15 @@ def create_service_worker():
     for filename in FILES:
         hash_digest = hash_file(filename)[-7:]
         
-        if filename.endswith('index.html'):
-            filename = filename[:-10]
-
         path = f'{filename}?v={hash_digest}'
+
+        if filename.endswith('index.html'):
+            filename_without_index = filename[:-10]
+            path = f'{filename_without_index}?v={hash_digest}'
+
         files_to_cache.append(path)
 
     # Remove output from path
-
     files_to_cache = [path[6:] for path in files_to_cache]
 
     # Special case for /
@@ -71,7 +72,6 @@ def create_service_worker():
 
     FILES_TO_CACHE = tuple(files_to_cache)
 
-    
 
     with open('./content/extra/sw_template.js', 'r+') as f:
         contents = f.read()
