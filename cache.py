@@ -44,9 +44,16 @@ def hash_file(filename):
 
 def create_service_worker():
     extensions = ['js', 'html', 'css', 'svg']
+    img_extensions = ['png', 'jpg', 'gif']
     ignores = ['sw.js']
 
     FILES = get_filepaths("output", extensions, ignores=ignores)
+
+    images = get_filepaths("output", img_extensions, ignores=ignores)
+
+    thumbnails = [filename for filename in images if '-thumbnail' in filename]
+
+    FILES.extend(thumbnails)
 
     files_to_cache = []
 
