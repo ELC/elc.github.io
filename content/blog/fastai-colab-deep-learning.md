@@ -12,7 +12,7 @@ Nowadays there are lots of tutorials and material to learn Artificial Inteligenc
 
 <!-- PELICAN_END_SUMMARY -->
 
-**WARNING**: The fastai framework is migrating because of the release of PyTorch 1.0. The content of this notebook will be updated but the code might not work until the version 1.x of fastai has clear instructions about its installation.
+**WARNING: The fastai framework is migrating because of the release of PyTorch 1.0. The content of this notebook will be updated but the code might not work until the version 1.x of fastai has clear instructions about its installation.**
 
 First of all I'm going to introduce some definitions and concepts just for those that are not familiar with these topics. If you just want to  jump directly to the tutorialn, scroll down to the [tutorial section](#tutorial)
 
@@ -24,11 +24,11 @@ If you want to know more about which are the fields of Computer Science, I sugge
 
 One of the most common libraries to solve Machine Learning Problems is Scikit-Learn and they provide a beautiful roadmap to understand which algorithms are inside this field and their categorizations (there may be much more but it's enough for an introduction):
 
-![Scikit-Learn Roadmap]({attach}images/sklearn-roadmap.png)
+![Scikit-Learn Roadmap]({attach}images/sklearn-roadmap-thumbnail.png){: .b-lazy width=2122 data-src=/blog/images/sklearn-roadmap.png }
 
 Simirlarly there is a beautiful image which shows all the types of neural networks, along with [a medium post](https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464) explaining them.
 
-![Scikit-Learn Roadmap]({attach}images/neural-networks-types.png)
+![Scikit-Learn Roadmap]({attach}images/neural-networks-types-thumbnail.png){: .b-lazy width=2000 data-src=/blog/images/neural-networks-types.png }
 
 ## The problem
 
@@ -36,7 +36,7 @@ Generally, when talking about computers, the more you want to scale and parallel
 
 This is why according to the Gartner Hype Cycle Deep Learning is at its peak:
 
-![Gartnet Cycle]({attach}images/gartnet-2017.jpg)
+![Gartnet Cycle]({attach}images/gartnet-2017-thumbnail.jpg){: .b-lazy width=1385 data-src=/blog/images/gartnet-2017.jpg }
 
 So, just buy a GPU and you will be ready for Deep learning! Not so fast, frameworks and libraries work better on GPUs, but those should be Nvidia and support CUDA and cuDNN which is another requirement many won't meet. Additionally, the GPU is generally (unless you are building a server), the most expensive part of a PC System.
 
@@ -48,7 +48,7 @@ Developing software implies learning a programming language, usually a framework
 
 First you will need to learn programming basics, control flow structures and decisions, it isn't needed to know OOP or Functional programming although it might be useful for some. Second, you will need to know Python, it is the most used language in the field and it seems it will continue like that and third you will need to feel confortable with a new "environment" called notebooks, particularly Jupyter Notebooks. I know some might disagree, specially in the last point, there are lots of opinions and I strongly believe that if you learn these things you will be able to watch most of video-tutorials on youtube and you will be on track without issues. You can convice yourselves looking at this survey, based on 10.153 responses:
 
-![data-science-tools]({attach}images/data-science-tools.png){: .narrow }
+![data-science-tools]({attach}images/data-science-tools-thumbnail.png){: .narrow .b-lazy width=601 data-src=/blog/images/data-science-tools.png  }
 
 Once you know this prerequirements, you will face a very common dilemma, which Deep Learning Framework should you use? Using a framework is recommended (although doing it manually help a lot to understand the underlying process) so for this tutorial I chose fastai because it's built over PyTorch which is known for being the most pythonic and thus the friendlier to begginers.
 
@@ -62,9 +62,9 @@ Now I'm going to explain how that notebook works.
 
 First we have to make sure GPU acceleration is enabled, to achieved this by setting "Hardware Accelerator" to GPU in the menu: `Edit > Notebook settings > set "Hardware Accelerator" to GPU`.
 
-![Colab Edit]({attach}images/colab-edit.png){: .narrow width=400px}
+![Colab Edit]({attach}images/colab-edit-thumbnail.png){: .narrow .b-lazy width=484 data-src=/blog/images/colab-edit.png }
 
-![Colab GPU]({attach}images/colab-gpu.png){: .narrow width=400px}
+![Colab GPU]({attach}images/colab-gpu-thumbnail.png){: .narrow .b-lazy width=532 data-src=/blog/images/colab-gpu.png }
 
 Since Fastai is not built in Colaboratory, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.
 
