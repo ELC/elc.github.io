@@ -15,6 +15,7 @@ def buildWin(c):
     c.run("rd theme /S /Q ")
     c.run("pipenv run copy-windows")
     compile_scss(c, 'theme')
+    c.run("pipenv run create-thumbnails")
     c.run("pipenv run test")
     c.run("pipenv run clean")
     end_time = time()
@@ -24,6 +25,7 @@ def buildWin(c):
 def buildTheme(c):
     c.run("pipenv run copy-windows")
     compile_scss(c, 'theme')
+    c.run("pipenv run create-thumbnails")
     c.run("pipenv run test-theme")
     c.run("pipenv run clean")
 
@@ -31,5 +33,6 @@ def buildTheme(c):
 def build(c):
     c.run("pipenv run download")
     compile_scss(c, 'theme')
+    c.run("pipenv run create-thumbnails")
     c.run("pipenv run build")
     c.run("pipenv run clean")

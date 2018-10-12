@@ -9,6 +9,7 @@ pelican-githubprojects = ">=0.1.1"
 pelican-gist = ">=0.3.3"
 Markdown = ">=2.6.11"
 invoke = "*"
+pillow = "*"
 
 [dev-packages]
 
@@ -17,6 +18,7 @@ build = "pelican -s conf.py -o output -t theme content"
 download = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
 clean = 'python cache.py'
 copy-windows = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
+create-thumbnails = 'python blur_images.py '
 test = 'pelican -s conf.py -o output -t theme content'
 test-theme = "pelican -s conf.py -o output -t theme-dev content"
 
