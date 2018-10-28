@@ -174,10 +174,9 @@ SOCIAL = (
     ('envelope', 'mailto:skielcast@gmail.com'),
 )
 
-# Pagination
+# Shortener
 
-DEFAULT_PAGINATION = 10
-
+SHORTENER_FILE = "shortener.json"
 
 # Cache Busting
 
