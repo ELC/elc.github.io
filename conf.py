@@ -78,10 +78,11 @@ MARKDOWN = {
 # Plugins
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors',
-           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math', 
-           'sitemap', 'shortener', 'blur_thumbnails', 'service_worker',
-           'bundler_cache_busting']
+PLUGINS = [
+    'pelican-ert', 'backreftranslate', 'summary', 'neighbors', 'related_posts', 
+    'pelican_gist', 'pelican_githubprojects', 'render_math', 'sitemap', 
+    'shortener', 'blur_thumbnails', 'service_worker', 'bundler_cache_busting'
+]
 
 SITEMAP = {
     'format': 'xml',
