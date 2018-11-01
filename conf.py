@@ -116,6 +116,12 @@ ERT_FORMAT = '{time}'
 
 DEFAULT_LANG = 'en'
 
+LANG_MESSAGES = {
+    'en': ['Original Version ', 'Also Translated in: '],
+    'Español': ['Versión Original ', 'También traducido en: '],
+    'Deutsch': ['Ursprüngliche Version ', 'Auch übersetzt in: '],
+}
+
 # Directories Layout
 
 USE_FOLDER_AS_CATEGORY = False
