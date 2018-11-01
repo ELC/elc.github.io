@@ -178,6 +178,7 @@ SOCIAL = (
 # Shortener
 
 SHORTENER_FILE = "shortener.json"
+SHORTENER_FOLDER = "link"
 
 # Cache Busting
 
