@@ -20,15 +20,15 @@ This website is my personal blog, I develop it using Pelican, and some plugins (
 The following features were provided via plugins I wrote:
 
 - Service Worker **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/service_worker)**
-  - A service worker is generated at build time which caches all lightweight static files.
-  - The site can be viewed offline.
+    - A service worker is generated at build time which caches all lightweight static files.
+    - The site can be viewed offline.
 - Bundler **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/bundler_cache_busting)**
-  - All the CSS and JS is bundle in a single file (one for each).
-  - All the static files refenced in the HTML use Cache Busting.
+    - All the CSS and JS is bundle in a single file (one for each).
+    - All the static files refenced in the HTML use Cache Busting.
 - Shortener **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/shortener)**
-  - Custom static shortener.
+    - Custom static shortener.
 - Blur Thumbnails **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/blur_thumbnails)**
-  - A blurred version of all the images is generated at build time.
+    - A blurred version of all the images is generated at build time.
 
 This website was designed to work with the MinimalXYZ theme (see below) to achieve the best results, when using together, there are some additional features:
 
