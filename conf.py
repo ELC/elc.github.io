@@ -6,8 +6,6 @@ import os
 import sys
 sys.path.append(os.curdir)
 import os
-import json
-from cache import hash_file, get_filepaths
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', None)
 
@@ -35,25 +33,27 @@ TIMEZONE = 'America/Argentina/Buenos_Aires'
 PAGE_ORDER_BY = 'order'
 
 RELATED_POSTS_MAX = 3
-STATIC_PATHS = ['blog', 'extra/favicon.ico', 'extra/android-chrome-192x192.png', 'extra/android-chrome-512x512.png', 
-                'extra/apple-touch-icon.png', 'extra/apple-touch-icon.png', 'extra/favicon-16x16.png', 
-                'extra/favicon-32x32.png', 'extra/favicon.ico', 'extra/mstile-150x150.png', 'extra/mstile-310x310.png', 
-                'extra/safari-pinned-tab.svg', 'extra/site.webmanifest', ]
+STATIC_PATHS = [
+    'blog', 'extra/favicon.ico', 'extra/android-chrome-192x192.png', 'extra/android-chrome-512x512.png', 
+    'extra/apple-touch-icon.png', 'extra/apple-touch-icon.png', 'extra/favicon-16x16.png', 
+    'extra/favicon-32x32.png', 'extra/favicon.ico', 'extra/mstile-150x150.png', 'extra/mstile-310x310.png', 
+    'extra/safari-pinned-tab.svg', 'extra/site.webmanifest', ]
 
 # Extra files
 
-EXTRA_PATH_METADATA = {'extra/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
-                       'extra/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},
-                       'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
-                       'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
-                       'extra/favicon-16x16.png': {'path': 'favicon-16x16.png'},
-                       'extra/favicon-32x32.png': {'path': 'favicon-32x32.png'},
-                       'extra/favicon.ico': {'path': 'favicon.ico'},
-                       'extra/mstile-150x150.png': {'path': 'mstile-150x150.png'},
-                       'extra/mstile-310x310.png': {'path': 'mstile-310x310.png'},
-                       'extra/safari-pinned-tab.svg': {'path': 'safari-pinned-tab.svg'},
-                       'extra/site.webmanifest': {'path': 'site.webmanifest'},
-                       }
+EXTRA_PATH_METADATA = {
+    'extra/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
+    'extra/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},
+    'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
+    'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
+    'extra/favicon-16x16.png': {'path': 'favicon-16x16.png'},
+    'extra/favicon-32x32.png': {'path': 'favicon-32x32.png'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/mstile-150x150.png': {'path': 'mstile-150x150.png'},
+    'extra/mstile-310x310.png': {'path': 'mstile-310x310.png'},
+    'extra/safari-pinned-tab.svg': {'path': 'safari-pinned-tab.svg'},
+    'extra/site.webmanifest': {'path': 'site.webmanifest'},
+}
 
 
 # Feed
@@ -78,9 +78,11 @@ MARKDOWN = {
 # Plugins
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-ert', 'backreftranslate', 'summary', 'gravatar', 'neighbors',
-           'related_posts', 'pelican_gist', 'pelican_githubprojects', 'render_math', 
-           'sitemap']
+PLUGINS = [
+    'pelican-ert', 'backreftranslate', 'summary', 'neighbors', 'related_posts', 
+    'pelican_gist', 'pelican_githubprojects', 'render_math', 'sitemap', 
+    'shortener', 'blur_thumbnails', 'service_worker', 'bundler_cache_busting'
+]
 
 SITEMAP = {
     'format': 'xml',
@@ -113,6 +115,12 @@ ERT_FORMAT = '{time}'
 # Localization
 
 DEFAULT_LANG = 'en'
+
+LANG_MESSAGES = {
+    'en': ['Original Version ', 'Also Translated in: '],
+    'Español': ['Versión Original ', 'También traducido en: '],
+    'Deutsch': ['Ursprüngliche Version ', 'Auch übersetzt in: '],
+}
 
 # Directories Layout
 
@@ -173,6 +181,26 @@ SOCIAL = (
     ('envelope', 'mailto:skielcast@gmail.com'),
 )
 
+# Shortener
+
+SHORTENER_FILE = "shortener.json"
+SHORTENER_FOLDER = "link"
+
+# Cache Busting
+
+FILES_TO_CACHE_BUSTING = (
+    'js/scripts.js',
+    'css/style.css',
+)
+
+# Service Worker
+
+SERVICE_WORKER_THEMPLATE = './content/extra/sw_template.js'
+
+# Blur Thumbnails
+
+BLUR_PATH = './content/blog'
+
 # Pagination
 
 DEFAULT_PAGINATION = 10
@@ -181,57 +209,3 @@ PAGINATION_PATTERNS = (
     (1, '{base_name}/', '{base_name}/index.html'),
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
 )
-
-
-# Create bundles for CSS and JS
-
-def create_bundle(files, output):
-    with open(output, 'w') as outfile:
-        for fname in files:
-            with open(fname) as infile:
-                outfile.write('\n\n')
-                for line in infile:
-                    outfile.write(line)
-
-
-js_bundle = 'theme/static/js/scripts.js'
-js_filenames = get_filepaths('theme', 'js')
-create_bundle(js_filenames, js_bundle)
-
-css_bundle = 'theme/static/css/style.css'
-css_filenames = get_filepaths('theme', 'css')
-create_bundle(css_filenames, css_bundle)
-
-bundles = [js_bundle.split('/')[-1], css_bundle.split('/')[-1]]
-
-delete_files = get_filepaths('theme', ['css', 'js', 'scss', 'map'], bundles)
-
-for filename in delete_files:
-    os.remove(filename)
-
-# Update JS and CSS in Base.html
-
-FILES = (
-        f'js/{bundles[0]}',
-        f'css/{bundles[1]}',
-    )
-
-files_to_cache = []
-
-for filename in FILES:
-    hash_digest = hash_file(f'theme/static/{filename}')[-7:]
-    path = f'/theme/{filename}?v={hash_digest}'
-    files_to_cache.append(path)
-
-
-with open('./theme/templates/base.html', 'r+') as f:
-    contents = f.read()
-    
-    for raw_filename, hashed_filename in zip(FILES, files_to_cache):
-        raw_namefile = raw_filename.split("/")[-1]
-        hashed_namefile = hashed_filename.split("/")[-1]
-        contents = contents.replace(raw_namefile, hashed_namefile)
-
-with open('./theme/templates/base.html', 'w') as f:
-    f.write(contents)
-

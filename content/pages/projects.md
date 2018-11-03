@@ -9,27 +9,35 @@ As an engineering students I've worked in several projects, alone, in a team and
 
 **Ezequiel Castaño Personal Blog - Pelican & Python - 2018-Present - [Git Repo <i class="fa fa-github"></i>](https://github.com/ELC/elc.github.io-source)**
 
-This website is my personal blog, I develop it using Pelican, some plugins and custom scripts. The main objective of this development is to have a completely static, lightweight and modern website using only freely available technologies. Some of the features of the website are:
+This website is my personal blog, I develop it using Pelican, and some plugins (some of which I write myself). The main objective of this development is to have a completely static, lightweight and modern website using only freely available technologies. Some of the features of the website are:
 
-- All the building and deploying is manage by Travis, a continous integration and deployment system.
-- The site is freely hosted in Github Pages and Netlify.
-- All dependencies are manage via Pipenv.
-- The build step is decomposed into Invoke tasks and Pipenv Scripts.
+- All the building and deploying is manage by **Travis**, a continous integration and deployment system.
+- The site is freely hosted in **Github Pages** and **Netlify**.
+- All dependencies are manage via **Pipenv**.
+- The build step is decomposed into **Invoke** tasks and **Pipenv** Scripts.
 - The theme is downloaded at build time from git to ensure the lastest version is used.
-- A blurred version of all the images is generated at build time.
-- All the static files refenced in the HTML are appended with a query string which is the hash of the file for better caching (Cache Busting).
-- All the CSS and JS is bundle in a single file (one for each).
 
-This website is design to work with the MinimalXYZ theme to achieve the best results, when using together, there are some additional features:
+The following features were provided via plugins I wrote:
 
-- All SCSS is compiled, compressed and bundled at build time.
-- The service worker is dynamicly generated at build time to include all the static files.
+- Service Worker **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/service_worker)**
+    - A service worker is generated at build time which caches all lightweight static files.
+    - The site can be viewed offline.
+- Bundler **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/bundler_cache_busting)**
+    - All the CSS and JS is bundle in a single file (one for each).
+    - All the static files refenced in the HTML use Cache Busting.
+- Shortener **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/shortener)**
+    - Custom static shortener.
+- Blur Thumbnails **[Git Repo of Plugin <i class="fa fa-github"></i>](https://github.com/ELC/blur_thumbnails)**
+    - A blurred version of all the images is generated at build time.
+
+This website was designed to work with the MinimalXYZ theme (see below) to achieve the best results, when using together, there are some additional features:
+
+- All SCSS is compiled and compressed at build time.
 - The image are lazily loaded with a blurred version when the connection isn't fast enough.
-- The site can be viewed offline (through cache and service workers).
 - The site can be installed on Android as PWA
 - Comments via Disqus
 
-Additionally the plugins used allow
+Some other third party plugins used provided the following features:
 
 - Know the estimated time to read an article
 - Automatically generate a sitemap
@@ -42,7 +50,7 @@ The project is far from done since it wasn't just the web design but also the cr
 
 ---
 
-**MinimalXYZ - HTML5 CSS3 JS - 2018-Present - [Git Repo <i class="fa fa-github"></i>](https://github.com/ELC/MinimalXYZ)**
+**MinimalXYZ - HTML5 CSS3 JS Sass - 2018-Present - [Git Repo <i class="fa fa-github"></i>](https://github.com/ELC/MinimalXYZ)**
 
 MinimalXYZ is the Pelican Theme used for this website. It first started as a fork of another theme called MinimalXY and little by little I modify it to fit my needs and soon after I made a complete rewrite. Some of its main features are:
 
@@ -61,12 +69,9 @@ MinimalXYZ is the Pelican Theme used for this website. It first started as a for
   
 This theme was develop specifically for this blog so there are a number of features that are possible because of the pelican build step such as:
 
-- All SCSS is compiled, compressed and bundled at build time.
-- The service worker is dynamicly generated at build time to include all the static files.
+- All SCSS is compiled and compressed at build time.
 - The image are lazily loaded with a blurred version when the connection isn't fast enough.
-- The site can be viewed offline (through cache and service workers).
-- The site can be installed on Android as PWA
-- Comments via Disqus
+- Comment system via Disqus
 
 The project is in a continous improvement and development, some of the features that will be added are:
 
@@ -112,7 +117,7 @@ Non-Funcitonal Requirements for both Web:
 
 ---
 
-**Educational System - .NET - 2017 - [WPF and ASP.Net MVC <i class="fa fa-external-link" aria-hidden="true"></i>](hhttps://utn2017netg38.visualstudio.com/)**
+**Educational System - .NET - 2017 - [WPF and ASP.Net MVC <i class="fa fa-external-link" aria-hidden="true"></i>](https://utn2017netg38.visualstudio.com/)**
 
 This is a system for a university implemented using the .Net Framework.
 

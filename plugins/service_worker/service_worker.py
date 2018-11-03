@@ -1,4 +1,23 @@
+# -*- coding: utf-8 -*-
+'''
+Service Worker
+-------
+
+This service worker plugin generates a service worker which will cache all the
+static and lightweight files of the ouput site (images not included). The
+Service Worker version is generated automatically as a hash of its files instead.
+It uses cache busting techniques to detect changes and keep the site updated.
+
+It requires the user to provided a service worker template, one is provided along
+with this script
+
+It works with no no dependencies apart from pelican itself.
+
+Copyright (c) 2018 Ezequiel Leonardo Castaño
+'''
+
 import os
+from pelican import signals
 import hashlib
 import json
 
@@ -42,14 +61,21 @@ def hash_file(filename):
     return hasher.hexdigest()
 
 
-def create_service_worker():
+def create_service_worker(sender):
+
+    output_path = getattr(sender, 'output_path', None)
+    sw_template = sender.settings.get('SERVICE_WORKER_THEMPLATE', None)
+
+    if None in [output_path, sw_template]:
+        return
+
     extensions = ['js', 'html', 'css', 'svg']
     img_extensions = ['png', 'jpg', 'gif']
     ignores = ['sw.js']
 
-    FILES = get_filepaths("output", extensions, ignores=ignores)
+    FILES = get_filepaths(output_path, extensions, ignores=ignores)
 
-    images = get_filepaths("output", img_extensions, ignores=ignores)
+    images = get_filepaths(output_path, img_extensions, ignores=ignores)
 
     thumbnails = [filename for filename in images if '-thumbnail' in filename]
 
@@ -72,7 +98,7 @@ def create_service_worker():
     files_to_cache = [path[6:] for path in files_to_cache]
 
     # Special case for /
-    hash_digest = hash_file('output/index.html')[-7:]
+    hash_digest = hash_file(f'{output_path}/index.html')[-7:]
     path = f'/?v={hash_digest}'
 
     files_to_cache.append(path)
@@ -80,14 +106,14 @@ def create_service_worker():
     FILES_TO_CACHE = tuple(files_to_cache)
 
 
-    with open('./content/extra/sw_template.js', 'r+') as f:
+    with open(sw_template, 'r+') as f:
         contents = f.read()
         contents = contents.replace('"$FILES_TO_CACHE$"', json.dumps(FILES_TO_CACHE, sort_keys=True, indent=4))
         version_hash = hashlib.md5(contents.encode('utf-8')).hexdigest()[-7:]
         contents = contents.replace('$VERSION$', version_hash)
-        with open('./output/sw.js','w') as f2: 
+        with open(f'{output_path}/sw.js','w') as f2: 
             f2.write(contents)
 
-if __name__ == "__main__":
-    create_service_worker()
-    
+
+def register():
+    signals.finalized.connect(create_service_worker)

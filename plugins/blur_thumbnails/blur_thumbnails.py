@@ -1,7 +1,20 @@
-from invoke import task
-from time import time
-import datetime
+# -*- coding: utf-8 -*-
+'''
+Blur Thumbnails
+-------
+
+The Blur thumbnails plugin generates thumbnails with a gaussian blur at build
+time, it produces an effect similar to "Medium" blog posts. Ideal for lazy
+loading images with placeholders.
+
+It requires PIL
+
+Copyright (c) 2018 Ezequiel Leonardo Castaño
+'''
+
 import os
+from pelican import signals
+from PIL import Image, ImageFilter
 
 # Function extracted from https://stackoverflow.com/a/19308592/7690767
 def get_filepaths(directory, extensions=[], ignores=[]): 
@@ -35,33 +48,26 @@ def get_filepaths(directory, extensions=[], ignores=[]):
 
         return file_paths
 
-def compile_scss(c, path):
-    paths = get_filepaths(path, 'scss')
-    for filename in paths:
-        c.run(f"sass {filename} {filename}.css -s expanded")
+def generate_blur_thumbnails(sender):
 
+    content_path = sender.settings.get('BLUR_PATH', None)
 
-@task
-def buildWin(c):
-    print('Started - {:%H:%M:%S}'.format(datetime.datetime.now()))
-    start_time = time()
-    c.run("rd theme /S /Q ")
-    c.run("pipenv run copy-windows")
-    compile_scss(c, 'theme')
-    c.run("pipenv run test")
-    end_time = time()
-    print('Elapsed Time: {:.2f} seconds'.format(end_time - start_time))
+    if content_path is None:
+        return
 
+    imgs = get_filepaths(content_path, ['jpg', 'png', 'gif'])
 
-@task
-def buildTheme(c):
-    c.run("pipenv run copy-windows")
-    compile_scss(c, 'theme')
-    c.run("pipenv run test-theme")
+    for filename in imgs:
+        extension = filename[-3:]
+        name_alone = filename[:-4]
+        
+        if name_alone.endswith('-thumbnail'):
+            continue
 
+        im = Image.open(filename)
+        im.thumbnail([200, 200], Image.ANTIALIAS)
+        im.filter(ImageFilter.GaussianBlur(2)).save(f'{name_alone}-thumbnail.{extension}', optimize=True)
 
-@task
-def build(c):
-    c.run("pipenv run download")
-    compile_scss(c, 'theme')
-    c.run("pipenv run build")
+ 
+def register():
+    signals.initialized.connect(generate_blur_thumbnails)
