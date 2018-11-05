@@ -118,7 +118,7 @@ DEFAULT_LANG = 'en'
 
 LANG_MESSAGES = {
     'en': ['Original Version ', 'Also Translated in: '],
-    'Español': ['Versión Original ', 'También traducido en: '],
+    'Espanol': ['Versión Original ', 'También traducido en: '],
     'Deutsch': ['Ursprüngliche Version ', 'Auch übersetzt in: '],
 }
 
