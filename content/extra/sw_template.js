@@ -1,5 +1,3 @@
-// Based on https://googlechrome.github.io/samples/service-worker/basic/
-
 const version = "$VERSION$";
 const currentCacheName = `ELCWEB-${version}`;
 const filesToCache = "$FILES_TO_CACHE$"

@@ -4,7 +4,7 @@ Service Worker
 -------
 
 This service worker plugin generates a service worker which will cache all the
-static and lightweight files of the ouput site (images not included). The
+static and lightweight files of the output site (images not included). The
 Service Worker version is generated automatically as a hash of its files instead.
 It uses cache busting techniques to detect changes and keep the site updated.
 
@@ -94,8 +94,8 @@ def create_service_worker(sender):
 
         files_to_cache.append(path)
 
-    # Remove output from path
-    files_to_cache = [path[6:] for path in files_to_cache]
+    # Remove output from path - Compatible with Travis
+    files_to_cache = [path.split('output')[-1] for path in files_to_cache]
 
     # Special case for /
     hash_digest = hash_file(f'{output_path}/index.html')[-7:]
