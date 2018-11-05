@@ -1,92 +1,94 @@
-Title: Plotting Fractals Step by Step with Python
+Title: Graficando Fractales Paso a Paso con Python
 Date: 2018-10-14
 Category: Programming
 Tags: Python, Fractals, Turtle
 Slug: plotting-fractals-step-by-step-with-python
 Authors: Ezequiel Castaño
-Lang: en
+Lang: Espanol
+Translation: True
 level: Beginner
 
-Fractals are awesome, they are built with very complex pattern and they allow you to zoom in forever! In this post we will see how easily it is to plot several kinds of fractals using a tool called L-Systems and the Python Turtle module for the step to step plotting.
+Los fractales son increibles, se construyen con patrones muy complejos y permiten acercarse de manera indefinida. En este post voy a mostrarles cuan facilmente pueden graficarse diversos tipos de fractales utilizando una herramienta llamada Sistemas L y el módulo Turtle de Python para hacer el gráfico paso a paso.
 
 <!-- PELICAN_END_SUMMARY -->
 
-In this post I'm not going to dive into too many technical details but instead I'll present a little introduction, a lot of animated examples and at the end, the code to generate your own. If you want skip the theory and see the animations, jump directly to the [animated examples](#animated-examples), if you want to see the code instead, [jump directly to that section](#code). Additionally, there will be some resources for both code and math background if you want to explore [at the end](#additional-resources).
+En este post no voy a adentrarme demasiado en detalles técnicos, en cambio, les voy a dar una breve introducción, muchos ejemplos animados y al final el código para que puedan generar los que quieran. Si quieres saltear la teoría e ir directamente a las animaciones, puedes ir directamente a los [Ejemplos animados](#ejemplos-animados), si por otro lado querés ver el código, puedes ir a [esa sección](#codigo). Adicionalmente, [al final](#recursos-adicionales) dejaré recursos adicionales tanto para el código como para la parte matemática para aquellos que quieran profundizar.
 
-## What's a Fractal?
+## ¿Qué es un Fractal?
 
-First lets give a "non-strict" definition of what a fractal is, it is basically a geometric figure which shows the same characteristics no matter how much you zoom in.
+Primero veamos una definición "no estricta" de lo que es un fractal: es basicamente una figura geométrica que muestra las mismas características sin importar cuanto te acerques.
 
-It isn't quite correct but for those who wanted to know the exact definition here it is:
+No es del todo correcto pero para aquellos que quieran conocer la definición exacta, aquí se las dejo:
 
-> A fractal is an object or quantity that displays self-similarity, in a somewhat technical sense, on all scales. The object need not exhibit exactly the same structure at all scales, but the same "type" of structures must appear on all scales. A plot of the quantity on a log-log graph versus scale then gives a straight line, whose slope is said to be the fractal dimension. - [Math World](http://mathworld.wolfram.com/Fractal.html)
+> Un fractal es un objecto o cantidad que muestra auto-similaridad, en un sentido téctico, en todas sus escalas. El objeto no necesita exhibir exactamente la misma estructura en todas sus escala sino el mismo "tipo" de estructuras debe aparecer en todas las escalas. Un gráfico o cantidad en al graficarlo en función de su escala en un eje logarítmico da una línea recta, cuya pendiente es su "dimensión fractal" - [Math World Traducido](http://mathworld.wolfram.com/Fractal.html)
 
-## How can we draw Fractals with Python?
+## ¿Cómo podemos Graficar Fractales con Python?
 
-Fractals are typically hard to draw, because there is a concept which is deeply tight in them, recursion. When we talk about graphics and plotting we usually talk about pixels or vectors, but there is always a limit, fractals by definition are infinitely recursive. So when we want to plot one we should stop at some point, that's why we talk about "iterations". At each iteration the fractal becomes more and more complex, but at some point it is impossible to distinguish between to successive iterations (this happens when changes occur at individual pixel levels), so it is quite reasonable to stop there, sometimes it is quite clear what the shape is and we can stop even earlier.
+Típicamente, los fractales son difíciles de graficar, esto se debe al concepto que está íntimamente relacionado con ellos, la recursión. Cuando se habla de gráficos, usualmente se habla de píxeles o vectores, pero siempre existe un límite, sin embargo, los fractales son por definición infinitamente recursivos. Esto implica que cuando grafiquemos un fractal vamos a deternos en algún momento, de aquí surge el concepto de "iteración". En cada iteración el fractal se vuelve más y más complejo pero en cierto momento es imposible distinguir entre dos iteraciones sucesivas (esto ocurre debido a que los cambios se producen al nivel de píxeles), así que es bastante razonable detenerse en ese momento, a veces incluso es bastante evidente cúal será la forma del fractal y uno podría deternerse incluso antes.
 
-A two examples for this are the Quadratic Koch Island, which with 3 iterations has a clear structure and in the other hand the Dragon Curve which has a clear structure with 8 iterations. How many iterations are needed depends highly on the specific fractal we are working with.
+Dos ejemplos de esto son la "Quadratic Koch Island", que con 3 iteraciones tiene una estructura definida y la "Dragon Curve" que comienza a mostrar una estructura definida luego de 8 iteraciones. Cúantas iteraciones son necesarias depende en gran manera del fractal específico con el que estemos trabajando
 
-Certainly there are lots of plotting libraries in Python, being Matplotlib the most popular but they are usually design to plot statistical data and well known plots. Matplotlib in particular has some low level constructs that allow us to build fractals but this time we will be focusing in a usually forget module in the standard library, the Turtle Module.
+En el ecosistema de Python existen muchas bibliotecas para realizar gráficos, la más popular es Matplotlib, sin embargo, está pensada para graficar datos estadístico y realizar gráficos conocidos. Matplotlib tiene en particular componentes de bajo nivel que nos permitirían graficar fractales pero en esta oportunidad centraremos nuestra atención en un generalmente olvidado módulo de la biblioteca estandar, el módulo Turtle
 
-### Turtle Module
+### El módulo Turtle
 
-According to [Python docs](https://docs.python.org/3.6/library/turtle.html): "Turtle graphics is a popular way for introducing programming to kids. It was part of the original Logo programming language developed by Wally Feurzig and Seymour Papert in 1966."
+Según [la documentación de Python](https://docs.python.org/3.6/library/turtle.html): "Los gráficos Turtle son una manera popular de introducir la programación a los niños. Era parte del lenguaje de programación Logo, desarrollado por Wally Feurzig y Seymour Papert en 1996"
 
-The key here is that turtle recognizes basically 3 commands:
+La clave en este tipo de gráficos es que tenemos 3 comandos básicos:
 
-- Move Forwards
-- Turn Left by angle
-- Turn Right by angle
+- Moverse hacia adelante
+- Girar hacía la izquierda un cierto ángulo
+- Girar hacía la derecha un cierto ángulo
 
-*Note: THe standard library provided other commands but here we are going to just those 3.*
+*Nota: La bilioteca estandar provee otros comandos pero en este articulo sólo vamos a utilizar estos 3*
 
-Additionally we have the option to:
+Adicionalmente tenemos la opción de:
 
-- Disable writing
-- Enable writing
+- Deshabilitar la escritura
+- Habilitar la escritura
 
-This characteristics seems too simple for plotting such complex graphics as fractals but we will use another tool that uses just this little set of instructions, I'm talking about L-Systems.
+Éstas características pueden parecer muy simples para graficar algo tan complejo como los fractales pero es por esto que vamosa utilizar otra herramienta que utiliza exactamente este pequeño conjunto de instrucciones, me refiero a los Sistemas L
+
 
 ### L-Systems
 
-An L-System is a way of representing recursive structures (such as fractals) as a string of characters, this is done by rewriting the string over and over. Again, the formal definition is the following:
+Un Sistema L es una manera de representar estructuras recursivas (como los fractales) como cadenas de caracteres, esto es hace re-escribiendo la cadena una y otra vez. Para aquellos interesados en la definición formal:
 
-> A Lindenmayer system, also known as an L-system, is a string rewriting system that can be used to generate fractals with dimension between 1 and 2. - [Math World](http://mathworld.wolfram.com/LindenmayerSystem.html)
+> Un Sistema de Lindenmayer, también conocido como Sistema L, es un sistema de re-escritura de cadenas que puede ser usado para generar fractales de dimención entre 1 y 2. - [Math World Traducido](http://mathworld.wolfram.com/LindenmayerSystem.html)
 
-Once we understand what an L-System is we can produce recursive structures, but before we are able to do that we need to understand what are the pieces we need. Every L-System has:
+Una vez que hayamos entendido lo que es un Sistema L podemos producir estructuras recursivas pero antes que podamos hacerlo necesitamos entender las partes que que lo forman. Todo Sistema L tiene:
 
-- An alphabet: The set of symbols the L-System is going to use.
-- An axiom: The initial string for the generation.
-- A set of production rules: These rules tells how each symbol should be replaced in the following iteration.
+- Un alfabeto: Un conjunto de símbolos que el Sistema L va a utilizar.
+- Un axioma: La cadena original que se utiliza en la generación.
+- Un conjunto de reglas de producción: estas reglas indica como debe ser reemplazado cada uno de los símbolos en la siguiente iteración.
 
-*Note for computer science fans: If you ever dived into Computer Science this might sound familiar, it is actually since this is very similar to the definition of a Formal Grammar, the key difference is that in each iteration, as opposed to grammars, as many rules as possible are applied instead of just one. So L-Systems are a subset of Context-Free Grammars.*
+*Nota para aquellos que les gustan las ciencias de la computación: esta descripción puede sonarte familiar, y es que, en realidad es muy similar a la definición de una Gramática Formal, la diferencia primordial es que en cada iteración, a diferencia de las gramáticas, se aplican tantas reglas como sean posibles en lugar de una. Encontes puede concluirse que los Sistemas L son un subconjunto de las gramáticas libres de contexto*
 
-Since we are going to use Turtle to plot and L-Systems to represent what we want to plot we need to create a relationship between them.
+Debido a que vamos a utilizar Turtle para graficar y los Sistemas L para representar los fractales, necesitamos entender de que manera podemos relacionarlos.
 
-Since the only commands we have in Turtle are the mentioned above we will assign each a symbol which will represent the alphabet
+Ya que Turtle sólo recibirá los comandos mencionados arriba, debemos asignar un símbolo a cada uno, que en conjunto representarán el alfabeto del Sistema L
 
-- F: Move Forwards
-- +: Turn Right
-- -: Turn Left
+- F: Mover hacia adelante (del inglés Fowards).
+- +: Girar a la derecha.
+- -: Girar a la izquierda.
 
-In order to make this work, each fractal should also provide an angle, which will be the angle the turtle will turn either right or left, for simplicity reasons only one angle should be provided and the L-System should be written taking that into consideration.
+Para poder graficar los fractales, adicionalmente debe definirse un ángulo, que será el ángulo de giro que hara Turtle cada vez que se lo indiquemos, ya sea a la izquierda o a la derecha. Por razones de simplicidad, el mismo ángulo debe utilizarse en todas las iteraciones, el Sistema L debe escribirse teniendo esto en consideración.
 
-The axiom and the production rules will depend on the fractal only, but the fractal should be written in a way that can be represented by these only three symbols. This introduces a limitation, we will be able to produce only one-line fractals, so some such as the Cantor Set won't be able to be produced this way, this is only a simplification, since we can introduce two other commands to move forwards without writing and analogously for the backwards movement, but to keep things simple we will keep that simplification.
+El axioma y las reglas de producción dependerán exclusivamente del fractal pero el fractal debe ser escrito de una manera que pueda ser representado utilizando sólo los tres simbolos. Esto introduce una limitación, sólo se podrán graficar fractales compuestos por una única línea continua, así que algunos como el Conjunto de Cantor no podrán graficarse de esta manera. Esta es meramente una simplicación, ya que podrían agregarse otros comandos que permitan el movimiento sin necesidad de escribir pero para mantener las cosas simples, mantendremos la simplificación.
 
-Now let's move to some examples!
+Ahora veamos los ejemplos!
 
-## Animated Examples
+## Ejemplos Animados
 
-The following examples were compiled from several places publicly available on internet. I decided to port them to Python with the help of the Turtle module, center them, adding colors and provide a way to export them in vectorial format.
+Los siguientes ejemplos fueron compilados de diversos sitios públicamente disponibles en internet. Decidí migrarlos a Python con la ayuda del módulo Turtle, centrarlos, añadirles color y proporcionar una manera de exportarlos en formato vectorial.
 
-Because the browser execute Python via [Skulpt](http://www.skulpt.org/) and Colorsys isn't supported yet, the animations will be Black & White but images with colors and the corresponding code to generate them will be provided. Each animation has a code associated which you can open and fork in [Repl.it](https://repl.it/)
+Debido a que el navegador ejecuta Python mediante [Skulpt](http://www.skulpt.org/) y el módulo Colorsys aún no está soportado, las animaciones serán en blanco y negro pero las imágenes y el código para generarlas estarán al final. Cada animación tiene un código asociado que puede abrirse de manera onlina y copiarse por medio de [Repl.it](https://repl.it/)
 
-**WARNING: The animations you are about to see are quite large in size, it is recommended to see them only with a good connection. The Repl snippet may not work since it uses your resources so mobile users might not be able to see it properly.**
+**Advertencia: Las animaciones que estás por ver son bastante pesadas, es recomendable verlas sólo con una buena conección. Los fragmentos de Repl pueden no funcionar en los usuarios que utilicen dispositivos móviles.**
 
-Note: Skulpt uses YOUR BROWSER to render and to make the animation so if in any case you experience delays, lags or strange behaviour it may be a problem with the browser, replaying the animation or reloading the page should fix most issues. It may not work properly on mobile.
+Nota: Skulpt utiliza TU NAVEGADOR para renderizar y para hacer las animaciones así que si en cualquier caso experimentás demoras, errores o comportamiento extraño, esto puede deberse al navegador, recargar la animación o recargar la página debe solucionar la mayoría de los inconvenientes. Puede no funcionar adecuadamente en dispositivos móbiles.
 
-The examples are ordered by their complexity (my own judgement though), so the best ones are at the end.
+Los ejemplos están ordenados por orden de complejidad (mi juicio subjetivo), así que los mejores están al final
 
 ## Koch-Snowflake"
 
@@ -538,11 +540,11 @@ The examples are ordered by their complexity (my own judgement though), so the b
 <iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-ThreeDragon-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 </div>
 
-## Code
+## Código
 
-All the examples above were produced by the same code and some challenges emerged when working on it, mainly to keep the fractal centered (or at least as much as possible), dealing with colors, inversions and offsets and to export it quickly in a vectorial format. Here I will show you the most basic version, if you want to know how I dealt with those challenges, leave me a comment and I will make a Part 2.
+Todos los ejemplos de arriba fueron producidos con el mismo código, en el mientras tanto, algunos desafíos surgieron, principalmente como mantener los fractales centrados (o al menos tanto como sea posible), lidiando con colores, inversiónes, traslaciones y como exportarlos rápidamente a formatos vectoriales. Aquí voy a mostrarte la versión más básica, si quieres saber como solucioné todos estos desafios, no dudes en dejar un comentario y haré una Parte 2.
 
-This version plots in black and white and with no export functionalities
+Esta versión grafica en blanco y negro sin funcionalidades de exportación.
 
     :::python
     import turtle
@@ -594,12 +596,12 @@ This version plots in black and white and with no export functionalities
 
         wn.exitonclick()
 
-## Code Explanation
+## Explicación del Código
 
     :::python
     import turtle
 
-First we need to import the Turtle Module
+Lo primero que necesitamos hacer es importar el módulo Turtle
 
     ::python
     def create_l_system(iters, axiom, rules):
@@ -613,7 +615,7 @@ First we need to import the Turtle Module
 
         return end_string
 
-Then we need to generate the L-System which will be the set of instructions for the turtle. We define a function called `create_l_system` which receives the number of iterations, the axiom and the production rules. It starts with the axiom and uses an auxiliary variable called `end_string` if iteration is equal to 0 it will return the axiom since some fractals can be plot with iterations equal to 0. Rules here are assumed to be dictionaries, so the key will be unique and represents the symbol and the value represents what should be replaced with. So we join all the replacements for each symbol and we end up with the string for the next iteration.
+Luego lo que necesitamos es generar el Sistema L que será el conjunto de instrucciones para Turtle. Definimos una función llamada `create_l_system` que recibe el número de iteraciones, el axioma y las reglas de producción. Comienza con el axioma y utiliza una variable auxiliar llamada `end_string`, si la iteración es igual a 0, retorna el axioma ya que algunos fractales pueden ser graficados con iteraciones iguales a 0. Se asume que las reglas con un diccionario así que la clave será única y representa al símbolo mientras que el valor representa con que símbolos debe ser remplazado. Se concatenan todos los remplazos para cada símbolo y luego se acaba con la cadena para la próxima iteración.
 
     ::python
     def draw_l_system(t, instructions, angle, distance):
@@ -625,7 +627,7 @@ Then we need to generate the L-System which will be the set of instructions for 
             elif cmd == '-':
                 t.left(angle)
 
-Then we define a `draw_l_system` which takes the turtle, the set of instructions (the output of the L-System), the angle for the turn right/left and the length of each individual line. It consist of a simple elif structure for each of the previously defined commands.
+Posteriormente definimos `draw_l_system` que recibe a Turtle, un conjunto de instrucciones (la salida del sistema L), un ángulo para girar tanto a la derecha como a la izquiera y la longitud de cada línea individual. Luego se tiene una simple estructura elif para cada uno de los comandos definidos anteriormente.
 
     ::python
     def main(iterations, axiom, rules, angle, length=8, size=2, y_offset=0,
@@ -650,17 +652,17 @@ Then we define a `draw_l_system` which takes the turtle, the set of instructions
 
         wn.exitonclick()
 
-And finally the `main` function, it receives all the parameters it need for the generation of the L-Systems and also `y_offset`, `x_offset`, `offset_angle`, `width` and `height`. The first three represent the offset of the turtle, this is merely for positioning the plot as we want inside the canvas. 
+Finalmente se tiene una función `main` que recibe todos los parámetros que necesita para la generación del Sistema L así como `y_offset`, `x_offset`, `offset_angle`, `width` y `height`. Los primeros tres representan la traslación de Turtle, esto es sencillamente para posicionar el gráfico en el lugar deseado del lienzo.
 
-The function first generates a set of instructions and stores it in `inst` then it initializes the turtle and the screen and it positions the turtle in the defined position, then it plots the instructions and wait for a click to close.
+La función primeramente genera el conjunto de instrucciones y lo guarda en `inst` y luego inicializa Turtle y la Screen, lo posiciona en el lugar definido y luego grafica las instrucciones, por último, espera al evento click para cerrarse.
 
-## Special Considerations
+## Consideraciones Especiales
 
-As I mentioned earlier there are lots of limitations here, first we are not including the possibility of moving the turtle without drawing, this would require another symbol, it isn't either a symbol for going backwards, or remember previous positions. This weren't necessary for all the fractals you've seen but for some other (like fractal trees), these symbols are required.
+Como mencioné antes, existen muchas limitaciones en este escenario, primero que nada no incluimos la posibilidad de mover a Turtle sin dibujar, esto requeriría un símbolo adicional, tampoco hay un símbolo ni para ir hacía atras, o recordar posiciones anteriores. Esto no fue necesario para ninguno de los fractales de los ejemplos pero si lo es para otros (como por ejemplo los árboles fractales).
 
-## Additional Resources
+## Recursos Adicionales
 
-There are lots of resources in internet about fractals both from the programming and from the math perspective. I will show you two that I find really interesting: The 3Blue1Brown for math and the CodingTrain for code.
+Hay muchos recursos en internet sobre fractales, tanto desde el área de la programación como desde la perspectiva de la matemática. Les dejo a continuación dos que me resultaron sumamente interesantes: el video de 3Blue1Brown para la parte de matemática y el de CodingTrain para la parte de programación.
 
 **Coding Train**
 
@@ -676,6 +678,6 @@ There are lots of resources in internet about fractals both from the programming
     </div>
 </div>
 
-## Sources and References
+## Fuente y Referencias
 
-This post was inspired by a [Math World post](http://mathworld.wolfram.com/LindenmayerSystem.html), the [Paul Broke Blog](http://paulbourke.net/fractals/lsys/) and an university assignment for Genetic Algorithms.
+Este post fue inspirado por [un post de Math World](http://mathworld.wolfram.com/LindenmayerSystem.html), por el [blog de Paul Broke](http://paulbourke.net/fractals/lsys/) y por un trabajo práctico para la materia de Algoritmos Genéticos.
