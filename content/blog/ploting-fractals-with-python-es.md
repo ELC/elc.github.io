@@ -4,7 +4,7 @@ Category: Programming
 Tags: Python, Fractals, Turtle
 Slug: plotting-fractals-step-by-step-with-python
 Authors: Ezequiel Castaño
-Lang: Espanol
+Lang: es
 Translation: True
 level: Beginner
 
@@ -561,10 +561,7 @@ Esta versión grafica en blanco y negro sin funcionalidades de exportación.
         return end_string
 
 
-    def draw_l_system(t, instructions, angle, distance, color):
-        steps = len([i for i in instructions if i == "F"])
-        step = 1 / steps
-        i = 0
+    def draw_l_system(t, instructions, angle, distance):
         for cmd in instructions:
             if cmd == 'F':
                 t.forward(distance)
