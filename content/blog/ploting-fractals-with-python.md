@@ -559,10 +559,7 @@ This version plots in black and white and with no export functionalities
         return end_string
 
 
-    def draw_l_system(t, instructions, angle, distance, color):
-        steps = len([i for i in instructions if i == "F"])
-        step = 1 / steps
-        i = 0
+    def draw_l_system(t, instructions, angle, distance):
         for cmd in instructions:
             if cmd == 'F':
                 t.forward(distance)
