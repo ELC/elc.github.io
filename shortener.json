@@ -1,4 +1,19 @@
 {
     "github": "https://github.com/ELC",
-    "CONAIISI2018": "https://mybinder.org/v2/gh/ELC/CONAIISI2018/master?filepath=Jupyter-CONAIISI.ipynb"
+    "CONAIISI2018": "https://mybinder.org/v2/gh/ELC/CONAIISI2018/master?filepath=Jupyter-CONAIISI.ipynb",
+
+    "tabu-biblico": "https://docs.google.com/document/d/10R1ZDRXdJSnlIzEIzLBCxbvtH6NZQEoaZ3e1q4DR-TA/edit?usp=sharing",
+    "espadeo-biblico": "https://docs.google.com/document/d/1U2am6T_1VISEmlSNmo3IA3328ZB68NyMb_SdO3c12b8/edit?usp=sharing",
+    "trivia-adolescente": "https://docs.google.com/document/d/1Iv_SeOz98yFBnbsoM2nEBTaz227KM9s-tQXwU8iIRy0/edit?usp=sharing",
+    "arma-historia": "https://docs.google.com/document/d/1mn2nhfddiporb5fxtiGWoG9CwrxtRAKWIESDzfzAtVk/edit?usp=sharing",
+    "memo-paralelo": "https://docs.google.com/document/d/1py5FlWKWfL4NqyvNBJvvFMOIyUmOOu6CyNuO4vFPPCw/edit?usp=sharing",
+    "conoce-historia": "https://docs.google.com/document/d/1CSKD-PtPGSfaQcAebJZc_J1V3iW7YEUXOl60J-a53iM/edit?usp=sharing",
+
+    "tabu-biblico-pdf": "https://docs.google.com/document/d/10R1ZDRXdJSnlIzEIzLBCxbvtH6NZQEoaZ3e1q4DR-TA/export?format=pdf",
+    "espadeo-biblico-pdf": "https://docs.google.com/document/d/1U2am6T_1VISEmlSNmo3IA3328ZB68NyMb_SdO3c12b8/export?format=pdf",
+    "trivia-adolescente-pdf": "https://docs.google.com/document/d/1Iv_SeOz98yFBnbsoM2nEBTaz227KM9s-tQXwU8iIRy0/export?format=pdf",
+    "arma-historia-pdf": "https://docs.google.com/document/d/1mn2nhfddiporb5fxtiGWoG9CwrxtRAKWIESDzfzAtVk/export?format=pdf",
+    "memo-paralelo-pdf": "https://docs.google.com/document/d/1py5FlWKWfL4NqyvNBJvvFMOIyUmOOu6CyNuO4vFPPCw/export?format=pdf",
+    "conoce-historia-pdf": "https://docs.google.com/document/d/1CSKD-PtPGSfaQcAebJZc_J1V3iW7YEUXOl60J-a53iM/export?format=pdf"
+
 }
