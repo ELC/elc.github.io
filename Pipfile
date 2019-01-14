@@ -16,12 +16,11 @@ pillow = "*"
 [scripts]
 download-theme = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
 download-content = "git clone -b master --single-branch 'https://github.com/ELC/elc.github.io-content.git' aux"
-move-content = "cp -r aux/* content"
+move-content = "cp -r aux/. content"
 build = "pelican -s conf.py -o output -t theme content"
 
 
 copy-windows-theme = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
-clean-content = ''
 copy-windows-content = 'xcopy /E /I /Y /Q "D:\Repositories\elc.github.io-content" content\ '
 
 

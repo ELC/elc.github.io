@@ -70,5 +70,6 @@ def build(c):
     c.run("pipenv run download-theme")
     c.run("pipenv run download-content")
     c.run("pipenv run move-content")
+    c.run("rm content/README.md")
     compile_scss(c, 'theme')
     c.run("pipenv run build")
