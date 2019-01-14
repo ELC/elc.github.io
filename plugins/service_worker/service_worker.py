@@ -103,7 +103,7 @@ def create_service_worker(sender):
 
     files_to_cache.append(path)
 
-    FILES_TO_CACHE = tuple(files_to_cache)
+    FILES_TO_CACHE = tuple(set(files_to_cache))
 
 
     with open(sw_template, 'r+') as f:
