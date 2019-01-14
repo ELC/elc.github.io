@@ -120,8 +120,15 @@ output/*
 # Draft
 content/draft/*
 
-theme-dev/
 
 \.vscode/
 
 theme/
+
+aux/*
+
+content/blog/*
+
+content/draft/*
+
+content/pages/*
