@@ -45,8 +45,13 @@ def compile_scss(c, path):
 def buildWin(c):
     print('Started - {:%H:%M:%S}'.format(datetime.datetime.now()))
     start_time = time()
-    c.run("rd theme /S /Q ")
-    c.run("pipenv run copy-windows")
+    c.run("rd theme /S /Q")
+    c.run("pipenv run copy-windows-theme")
+    c.run('rd content\\blog /S /Q ')
+    c.run('rd content\\draft /S /Q ')
+    c.run('rd content\\pages /S /Q ')
+    c.run("pipenv run copy-windows-content")
+    c.run("del content\\README.md ")
     compile_scss(c, 'theme')
     c.run("pipenv run test")
     end_time = time()
@@ -55,13 +60,15 @@ def buildWin(c):
 
 @task
 def buildTheme(c):
-    c.run("pipenv run copy-windows")
+    c.run("pipenv run copy-windows-theme")
+    c.run("pipenv run copy-windows-content")
     compile_scss(c, 'theme')
     c.run("pipenv run test-theme")
 
-
 @task
 def build(c):
-    c.run("pipenv run download")
+    c.run("pipenv run download-theme")
+    c.run("pipenv run download-content")
+    c.run("pipenv run move-content")
     compile_scss(c, 'theme')
     c.run("pipenv run build")
