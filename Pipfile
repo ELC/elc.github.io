@@ -21,7 +21,7 @@ build = "pelican -s conf.py -o output -t theme content"
 
 
 copy-windows-theme = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
-copy-windows-content = 'xcopy /E /I /Y /Q "D:\Repositories\elc.github.io-content" content\ '
+copy-windows-content = 'xcopy /E /I /Y /Q "D:\Repositories\personal\elc.github.io-content" content\ '
 
 
 test = 'pelican -s conf.py -o output -t theme content'
