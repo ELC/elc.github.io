@@ -4,12 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pelican = ">=3.7.1"
-pelican-githubprojects = ">=0.1.1"
-pelican-gist = ">=0.3.3"
-Markdown = ">=2.6.11"
-invoke = "*"
-pillow = "*"
+pelican = ">=4.0.1"
+Markdown = ">=3.0.1"
+invoke = ">=1.2.0"
+pillow = ">=5.4.1"
 
 [dev-packages]
 
@@ -31,4 +29,4 @@ test-theme = "pelican -s conf.py -o output -t theme-dev content"
 
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
