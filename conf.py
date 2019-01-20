@@ -77,8 +77,8 @@ MARKDOWN = {
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
     'pelican-ert', 'backreftranslate', 'summary', 'neighbors', 'related_posts', 
-    'pelican_gist', 'pelican_githubprojects', 'render_math', 'sitemap', 
-    'shortener', 'blur_thumbnails', 'service_worker', 'bundler_cache_busting'
+    'render_math', 'sitemap', 'shortener', 'blur_thumbnails', 'service_worker', 
+    'bundler_cache_busting'
 ]
 
 SITEMAP = {
@@ -94,15 +94,6 @@ SITEMAP = {
         'pages': 'monthly'
     }
 }
-
-# GITHUB Plugins
-
-GITHUB_USER = 'ELC'
-STABLE_REPOS = ['comparisons',
-                'utn-genetic-algorithms',
-                'utn-java-final-assignment',
-                'utn-java-final-assignment-web',
-                'ML-Tutorial']
 
 # ERT
 
