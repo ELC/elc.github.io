@@ -16,6 +16,15 @@
     "trivia-adolescente-pdf": "https://docs.google.com/document/d/1Iv_SeOz98yFBnbsoM2nEBTaz227KM9s-tQXwU8iIRy0/export?format=pdf",
     "arma-historia-pdf": "https://docs.google.com/document/d/1mn2nhfddiporb5fxtiGWoG9CwrxtRAKWIESDzfzAtVk/export?format=pdf",
     "memo-paralelo-pdf": "https://docs.google.com/document/d/1py5FlWKWfL4NqyvNBJvvFMOIyUmOOu6CyNuO4vFPPCw/export?format=pdf",
-    "conoce-historia-pdf": "https://docs.google.com/document/d/1CSKD-PtPGSfaQcAebJZc_J1V3iW7YEUXOl60J-a53iM/export?format=pdf"
+    "conoce-historia-pdf": "https://docs.google.com/document/d/1CSKD-PtPGSfaQcAebJZc_J1V3iW7YEUXOl60J-a53iM/export?format=pdf",
+
+
+    "genetic_algorithm_repo": "https://github.com/ELC/utn-genetic-algorithms/tree/comparison/advanced/experimental",
+    "pascal_triangle_binder": "https://mybinder.org/v2/gist/ELC/c70f818eb3afab743f2d84e1d5b8e49e/master?filepath=pascal_triangle.ipynb",
+
+    
+    "pyfladesk_repo": "https://github.com/smoqadam/PyFladesk",
+
+    "times_table_binder": "https://mybinder.org/v2/gist/ELC/380e584b87227b15727ec886223d9d4a/master?filepath=circular_times_table.ipynb"
 
 }
