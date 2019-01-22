@@ -55,7 +55,7 @@ def generate_blur_thumbnails(sender):
     if content_path is None:
         return
 
-    imgs = get_filepaths(content_path, ['jpg', 'png', 'gif'])
+    imgs = get_filepaths(content_path, ['jpg', 'png'])
 
     for filename in imgs:
         extension = filename[-3:]
