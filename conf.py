@@ -36,6 +36,12 @@ RELATED_POSTS_MAX = 3
 STATIC_PATHS = [
     'blog', 'extra', ]
 
+
+# Test for Iframes
+
+PAGE_EXCLUDES = ['blog/iframes']
+ARTICLE_EXCLUDES = ['blog/iframes']
+
 # Extra files
 
 EXTRA_PATH_METADATA = {
