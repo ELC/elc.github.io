@@ -25,6 +25,10 @@
     
     "pyfladesk_repo": "https://github.com/smoqadam/PyFladesk",
 
-    "times_table_binder": "https://mybinder.org/v2/gist/ELC/380e584b87227b15727ec886223d9d4a/master?filepath=circular_times_table.ipynb"
+    
+    "times_table_binder": "https://mybinder.org/v2/gist/ELC/380e584b87227b15727ec886223d9d4a/master?filepath=circular_times_table.ipynb",
+
+
+    "ode_python_binder": "https://mybinder.org/v2/gist/ELC/8fdc0f490b3058872a7014f01416dfb6/master?filepath=ODEs_In_Python.ipynb"
 
 }
