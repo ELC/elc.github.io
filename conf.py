@@ -101,6 +101,14 @@ SITEMAP = {
     }
 }
 
+# Math Plugin
+
+MATH_JAX = {
+    'responsive_align ': True,
+    'responsive':True
+}
+
+
 # ERT
 
 ERT_WPM = 150
