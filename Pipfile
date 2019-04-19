@@ -4,10 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pelican = ">=4.0.1"
-Markdown = ">=3.0.1"
-invoke = ">=1.2.0"
-pillow = ">=5.4.1"
+pelican = "*"
+Markdown = "*"
+invoke = "*"
+pillow = "*"
 
 [dev-packages]
 
@@ -21,7 +21,7 @@ build = "pelican -s conf.py -o output -t theme content"
 
 copy-windows-theme = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
 copy-windows-content = 'xcopy /E /I /Y /Q "D:\Repositories\personal\elc.github.io-content" content\ '
-move-windows-content = 'xcopy /E /I /Y /Q extra content\extra '
+move-windows-content = 'xcopy /E /I /Y /Q extra "content\extra" '
 
 
 test = 'pelican -s conf.py -o output -t theme content'
