@@ -65,6 +65,7 @@ def generate_blur_thumbnails(sender):
             continue
 
         im = Image.open(filename)
+        im = im.convert(mode="RGB")
         im.thumbnail([200, 200], Image.ANTIALIAS)
         im.filter(ImageFilter.GaussianBlur(2)).save(f'{name_alone}-thumbnail.{extension}', optimize=True)
 
