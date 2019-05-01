@@ -29,6 +29,10 @@
     "times_table_binder": "https://mybinder.org/v2/gist/ELC/380e584b87227b15727ec886223d9d4a/master?filepath=circular_times_table.ipynb",
 
 
-    "ode_python_binder": "https://mybinder.org/v2/gist/ELC/8fdc0f490b3058872a7014f01416dfb6/master?filepath=ODEs_In_Python.ipynb"
+    "ode_python_binder": "https://mybinder.org/v2/gist/ELC/8fdc0f490b3058872a7014f01416dfb6/master?filepath=ODEs_In_Python.ipynb",
+
+
+    "pascal_triangle_gist": "https://gist.github.com/ELC/c70f818eb3afab743f2d84e1d5b8e49e",
+    "ode_python_gist": "https://gist.github.com/ELC/8fdc0f490b3058872a7014f01416dfb6"
 
 }
