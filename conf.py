@@ -172,9 +172,11 @@ CATEGORIES_SAVE_AS  = 'categories/index.html'
 if ENVIRONMENT == 'PRODUCTION':
     DISQUS_SITENAME = 'elcgweb'
     GOOGLE_ANALYTICS = 'UA-71773079-3'
+    GOOGLE_VERIFICATION = "UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU"
 else:
     DISQUS_SITENAME = ''
     GOOGLE_ANALYTICS = ''
+    GOOGLE_VERIFICATION = ''
 
 SOCIAL = (
     ('twitter', 'https://twitter.com/eze_leo_'),
