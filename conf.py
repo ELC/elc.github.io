@@ -61,6 +61,7 @@ EXTRA_PATH_METADATA = {
     'extra/mstile-310x310.png': {'path': 'mstile-310x310.png'},
     'extra/safari-pinned-tab.svg': {'path': 'safari-pinned-tab.svg'},
     'extra/site.webmanifest': {'path': 'site.webmanifest'},
+    'extra/localization.ini': {'path': 'localization.ini'},
 }
 
 
@@ -124,9 +125,9 @@ ERT_FORMAT = '{time}'
 DEFAULT_LANG = 'en'
 
 LANG_MESSAGES = {
-    'en': ['English', 'Original Version ', 'Also Translated in: '],
-    'es': ['Español', 'Versión Original ', 'También traducido en: '],
-    'de': ['Deutsch', 'Ursprüngliche Version ', 'Auch übersetzt in: '],
+    'en': 'English',
+    'es': 'Español',
+    'de': 'Deutsch',
 }
 
 # Directories Layout
