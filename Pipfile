@@ -13,16 +13,9 @@ pillow = "*"
 pylint = "*"
 
 [scripts]
-download-theme = "git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme"
-download-content = "git clone -b master --single-branch 'https://github.com/ELC/elc.github.io-content.git' aux"
-move-content = "cp -r aux/. content"
-copy-extra = "cp -r extra/. content/extra/"
-build = "pelican -s conf.py -o output -t theme content"
-copy-windows-theme = 'xcopy /E /I /Y /Q "D:\Repositories\personal\MinimalXYZ" theme\ '
-copy-windows-content = 'xcopy /E /I /Y /Q "D:\Repositories\personal\elc.github.io-content" content\ '
-move-windows-content = 'xcopy /E /I /Y /Q extra "content\extra" '
-test = 'pelican -s conf.py -o output -t theme content'
-test-theme = "pelican -s conf.py -o output -t theme-dev content"
+build = "invoke build"
+buildWin = "invoke buildWin"
+serve = "python -m http.server --directory output"
 
 [requires]
 python_version = "3.7"

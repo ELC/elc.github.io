@@ -19,7 +19,7 @@ install:
   - pipenv install --ignore-pipfile
   - npm install -g sass
 
-script: pipenv run invoke build
+script: pipenv run build
 
 deploy:
   provider: pages

@@ -40,36 +40,30 @@ def compile_scss(c, path):
     for filename in paths:
         c.run(f"sass {filename} {filename}.css -s expanded")
 
+def buildPelican(c):
+    c.run("pelican -s conf.py -o output -t theme content")
 
 @task
 def buildWin(c):
     print('Started - {:%H:%M:%S}'.format(datetime.datetime.now()))
     start_time = time()
     c.run("rd theme /S /Q")
-    c.run("pipenv run copy-windows-theme")
+    c.run('xcopy /E /I /Y /Q D:\\Repositories\\personal\\MinimalXYZ theme ')
     c.run('rd content /S /Q ')
-    c.run("pipenv run copy-windows-content")
-    c.run("pipenv run move-windows-content")
+    c.run("xcopy /E /I /Y /Q D:\\Repositories\\personal\\elc.github.io-content content\\ ")
+    c.run("xcopy /E /I /Y /Q extra content\\extra ")
     c.run("del content\\README.md ")
     compile_scss(c, 'theme')
-    c.run("pipenv run test")
+    buildPelican(c)
     end_time = time()
     print('Elapsed Time: {:.2f} seconds'.format(end_time - start_time))
 
-
-@task
-def buildTheme(c):
-    c.run("pipenv run copy-windows-theme")
-    c.run("pipenv run copy-windows-content")
-    compile_scss(c, 'theme')
-    c.run("pipenv run test-theme")
-
 @task
 def build(c):
-    c.run("pipenv run download-theme")
-    c.run("pipenv run download-content")
-    c.run("pipenv run move-content")
-    c.run("pipenv run copy-extra")
+    c.run("git clone -b master --single-branch 'https://github.com/ELC/MinimalXYZ.git' theme")
+    c.run("git clone -b master --single-branch 'https://github.com/ELC/elc.github.io-content.git' aux")
+    c.run("cp -r aux/. content")
+    c.run("cp -r extra/. content/extra/")
     c.run("rm content/README.md")
     compile_scss(c, 'theme')
-    c.run("pipenv run build")
+    buildPelican(c)
