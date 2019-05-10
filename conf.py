@@ -37,6 +37,11 @@ STATIC_PATHS = [
     'blog', 'extra', ]
 
 
+# Contribution
+
+CONTRIBUTION_URL = "https://github.com/ELC/elc.github.io-content/edit/master"
+CONTRIBUTION_PATH_REPLACE = "content"
+
 # Test for Iframes
 
 PAGE_EXCLUDES = ['blog/iframes']
