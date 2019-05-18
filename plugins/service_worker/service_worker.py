@@ -22,7 +22,7 @@ import hashlib
 import json
 
 # Function extracted from https://stackoverflow.com/a/19308592/7690767
-def get_filepaths(directory, extensions=[], ignores=[]): 
+def get_filepaths(directory, extensions=None, ignores=None): 
         """
         This function will generate the file names in a directory 
         tree by walking the tree either top-down or bottom-up. For each 
@@ -31,10 +31,16 @@ def get_filepaths(directory, extensions=[], ignores=[]):
         """
         file_paths = []  # List which will store all of the full filepaths.
         
+        if extensions is None:
+            extensions = []
+
         exts = extensions
 
         if isinstance(extensions, str):
             exts = [extensions]
+
+        if ignores is None:
+            ignores = []
 
         igns = ignores
 
@@ -69,7 +75,7 @@ def create_service_worker(sender):
     if None in [output_path, sw_template]:
         return
 
-    extensions = ['js', 'html', 'css', 'svg']
+    extensions = ['js', 'html', 'css', 'svg', 'ini', 'ico', 'webmanifest', 'xml']
     img_extensions = ['png', 'jpg', 'gif']
     ignores = ['sw.js']
 
