@@ -70,7 +70,12 @@ EXTRA_PATH_METADATA = {
 FEED_DOMAIN = 'http://feeds.feedburner.com'
 FEED_ALL_ATOM  = 'ELCWEB'
 FEED_ATOM  = 'feeds/all.atom.xml'
-
+CATEGORY_FEED_ATOM = ''
+CATEGORY_FEED_RSS = ''
+TAG_FEED_ATOM = ''
+TAG_FEED_RSS = ''
+FEED_ALL_RSS = ''
+FEED_RSS = ''
 
 # Markdown Extensions
 
