@@ -1,7 +1,10 @@
 {
+    "cv": "https://docs.google.com/document/d/1MOkdkm-0JDvRg7IubLwmzerWepUD2tkMDkLx5341hJw/export?format=pdf",
+    "cv-ref": "https://drive.google.com/drive/folders/1Cp35k0SavKaprA0QO2RyDsy6Bj3xNAPX?usp=sharing",
     "github": "https://github.com/ELC",
     "CONAIISI2018": "https://mybinder.org/v2/gh/ELC/CONAIISI2018/master?filepath=Jupyter-CONAIISI.ipynb",
     "simulation-model": "https://cloud.anylogic.com/model/5b79e7e8-05d3-47fb-b13e-8407d6b64e2f?mode=SETTINGS&tab=GENERAL",
+    "elevator-simulation": "https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/?utm_source=AnyLogic%20Model&utm_medium=AnyLogic%20Cloud&utm_campaign=Link%20inside%20the%20model",
 
 
     "tabu-biblico": "https://docs.google.com/document/d/10R1ZDRXdJSnlIzEIzLBCxbvtH6NZQEoaZ3e1q4DR-TA/edit?usp=sharing",
@@ -36,6 +39,8 @@
     "ode_python_gist": "https://gist.github.com/ELC/8fdc0f490b3058872a7014f01416dfb6",
 
 
-    "lyrics_presentation": "https://elc.github.io/lyrics-presentation/"
+    "lyrics_presentation": "https://elc.github.io/lyrics-presentation/",
+
+    "soporte-jupyter": "https://mybinder.org/v2/gh/ELC/utn-jupyter-tutorial/master?filepath=Presentation.ipynb"
 
 }
