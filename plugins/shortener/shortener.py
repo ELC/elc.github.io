@@ -49,6 +49,8 @@ def generate_output(sender):
 
     analytics = sender.settings.get('GOOGLE_ANALYTICS', None)
 
+    ignore_folder = sender.settings.get('SHORTENER_SKIP_FOLDER', None)
+
     if not shortener_file is None:
         with open(shortener_file) as f:
             redirects_map = json.load(f)
@@ -58,13 +60,42 @@ def generate_output(sender):
 
     redirects_folder = sender.settings.get('SHORTENER_FOLDER', None)
 
+    output_path_with_folder = output_path
+
     if not redirects_folder is None:
-        output_path = os.path.join(output_path, redirects_folder)
+        output_path_with_folder = os.path.join(output_path, redirects_folder)
 
     if analytics is None or analytics == "":
         ANALYTICS = ""
 
+    process_later = {}
+
     for filename, redirect_url in redirects_map.items():
+
+        if ignore_folder and filename in ignore_folder:
+            process_later[filename] = redirect_url
+
+        if not (redirect_url.startswith('http://') or redirect_url.startswith('https://')):
+            redirect_url = 'http://' + redirect_url
+        
+        folder_path = os.path.join(output_path_with_folder, filename)
+
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
+        file_path = os.path.join(folder_path, 'index.html')
+
+        with open(file_path, 'w', encoding='utf-8') as fd:
+            
+            if not analytics is None:
+                analytics_snipped = ANALYTICS.replace('GA_CODE', analytics)
+                content = BASE_HTML.format(redirect_url, analytics=analytics_snipped)
+            else:
+                content = BASE_HTML.format(redirect_url, analytics="")
+
+            fd.write(content)
+
+    for filename, redirect_url in process_later.items():
 
         if not (redirect_url.startswith('http://') or redirect_url.startswith('https://')):
             redirect_url = 'http://' + redirect_url
@@ -85,6 +116,7 @@ def generate_output(sender):
                 content = BASE_HTML.format(redirect_url, analytics="")
 
             fd.write(content)
- 
+
+
 def register():
     signals.finalized.connect(generate_output)
