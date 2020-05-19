@@ -42,6 +42,8 @@
 
     "lyrics_presentation": "https://elc.github.io/lyrics-presentation/",
 
-    "soporte-jupyter": "https://mybinder.org/v2/gh/ELC/utn-jupyter-tutorial/master?filepath=Presentation.ipynb"
+    "soporte-jupyter": "https://mybinder.org/v2/gh/ELC/utn-jupyter-tutorial/master?filepath=Presentation.ipynb",
+
+    "vias": "https://docs.google.com/document/d/1Z1jxJKie895-RNhK4kEG2dHuK6o6T1-jsTlnsgXc6ZU/export?format=pdf"
 
 }
