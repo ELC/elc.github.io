@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Ordinary Differential Equations (ODE) with Python and Jupyter 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Simulation" />
+      <meta property="article:published_time" content="2019-01-29" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Ordinary Differential Equations (ODE) with Python and Jupyter"/>
+      <meta property="og:description" content="When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/ordinary-differential-equations-with-python/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Ordinary Differential Equations (ODE) with Python and Jupyter">
+      <meta name="twitter:description" content="When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/ordinary-differential-equations-with-python/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Ordinary Differential Equations (ODE) with Python and Jupyter</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2019-01-29 00:00:00-03:00"><b>29 Jan 2019</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>29 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/ordinary-differential-equations-with-python#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/ordinary-differential-equations-with-python/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png"><img alt="ODE Header Image" class="b-lazy" data-src="/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png" src="https://elc.github.io/posts/ordinary-differential-equations-with-python/images/ode-python/ordinary-differential-equations-with-python-headerimage-thumbnail.png" width="1333"></a></p>
+
+
+<p>When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.</p>
+
+
+<p>Of course in one year one solves a lot of differential equations but there were some problems that I think are really interesting and that rely on ordinary differential equations (ODE), numerical integration and reasoning. The year after, when I was in my 4th year, I had a subject called simulation where I learnt other techniques with another software and the focus was the process instead of the analytical form.</p>
+<p>The teacher showed us several situations one can model with ODE and each has its particularities:</p>
+<ul>
+<li><a href="#economy-of-a-home">Economy of a Home</a>: Piecewise Defined Derivatives</li>
+<li><a href="#sales-of-houses-and-air-conditionings">Sales of Houses and Air Conditionings</a>: Systems of ODEs</li>
+<li><a href="#stock-control">Stock Control</a>: Systems with oscillation (Underdamped, critically damped, overdamped and undamped)</li>
+<li><a href="#useful-life">Useful life in medicine</a>: Start from a previous result</li>
+<li><a href="#foxes-and-rabbits">Predator and Prey Model</a>: Non-linear relationships between variables</li>
+</ul>
+<p>Some of them are quite well-known but the aim of this post isn't introducing these models but rather how you can solve them with Python, I will also attach the interactive widgets so you can experiment with the models and see how they behave when you change the parameters. Also, I prepared a <a href="https://elc.github.io/link/ode_python_binder">jupyter notebook</a> where all these models are together, you can open it online and experiment directly. Additionally if you find any of the widgets useful you can embed them in your own website, at the end of each widget the code for doing so will be provided.</p>
+<p>This post will have some explanation of the models, and the equations, I won't focused on how to solve a ODE by hand since the focus is the computational aid one can have from open source tools.</p>
+<p>Requirements:</p>
+<ul>
+<li><a href="https://jupyter.org/install" target="_blank">Jupyter</a>: Notebook Interface</li>
+<li><a href="http://www.numpy.org/" target="_blank">Numpy</a>: For array manipulation</li>
+<li><a href="https://www.scipy.org/" target="_blank">Scipy</a>: For numerical integration</li>
+<li><a href="https://matplotlib.org/" target="_blank">Matplotlib</a>: For visualization and animation</li>
+</ul>
+<h2 id="imports-and-setup"><a class="toclink" href="#imports-and-setup">Imports and setup</a></h2>
+<p>Before starting with the models themselves, we need to import some libraries, the imports are the same for all models so one can simply place this snippet at the top of the script/notebook. In this snipped the style for the sliders is also included in order to have the same look and feel in all the widgets</p>
+<div class="highlight "><pre><span></span><span class="c1"># General Purpose</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="c1"># Jupyter Specifics</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">ipywidgets.widgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Layout</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">}</span>
+<span class="n">slider_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2 id="economy-of-a-home"><a class="toclink" href="#economy-of-a-home">Economy of a Home</a></h2>
+<p>A home economy (family) has a fixed income at the beginning of some periodic interval (usually a month), there are also two kind of outcomes, fixed costs and extraordinary expenses, which are proportional to the money at the moment. Additionally, the family decides to set apart some proportion of the income just for fixed costs. This way, when the capital of the family is below this amount, the extraordinary expenses are 0.</p>
+<p>The model has the following variables:</p>
+<ul>
+<li><code>initial_salary</code> [$]: the amount of money for the income</li>
+<li><code>savings_ratio</code> [%]: Proportion of the income that will be the keep just for fixed costs</li>
+<li><code>fixed_costs</code> [$]: The amount of money of fixed costs distributed per day</li>
+<li><code>extraordinary_expenses</code> [%]: Proportion of money that will be spend in extraordinary expenses.</li>
+<li><code>days</code> [days]: The time interval until the next income</li>
+</ul>
+<p>Notation for the equation:</p>
+<ul>
+<li><span class="math">\(x(t):\)</span> Capital over time</li>
+<li><span class="math">\(x(0) =\)</span> <code>initial_salary</code></li>
+<li><span class="math">\(s =\)</span> <code>savings_ration * initial_salary</code></li>
+<li><span class="math">\(a =\)</span> <code>fixed_costs</code></li>
+<li><span class="math">\(b =\)</span> <code>extraordinary_expenses</code></li>
+</ul>
+<p>With the previously defined notation, the ordinary differential equation is as follows:</p>
+<div class="math">$$
+\frac{\mathrm{d} x}{\mathrm{d} t} = \left\{\begin{matrix} - a &amp; x \leq  s \\ - b (x - s) &amp; x &gt; s  \end{matrix}\right.
+$$</div>
+<h3 id="widget"><a class="toclink" href="#widget">Widget</a></h3>
+<p>Below is the resulting model in action and then the code explain part by part.</p>
+<div class="iframe-container" style="padding-top: 90%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/home-economy-iframe.html"></iframe>
+</div>
+
+<p>If you want to embed this widget in your blog/website, just add the following HTML:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/home-economy-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="code"><a class="toclink" href="#code">Code</a></h3>
+<p>Now I will comment part by part the code used, at the end of this section, I will place the full code for easy copy/paste</p>
+<h4 id="function-definition"><a class="toclink" href="#function-definition">Function Definition</a></h4>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ration</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+</pre></div>
+
+
+<p>First, we defined a function called <code>main</code> for easier use of <code>interact</code> which will produce the interactive widget. After that, all the constants are calculated, in this case <code>saving_limit</code> which is analogous to <span class="math">\(s\)</span> in the equation.</p>
+<h4 id="ode-specifics"><a class="toclink" href="#ode-specifics">ODE Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ration</span> <span class="o">*</span> <span class="n">initial_salary</span>
+
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">capital</span> <span class="o">&lt;=</span> <span class="n">saving_limit</span><span class="p">:</span>
+        <span class="n">out_rate</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out_rate</span> <span class="o">=</span> <span class="n">extraordinary_expenses</span> <span class="o">*</span> <span class="p">(</span><span class="n">capital</span> <span class="o">-</span> <span class="n">saving_limit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">fixed_costs</span> <span class="o">-</span> <span class="n">out_rate</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_salary</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+
+
+<p>A nested function is defined (there could be better ways to do this but I find this the simplest), this function is the differential equation, it should take two parameters and return the value of <span class="math">\(\frac{\mathrm{d} x}{\mathrm{d} t}\)</span>. The first parameter can be used as the current value of <span class="math">\(x\)</span> for a given <span class="math">\(t\)</span>. For the numerical integration <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html" target="_blank"><code>scipy.integrate.odeint</code></a> is used and that's why this format is required. Using a nested function has the advantage that its name doesn't conflict with the outer scope of the function containing it and that it has access to all the parameters the outer function has, avoiding unnecessary indirection due to reference (If you know a better way to implement this, let me know in the comments).</p>
+<p>Then the <code>time</code> variable is defined and initialized, this will be the <span class="math">\(t\)</span> steps. We have basically two options here:</p>
+<ol>
+<li>Define the <strong>start</strong>, the <strong>end</strong> and the <strong>number of steps</strong>: For this <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html" target="_blank"><code>numpy.linspace</code></a> could be used</li>
+<li>Define the <strong>start</strong>, the <strong>end</strong> and the <strong>step</strong>: For this <a href="https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.arange.html" target="_blank"><code>numpy.arange</code></a> could be used</li>
+</ol>
+<p><strong>Note</strong>: It is important to note that this will determined how smooth the resulting function will be. Although at first it might seem that the integration step (usually denoted with <span class="math">\(h\)</span>) is implicitly defined here, that's not the case since, as you can see in the docs of <code>scipy.integrate.odeint</code>, <span class="math">\(h\)</span> is determined by the solver in each iteration.</p>
+<p>Then the <code>scipy.integrate.odeint</code> function is called with the function defined as a first parameter, the initial conditions as the second and the window time as the third. This function returns the solution array which will be later used for the plotting.</p>
+<h4 id="graphics-specifics"><a class="toclink" href="#graphics-specifics">Graphics Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">),</span> <span class="p">(</span><span class="n">saving_limit</span><span class="p">,</span> <span class="n">saving_limit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Saving Limit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Capital(t)&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+<span class="k">elif</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">300</span><span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Capital $&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Next, the graphics part, here matplotlib is used and this snipped is specific to this library but I will explain it in order to be self-contained (although I might produce a matplotlib tutorial in the future).</p>
+<p><strong>Note</strong>: I know there are plenty of plotting libraries, and many even more elegant and powerful than matplotlib but for this use case, where the complexity lies in the differential equation and not in the graphic itself, I believe it is more than enough. For complex graphics such as statistics or big data, I would recommend another library such as <a href="https://github.com/bloomberg/bqplot" target="_blank"><strong>bqplot</strong></a>.</p>
+<p>First we define a <code>figure</code> and an <code>axes</code> object, explicitly initializing the figure size through <code>figsize</code>. Then a horizontal line with the label <code>Saving Limit</code> is plot at the heigh of the <code>saving_limit</code> and after that the solution is plot with the label <code>Capital(t)</code>.</p>
+<p>The if-elif-else structure defines how many sticks there will be in the x-axis and if they should be place horizontal or vertically. Then the said sticks are plotted, the same occurs with the yticks. Then the limits for each axis and the labels for each axis are set and finally, the legend position is defined and the grid is added.</p>
+<p>Then when <code>plt.show()</code> is called the figure is generated and showed in the screen.</p>
+<h4 id="interaction-specifics"><a class="toclink" href="#interaction-specifics">Interaction Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">initial_salary</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Salary&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">savings_ration</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Savings Ratio&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">extraordinary_expenses</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Extraordinary Expenses&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">fixed_costs</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fixed Costs&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">)</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<p>Finally, the code for the interaction, here the <code>interact</code> function from <a href="https://ipywidgets.readthedocs.io/en/stable/" target="_blank"><code>ipywidgets</code></a> is used. A separate slider is used for each parameter with the default parameters set for a nice default visualization, with a description and the style and layout is used from the initialization cells.</p>
+<h3 id="full-code"><a class="toclink" href="#full-code">Full code</a></h3>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+    <span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ratio</span> <span class="o">*</span> <span class="n">initial_salary</span>
+
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">capital</span> <span class="o">&lt;=</span> <span class="n">saving_limit</span><span class="p">:</span>
+            <span class="n">out_rate</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out_rate</span> <span class="o">=</span> <span class="n">extraordinary_expenses</span> <span class="o">*</span> <span class="p">(</span><span class="n">capital</span> <span class="o">-</span> <span class="n">saving_limit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">fixed_costs</span> <span class="o">-</span> <span class="n">out_rate</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_salary</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+    <span class="c1">#Graphic details</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">),</span> <span class="p">(</span><span class="n">saving_limit</span><span class="p">,</span> <span class="n">saving_limit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Saving Limit&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Capital(t)&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+    <span class="k">elif</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">initial_salary</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Capital $&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">initial_salary</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Salary&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">savings_ratio</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Savings Ratio&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">extraordinary_expenses</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Extraordinary Expenses&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">fixed_costs</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fixed Costs&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">)</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<h2 id="sales-of-houses-and-air-conditionings"><a class="toclink" href="#sales-of-houses-and-air-conditionings">Sales of Houses and Air Conditionings</a></h2>
+<p>In a city there are houses and air conditionings (AC) for sale and it's known that these are complementary goods, which means that if the sales of one increase the sales of the other will also increase. The number of houses sales is proportional to the number of houses that weren't sold yet and the number of AC sales is proportional to the houses sold that doesn't yet have an AC.</p>
+<p>The model has the following variables:</p>
+<ul>
+<li><code>initial_houses</code> [houses]: Number of Houses initially sold, could be 0.</li>
+<li><code>initial_ac</code> [AC]: Number of air conditionings sold, could be 0 and should be less than <code>initial_houses</code>.</li>
+<li><code>avg_time_house</code> [days]: Average number of days to sell a house.</li>
+<li><code>avg_time_ac</code> [days]: Average number of days to sell an AC.</li>
+<li><code>total_houses</code> [houses]: Total number of Houses for sale.</li>
+<li><code>days</code> [days]: The time interval until the next income</li>
+</ul>
+<p>Notation for the equation:</p>
+<ul>
+<li><span class="math">\(x(t):\)</span> Number of sold Houses</li>
+<li><span class="math">\(y(t):\)</span> Number of sold Air Conditionings</li>
+<li><span class="math">\(x(0) =\)</span> <code>initial_houses</code></li>
+<li><span class="math">\(y(0) =\)</span> <code>initial_ac</code></li>
+<li><span class="math">\(h =\)</span> <code>total_houses</code></li>
+<li><span class="math">\(a =\)</span> <code>avg_time_house</code></li>
+<li><span class="math">\(b =\)</span> <code>avg_time_ac</code></li>
+</ul>
+<p>With the previously defined notation, the ordinary differential equation is as follows:</p>
+<div class="math">$$
+\left\{\begin{matrix} \frac{\mathrm{d} x}{\mathrm{d} t} =\frac{1}{a} (h - x) \\\\ \frac{\mathrm{d} y}{\mathrm{d} t} =\frac{1}{b} (x - y)  \end{matrix}\right.
+$$</div>
+<p><strong>Note</strong>: The last scenario was a first-order differential equation and in this case it a system of two first-order differential equations, the package we are using, <code>scipy.integrate.odeint</code> can only integrate first-order differential equations but this doesn't limit the number of problems one can solve with it since <strong>any ODE of order greater than one can be [and usually is] rewritten as system of first order ODEs</strong> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<h3 id="widget_1"><a class="toclink" href="#widget_1">Widget</a></h3>
+<div class="iframe-container" style="padding-top: 86%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/houses-air_conditioning-iframe.html"></iframe>
+</div>
+
+<p>Embed this widget in your website:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/houses-air_conditioning-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="code_1"><a class="toclink" href="#code_1">Code</a></h3>
+<p>In this scenario and the followings the code will be explain where it differs from the first example to avoid unnecesary repetition</p>
+<h4 id="ode-specifics_1"><a class="toclink" href="#ode-specifics_1">ODE Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">avg_time_house</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">total_houses</span> <span class="o">-</span> <span class="n">x</span><span class="p">),</span>    <span class="c1"># dx/dt: Change in the House sales</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">avg_time_ac</span><span class="p">)</span>    <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>                <span class="c1"># dx/dt: Change in the AC sales</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">dydt</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In this case the constants <code>avg_time_house</code> and <code>avg_time_ac</code> are used directly inside the function since it is much clearer this way. To define a system of ODEs, first the initial condition should be a list, each element of the list represents the initial condition for each of the variables. The nested function also changes a bit, in order to work, the first parameter would also be a list so it is necessary to unpack it into the variables and then a variable <code>dydt</code> is used (the <code>dydt</code> name doesn't refer to the variable <code>y</code> but rather is the convention in <code>scipy</code>) to represent the system where each element is the left side of each equation (in canonical form).</p>
+<p>Although it may differ from PEP8 (Python style for coding), I prefer to split the elements one per line to improve readability. Finally the <code>dydt</code> variable is returned. The definition of <code>time</code> is the same as previously seen and the solution variable is now a nested array containing the solution for both variables. This is specially useful when plotting.</p>
+<h4 id="graphics-specifics_1"><a class="toclink" href="#graphics-specifics_1">Graphics Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Houses(t)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Air Conditionings(t)&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>These are the only lines that differ in which instead of plotting the <code>solution</code> variable, the <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html" target="_blank">numpy indexing and slicing syntax</a> is used to easily split the results from each of the variables.</p>
+<h3 id="full-code_1"><a class="toclink" href="#full-code_1">Full code</a></h3>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">,</span> <span class="n">avg_time_house</span><span class="p">,</span> <span class="n">avg_time_ac</span><span class="p">,</span> <span class="n">total_houses</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">avg_time_house</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">total_houses</span> <span class="o">-</span> <span class="n">x</span><span class="p">),</span> <span class="c1"># dx/dt: Change in the House sales</span>
+            <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">avg_time_ac</span><span class="p">)</span>    <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>             <span class="c1"># dx/dt: Change in the AC sales</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">dydt</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">]</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+    <span class="c1">#Graphic details</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Houses(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Air Conditionings(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">),</span> <span class="p">(</span><span class="n">total_houses</span><span class="p">,</span> <span class="n">total_houses</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Houses&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+    <span class="k">elif</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_houses</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">total_houses</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_houses</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Months&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Units&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">initial_houses</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial sold Houses&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">initial_ac</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial sold AC&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">total_houses</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Houses&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">avg_time_house</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time for House&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">avg_time_ac</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time for AC&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<h2 id="stock-control"><a class="toclink" href="#stock-control">Stock Control</a></h2>
+<p>A company wants a desired stock, they started with an initial stock and they work with a provider which sends deliveries goods through sales orders. The company asks the provider each day a sales order proportional to the missing or surplus quantity to the desired stock and the market demand. The provider deliver the goods according to the sales order with a constant delay. Finally, the market demand is consider constant. The company wants to know how their stock and their request to the provider will behave and they will try to avoid alternating behavior (oscillation in stock).</p>
+<p>The model has the following variables:</p>
+<ul>
+<li><code>desired_stock</code> [goods]: Amount of stock the company wants to have.</li>
+<li><code>initial_stock</code> [goods]: The initial amount of stock of the company.</li>
+<li><code>initial_orders</code> [goods]: initial amount of goods asked in sales orders.</li>
+<li><code>stock_control</code> [%]: Proportion of the missing/surplus stock to ask to the provider.</li>
+<li><code>market_demand</code> [goods]: The daily demand of the market</li>
+<li><code>provider_delay</code> [days]: The number of days of the provider delay.</li>
+<li><code>days</code> [days]: The total number of days the model will analyse.</li>
+</ul>
+<p>Notation for the equation:</p>
+<ul>
+<li><span class="math">\(x(t):\)</span> Number of goods in stock</li>
+<li><span class="math">\(y(t):\)</span> Number of pending sales order sent to the provider</li>
+<li><span class="math">\(x(0) =\)</span> <code>initial_stock</code></li>
+<li><span class="math">\(y(0) =\)</span> <code>initial_orders</code></li>
+<li><span class="math">\(s =\)</span> <code>desired_stock</code></li>
+<li><span class="math">\(d =\)</span> <code>market_demand</code></li>
+<li><span class="math">\(k =\)</span> <code>stock_control</code></li>
+<li><span class="math">\(p =\)</span> <code>provider_delay</code></li>
+</ul>
+<p>With the previously defined notation, the ordinary differential equation is as follows:</p>
+<div class="math">$$
+\left\{\begin{matrix} \frac{\mathrm{d} x}{\mathrm{d} t} =&amp;   \frac{1}{p} y - d \\\\ \frac{\mathrm{d} y}{\mathrm{d} t} =&amp; - \frac{1}{p} y + d + k ( s - x ) \end{matrix}\right.
+$$</div>
+<h3 id="widget_2"><a class="toclink" href="#widget_2">Widget</a></h3>
+<div class="iframe-container" style="padding-top: 97%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/stock-control-iframe.html"></iframe>
+</div>
+
+<p>Embed this widget in your website:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/stock-control-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="code_2"><a class="toclink" href="#code_2">Code</a></h3>
+<h4 id="ode-specifics_2"><a class="toclink" href="#ode-specifics_2">ODE Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">v0</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">market_demand</span><span class="p">,</span>                                        <span class="c1"># dx/dt: Change in Stock</span>
+      <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">market_demand</span> <span class="o">+</span> <span class="n">stock_control</span> <span class="o">*</span> <span class="p">(</span><span class="n">desired_stock</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>   <span class="c1"># dy/dt: Change in Requests</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">dydt</span>
+</pre></div>
+
+
+<p>This time the code is only changed in the variables names and the equations but it is very similar to the previous example, the particularity of this model doesn't lie in the code but rather in the behavior, since it can show the differences between an oscillation behavior and a damped one. Going through all kinds of possibilities such as underdamped, overdamped, critically damped and undamped. I encourage you to experiment with the parameters in the widget.</p>
+<h3 id="full-code_2"><a class="toclink" href="#full-code_2">Full code</a></h3>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">desired_stock</span><span class="p">,</span> <span class="n">initial_stock</span><span class="p">,</span> <span class="n">initial_orders</span><span class="p">,</span> <span class="n">stock_control</span><span class="p">,</span> <span class="n">market_demand</span><span class="p">,</span> <span class="n">provider_delay</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">v0</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">market_demand</span><span class="p">,</span>                                        <span class="c1"># dx/dt: Change in Stock</span>
+          <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">market_demand</span> <span class="o">+</span> <span class="n">stock_control</span> <span class="o">*</span> <span class="p">(</span><span class="n">desired_stock</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>   <span class="c1"># dy/dt: Change in Requests</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">dydt</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_stock</span><span class="p">,</span> <span class="n">initial_orders</span><span class="p">]</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+    <span class="c1">#Graphic details</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stock(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Requests(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">),</span> <span class="p">(</span><span class="n">desired_stock</span><span class="p">,</span> <span class="n">desired_stock</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Desired Stock&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+    <span class="k">elif</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Units&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">desired_stock</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Desired Stock&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">initial_stock</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Stock&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">initial_orders</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Requests&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">stock_control</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stock Control&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">market_demand</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Market Demand&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">provider_delay</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Provider Delay&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<h2 id="useful-life"><a class="toclink" href="#useful-life">Useful Life</a></h2>
+<p>A patient takes a certain drug with a recipe, the recipe says how many milligrams the patient should have per intake, how often the intakes should be and how many. Additionally the drug itself provides information about its useful life which helps to determine the optimal interval between intakes. It's also known that the useful life of the drug follows a natural decay.</p>
+<p>The model has the following variables:</p>
+<ul>
+<li><code>useful_life</code> [hs]: Duration of the useful life of the drug</li>
+<li><code>intake_mg</code> [mg]: Amount of milligrams per intake.</li>
+<li><code>intake_interval</code> [hs]: Time interval between intakes.</li>
+<li><code>intake_number</code> [1]: Number of intakes.</li>
+<li><code>hours</code> [hours]: The total number of hours the model will analyse.</li>
+</ul>
+<p>Notation for the equation:</p>
+<ul>
+<li><span class="math">\(x(t):\)</span> Milligrams of drug in the body</li>
+<li><span class="math">\(x(0) =\)</span> <code>intake_mg</code></li>
+<li><span class="math">\(a =\)</span> <code>useful_life</code></li>
+</ul>
+<p>With the previously defined notation, the ordinary differential equation is as follows:</p>
+<div class="math">$$
+\frac{\mathrm{d} x}{\mathrm{d} t} = - \frac{1}{a} ln(2) y
+$$</div>
+<p><strong>Note:</strong> the <span class="math">\(ln(2)\)</span> is part of the natural decay formula.</p>
+<h3 id="widget_3"><a class="toclink" href="#widget_3">Widget</a></h3>
+<div class="iframe-container" style="padding-top: 89%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html"></iframe>
+</div>
+
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="code_3"><a class="toclink" href="#code_3">Code</a></h3>
+<h4 id="ode-specifics_3"><a class="toclink" href="#ode-specifics_3">ODE Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">useful_life</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># dy/dt: Change of mg</span>
+
+<span class="n">intake_hours</span> <span class="o">=</span> <span class="p">[</span><span class="n">intake_interval</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">intake_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="n">intake_mg</span>
+<span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">intake_time</span> <span class="ow">in</span> <span class="n">intake_hours</span><span class="p">:</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">intake_time</span><span class="p">,</span> <span class="n">intake_time</span> <span class="o">+</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intake_mg</span>
+
+    <span class="n">times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">solutions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+
+<span class="n">intake_time</span> <span class="o">=</span> <span class="n">intake_hours</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intake_interval</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">intake_time</span><span class="p">,</span> <span class="n">intake_time</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+<span class="n">times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="n">solutions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This model doesn't introduces complexity in the ODE but rather in the way one can model the successive intakes. It is usually helpful to keep this 'iteration logic' independent from the ODE itself, that's why no particular changes are needed in the equations.</p>
+<p>There are many ways for achieving this but the one I used is the following:</p>
+<ol>
+<li>Create a list with all the intake hours</li>
+<li>Create an empty list, <code>times</code>, for the times</li>
+<li>Create an empty list, <code>solutions</code> for the solutions</li>
+<li>Iterate through that list<ol>
+<li>Create a <code>time</code> array starting in the time iterated and ended in the time iterated + the <code>intake_interval</code></li>
+<li>Solve the ODE with the <code>initial_condition</code> and the previously created <code>time</code></li>
+<li>Update the value of the <code>initial_conditions</code> with the final solution</li>
+<li>Append the <code>solution</code> list to the end of the <code>solutions</code> list</li>
+<li>Append the <code>time</code> list to the end of the <code>times</code> list</li>
+</ol>
+</li>
+<li>Create a <code>time</code> array starting from the last the last time of intakes to 10 times the <code>intake_interval</code></li>
+<li>Solve the ODE again with a longer interval to see how it behaves after the iterations</li>
+<li>Append the <code>solution</code> list to the end of the <code>solutions</code> list</li>
+<li>Append the <code>time</code> list to the end of the <code>times</code> list</li>
+<li>Proceed to Plotting</li>
+</ol>
+<p>This approach consist in solving several ODEs, each of which receives the final solution of the previous as its initial conditions.</p>
+<h3 id="full-code_3"><a class="toclink" href="#full-code_3">Full code</a></h3>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">useful_life</span><span class="p">,</span> <span class="n">intake_mg</span><span class="p">,</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="n">intake_number</span><span class="p">,</span> <span class="n">hours</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">useful_life</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># dy/dt: Change of mg</span>
+
+    <span class="n">intake_hours</span> <span class="o">=</span> <span class="p">[</span><span class="n">intake_interval</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">intake_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">intake_mg</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">intake_time</span> <span class="ow">in</span> <span class="n">intake_hours</span><span class="p">:</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">intake_time</span><span class="p">,</span> <span class="n">intake_time</span> <span class="o">+</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+        <span class="n">initial_condition</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intake_mg</span>
+
+        <span class="n">times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+        <span class="n">solutions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+
+
+    <span class="n">intake_time</span> <span class="o">=</span> <span class="n">intake_hours</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">intake_interval</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">intake_time</span><span class="p">,</span> <span class="n">intake_time</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+    <span class="n">times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">solutions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+
+    <span class="c1">#Graphic details</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Concentration in the Body(t)&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hours</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+    <span class="k">elif</span> <span class="n">hours</span> <span class="o">&lt;=</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hours</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hours</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">hours</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hours&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">useful_life</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">3.8</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Useful Life (hs)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">intake_mg</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Milligrams per Intake&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">intake_interval</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Hours between Intakes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">intake_number</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of Intakes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">hours</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total number of Hours&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<h2 id="foxes-and-rabbits"><a class="toclink" href="#foxes-and-rabbits">Foxes and Rabbits</a></h2>
+<p>This is the model known as predator–prey or Lotka–Volterra equations. There are two species, a predator and a prey, like foxes and rabbits. Each has a certain birthrate and a deathrate. The birthrate of the prey is proportional to its current population and the birthrate of the predator is proportional to both its population and the prey population. The deathrate of the prey is proportional to both its population and the predator population and the deathrate of the predator is proportional to its population.</p>
+<p>The model has the following variables:</p>
+<ul>
+<li><code>rabbits_birthrate</code> [1]: Duration of the useful life of the drug</li>
+<li><code>rabbits_deathrate</code> [1]: Amout of miligrams per intake.</li>
+<li><code>foxes_birthrate</code> [1]: Time interval between intakes.</li>
+<li><code>foxes_deathrate</code> [1]: Number of intakes.</li>
+<li><code>initial_rabbits</code> [rabbits]: Number of intakes.</li>
+<li><code>initial_foxes</code> [foxes]: Number of intakes.</li>
+<li><code>days</code> [days]: The total number of days the model will analyse.</li>
+</ul>
+<p>Notation for the equation:</p>
+<ul>
+<li><span class="math">\(x(t):\)</span> Population of Rabbits over time</li>
+<li><span class="math">\(x(0) =\)</span> <code>initial_rabbits</code></li>
+<li><span class="math">\(y(t):\)</span> Population of Foxes over time</li>
+<li><span class="math">\(y(0) =\)</span> <code>initial_foxes</code></li>
+<li><span class="math">\(a =\)</span> <code>rabbits_birthrate</code></li>
+<li><span class="math">\(b =\)</span> <code>rabbits_deathrate</code></li>
+<li><span class="math">\(c =\)</span> <code>foxes_birthrate</code></li>
+<li><span class="math">\(d =\)</span> <code>foxes_deathrate</code></li>
+</ul>
+<p>With the previously defined notation, the ordinary differential equation is as follows:</p>
+<div class="math">$$
+\left\{\begin{matrix} \frac{\mathrm{d} x}{\mathrm{d} t} =&amp; a x &amp;-&amp; bxy\\\\ \frac{\mathrm{d} y}{\mathrm{d} t} =&amp; cxy &amp;-&amp; dy \end{matrix}\right.
+$$</div>
+<p>Or more concisely:</p>
+<div class="math">$$
+\left\{\begin{matrix} \frac{\mathrm{d} x}{\mathrm{d} t} =&amp; x (a - by)\\\\ \frac{\mathrm{d} y}{\mathrm{d} t} =&amp; y (cx - d) \end{matrix}\right.
+$$</div>
+<h3 id="widget_4"><a class="toclink" href="#widget_4">Widget</a></h3>
+<div class="iframe-container" style="padding-top: 97%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html"></iframe>
+</div>
+
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="code_4"><a class="toclink" href="#code_4">Code</a></h3>
+<h4 id="ode-specifics_4"><a class="toclink" href="#ode-specifics_4">ODE Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">rabbits_birthrate</span> <span class="o">*</span> <span class="n">x</span>     <span class="o">-</span> <span class="n">rabbits_deathrate</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="c1"># dx/dy: Change in Rabbits</span>
+        <span class="n">foxes_birthrate</span>   <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">foxes_deathrate</span>   <span class="o">*</span> <span class="n">y</span>      <span class="c1"># dy/dt: Change in Foxes</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dydt</span>
+</pre></div>
+
+
+<p>In this case the equations are similar to the houses and air conditioning example but the main difference is that the equations are non-linear since they include <span class="math">\(xy\)</span>, this implies that finding an analytical solution will be much harder but for the numerical integration the problem isn't any more difficult.</p>
+<h4 id="graphics-specifics_2"><a class="toclink" href="#graphics-specifics_2">Graphics Specifics</a></h4>
+<div class="highlight "><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rabbits(t)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;foxes(t)&#39;</span><span class="p">)</span>
+
+
+<span class="p">::</span><span class="n">python</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Foxes vs Rabbits&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This scenario also introduces some variations in the plotting since, it is quite useful to have a parametric plot of the variables, where, instead of using the <code>time</code> as independent variables the two variables are plot. This is simply achieved with <code>ax.plot(solution[:, 0], solution[:, 1], label='Foxes vs Rabbits')</code> also, this model uses subplots and that's why the <code>axes</code> list is used to place the plots one next to the other. This parametric plot also reveals an interesting fact, since the parametric plot is a closed curve, it implies that the functions are periodic which really reflect the natural behavior of predators and preys.</p>
+<h3 id="full-code_4"><a class="toclink" href="#full-code_4">Full code</a></h3>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">rabbits_birthrate</span><span class="p">,</span> <span class="n">rabbits_deathrate</span><span class="p">,</span> <span class="n">foxes_birthrate</span><span class="p">,</span> <span class="n">foxes_deathrate</span><span class="p">,</span> <span class="n">initial_rabbits</span><span class="p">,</span> <span class="n">initial_foxes</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">rabbits_birthrate</span> <span class="o">*</span> <span class="n">x</span>     <span class="o">-</span> <span class="n">rabbits_deathrate</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="c1"># dx/dy: Change in Rabbits</span>
+            <span class="n">foxes_birthrate</span>   <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">foxes_deathrate</span>   <span class="o">*</span> <span class="n">y</span>      <span class="c1"># dy/dt: Change in Foxes</span>
+        <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">dydt</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_rabbits</span><span class="p">,</span> <span class="n">initial_foxes</span><span class="p">]</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+
+    <span class="c1">#Graphic details</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rabbits(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Foxes(t)&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span>
+    <span class="k">elif</span> <span class="n">days</span> <span class="o">&lt;=</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Foxes vs Rabbits&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Rabbits&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Foxes&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">rabbits_birthrate</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Birth Rate of Rabbits&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">rabbits_deathrate</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Death Rate of Rabbits&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">foxes_birthrate</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Birth Rate of Foxes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">foxes_deathrate</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Death Rate of Foxes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">initial_rabbits</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Rabbits&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">initial_foxes</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Foxes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+               <span class="n">days</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">365</span> <span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+        <span class="p">);</span>
+</pre></div>
+
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Uri M. Ascher; Linda R. Petzold (1998). Computer Methods for Ordinary Differential Equations and Differential-Algebraic Equations. SIAM. p. 5.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/times-tables">Time Tables Visualization - Finding Patterns</a>
+        <a class="article__button" href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic">Multi-Floor Elevator Simulation with AnyLogic</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/ordinary-differential-equations-with-python.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/ordinary-differential-equations-with-python&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Ordinary%20Differential%20Equations%20%28ODE%29%20with%20Python%20and%20Jupyter" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/ordinary-differential-equations-with-python&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Ordinary%20Differential%20Equations%20%28ODE%29%20with%20Python%20and%20Jupyter" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage.png" src="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic">Multi-Floor Elevator Simulation with AnyLogic</a></h3>
+                
+                <p class="article-related-post-body-description">In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/times-tables" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/times-tables">Time Tables Visualization - Finding Patterns</a></h3>
+                
+                <p class="article-related-post-body-description">After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="article-related-post-link-img" src="https://elc.github.io/blog/images/pascal_triangle/pascal_triangle_headerimage.gif">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm">Pascal Triangle and Genetic Algorithm - A Visualization</a></h3>
+                
+                <p class="article-related-post-body-description">Inspired by a Wikipedia article, I replicate a way to visualize the Pascal Triangle and used the same approach in Genetic Algorithms</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/ordinary-differential-equations-with-python';  
+      this.page.identifier = 'ordinary-differential-equations-with-python';
+      this.page.title = 'Ordinary Differential Equations (ODE) with Python and Jupyter';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

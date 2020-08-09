@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Embed Interactive Jupyter Notebooks in Static Websites for Free 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2019-05-01" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Embed Interactive Jupyter Notebooks in Static Websites for Free"/>
+      <meta property="og:description" content="After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/embed-interactive-notebooks/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Embed Interactive Jupyter Notebooks in Static Websites for Free">
+      <meta name="twitter:description" content="After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/embed-interactive-notebooks/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Embed Interactive Jupyter Notebooks in Static Websites for Free</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2019-05-01 00:00:00-03:00"><b>01 May 2019</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>16 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+            <div class="article__metadata-item">
+                <b><span data-l10n-id="level">Level:</span> <span data-l10n-id="Intermediate">Intermediate</span></b>
+            </div>
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/embed-interactive-notebooks#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/embed-interactive-notebooks/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png"><img alt="Embed Interactive Notebooks Logo" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png" width="1401"></a></p>
+
+
+<p>After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel.</p>
+
+
+<p>This is a step by step guide to embed Jupyter Notebooks in a static website. There is also an <a href="https://www.nbinteract.com/tutorial/tutorial_intro.html" target="_blank">official tutorial</a> available in the docs.</p>
+<p>This guide will cover some points that aren't fully explained in the official tutorial, such as:</p>
+<ul>
+<li>Use Gists instead of Repositories</li>
+<li>Reduce the size of the output HTML</li>
+<li>Specify dependencies for Binder</li>
+<li>Use only some cells and insert them in a blog post via IFrames</li>
+</ul>
+<h2 id="motivation"><a class="toclink" href="#motivation">Motivation</a></h2>
+<p>I really like using Jupyter Notebooks for my experiments and I also like to show them in this blog, which is a pure static website built with Pelican. The problem emerged when I wanted to embed some interactive content from the notebook in the website, I thought this should have been solved long ago but it wasn't or at least it wasn't as Public as it should be.</p>
+<p>Having the possibility to embed Jupyter notebooks in a static website provides lots of advantages, just to mention a few:</p>
+<ul>
+<li>Visitors don't need to leave the site in other to see the notebook.</li>
+<li>Visitors can actually interact with the code and see the results live even without knowing how to program.</li>
+<li>You can provide a quick way to show the results with prior and posterior explanations without writing everything in a notebook.</li>
+</ul>
+<h2 id="the-tech-stack"><a class="toclink" href="#the-tech-stack">The Tech Stack</a></h2>
+<p>In order to do this, I used a set of tools. This is my personal choice but I believed is appropriate, of course, if you have any suggestions, feel free to write a comment below.</p>
+<ul>
+<li><strong>Github Gists</strong>: To host the code and provide isolation.</li>
+<li><strong>NBInteract</strong>: To communicate with a JupyterHub Server.</li>
+<li><strong>IPython Widgets</strong>: To give interactivity to the notebook.</li>
+<li><strong>MyBinder</strong>: To provide a server for the computations.</li>
+</ul>
+<p>The key component here is <strong>NBInteract</strong> but the other tools were necessary too.</p>
+<p>First, I want to clarify my workflow:</p>
+<p>I want to write an isolated notebook that the user could run via Binder <strong>(1)</strong>, I want to write a blog post about what I've done in that notebook <strong>(2)</strong> and in the post, I want to insert specific cells when appropriate <strong>(3)</strong>. Additionally, I want my experiments pieces (the specific cells inserted) to be sharable, meaning any could embed them easily in their website <strong>(4)</strong> and I also want to track how many times they were used and from which source <strong>(5)</strong>.</p>
+<p>These 5 objectives are accomplished in the following way:</p>
+<ol>
+<li>Since my experiments are usually independent of each other, I host them in <strong>Github Gist</strong> instead of repositories. I believe it makes no sense to have a one-file Repo without a very sound reason.</li>
+<li>I use <strong>Pelican</strong> to write the post but you can use whichever tool you are used to. <em>I know one could write posts inside Jupyter Notebooks themselves, even books have been written this way. But for consistency reasons, I want all my posts to be in Markdown.</em></li>
+<li><strong>NBInteract</strong> is used to insert specific cells in the post. A little modification is needed to make it work with Gists instead of repositories.</li>
+<li>Everything above should be contained in a single HTML file and embedded through an <strong>IFrame</strong>.</li>
+<li>Integrate <strong>Google Analytics</strong> in the HTML from the previous step and add a filtered view in the admin panel to have a dedicated dashboard for this IFrames.</li>
+</ol>
+<p>The full process could be separated into the following steps:</p>
+<ol>
+<li>Environment Setup</li>
+<li>Gist Creation</li>
+<li>IFrame Creation</li>
+<li>Testing and Adaptation</li>
+</ol>
+<h2 id="1-environment-setup"><a class="toclink" href="#1-environment-setup">1. Environment Setup</a></h2>
+<p>First thing first, you need a fully working notebook. It should run all cells without errors in your local machine.</p>
+<p>In order to take full advantage of this methodology make sure you use widgets (such as IPython's) to give control to the user. Don't rely on manually changing variables inside cells but rather provide a user-friendly interface with buttons and sliders, this will result in a much more pleasant and useful UX/UI for the reader of your blog. Besides, this way, the reader doesn't have to know programming at all!</p>
+<p>When you have that done, you have to identify the notebook dependencies. It could be either from Conda, pip, apt or anywhere else.</p>
+<p>There are basically four ways you can specify the dependencies for <strong>Binder</strong></p>
+<ul>
+<li><code>requirements.txt</code>: only suitable for pypi-only dependencies</li>
+<li><code>environment.yml</code>: better for Conda dependencies and pypi dependencies</li>
+<li><code>apt.txt</code>: only option to specify apt dependencies.</li>
+<li><code>dockerfile</code>: specify not only the dependencies but the whole OS.</li>
+</ul>
+<p>The most common approach to work with Binder is a combination of <code>environment.yml</code> and <code>apt.txt</code>. Requirements.txt usually provide very little support for customization and dockerfile is discourage from the Binder developers themselves and should only be used when no other option worked.</p>
+<p>A more detailed explanation which many other ways can be found in the <a href="https://mybinder.readthedocs.io/en/latest/sample_repos.html" target="_blank">official docs</a></p>
+<h2 id="2-gist-creation"><a class="toclink" href="#2-gist-creation">2. Gist Creation</a></h2>
+<p>Gists are like small repositories, they have a sort of version control called "Revisions" but there are no branches, they provide simple updates one after the other. They are especially useful for cases where a repository is too much and just a few files are needed.</p>
+<p>Here I will explain how to create a Gist in Github, in case you already know it, you can skip to the <a href="#dependency-management">next section</a>, where I explain how to set the dependencies for Binder.</p>
+<h3 id="creating-a-gist"><a class="toclink" href="#creating-a-gist">Creating a Gist</a></h3>
+<p>In order to create a Gist, you have to first have a Github Account.</p>
+<p>Once logged in, you have to click on your profile image in the top bar</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/gist_tutorial_01.png"><img alt="Gist Tutorial Part 1" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/gist_tutorial_01.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/gist_tutorial_01-thumbnail.png" width="1284"></a></p>
+<p>Now select "Your Gists"</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/gist_tutorial_02.png"><img alt="Gist Tutorial Part 2" class="narrow b-lazy" data-src="/blog/images/embed_interactive_notebooks/gist_tutorial_02.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/gist_tutorial_02-thumbnail.png" width="173"></a></p>
+<p>The next page will change if you already have gists created but the top bar will remain the same, in the top bar select the "+" icon</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/gist_tutorial_03.png"><img alt="Gist Tutorial Part 3" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/gist_tutorial_03.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/gist_tutorial_03-thumbnail.png" width="1280"></a></p>
+<p>Now you are in the Gist creation Template, here you have to write the Gist Name, the filename of the first file, its contents and you can additionally add files if necessary with the button below. When everything is set up, click in create public gist.</p>
+<p>Note: You can also create private gists for free but for NBInteract and thus this guide to work, the gist should be public.</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/gist_tutorial_04.png"><img alt="Gist Tutorial Part 4" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/gist_tutorial_04.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/gist_tutorial_04-thumbnail.png" width="1366"></a></p>
+<h3 id="dependency-management"><a class="toclink" href="#dependency-management">Dependency Management</a></h3>
+<p>You have to create a Github Gist and upload all the files needed, namely:</p>
+<ul>
+<li>The repo/repository file (.ipynb files)</li>
+<li>The dependencies files (requirements.txt, environment.yml, apt.txt, dockerfile)</li>
+</ul>
+<p>Once the gist is created, it should be tested with <a href="https://mybinder.org/" target="_blank">MyBinder</a></p>
+<p>In order to test it first select the Combo Box in the main page</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/mybinder_tutorial_01.png"><img alt="MyBinder Tutorial Part 1" class="narrow b-lazy" data-src="/blog/images/embed_interactive_notebooks/mybinder_tutorial_01.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/mybinder_tutorial_01-thumbnail.png" width="880"></a></p>
+<p>Then select the Gist Option</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/mybinder_tutorial_02.png"><img alt="MyBinder Tutorial Part 2" class="narrow b-lazy" data-src="/blog/images/embed_interactive_notebooks/mybinder_tutorial_02.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/mybinder_tutorial_02-thumbnail.png" width="907"></a></p>
+<p>And finally, write the <code>Username/GISTID</code> in the textbox and then click on "Launch"</p>
+<p><a class="gallery" href="/blog/images/embed_interactive_notebooks/mybinder_tutorial_03.png"><img alt="MyBinder Tutorial Part 3" class="narrow b-lazy" data-src="/blog/images/embed_interactive_notebooks/mybinder_tutorial_03.png" src="https://elc.github.io/posts/embed-interactive-notebooks/images/embed_interactive_notebooks/mybinder_tutorial_03-thumbnail.png" width="873"></a></p>
+<p><strong>Note:</strong> The first time you launch could take several minutes because it's building a docker image, this process is repeated each time you change the Gist so it is a good idea to always run your gists on Binder after you made a change.</p>
+<p>If the build was successful, open the notebook and run all the cells, check for errors, fix them until none appear and then continue to the next step.</p>
+<p>This step might seem to be pretty easy but there are cases (especially when doing interesting things) that may require additional settings, for example, setting the FFMPEG dependency correctly for creating animations and videos.</p>
+<p>You can check some of my personal examples of Gists:</p>
+<ul>
+<li><a href="https://elc.github.io/link/ode_python_gist" target="_blank">ODE with Python</a> (environment.yml)</li>
+<li><a href="https://elc.github.io/link/pascal_triangle_gist" target="_blank">Pascal Triangle Visualization</a> (environment.yml + apt.txt)</li>
+</ul>
+<p>With this step completed, you can add a Binder Badge in your post directly to the notebook. Although the main objective is to embed specific parts, it doesn't imply the user wouldn't want access to the whole notebook in a more familiar environment such as the one Binder Provides.</p>
+<p>Example of a binder Badge (it leads to the a Notebook about Ordinary Differential Equations):</p>
+<p><a href="https://elc.github.io/link/ode_python_binder" target="_blank"><img alt="Binder" class="narrow" src="https://mybinder.org/badge_logo.svg" width="109"></a></p>
+<h2 id="3-iframe-creation"><a class="toclink" href="#3-iframe-creation">3. IFrame Creation</a></h2>
+<p>This is the most important part and where <strong>NBInteract</strong> comes in. For all the previous steps we used online tools such as <strong>Github Gists</strong> and <strong>MyBinder</strong>. But for this step, <code>nbinteract</code> should be install.</p>
+<h3 id="installation"><a class="toclink" href="#installation">Installation</a></h3>
+<p>These are the installation instructions:</p>
+<div class="highlight "><pre><span></span>pip install nbinteract
+
+# The next two lines can be skipped for notebook version 5.3 and above
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+jupyter nbextension enable --py --sys-prefix bqplot
+</pre></div>
+
+
+<p>The steps for the installation could be found in its <a href="https://github.com/SamLau95/nbinteract" target="_blank">official repo</a>, make sure to check it in case there is an update.</p>
+<h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
+<p>The nbinteract is a command line application (CLI), so first navigate to the directory where the notebook file is and then run:</p>
+<div class="highlight "><pre><span></span>nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}
+</pre></div>
+
+
+<p>This will create an HTML file with the same filename of the notebook, but as mentioned earlier, the current version of NBInteract (0.2.4 when writing this) only supports Github <em>Repositories</em> and not <em>Gists</em>.</p>
+<p>To fix this problem, just open the HTML file and look for this snippet (it should be at the end of the file):</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">interact</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span>
+        <span class="nx">spec</span><span class="o">:</span> <span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span>
+        <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span>
+        <span class="nx">provider</span><span class="o">:</span> <span class="s1">&#39;gh&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span>
+
+        <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
+    <span class="p">})()</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Only a small change is needed, change the <strong><code>provider</code></strong> from <strong><code>gh</code></strong> to <strong><code>gist</code></strong>. It should be something like this:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">interact</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span>
+        <span class="nx">spec</span><span class="o">:</span> <span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span>
+        <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span>
+        <span class="nx">provider</span><span class="o">:</span> <span class="s1">&#39;gist&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span>
+
+        <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
+    <span class="p">})()</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3 id="adjustments"><a class="toclink" href="#adjustments">Adjustments</a></h3>
+<p>Now the file is already prepared to be embedded as an HTML IFrame, but although that's technically true, we might want to make other adjustments:</p>
+<ol>
+<li>Create a valid HTML5 document (some closing tags may be missing).</li>
+<li>Reduce the size of the file (by default they are quite big).</li>
+<li>Use only a subset of cells and not the whole notebook.</li>
+<li>Add a tracking system.</li>
+</ol>
+<h4 id="html5"><a class="toclink" href="#html5">HTML5</a></h4>
+<p>The first adjustment is for improving SEO and compatibility, it will depend on every particular case as each notebook may need its own little changes. The W3C has an <a href="https://validator.w3.org/#validate_by_input" target="_blank">online validator</a> to check for Markup errors and warnings </p>
+<h4 id="size"><a class="toclink" href="#size">Size</a></h4>
+<p>The second adjustment is needed since nbinteract inserts <strong>Bootstrap</strong> and <strong>Font Awesome</strong> by default in the HTML, you can check it because the <code>style</code> tag covers approximately a <strong>95%</strong> of the file. With custom styles and a careful selection of CSS classes, one can reduce the size pretty significantly. In my own experience, I manage to reduce from 14000 lines to 400 (318KB to 25KB), this is a reduction of the <strong>90%</strong>!</p>
+<p>Of course it may vary from user to user but since file size is crucial for a good user experience, I recommend to tweak and adapt the file to be as little as possible, and remember to use CSS in style tags and not relying on the website general CSS, this would be the only way to provide the same <em>look and feel</em> when the file is used as an IFrame. This way each file will be completely independent of each other.</p>
+<h4 id="specific-cells"><a class="toclink" href="#specific-cells">Specific Cells</a></h4>
+<p>The third adjustment is more of a hack actually. NBInteract is designed so that the user would use the notebook as the entire page but if the notebook contains just some cells (each with the proper imports), one can create minimal notebooks and insert them individually in a larger pure HTML page</p>
+<p>Just use nbinteract with a notebook file containing only the cells you are interested in. This will naturally lead to having as many .ipynb files as a group of cells you want to embed, each with an associated HTML file. It isn't a good idea to have everything in a big Notebook but neither is to have dozens of little notebooks. I believe a reasonable amount would be between 5 and 10.</p>
+<h4 id="tracking-system"><a class="toclink" href="#tracking-system">Tracking System</a></h4>
+<p>The fourth and last adjustment will depend on the tracking system of your choice but generally, it implies adding some script tag at the end of the file with a specific tracking ID. But <strong>DO NOT add the system yet!</strong> Let's test it and then add it to avoid meaningless analytics <em>(unless you've added your IP as an exception in the Tracking System)</em>.</p>
+<h2 id="4-testing-and-adaptation"><a class="toclink" href="#4-testing-and-adaptation">4. Testing and Adaptation</a></h2>
+<p>Lastly, you should embed the IFrame in your website and test it, here is where you should modify the styles according to the general aesthetics of the page and check if all works as desired. Make sure the IFrame size is correct for its content (avoid scrollbars)</p>
+<p>You can also test whether you want the input cells to be visible or only let the output to be rendered.</p>
+<p>After everything is tested, you can now add the tracking ID for the Analytics service (Google Analytics or the one of your choice)</p>
+<p>To make your IFrame easier to share, add an HTML snippet to specify how to embed your IFrame in other pages, see the examples below.</p>
+<h2 id="examples"><a class="toclink" href="#examples">Examples</a></h2>
+<p>You can find some examples in the official docs but I've also built some that you may find interesting. You can check the following posts to see them:</p>
+<h3 id="ordinary-differential-equations"><a class="toclink" href="#ordinary-differential-equations">Ordinary Differential Equations</a></h3>
+<p>Use NBInteract to numerically integrate several types of differential equations (including systems of ODEs) and change the parameters with sliders and see the results live.</p>
+<div class="iframe-container" style="padding-top: 97%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html"></iframe>
+</div>
+
+<p>If you want to embed this widget in your website, just add the following HTML:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Read the <a href="https://elc.github.io/posts/ordinary-differential-equations-with-python" target="_blank">Full Article</a></p>
+<h3 id="circular-times-table"><a class="toclink" href="#circular-times-table">Circular Times Table</a></h3>
+<p>Use NBInteract to produce a video with matplotlib animation and FFmpeg. The user can create an image and a video with the set of parameters of their choice and then save them.</p>
+<div class="iframe-container" style="padding-top: 101%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html"></iframe>
+</div>
+
+<p>If you want to embed this widget in your website, just add the following HTML:</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Read the <a href="https://elc.github.io/posts/times-tables" target="_blank">Full Article</a></p>
+<h2 id="additional-resources"><a class="toclink" href="#additional-resources">Additional resources</a></h2>
+<p>In case you want to go deeper, here are some useful resources:</p>
+<ul>
+<li><a href="https://github.com/SamLau95/nbinteract" target="_blank">NBInteract Official Repository</a></li>
+<li><a href="https://www.nbinteract.com/" target="_blank">NBInteract Official Docs</a></li>
+<li><a href="https://gitter.im/nbinteract/Lobby/" target="_blank">NBInteract Gitter Channel</a></li>
+<li><a href="https://www.youtube.com/watch?v=jln6h-dE2-0" target="_blank">JupyterCon Talk from the creators of NBInteract</a></li>
+<li><a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2018/EECS-2018-57.pdf" target="_blank">NBInteract: Official Technical Report</a></li>
+</ul>
+<p>Other resources to achieve similar things are:</p>
+<ul>
+<li><a href="https://nbdime.readthedocs.io/en/latest/" target="_blank">NBDime</a>: Tool to work with git and Jupyter Notebook for easy Diff</li>
+<li><a href="https://jupyter.org/jupyter-book/intro.html" target="_blank">JupyterBook</a>: This tool also integrates executable and interactive notebook cells but rather than embedding them into a webpage, it creates the whole website. Alternative to GitBook</li>
+<li><a href="https://github.com/quantstack/voila" target="_blank">Voila</a>: Interactive renderer for creating Dashboards</li>
+<li><a href="https://sagecell.sagemath.org/" target="_blank">SageMathCell</a>: A way to generate embeddings online for cells of notebooks. It supports Sage, Gap, GP, HTML, Maculay2, Maxima, Octave, Python, R and Singular</li>
+<li><a href="https://thebelab.readthedocs.io/en/latest/" target="_blank">ThebeLab</a>: Thebe Lab turns your static HTML pages into interactive ones, powered by a kernel. It is an experiment attempting to rebuild Thebe with javascript APIs provided by JupyterLab.</li>
+<li><a href="https://github.com/markusschanta/awesome-jupyter" target="_blank">Awesome Jupyter</a>: A curated list of awesome Jupyter projects, libraries and resources.</li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/git-guide-with-visual-interface">Introductory Guide to Git with Visual Interface</a>
+        <a class="article__button" href="https://elc.github.io/posts/online-lyrics-presentation-generator">Online Lyrics Presentation Generator</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/embed-interactive-notebooks.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/embed-interactive-notebooks&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Embed%20Interactive%20Jupyter%20Notebooks%20in%20Static%20Websites%20for%20Free" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/embed-interactive-notebooks&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Embed%20Interactive%20Jupyter%20Notebooks%20in%20Static%20Websites%20for%20Free" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fractals/factals_headerimage.png" src="https://elc.github.io/blog/images/fractals/factals_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python">Plotting Fractals Step by Step with Python</a></h3>
+                
+                <p class="article-related-post-body-description">Fractals are awesome, they are built with very complex pattern and they allow you to zoom in forever! In this post we will see how easily it is to plot several kinds of fractals using a tool called L-Systems and the Python Turtle module for the step to step plotting.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/fastai-colab-deep-learning" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/fastai-colab-deep-learning">Deep Learning With Free GPU (Fastai + Colab)</a></h3>
+                
+                <p class="article-related-post-body-description">Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/executable-flask-pyinstaller" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage.png" src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/executable-flask-pyinstaller">Create one executable file for a Flask app with PyInstaller</a></h3>
+                
+                <p class="article-related-post-body-description">Having a single executable file could be a great advantage in so many cases and nowadays more a more desktop applications are using web technologies (React Native, Cordova, Ionic, etc.). It was time for the Python stack to join the Group via PyFlaDesk, a simple script to combine Flask, Qt and PyInstaller to create desktop Apps.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/embed-interactive-notebooks';  
+      this.page.identifier = 'embed-interactive-notebooks';
+      this.page.title = 'Embed Interactive Jupyter Notebooks in Static Websites for Free';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

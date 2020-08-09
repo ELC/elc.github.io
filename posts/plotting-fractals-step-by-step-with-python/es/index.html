@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Graficando Fractales Paso a Paso con Python 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/fractals/factals_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2018-11-04" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Graficando Fractales Paso a Paso con Python"/>
+      <meta property="og:description" content=""/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/es/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/fractals/factals_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Graficando Fractales Paso a Paso con Python">
+      <meta name="twitter:description" content="">
+      <meta name="twitter:url" content="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/es/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/fractals/factals_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Graficando Fractales Paso a Paso con Python</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2018-11-04 00:00:00-03:00"><b>04 Nov 2018</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>16 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+            <div class="article__metadata-item">
+                <b><span data-l10n-id="level">Level:</span> <span data-l10n-id="Beginner">Beginner</span></b>
+            </div>
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/es#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+      <a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python" data-l10n-id="original-version">Original Version -</a>
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/fractals/factals_headerimage.png"><img alt="Fractals Header Image" class="b-lazy" data-src="/blog/images/fractals/factals_headerimage.png" src="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/images/fractals/factals_headerimage-thumbnail.png" width="1920"></a></p>
+<!-- PELICAN_BEGIN_SUMMARY -->
+
+<p>Los fractales son increibles, se construyen con patrones muy complejos y permiten acercarse de manera indefinida. En este post voy a mostrarles cuan facilmente pueden graficarse diversos tipos de fractales utilizando una herramienta llamada Sistemas L y el módulo Turtle de Python para hacer el gráfico paso a paso.</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<p>En este post no voy a adentrarme demasiado en detalles técnicos, en cambio, les voy a dar una breve introducción, muchos ejemplos animados y al final el código para que puedan generar los que quieran. Si quieres saltear la teoría e ir directamente a las animaciones, puedes ir directamente a los <a href="#ejemplos-animados">Ejemplos animados</a>, si por otro lado querés ver el código, puedes ir a <a href="#codigo">esa sección</a>. Adicionalmente, <a href="#recursos-adicionales">al final</a> dejaré recursos adicionales tanto para el código como para la parte matemática para aquellos que quieran profundizar.</p>
+<h2 id="que-es-un-fractal"><a class="toclink" href="#que-es-un-fractal">¿Qué es un Fractal?</a></h2>
+<p>Primero veamos una definición "no estricta" de lo que es un fractal: es basicamente una figura geométrica que muestra las mismas características sin importar cuanto te acerques.</p>
+<p>No es del todo correcto pero para aquellos que quieran conocer la definición exacta, aquí se las dejo:</p>
+<blockquote>
+<p>Un fractal es un objecto o cantidad que muestra auto-similaridad, en un sentido téctico, en todas sus escalas. El objeto no necesita exhibir exactamente la misma estructura en todas sus escala sino el mismo "tipo" de estructuras debe aparecer en todas las escalas. Un gráfico o cantidad en al graficarlo en función de su escala en un eje logarítmico da una línea recta, cuya pendiente es su "dimensión fractal" - <a href="http://mathworld.wolfram.com/Fractal.html" target="_blank">Math World Traducido</a></p>
+</blockquote>
+<h2 id="como-podemos-graficar-fractales-con-python"><a class="toclink" href="#como-podemos-graficar-fractales-con-python">¿Cómo podemos Graficar Fractales con Python?</a></h2>
+<p>Típicamente, los fractales son difíciles de graficar, esto se debe al concepto que está íntimamente relacionado con ellos, la recursión. Cuando se habla de gráficos, usualmente se habla de píxeles o vectores, pero siempre existe un límite, sin embargo, los fractales son por definición infinitamente recursivos. Esto implica que cuando grafiquemos un fractal vamos a deternos en algún momento, de aquí surge el concepto de "iteración". En cada iteración el fractal se vuelve más y más complejo pero en cierto momento es imposible distinguir entre dos iteraciones sucesivas (esto ocurre debido a que los cambios se producen al nivel de píxeles), así que es bastante razonable detenerse en ese momento, a veces incluso es bastante evidente cúal será la forma del fractal y uno podría deternerse incluso antes.</p>
+<p>Dos ejemplos de esto son la "Quadratic Koch Island", que con 3 iteraciones tiene una estructura definida y la "Dragon Curve" que comienza a mostrar una estructura definida luego de 8 iteraciones. Cúantas iteraciones son necesarias depende en gran manera del fractal específico con el que estemos trabajando</p>
+<p>En el ecosistema de Python existen muchas bibliotecas para realizar gráficos, la más popular es Matplotlib, sin embargo, está pensada para graficar datos estadístico y realizar gráficos conocidos. Matplotlib tiene en particular componentes de bajo nivel que nos permitirían graficar fractales pero en esta oportunidad centraremos nuestra atención en un generalmente olvidado módulo de la biblioteca estandar, el módulo Turtle</p>
+<h3 id="el-modulo-turtle"><a class="toclink" href="#el-modulo-turtle">El módulo Turtle</a></h3>
+<p>Según <a href="https://docs.python.org/3.6/library/turtle.html" target="_blank">la documentación de Python</a>: "Los gráficos Turtle son una manera popular de introducir la programación a los niños. Era parte del lenguaje de programación Logo, desarrollado por Wally Feurzig y Seymour Papert en 1996"</p>
+<p>La clave en este tipo de gráficos es que tenemos 3 comandos básicos:</p>
+<ul>
+<li>Moverse hacia adelante</li>
+<li>Girar hacía la izquierda un cierto ángulo</li>
+<li>Girar hacía la derecha un cierto ángulo</li>
+</ul>
+<p><em>Nota: La bilioteca estandar provee otros comandos pero en este articulo sólo vamos a utilizar estos 3</em></p>
+<p>Adicionalmente tenemos la opción de:</p>
+<ul>
+<li>Deshabilitar la escritura</li>
+<li>Habilitar la escritura</li>
+</ul>
+<p>Éstas características pueden parecer muy simples para graficar algo tan complejo como los fractales pero es por esto que vamosa utilizar otra herramienta que utiliza exactamente este pequeño conjunto de instrucciones, me refiero a los Sistemas L</p>
+<h3 id="l-systems"><a class="toclink" href="#l-systems">L-Systems</a></h3>
+<p>Un Sistema L es una manera de representar estructuras recursivas (como los fractales) como cadenas de caracteres, esto es hace re-escribiendo la cadena una y otra vez. Para aquellos interesados en la definición formal:</p>
+<blockquote>
+<p>Un Sistema de Lindenmayer, también conocido como Sistema L, es un sistema de re-escritura de cadenas que puede ser usado para generar fractales de dimención entre 1 y 2. - <a href="http://mathworld.wolfram.com/LindenmayerSystem.html" target="_blank">Math World Traducido</a></p>
+</blockquote>
+<p>Una vez que hayamos entendido lo que es un Sistema L podemos producir estructuras recursivas pero antes que podamos hacerlo necesitamos entender las partes que que lo forman. Todo Sistema L tiene:</p>
+<ul>
+<li>Un alfabeto: Un conjunto de símbolos que el Sistema L va a utilizar.</li>
+<li>Un axioma: La cadena original que se utiliza en la generación.</li>
+<li>Un conjunto de reglas de producción: estas reglas indica como debe ser reemplazado cada uno de los símbolos en la siguiente iteración.</li>
+</ul>
+<p><em>Nota para aquellos que les gustan las ciencias de la computación: esta descripción puede sonarte familiar, y es que, en realidad es muy similar a la definición de una Gramática Formal, la diferencia primordial es que en cada iteración, a diferencia de las gramáticas, se aplican tantas reglas como sean posibles en lugar de una. Encontes puede concluirse que los Sistemas L son un subconjunto de las gramáticas libres de contexto</em></p>
+<p>Debido a que vamos a utilizar Turtle para graficar y los Sistemas L para representar los fractales, necesitamos entender de que manera podemos relacionarlos.</p>
+<p>Ya que Turtle sólo recibirá los comandos mencionados arriba, debemos asignar un símbolo a cada uno, que en conjunto representarán el alfabeto del Sistema L</p>
+<ul>
+<li>F: Mover hacia adelante (del inglés Fowards).</li>
+<li>+: Girar a la derecha.</li>
+<li>-: Girar a la izquierda.</li>
+</ul>
+<p>Para poder graficar los fractales, adicionalmente debe definirse un ángulo, que será el ángulo de giro que hara Turtle cada vez que se lo indiquemos, ya sea a la izquierda o a la derecha. Por razones de simplicidad, el mismo ángulo debe utilizarse en todas las iteraciones, el Sistema L debe escribirse teniendo esto en consideración.</p>
+<p>El axioma y las reglas de producción dependerán exclusivamente del fractal pero el fractal debe ser escrito de una manera que pueda ser representado utilizando sólo los tres simbolos. Esto introduce una limitación, sólo se podrán graficar fractales compuestos por una única línea continua, así que algunos como el Conjunto de Cantor no podrán graficarse de esta manera. Esta es meramente una simplicación, ya que podrían agregarse otros comandos que permitan el movimiento sin necesidad de escribir pero para mantener las cosas simples, mantendremos la simplificación.</p>
+<p>Ahora veamos los ejemplos!</p>
+<h2 id="ejemplos-animados"><a class="toclink" href="#ejemplos-animados">Ejemplos Animados</a></h2>
+<p>Los siguientes ejemplos fueron compilados de diversos sitios públicamente disponibles en internet. Decidí migrarlos a Python con la ayuda del módulo Turtle, centrarlos, añadirles color y proporcionar una manera de exportarlos en formato vectorial.</p>
+<p>Debido a que el navegador ejecuta Python mediante <a href="http://www.skulpt.org/" target="_blank">Skulpt</a> y el módulo Colorsys aún no está soportado, las animaciones serán en blanco y negro pero las imágenes y el código para generarlas estarán al final. Cada animación tiene un código asociado que puede abrirse de manera onlina y copiarse por medio de <a href="https://repl.it/" target="_blank">Repl.it</a></p>
+<p><strong>Advertencia: Las animaciones que estás por ver son bastante pesadas, es recomendable verlas sólo con una buena conección. Los fragmentos de Repl pueden no funcionar en los usuarios que utilicen dispositivos móviles.</strong></p>
+<p>Nota: Skulpt utiliza TU NAVEGADOR para renderizar y para hacer las animaciones así que si en cualquier caso experimentás demoras, errores o comportamiento extraño, esto puede deberse al navegador, recargar la animación o recargar la página debe solucionar la mayoría de los inconvenientes. Puede no funcionar adecuadamente en dispositivos móbiles.</p>
+<p>Los ejemplos están ordenados por orden de complejidad (mi juicio subjetivo), así que los mejores están al final</p>
+<h2 id="koch-snowflake"><a class="toclink" href="#koch-snowflake">Koch-Snowflake"</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F--F--F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F+F--F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 7</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Koch-Snowflake_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Koch-Snowflake-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="quadratic-koch-island"><a class="toclink" href="#quadratic-koch-island">Quadratic-Koch-Island</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F-F+F+FFF-F-F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># TOP: 4</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Quadratic-Koch-Island_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Quadratic-Koch-Island-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="crystal"><a class="toclink" href="#crystal">Crystal</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;FF+F++F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Crystal_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Crystal-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="quadratic-snowflake"><a class="toclink" href="#quadratic-snowflake">Quadratic-Snowflake</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F--F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F-F+F+F-F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Quadratic-Snowflake_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Quadratic-Snowflake-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="box-fractal"><a class="toclink" href="#box-fractal">Box-Fractal</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F-F-F-F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F-F+F+F-F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Box-Fractal_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Box-Fractal-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="levy-c-curve"><a class="toclink" href="#levy-c-curve">Levy-C-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;+F--F+&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># TOP: 16</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">45</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Levy-C-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Levy-C-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="sierpinski-arrowhead"><a class="toclink" href="#sierpinski-arrowhead">Sierpinski-Arrowhead</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;YF&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;YF+XF+Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;XF-YF-X&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># TOP: 10</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Sierpinski-Arrowhead_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Siepinski-Arrowhead-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="siepinski-sieve"><a class="toclink" href="#siepinski-sieve">Siepinski-Sieve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;FXF--FF--FF&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;FF&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;--FXF++FXF++FXF--&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># TOP: 8</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Siepinski-Sieve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Siepinski-Sieve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="board"><a class="toclink" href="#board">Board</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;FF+F+F+F+FF&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 5</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Board_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Board-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="tiles"><a class="toclink" href="#tiles">Tiles</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;FF+F-F+F+FF&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 4</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Tiles_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Tiles-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="rings"><a class="toclink" href="#rings">Rings</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;FF+F+F+F+F+F-F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># TOP: 4</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Rings_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Rings-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="cross-2"><a class="toclink" href="#cross-2">Cross-2</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F+F-F+F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Cross-2_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Cross-2-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="pentaplexity"><a class="toclink" href="#pentaplexity">Pentaplexity</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F++F++F++F++F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F++F++F+++++F-F++F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># TOP: 5</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">36</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Pentaplexity_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Pentaplexity-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="32-segment-curve"><a class="toclink" href="#32-segment-curve">32-Segment-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;-F+F-F-F+F+FF-F+F+FF+F-F-FF+FF-FF+F+F-FF-F-F+FF-F-F+F+F-F+&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 3</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+   <source data-src="/blog/images/fractals/450/32-Segment-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-32-Segment-Curve-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="peano-gosper-curve"><a class="toclink" href="#peano-gosper-curve">Peano-Gosper-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;FX&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;X+YF++YF-FX--FXFX-YF+&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;-FX+YFYF++YF+FX--FX-Y&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Peano-Gosper-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Peano-Gosper-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="sierpinski-curve"><a class="toclink" href="#sierpinski-curve">Sierpinski-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+XF+F+XF&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;XF-F+F-XF+F+XF-F+F-X&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 8</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Sierpinski-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Siepinski-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="krishna-anklets"><a class="toclink" href="#krishna-anklets">Krishna-Anklets</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot; -X--X&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;XFX--XFX&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 9</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">45</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Krishna-Anklets_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Krishna-Anklets-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="quadratic-gosper"><a class="toclink" href="#quadratic-gosper">Quadratic-Gosper</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;YF&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="s2">&quot;XFX-YF-YF+FX+FX-YF-YFFX+YF+FXFXYF-FX+YF+FXFX+YF-FXYF-YF-FX+FX+YFYF-&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;+FXFX-YF-YF+FX+FXYF+FX-YFYF-FX-YF+FXYFYF-FX-YFFX+FX+YF-YF-FX+FX+YFY&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># TOP: 3</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Quadratic-Gosper_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Quadratic-Gosper-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="moore-curve"><a class="toclink" href="#moore-curve">Moore-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;LFL-F-LFL&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;L&quot;</span><span class="p">:</span><span class="s2">&quot;+RF-LFL-FR+&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="s2">&quot;-LF+RFR+FL-&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># TOP: 8</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Moore-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Moore-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="hilberts-curve"><a class="toclink" href="#hilberts-curve">Hilberts-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;L&quot;</span><span class="p">:</span><span class="s2">&quot;+RF-LFL-FR+&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="s2">&quot;-LF+RFR+FL-&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># TOP: 9</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Hilberts-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Hilbert-Curve-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="hilbert-curve-ii"><a class="toclink" href="#hilbert-curve-ii">Hilbert-Curve-II</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;XFYFX+F+YFXFY-F-XFYFX&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;YFXFY-F-XFYFX+F+YFXFY&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Hilbert-Curve-II_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Hilbert-Curve-II-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="peano-curve"><a class="toclink" href="#peano-curve">Peano-Curve"</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F+F-F-F-F+F+F+F-F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># TOP: 5</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Peano-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Peano-Curve-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="cross"><a class="toclink" href="#cross">Cross</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F+FF++F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># TOP: 6</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Cross_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Cross-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="triangle"><a class="toclink" href="#triangle">Triangle</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F+F+F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F-F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># TOP: 9</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">120</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Triangle_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Triangle-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="dragon-curve"><a class="toclink" href="#dragon-curve">Dragon-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;FX&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;X+YF+&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;-FX-Y&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># TOP: 16</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Dragon-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Dragon-Curve-With-Python?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="terdragon-curve"><a class="toclink" href="#terdragon-curve">TerDragon-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;F-F+F&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># TOP: 10</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">120</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/TerDragon-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-TerDragon-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="twin-dragon-curve"><a class="toclink" href="#twin-dragon-curve">Twin-Dragon-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;FX+FX&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;X+YF+&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;-FX-Y&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># TOP: 16</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/Twin-Dragon-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-Twin-Dragon-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="threedragon-curve"><a class="toclink" href="#threedragon-curve">ThreeDragon-Curve</a></h2>
+<div class="highlight "><pre><span></span><span class="n">axiom</span> <span class="o">=</span> <span class="s2">&quot;FX+FX+FX&quot;</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;X+YF+&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;-FX-Y&quot;</span><span class="p">}</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># TOP: 15</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+</pre></div>
+
+
+<div class="two-column">
+<video class="b-lazy" autoplay loop>
+    <source data-src="/blog/images/fractals/450/ThreeDragon-Curve_450x450.mp4" type="video/mp4">
+</video>
+
+<iframe class="b-lazy" height="549px" width="469px" data-src="https://repl.it/@ELC/Drawing-ThreeDragon-Curve-With-Python-and-Turtle?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</div>
+
+<h2 id="codigo"><a class="toclink" href="#codigo">Código</a></h2>
+<p>Todos los ejemplos de arriba fueron producidos con el mismo código, en el mientras tanto, algunos desafíos surgieron, principalmente como mantener los fractales centrados (o al menos tanto como sea posible), lidiando con colores, inversiónes, traslaciones y como exportarlos rápidamente a formatos vectoriales. Aquí voy a mostrarte la versión más básica, si quieres saber como solucioné todos estos desafios, no dudes en dejar un comentario y haré una Parte 2.</p>
+<p>Esta versión grafica en blanco y negro sin funcionalidades de exportación.</p>
+<div class="highlight "><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="k">def</span> <span class="nf">create_l_system</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="n">start_string</span> <span class="o">=</span> <span class="n">axiom</span>
+    <span class="k">if</span> <span class="n">iters</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">axiom</span>
+    <span class="n">end_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iters</span><span class="p">):</span>
+        <span class="n">end_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rules</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">start_string</span><span class="p">)</span>
+        <span class="n">start_string</span> <span class="o">=</span> <span class="n">end_string</span>
+
+    <span class="k">return</span> <span class="n">end_string</span>
+
+
+<span class="k">def</span> <span class="nf">draw_l_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">instructions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">x_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">):</span>
+
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">create_l_system</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+    <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+
+    <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="o">-</span><span class="n">x_offset</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="o">-</span><span class="n">y_offset</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">offset_angle</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">draw_l_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">inst</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+
+    <span class="n">wn</span><span class="o">.</span><span class="n">exitonclick</span><span class="p">()</span>
+</pre></div>
+
+
+<h2 id="explicacion-del-codigo"><a class="toclink" href="#explicacion-del-codigo">Explicación del Código</a></h2>
+<div class="highlight "><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+</pre></div>
+
+
+<p>Lo primero que necesitamos hacer es importar el módulo Turtle</p>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">create_l_system</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="n">start_string</span> <span class="o">=</span> <span class="n">axiom</span>
+    <span class="k">if</span> <span class="n">iters</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">axiom</span>
+    <span class="n">end_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iters</span><span class="p">):</span>
+        <span class="n">end_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rules</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">start_string</span><span class="p">)</span>
+        <span class="n">start_string</span> <span class="o">=</span> <span class="n">end_string</span>
+
+    <span class="k">return</span> <span class="n">end_string</span>
+</pre></div>
+
+
+<p>Luego lo que necesitamos es generar el Sistema L que será el conjunto de instrucciones para Turtle. Definimos una función llamada <code>create_l_system</code> que recibe el número de iteraciones, el axioma y las reglas de producción. Comienza con el axioma y utiliza una variable auxiliar llamada <code>end_string</code>, si la iteración es igual a 0, retorna el axioma ya que algunos fractales pueden ser graficados con iteraciones iguales a 0. Se asume que las reglas con un diccionario así que la clave será única y representa al símbolo mientras que el valor representa con que símbolos debe ser remplazado. Se concatenan todos los remplazos para cada símbolo y luego se acaba con la cadena para la próxima iteración.</p>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">draw_l_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">instructions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Posteriormente definimos <code>draw_l_system</code> que recibe a Turtle, un conjunto de instrucciones (la salida del sistema L), un ángulo para girar tanto a la derecha como a la izquiera y la longitud de cada línea individual. Luego se tiene una simple estructura elif para cada uno de los comandos definidos anteriormente.</p>
+<div class="highlight "><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">x_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset_angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">):</span>
+
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">create_l_system</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">axiom</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+    <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+
+    <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="o">-</span><span class="n">x_offset</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="o">-</span><span class="n">y_offset</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">offset_angle</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">draw_l_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">inst</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+
+    <span class="n">wn</span><span class="o">.</span><span class="n">exitonclick</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Finalmente se tiene una función <code>main</code> que recibe todos los parámetros que necesita para la generación del Sistema L así como <code>y_offset</code>, <code>x_offset</code>, <code>offset_angle</code>, <code>width</code> y <code>height</code>. Los primeros tres representan la traslación de Turtle, esto es sencillamente para posicionar el gráfico en el lugar deseado del lienzo.</p>
+<p>La función primeramente genera el conjunto de instrucciones y lo guarda en <code>inst</code> y luego inicializa Turtle y la Screen, lo posiciona en el lugar definido y luego grafica las instrucciones, por último, espera al evento click para cerrarse.</p>
+<h2 id="consideraciones-especiales"><a class="toclink" href="#consideraciones-especiales">Consideraciones Especiales</a></h2>
+<p>Como mencioné antes, existen muchas limitaciones en este escenario, primero que nada no incluimos la posibilidad de mover a Turtle sin dibujar, esto requeriría un símbolo adicional, tampoco hay un símbolo ni para ir hacía atras, o recordar posiciones anteriores. Esto no fue necesario para ninguno de los fractales de los ejemplos pero si lo es para otros (como por ejemplo los árboles fractales).</p>
+<h2 id="recursos-adicionales"><a class="toclink" href="#recursos-adicionales">Recursos Adicionales</a></h2>
+<p>Hay muchos recursos en internet sobre fractales, tanto desde el área de la programación como desde la perspectiva de la matemática. Les dejo a continuación dos que me resultaron sumamente interesantes: el video de 3Blue1Brown para la parte de matemática y el de CodingTrain para la parte de programación.</p>
+<p><strong>Coding Train</strong></p>
+<div class="youtube-container">
+    <iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/f6ra024-ASY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+</div>
+
+<p><strong>3Blue1Brown</strong></p>
+<div class="youtube-container">
+    <iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/gB9n2gHsHN4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+</div>
+
+<h2 id="fuente-y-referencias"><a class="toclink" href="#fuente-y-referencias">Fuente y Referencias</a></h2>
+<p>Este post fue inspirado por <a href="http://mathworld.wolfram.com/LindenmayerSystem.html" target="_blank">un post de Math World</a>, por el <a href="http://paulbourke.net/fractals/lsys/" target="_blank">blog de Paul Broke</a> y por un trabajo práctico para la materia de Algoritmos Genéticos.</p>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/fastai-colab-deep-learning">Deep Learning With Free GPU (Fastai + Colab)</a>
+        <a class="article__button" href="https://elc.github.io/posts/juegos-biblicos/es">Juegos Bíblicos para Jóvenes y Adolescentes</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/ploting-fractals-with-python-es.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/plotting-fractals-step-by-step-with-python/es&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Graficando%20Fractales%20Paso%20a%20Paso%20con%20Python" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/plotting-fractals-step-by-step-with-python/es&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Graficando%20Fractales%20Paso%20a%20Paso%20con%20Python" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/plotting-fractals-step-by-step-with-python/es';  
+      this.page.identifier = 'plotting-fractals-step-by-step-with-python';
+      this.page.title = 'Graficando Fractales Paso a Paso con Python';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

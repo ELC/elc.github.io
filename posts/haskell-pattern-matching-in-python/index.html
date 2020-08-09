@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Haskell pattern matching in Python 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/haskell_python/haskell_python_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2018-02-18" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Haskell pattern matching in Python"/>
+      <meta property="og:description" content="I started to learn a bit of Haskell and one of its features amazed me: Pattern Matching. Then, unexpectably, I notice Python 3 have them too but with a different name: Extended Tuple Unpacking. Okay, it&#39;s not exactly the same but you can get quite similar functionalities if you master it. This post is inspired by this question"/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/haskell-pattern-matching-in-python/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/haskell_python/haskell_python_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Haskell pattern matching in Python">
+      <meta name="twitter:description" content="I started to learn a bit of Haskell and one of its features amazed me: Pattern Matching. Then, unexpectably, I notice Python 3 have them too but with a different name: Extended Tuple Unpacking. Okay, it&#39;s not exactly the same but you can get quite similar functionalities if you master it. This post is inspired by this question">
+      <meta name="twitter:url" content="https://elc.github.io/posts/haskell-pattern-matching-in-python/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/haskell_python/haskell_python_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Haskell pattern matching in Python</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2018-02-18 00:00:00-03:00"><b>18 Feb 2018</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>3 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+            <div class="article__metadata-item">
+                <b><span data-l10n-id="level">Level:</span> <span data-l10n-id="Begginer">Begginer</span></b>
+            </div>
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/haskell-pattern-matching-in-python#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/haskell-pattern-matching-in-python/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/haskell_python/haskell_python_headerimage.png"><img alt="Haskell Header Image" class="b-lazy" data-src="/blog/images/haskell_python/haskell_python_headerimage.png" src="https://elc.github.io/posts/haskell-pattern-matching-in-python/images/haskell_python/haskell_python_headerimage-thumbnail.png" width="1371"></a></p>
+
+
+<p>I started to learn a bit of Haskell and one of its features amazed me: Pattern Matching. Then, unexpectably, I notice Python 3 have them too but with a different name: Extended Tuple Unpacking. Okay, it's not exactly the same but you can get quite similar functionalities if you master it. This post is inspired by this <a href="https://stackoverflow.com/questions/6967632/unpacking-extended-unpacking-and-nested-extended-unpacking" target="_blank">question</a></p>
+
+
+<h2 id="pattern-what"><a class="toclink" href="#pattern-what">Pattern what?</a></h2>
+<p>Pattern matching is a feature of Haskell that allows us to think in terms of <a href="https://stackoverflow.com/a/6957292/7690767" target="_blank">wholemeal programming</a>, this means that we forget about the specific details of what we are working with. For example: Think in terms of first and last element instead of index 0 and index -1. This way of thinking has a very strong link with another common functional pattern: Recursive Functions</p>
+<h2 id="is-this-a-python-or-a-haskell-thing"><a class="toclink" href="#is-this-a-python-or-a-haskell-thing">Is this a Python or a Haskell thing?</a></h2>
+<p>Haskell is much older than Python and there are other languages that implements it besides Haskell so we can't say it's from either. But it turned out to be something that useful that it was incorporated into Python in the <a href="https://www.python.org/dev/peps/pep-3132/#id3" target="_blank">PEP 3132</a> (In case you don't know, PEPs are the python enhancenment proposals, where all new features are asked and discussed).</p>
+<h2 id="how-does-it-look-like"><a class="toclink" href="#how-does-it-look-like">How does it look like?</a></h2>
+<h3 id="tuple-unpacking"><a class="toclink" href="#tuple-unpacking">Tuple Unpacking</a></h3>
+<p>You probably used and make yourself familiar with typica tuple unpacking</p>
+<p>Either because you did this:</p>
+<div class="highlight "><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight "><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Or this:</p>
+<div class="highlight "><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+
+
+<p>Or maybe you use it at the top of a for loop:</p>
+<div class="highlight "><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Peter&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{i}: {name}&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="extended-tuple-unpacking"><a class="toclink" href="#extended-tuple-unpacking">Extended Tuple Unpacking</a></h3>
+<p>These are common uses of the tuple unpacking but a more powerful feature is built on top of it: The extended version, which uses the <a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists" target="_blank">Unpacking Argument Lists (splat)</a></p>
+<p>Lets see some examples:</p>
+<p>We will use the following list for this example:</p>
+<div class="highlight "><pre><span></span><span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Which by the way can also be written as:</p>
+<div class="highlight "><pre><span></span><span class="n">list_</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>Or even more simplified:</p>
+<div class="highlight "><pre><span></span><span class="n">list_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+
+<h4 id="examples"><a class="toclink" href="#examples">Examples</a></h4>
+<p>Get the first item of a list:</p>
+<div class="highlight "><pre><span></span><span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">list_</span>
+</pre></div>
+
+
+<p>Get the last item of a list:</p>
+<div class="highlight "><pre><span></span><span class="o">*</span><span class="n">rest</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">list_</span>
+</pre></div>
+
+
+<p>Get the first and the last item of a list</p>
+<div class="highlight "><pre><span></span><span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">list_</span>
+</pre></div>
+
+
+<h2 id="caveats"><a class="toclink" href="#caveats">Caveats</a></h2>
+<p>Although it may seem quite simple an easy, there are lots of ways to get it wrong:</p>
+<div class="highlight "><pre><span></span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;XYZ&quot;</span>                 <span class="c1"># ERROR -- too many values to unpack</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;XY&quot;</span>                  <span class="c1"># ERROR -- need more than 1 value to unpack</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="n">c</span><span class="p">,)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;this&#39;</span>       <span class="c1"># ERROR -- too many values to unpack</span>
+<span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span>         <span class="c1"># ERROR -- two starred expressions in assignment</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>                  <span class="c1"># ERROR -- too many values to unpack</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>                <span class="c1"># ERROR - &#39;int&#39; object is not iterable</span>
+</pre></div>
+
+
+<h2 id="is-there-any-logic-behind-it"><a class="toclink" href="#is-there-any-logic-behind-it">Is there any logic behind it?</a></h2>
+<p>Of course there is! This is programming and for a full explanation I recommend you to read the PEP and this <a href="https://stackoverflow.com/a/6968451" target="_blank">answer</a></p>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/executable-flask-pyinstaller">Create one executable file for a Flask app with PyInstaller</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/haskell-pattern-python.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/haskell-pattern-matching-in-python&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Haskell%20pattern%20matching%20in%20Python" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/haskell-pattern-matching-in-python&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Haskell%20pattern%20matching%20in%20Python" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/embed-interactive-notebooks" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/embed-interactive-notebooks">Embed Interactive Jupyter Notebooks in Static Websites for Free</a></h3>
+                
+                <p class="article-related-post-body-description">After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fractals/factals_headerimage.png" src="https://elc.github.io/blog/images/fractals/factals_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python">Plotting Fractals Step by Step with Python</a></h3>
+                
+                <p class="article-related-post-body-description">Fractals are awesome, they are built with very complex pattern and they allow you to zoom in forever! In this post we will see how easily it is to plot several kinds of fractals using a tool called L-Systems and the Python Turtle module for the step to step plotting.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/fastai-colab-deep-learning" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/fastai-colab-deep-learning">Deep Learning With Free GPU (Fastai + Colab)</a></h3>
+                
+                <p class="article-related-post-body-description">Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/haskell-pattern-matching-in-python';  
+      this.page.identifier = 'haskell-pattern-matching-in-python';
+      this.page.title = 'Haskell pattern matching in Python';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

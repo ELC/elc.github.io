@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Projects &ndash; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://i.imgur.com/6xypjCl.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Projects"/>
+      <meta property="og:description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math"/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/pages/projects/"/>
+      <meta property="og:image" content="https://i.imgur.com/6xypjCl.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Projects">
+      <meta name="twitter:description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+      <meta name="twitter:url" content="https://elc.github.io/pages/projects/">
+      <meta name="twitter:image" content="https://i.imgur.com/6xypjCl.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="page">
+
+  <header class="page-header">
+    <h1>Projects</h1>
+
+    
+  </header>
+
+  <section class="page-content">
+    <p>As an engineering student I've worked in several projects, both on my own and working in a team with other students. This projects covers a wide range of areas and subjects, such as development of software, project planning, risks evaluation and simulation.</p>
+<p>I also spend some time on side projects like this blog. Here I want to list the most relevant and important projects I've been part of and, at the end I will mention some of the "toy projects" usually made for tutorials or courses.</p>
+<h2 id="software-development"><a class="toclink" href="#software-development">Software Development</a></h2>
+<p><strong>Ezequiel Leonardo Castaño Personal Blog - Pelican &amp; Python - 2018-Present - <a href="https://github.com/ELC/elc.github.io-source" target="_blank">Git Repo</a></strong></p>
+<p>This website is my personal blog, I developed it using Pelican, and some plugins (some of which I programmed myself). The main objective of this development is to have a completely static, lightweight and modern website using only freely available technologies to share my articles, which are about both personal and professional topics.</p>
+<p>Some of the features of the website are:</p>
+<ul>
+<li>All the building and deploying is manage by <strong>Travis</strong>, a continuos integration and deployment system.</li>
+<li>The site is freely hosted in <strong>Github Pages</strong> and <strong>Netlify</strong>.</li>
+<li>All dependencies are manage via <strong>Pipenv</strong>.</li>
+<li>The build step is decomposed into <strong>Invoke</strong> tasks and <strong>Pipenv</strong> Scripts.</li>
+<li>The theme is downloaded at build time from git to ensure the latest version is used.</li>
+</ul>
+<p>The following features were provided via the plugins I wrote:</p>
+<ul>
+<li>Service Worker <strong><a href="https://github.com/ELC/service_worker" target="_blank">Git Repo of Plugin</a></strong><ul>
+<li>A service worker is generated at build time which caches all lightweight static files.</li>
+<li>The site can be viewed offline.</li>
+</ul>
+</li>
+<li>Bundler <strong><a href="https://github.com/ELC/bundler_cache_busting" target="_blank">Git Repo of Plugin</a></strong><ul>
+<li>All the CSS and JS is bundle in a single file (one for each).</li>
+<li>All the static files refenced in the HTML use Cache Busting.</li>
+</ul>
+</li>
+<li>Shortener <strong><a href="https://github.com/ELC/shortener" target="_blank">Git Repo of Plugin</a></strong><ul>
+<li>Custom static shortener.</li>
+</ul>
+</li>
+<li>Blur Thumbnails <strong><a href="https://github.com/ELC/blur_thumbnails" target="_blank">Git Repo of Plugin</a></strong><ul>
+<li>A blurred version of all the images is generated at build time.</li>
+</ul>
+</li>
+</ul>
+<p>This website was designed to work with the MinimalXYZ theme (see below) to achieve the best results, when using together, there are some additional features:</p>
+<ul>
+<li>All SCSS is compiled and compressed at build time.</li>
+<li>The images are lazily loaded with a blurred version when the connection isn't fast enough.</li>
+<li>The site can be installed on Android as PWA</li>
+<li>Comments via Disqus</li>
+</ul>
+<p>Some other third party plugins used provided the following features:</p>
+<ul>
+<li>Know the estimated time to read an article</li>
+<li>Automatically generate a sitemap</li>
+<li>Get the related posts of an article</li>
+<li>Render Latex expressions</li>
+<li>Use Gruvbox theme for code</li>
+<li>Auto generate anchor tags for titles</li>
+</ul>
+<p>The project is far from done since it wasn't just the web design but also the creation of a Blog I'm the author, there are some more technical features I would like to add but they will strongly depend on the free technologies I found and the time I have.</p>
+<hr>
+<p><strong>MinimalXYZ - Jinja2 HTML5 CSS3 JS Sass - 2018-Present - <a href="https://github.com/ELC/MinimalXYZ" target="_blank">Git Repo</a></strong></p>
+<p>MinimalXYZ is the Pelican Theme used for this website. It first started as a fork of another theme called MinimalXY and little by little I modified it to fit my needs and soon after, I made a complete rewrite. </p>
+<p>Some of its main features are:</p>
+<ul>
+<li>Use semantic HTML5 - No "containers" divs.</li>
+<li>All the internal JS and CSS is split into a separate file to obtain lightweight HTMLs</li>
+<li>Sass (SCSS) as a CSS preprocesor.</li>
+<li>Pure Javascript, avoid using heavy weight libraries such as JQuery, Lodash or similar to improve performance.</li>
+<li>CSS3 Transform for animations to improve user experience and performance.</li>
+<li>Responsive design.</li>
+<li>UI Features:<ul>
+<li>Hide menu bar on scroll down.</li>
+<li>Show/Hide button to scroll to top.</li>
+<li>Hamburger menu with animation top-down.</li>
+<li>Toast notifications with animations</li>
+<li>Smooth Scroll for anchor links</li>
+<li>LightBox for images</li>
+</ul>
+</li>
+</ul>
+<p>This theme was develop specifically for this blog so there are a number of features that are possible because of the pelican build step such as:</p>
+<ul>
+<li>All SCSS is compiled and compressed at build time.</li>
+<li>The image are lazily loaded with a blurred version when the connection isn't fast enough.</li>
+<li>Comment system via Disqus</li>
+</ul>
+<p>The project is in a continuos improvement and development, some of the features that will be added are:</p>
+<ul>
+<li>Migrate the styles to follow BEM methodology</li>
+<li>Fix some issues regarding templates for authors.</li>
+</ul>
+<h2 id="math-and-simulation"><a class="toclink" href="#math-and-simulation">Math and Simulation</a></h2>
+<p><strong>Elevators Simulation - AnyLogic - 2018 - <a href="https://elc.github.io/link/simulation-model" target="_blank">AnyLogic Cloud <i class="fa fa-external-link" aria-hidden="true"></i></a></strong></p>
+<p>This is a simulation model in which the elevator of the university was represented. It was build with the AnyLogic software and the Free Learning Edition. The model can be <a href="https://elc.github.io/link/simulation-model" target="_blank">run online</a>, as many times as you want. Some of its features are:</p>
+<ul>
+<li>Average Waiting Time in the ground Floor.</li>
+<li>Average Waiting Time inside the elevator.</li>
+<li>Average Waiting Time in floors that aren't the ground floor.</li>
+<li>Average Waiting Time in all the floors.</li>
+<li>Average lenght of the queue in the ground floor.</li>
+<li>Average lenght of the queue in floors that aren't the ground floor.</li>
+<li>Average lenght of the queue in all the floors.</li>
+<li>Utilization of the elevator.</li>
+<li>Average number of people inside the elevator.</li>
+<li>Average load of the elevator.</li>
+<li>Status of the elevator (Waiting, Moving, Empty, Full).</li>
+<li>Traffic Flow map for each floor (Heatmap).</li>
+<li>Stairs as an auxiliary system for the people that abandon the queue.</li>
+<li>Real scale of the blueprints of the University building.</li>
+<li>Custom distribution for the destination floors of each person.</li>
+</ul>
+<hr>
+<p><strong>Simulation Basics - Wolfram Mathematica - 2018</strong></p>
+<p>I use the Wolfram Mathematica software to create simulation models for basics scenarios:</p>
+<ul>
+<li>MM1 Queue simulation</li>
+<li>Triangular Distribution simulation</li>
+<li>Exponential Distribution simulation</li>
+<li>Uniform Distribution simulation</li>
+<li>Roulette Simulation</li>
+<li>Custom Random Numbers Generators through CDF</li>
+</ul>
+<hr>
+<p><strong>Mathematical Modeling Basics - Wolfram Mathematica - 2017</strong></p>
+<p>I used the Wolfram Mathematica software and the Ordinary Differential Equations to model some basic problems such as:</p>
+<ul>
+<li>Basic Domestic Economy<ul>
+<li>Basic income outcome model with fixed and variable costs</li>
+<li>Fixed Term accounts added</li>
+<li>Consumption adjusted proportional to income</li>
+<li>Inflation Effect added</li>
+<li>Retirement Effect added</li>
+</ul>
+</li>
+<li>Inventory Modeling</li>
+<li>Predator-Prey Modeling</li>
+<li>Natural Decay</li>
+<li>Sale of houses and air conditioners</li>
+</ul>
+<h2 id="research"><a class="toclink" href="#research">Research</a></h2>
+<p><strong>Jupyter Map for Education - MapboxJS &amp; GeoJSON - 2018 - <a href="https://elc.github.io/jupyter-map/" target="_blank">Git Repo</a> - <a href="https://elc.github.io/jupyter-map/" target="_blank">Online Map <i class="fa fa-external-link" aria-hidden="true"></i></a></strong></p>
+<p>This is an interactive map where each University Course is represented as a point. There is also a GeoJSON dataset in the git repo. The main idea of this map is to have access to the resources other universities and professors are using and fork them.</p>
+<h2 id="open-source-contributions"><a class="toclink" href="#open-source-contributions">Open Source Contributions</a></h2>
+<ul>
+<li><strong>FastAI in Colab Template - Jupyter Notebooks - 2018 - <a href="https://gist.github.com/ELC/756040fe84a8bb3d14c59b0e997c84e9" target="_blank">Github Gist</a></strong>: I commented some of the issues open in the <a href="https://github.com/corykendrick/fastai_in_colab" target="_blank">FastAI in Colab Template Repo</a> and end up with a fork of the repo with specific cells for supporting both FastAI 0.7 (the one that the main repo supports) and FastAI 1.x (the most current version)</li>
+<li><strong>Awesome Jupyter Curated List - 2018 - <a href="https://github.com/markusschanta/awesome-jupyter" target="_blank">Git Repo</a></strong>: I added some of the resources I thought were relevant and useful.</li>
+<li><strong>PyFladesk - Python, Flask, PyQT - 2018 - <a href="https://github.com/smoqadam/PyFladesk" target="_blank">Git Repo</a></strong>: Migrate from PyQT4 to PyQT5.5 and then to PyQT5.10, create PyPI, refactoring and update of docs.</li>
+<li><strong>Yabox - Python - 2018 - <a href="https://github.com/pablormier/yabox" target="_blank">Git Repo</a></strong>: Refactor and minor improvements.</li>
+<li><strong>NBFlow - Python Tox Scons - 2018 - <a href="https://github.com/jhamrick/nbflow" target="_blank">Git Repo</a></strong>: Migrate to Python 3. Add funtionality according to issues. Update tests and CI. Update Docs</li>
+</ul>
+<h2 id="early-developments"><a class="toclink" href="#early-developments">Early Developments</a></h2>
+<p>This projects were my first systems, I have programmed several things earlier but these were the first time I developed a "complete system".</p>
+<p><strong>Booking System - Java - 2017 - <a href="https://github.com/ELC/utn-java-final-assignment-web" target="_blank">Web</a> - <a href="https://github.com/ELC/utn-java-final-assignment" target="_blank">Desktop</a></strong></p>
+<p>Being one of the first systems I developed, this is a booking system implemented in the Java programming language which manage 3 main entities, people, bookable types and bookable items. It creates bookings with no overlapping.</p>
+<p>Some of its features are:</p>
+<ul>
+<li>CRUD of Users.</li>
+<li>CRUD of Bookable Types.</li>
+<li>CRUD of Bookable items.</li>
+<li>Users must login to enter the system.</li>
+<li>Users can be enable and disable users to login.</li>
+<li>Each bookable type has a max number of bookings per user.</li>
+<li>Each bookable item is of one and only one bookable type.</li>
+<li>Users should be able to see and cancel future bookings.</li>
+<li>Each user must have a role.</li>
+<li>Some bookable types can be only book by a specific role.</li>
+<li>Each bookable type has a limit of time to book an item.</li>
+<li>Each bookable type can have a max number of days before it can be booked.</li>
+<li>Users with the admin role are the only ones who can create users and bookable types.</li>
+<li>Users with the admin role are the only ones who can enable and disable users.</li>
+<li>Users with the admin role can cancel any pending booking, therefore they can see every pending booking.</li>
+<li>An email must be sent to confirm each booking and its cancellation.</li>
+</ul>
+<p>Non-Functional Requirements for both Web and Desktop:</p>
+<ul>
+<li>The system should use GitHub as a configuration management system for version control (One for Web and another for Desktop).</li>
+<li>The system should use the 3 layer pattern for the architecture.</li>
+<li>The system should use custom exceptions and logs for errors.</li>
+<li>The Data Base must be MySQL.</li>
+<li>All the CRUD operations should be implemented as transactions when convenient.</li>
+</ul>
+<p>Non-Functional Requirements for Web:</p>
+<ul>
+<li>The web pages should be written using JSP and Servlets.</li>
+<li>The data bindings should be use with JSTL.</li>
+</ul>
+<hr>
+<p><strong>Educational System - .NET WPF and ASP.Net MVC - 2017 - <a href="https://utn2017netg38.visualstudio.com/" target="_blank">TFS Repo <i class="fa fa-external-link" aria-hidden="true"></i></a></strong></p>
+<p>Along with the Java system, this was one of the earliest developments of a whole system I made.This is a system for a university implemented using the .Net Framework. It covers the management of users, subjects, students, permissions, and related entities.</p>
+<p>Functional Requirements:</p>
+<ul>
+<li>CRUD of Users</li>
+<li>CRUD of Permissions</li>
+<li>CRUD of Students</li>
+<li>CRUD of Specialties</li>
+<li>CRUD of Professors</li>
+<li>CRUD of Plan of Studies</li>
+<li>CRUD of Subjects</li>
+<li>CRUD of Courses</li>
+<li>Assignment of qualifications</li>
+<li>2 Reports (of any kind)</li>
+</ul>
+<p>Non-Functional Requirements for Web and Desktop:</p>
+<ul>
+<li>The system should implement authentication.</li>
+<li>The system should implement authorization.</li>
+<li>The system should implement logs.</li>
+<li>The system should implement custom exceptions.</li>
+<li>The system should implement Visual Studio Team Services for version control.</li>
+<li>MS SQL Server should be use as a Data Base.</li>
+<li>The more complex queries should be used as Stored Procedures inside the DB.</li>
+<li>Credentials should be keep secure outside of the codebase.</li>
+<li>ADO.Net should be use for the data layer.</li>
+<li>All reusable functions should be kept in a separate "Utils" layer.</li>
+<li>A standard name convention should be use in the codebase</li>
+<li>Reports should be exported as PDF files.</li>
+<li>Passwords should be stored as hash.</li>
+<li>Passwords should be validated both in the presentation and in the logic layer.</li>
+</ul>
+<p>Non-Functional Requirements for Web:</p>
+<ul>
+<li>The system has to be built using ASP.Net MVC.</li>
+<li>The system should use the MVC pattern for the architecture.</li>
+<li>Master Pages, Stylesheets, themes and skins should be used (or similar for ASP.Net MVC).</li>
+<li>Users Controls should be used (Replace with Partial Views for ASP.Net MVC).</li>
+<li>A CSS framework should be use</li>
+<li>The login should be modal</li>
+</ul>
+<p>Non-Functional Requirements for Desktop:</p>
+<ul>
+<li>It has to be built using WPF.</li>
+<li>The system should use the 3 layer pattern for the architecture.</li>
+</ul>
+<h2 id="scripts"><a class="toclink" href="#scripts">Scripts</a></h2>
+<p>As a hobby I usually write scripts to achieve some nice visualization of an algorithm or to test something I read, this list can get too long if I add every single script I wrote so I will only include some that I find important, more could be found in the posts of this blog.</p>
+<p><strong>Genetic Algorithms - Python - 2017 - <a href="https://github.com/ELC/utn-genetic-algorithms" target="_blank">Git Repo</a></strong>: As a part of course at university I develop some scripts that implements Genetic Algorithms. And in the same course I develop a script to plot fractals.</p>
+<ul>
+<li>Minimizing a Mathematical Function (Excercise 1).</li>
+<li>Knapsack problem (Excercise 2).</li>
+<li>Travel Salesman Problem (Excercise 3).</li>
+<li>Fractals (Excercise 4)</li>
+</ul>
+  </section>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

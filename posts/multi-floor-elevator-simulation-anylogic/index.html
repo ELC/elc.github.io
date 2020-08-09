@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Multi-Floor Elevator Simulation with AnyLogic 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Simulation" />
+      <meta property="article:published_time" content="2019-04-06" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Multi-Floor Elevator Simulation with AnyLogic"/>
+      <meta property="og:description" content="In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Multi-Floor Elevator Simulation with AnyLogic">
+      <meta name="twitter:description" content="In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Multi-Floor Elevator Simulation with AnyLogic</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2019-04-06 00:00:00-03:00"><b>06 Apr 2019</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>15 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <!-- Status: draft -->
+
+<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-simulation-headerimage.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-simulation-headerimage.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/elevator-simulation-headerimage-thumbnail.png" width="1920"></a></p>
+
+
+<p>In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best.</p>
+
+
+<p>In case you never heard of what simulation is, don't worry, I will give you a quick introduction to this incredible world. For those who are already familiar with it, you can <a href="#context">skip the introduction section</a> or if you prefer, jump directly to the <a href="#model">computational model</a></p>
+<h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+<p>Simulation is a way of problem-solving, it basically consists of translating a problem into a digital realm, make changes or test alternatives in this new environment and see the results. This information is later used for decision making. Saving loads of money, time and manpower.</p>
+<h3 id="why-is-this-necessary-or-useful"><a class="toclink" href="#why-is-this-necessary-or-useful">Why is this necessary or useful?</a></h3>
+<p>Many processes can't be stopped or delayed, industries, for example, can just stop producing in order to test alternatives that might result in terrible outcomes! For this reason, it is safer, cheaper and much more convenient to use simulation.</p>
+<h3 id="what-are-the-advantages"><a class="toclink" href="#what-are-the-advantages">What are the advantages?</a></h3>
+<p>Simulation Software Companies usually compare simulation with working with spreadsheets (such as Excel) in order to make decision and, although spreadsheets are really useful for some problems, when it comes to testing alternatives of the real world, a dynamic, interactive and more visual approach is preferred, especially when talking to non-technical people, who probably will be the ones making the final decision.</p>
+<p>Another point is that Simulation Software relies (in most cases) on random number generators and thus the outcome of this software tends to be much similar to the real world. As opposed to the general analytical and "ideal" approach one takes when using spreadsheets.</p>
+<h3 id="how-can-be-done"><a class="toclink" href="#how-can-be-done">How can be done?</a></h3>
+<p>Simulation software exists, both commercial and open-source and when a graphic user interface (GUI) is not needed, even some programming languages may be used with some additional libraries. In this article, I'll be talking about AnyLogic, a commercial software which has a free student license.</p>
+<h2 id="context"><a class="toclink" href="#context">Context</a></h2>
+<p>I study at the "Universidad Tecnológica Nacional (UTN)" also translated as (National Technological University), it has several buildings but the biggest is the main one. There are 5 different departments, Mechanical Engineering, Chemistry Engineering, Electric Engineering, Civil Engineering, and Information Systems Engineering, each department has its own floor. The building has 5 floors and one underground level. The building is old, preserving the really high ceilings and the long stairs common in the time of construction, making the elevators a must. There are two elevators but only one goes to the fourth and fifth floor.</p>
+<p>To better represent the distribution, the blueprints were used (with permission):</p>
+<p><a class="gallery" href="./blog/images/elevator-simulation/floor-distribution.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/floor-distribution.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/floor-distribution-thumbnail.png" width="1202"></a></p>
+<h2 id="problem"><a class="toclink" href="#problem">Problem</a></h2>
+<p>The university has approximately 1000 students (first year aside), and for two elevators in the rush hour, it is natural to think that long queues will form. In my fourth year, I had the chance to experiment and try to fix this situation, most people believe that the long queues are due to the internal logic of the elevator so I thought, what if we change that? As a result, with another two classmates, we decided to test several alternatives.</p>
+<p>But before trying new alternatives, we had to identify how to the elevator is working now.</p>
+<p>Right now, when the elevator is moving up, it stops in the floors requested from inside, when is moving down, it stops in the floors requested from both inside and outside (This is called Actual in our model).</p>
+<p>This information was obtained via experimentation since there was no manual available to get the information from.</p>
+<h2 id="alternatives"><a class="toclink" href="#alternatives">Alternatives</a></h2>
+<p>The alternatives we first thought was FIFO (First in, First Out), we knew it would be awful but it's a good way to determine what the worst non-cyclic is like (Cycles are really bad since it could produce infinite loops). So in order to test how good the other alternatives are we chose FIFO to represent the worst possible solution. The other alternatives are as follows:</p>
+<ul>
+<li><strong>Alternative 1 (ALT 1):</strong> The same as Actual but, when is lazy, it goes to Ground Floor.</li>
+<li><strong>Alternative 2 (ALT 2):</strong> The elevator stops in the floors requested from both inside and outside when moving either up or down</li>
+<li><strong>Alternative 3 (ALT 3):</strong> The same as ALT 2 but, when is lazy, it goes to Ground Floor.</li>
+</ul>
+<h2 id="simplifications"><a class="toclink" href="#simplifications">Simplifications</a></h2>
+<p>Before diving into the model itself, some simplifications must be stated:</p>
+<ul>
+<li>The population of interest is the students, so teachers and administration staff are not taken into account</li>
+<li>When a student goes to the ground floor, we assume they leave the university, since there is nothing they can do there. All the offices on the ground floor are for the University staff.</li>
+<li>The simulation only involves one of the two elevators, to get a simpler model</li>
+<li>The simulation doesn't cover the underground floor for two reasons: 1. The chosen elevator can't go there and 2. The number of people going to that floor is very low.</li>
+</ul>
+<h2 id="students-behavior"><a class="toclink" href="#students-behavior">Students behavior</a></h2>
+<p>Each student has a particular behavior and it is important to model it correctly, the following are a simplified and a detailed version of this behavior.</p>
+<h3 id="simplified"><a class="toclink" href="#simplified">Simplified</a></h3>
+<p>The student goes into the university, enters a specific classroom and stays there for a certain amount of time and then leaves.</p>
+<h3 id="detailed"><a class="toclink" href="#detailed">Detailed</a></h3>
+<p>The actual behavior is a bit more complex:</p>
+<ul>
+<li>Every student enters the building in the Ground Floor (GF)</li>
+<li>The students go from the GF to another floor and vice versa. It is rarely that a student travels from a floor different from GF to another floor since all the activities usually are covered in one or more classrooms on the same floor. This behavior exists but it is considered as not significant.</li>
+<li>Students tend to tolerate longer waits when going to the GF and when going from the GF their tolerance is much lower.</li>
+</ul>
+<p>All of the previous allow us to introduce a more specific problem: The GF queue. The main objective of the simulation will be reducing as much as possible both the length of the queue and the waiting time of the GF since this is the scenario where there is the lowest tolerance.</p>
+<p>It is also necessary to mention that since the tolerance is too low, an auxiliary system should be modeled too since many of the users will "abandon" the queue and use the stairs instead.</p>
+<p>The behavior of the students is represented in the following diagram:</p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/student-behavior.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/student-behavior.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/student-behavior-thumbnail.jpg" width="1752"></a></p>
+<h2 id="model"><a class="toclink" href="#model">Model</a></h2>
+<p>There are different types of simulation but for this particular situation, we choose "Agent-Based", since it is natural to think the elevators and the students as two agents interacting with each other.</p>
+<p>When talking about Agents and how they interact, a tool called "State Machines" is used. This artifact models the possible "states" of a particular agent and "transitions" which are how the agent goes from one state to the other</p>
+<p>State Machines are defined in the UML standard but in this case, a modified version will be used, this version is the one that AnyLogic uses. And in the software, there are 3 types of transitions:</p>
+<ul>
+<li>By Delay: The transition occurs automatically after a certain delay.</li>
+<li>By Condition: The transition occurs whenever a certain condition is true.</li>
+<li>By Message: The transition occurs when the agent receives a specific message from an agent.</li>
+</ul>
+<h3 id="global-conditions"><a class="toclink" href="#global-conditions">Global Conditions</a></h3>
+<p>In addition to the two main agents, there are global variables that affect the whole simulation such as:</p>
+<ul>
+<li>Storey Height: It includes the height from the floor to the ceiling and the thickness of the ceiling.</li>
+<li>Average Students per minute: the arrival frequency of the students to the system.</li>
+<li>Average Mass of students (Kg): The average mass of the students, as a first approximation a triangular distribution is used to estimate the weights.</li>
+<li>Average time to enter into the elevator (s): it is the time each person takes to enter the elevator, it is a small amount but it can accumulate when there are lots of people in the queue.</li>
+</ul>
+<h3 id="elevator-agent"><a class="toclink" href="#elevator-agent">Elevator Agent</a></h3>
+<p>On the other hand, the elevator also has its own variables, these variables can be changed any time during the simulation but when doing an experiment, they should be set once at the beginning and kept fixed.</p>
+<ul>
+<li>Capacity (Kg): Maximum capacity for the elevator, it is approximately 5 people (75Kg each) as default.</li>
+<li>Speed (m/s): Speed at which the elevator moves</li>
+<li>Service Policy: Determines how the Requests should be served. This is the main variable since it is where the alternatives should take effect.</li>
+<li>Number of users inside: The number of people inside</li>
+<li>Requests list: Collection of requests in the order they were received, used by the service policy to determine which is the next.</li>
+<li>Actual Floor: Floor the elevator is in at the moment.</li>
+<li>Destination Floor: Floor of the currently served Request.</li>
+</ul>
+<p>The state machine of this agent is the following:</p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-state-machine.jpg"><img alt="Elevator State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-state-machine.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/elevator-state-machine-thumbnail.jpg" width="1374"></a></p>
+<p>Where there are two main states:</p>
+<ul>
+<li>Waiting: The elevator is stopped at a certain floor, it could be loading/unloading people, empty or full.</li>
+<li>Operating: The Elevator starts moving until reaching the destination floor, there is a delay to open and close the doors.</li>
+</ul>
+<h3 id="student-agent"><a class="toclink" href="#student-agent">Student Agent</a></h3>
+<p>The student agent is a bit different since there are loads of student so it has more random particularities.</p>
+<p>The variables of this agent are:</p>
+<ul>
+<li>Time to enter the elevator (s): Each person takes a different amount of time to enter the elevator.</li>
+<li>Mass (Kg): body mass of the student, determined using a triangular distribution</li>
+<li>Probability of using the stairs: Each user as a particular desire to use the stairs, whether it being because the queue is too long, they have already waited for too much or personal preference. This probability is inversely proportional to the number of the floor the student should go.</li>
+<li>Speed (m/s): Each student has a particular speed, which affects their speed while using the stairs, the speed of going upstairs and downstairs are different but both proportional to the average speed of the person.</li>
+<li>Tolerance to the waits (s): Maximum amount of time the student is willing to wait in the queue, if it is exceeded, they will abandon the queue and use the stairs.</li>
+<li>Actual Floor: Floor the student is at the moment.</li>
+<li>Destination Floor: Floor the student is willing to go.</li>
+</ul>
+<p>The state machine of the students is the following:</p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/pedestrian-state-machine.jpg"><img alt="Student State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/pedestrian-state-machine.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/pedestrian-state-machine-thumbnail.jpg" width="1346"></a></p>
+<p>Each student has 3 possible states:</p>
+<ul>
+<li>Walking: When the user is neither inside the elevator or waiting in a queue</li>
+<li>InQueue: When the user is waiting in a queue</li>
+<li>WaitingInside: When the user is inside the elevator</li>
+</ul>
+<h3 id="the-experiment"><a class="toclink" href="#the-experiment">The Experiment</a></h3>
+<p>Once everything is set up in the software, a set of experiments are run and then statistical methods are used to determine which alternative is the best (with a certain level of confidence). This post was more of the "theory" behind the model but to really understand how it works I recommend you to play with the demo available in the next section.</p>
+<p>Among the five alternatives, it was necessary to identify which were the worsts, so both the average length and the average waiting time were calculated, each with its confidence interval. Resulting in the following:</p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-01.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-01.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-01-thumbnail.png" width="1054"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-02.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-02.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-02-thumbnail.png" width="1039"></a></p>
+<p>Looking at the confidence interval of the waiting time, it is evident that FIFO and ALT2 were the worst and the other 3 options are quite similar. That's why Ranking and Selection was used to discern which was the best, increasing the sample size and the final result was the following (now the % of people leaving the queue is added):</p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-03.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-03.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-03-thumbnail.png" width="928"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-04.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-04.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-04-thumbnail.png" width="928"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-05.png"><img alt="Leaving the Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-05.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-05-thumbnail.png" width="928"></a></p>
+<h2 id="demo"><a class="toclink" href="#demo">Demo</a></h2>
+<p>This is the final result, the initial menu is in Spanish but the rest of the GUI is in English. In case you can't run it you can go to the <a href="#screenshots">screenshots</a> section to see how it looks like and then run the model from a PC.</p>
+<div class="iframe-container" style="padding-top: 71%">
+    <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/elevator-simulation/simulation-anylogic-iframe.html"></iframe>
+</div>
+
+<p>Also, you can embed this simulation in your website with the following snippet</p>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/elevator-simulation/simulation-anylogic-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
+<p>Although the results were contrary to the expected, it is worth mentioning that there are some limitations to take into consideration, which may vary the final result such as:</p>
+<ul>
+<li>The university as an underground floor which wasn't modeled</li>
+<li>The second elevator wasn't modeled</li>
+<li>The electrical consumption of the alternatives is not considered</li>
+<li>The speed of the elevator is considered constant</li>
+</ul>
+<p>These limitations would result in a much more complex model but yield more accurate results. Also, notice that in this simulation the economical variable wasn't considered since it is tightly related to the electrical consumption.</p>
+<h2 id="quote-and-citation"><a class="toclink" href="#quote-and-citation">Quote and citation</a></h2>
+<p>If you want to receive the source files of the model and/or quote this work, please feel free to send me an email at castanoezequielleonardo@gmail.com</p>
+<h2 id="screenshots"><a class="toclink" href="#screenshots">Screenshots</a></h2>
+<p>The following are some screenshots of the running model</p>
+<h3 id="main-screen"><a class="toclink" href="#main-screen">Main Screen</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part1.jpg"><img alt="Main Screen" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part1.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part1-thumbnail.jpg" width="1439"></a></p>
+<h3 id="elevator-control-panel"><a class="toclink" href="#elevator-control-panel">Elevator Control Panel</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part2.jpg"><img alt="Elevator Panel" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part2.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part2-thumbnail.jpg" width="1440"></a></p>
+<h3 id="student-behavior"><a class="toclink" href="#student-behavior">Student Behavior</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part3.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part3.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part3-thumbnail.jpg" width="1440"></a></p>
+<h3 id="2d-view"><a class="toclink" href="#2d-view">2D View</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part4.jpg"><img alt="2D View" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part4.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part4-thumbnail.jpg" width="1441"></a></p>
+<h3 id="2d-view-with-flow-density"><a class="toclink" href="#2d-view-with-flow-density">2D View with Flow Density</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part5.jpg"><img alt="2D View with Flow Density" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part5.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part5-thumbnail.jpg" width="1439"></a></p>
+<h3 id="waiting-time-histogram"><a class="toclink" href="#waiting-time-histogram">Waiting Time Histogram</a></h3>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part6.jpg"><img alt="Waiting Time Histogram" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part6.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part6-thumbnail.jpg" width="1440"></a></p>
+<h3 id="number-of-people-vs-time-multiple-graphs"><a class="toclink" href="#number-of-people-vs-time-multiple-graphs">Number of people vs Time (Multiple graphs)</a></h3>
+<p><a class="gallery" href="./blog/images/elevator-simulation/simulation-part7.jpg"><img alt="Number of people multi-graph" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part7.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part7-thumbnail.jpg" width="1439"></a></p>
+<h2 id="additional-resources"><a class="toclink" href="#additional-resources">Additional Resources</a></h2>
+<ul>
+<li><a href="https://www.anylogic.com/" target="_blank">AnyLogic Official Website</a>: Here you can see the software features, case studies and examples.</li>
+<li><a href="https://www.anylogic.com/resources/books/free-simulation-book-and-modeling-tutorials/" target="_blank">AnyLogic in Three Days: Modeling and Simulation Textbook</a>: This was the book I used to learn the basics of the software although experimentation is also required to fully understand some topics.</li>
+<li><a href="https://cloud.anylogic.com/" target="_blank">AnyLogic Cloud</a>: This is the online repository of AnyLogic, where you can find several models from different topics. Free registration is required in order to see and run the models. Here is where the elevator simulation model is hosted.</li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python and Jupyter</a>
+        <a class="article__button" href="https://elc.github.io/posts/git-guide-with-visual-interface">Introductory Guide to Git with Visual Interface</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/elevator-simulation.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/multi-floor-elevator-simulation-anylogic&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Multi-Floor%20Elevator%20Simulation%20with%20AnyLogic" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/multi-floor-elevator-simulation-anylogic&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Multi-Floor%20Elevator%20Simulation%20with%20AnyLogic" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/ordinary-differential-equations-with-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png" src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python and Jupyter</a></h3>
+                
+                <p class="article-related-post-body-description">When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/times-tables" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/times-tables">Time Tables Visualization - Finding Patterns</a></h3>
+                
+                <p class="article-related-post-body-description">After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="article-related-post-link-img" src="https://elc.github.io/blog/images/pascal_triangle/pascal_triangle_headerimage.gif">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm">Pascal Triangle and Genetic Algorithm - A Visualization</a></h3>
+                
+                <p class="article-related-post-body-description">Inspired by a Wikipedia article, I replicate a way to visualize the Pascal Triangle and used the same approach in Genetic Algorithms</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic';  
+      this.page.identifier = 'multi-floor-elevator-simulation-anylogic';
+      this.page.title = 'Multi-Floor Elevator Simulation with AnyLogic';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

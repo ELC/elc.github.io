@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Guía introductoria de Git con Interfaz Visual 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Software Engineer" />
+      <meta property="article:published_time" content="2019-04-24" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Guía introductoria de Git con Interfaz Visual"/>
+      <meta property="og:description" content=""/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/git-guide-with-visual-interface/es/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Guía introductoria de Git con Interfaz Visual">
+      <meta name="twitter:description" content="">
+      <meta name="twitter:url" content="https://elc.github.io/posts/git-guide-with-visual-interface/es/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Guía introductoria de Git con Interfaz Visual</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2019-04-24 00:00:00-03:00"><b>24 Apr 2019</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>34 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/git-guide-with-visual-interface/es#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/git-guide-with-visual-interface/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+      <a href="https://elc.github.io/posts/git-guide-with-visual-interface" data-l10n-id="original-version">Original Version -</a>
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage.png"><img alt="Git Tutorial Header Image" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/git-guide-with-visual-interface-headerimage-thumbnail.png" width="2000"></a></p>
+<!-- PELICAN_BEGIN_SUMMARY -->
+
+<p>Siendo estudiante de ingeniería en sistemas, en sucesivas oportunidades me encontré con sistemas de control de versiones, algunas veces desde materias relacionadas con la programación y otras en materias relacionadas con la ingeniería de software.</p>
+<p>Recordando que cuando yo tuve que aprender todos estos conceptos (especialmente como funciona Git), pasé por varias dificultades, decidí hacer una guía introductoria con conceptos básicos de Git y cómo utilizarlo mediante un software con interfaz visual.</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<p>Personalmente, pienso que para empezar, utilizar una interfaz visual puede ser útil y didáctico, sin embargo, comparto la idea de que entender como funciona la herramienta desde la consola es fundamental para una comprensión profunda de los conceptos.</p>
+<p>En este tutorial se verán de manera resumida las características principales de un software particular que personalmente pienso que es el mejor, llamado GitKraken. Esta guía no pretende en ninguna medida ser exhaustiva ni detallada en todas las funciones de GitKraken, sino dar al usuario el conocimiento básico para que pueda usar la herramienta y poco a poco pueda ir explorando las demás características por su cuenta.</p>
+<p><a href="#caracteristicas-adicionales">Al final del documento</a> se detallan algunas de las funcionalidades avanzadas para que el usuario pueda conocer que otras características tiene Git.</p>
+<p>A continuación dejo el índice de contenidos en caso de que se desee saltear a alguna sección determinada</p>
+<ul>
+<li><a href="#introduccion-a-git">Introducción a Git</a><ul>
+<li><a href="#areas-en-git">Areas en Git</a></li>
+<li><a href="#stage-vs-commit">Stage vs Commit</a></li>
+<li><a href="#repositorios-remotos">Repositorios remotos</a></li>
+<li><a href="#branches">Branches</a></li>
+<li><a href="#software-adicional">Software adicional</a></li>
+</ul>
+</li>
+<li><a href="#fork-de-un-repositorio">Fork de un repositorio</a><ul>
+<li><a href="#1-encontrar-el-repositorio-original">1. Encontrar el repositorio original</a></li>
+<li><a href="#2-realizar-el-fork">2. Realizar el Fork</a></li>
+</ul>
+</li>
+<li><a href="#clonar-un-repositorio">Clonar un repositorio</a><ul>
+<li><a href="#1-crear-un-repositorio">1. Crear un repositorio</a></li>
+<li><a href="#1-alternativa-crear-un-repositorio">1 (Alternativa). Crear un repositorio</a></li>
+<li><a href="#2-completar-la-informacion-necesaria">2. Completar la información necesaria</a></li>
+<li><a href="#3-obtener-url-del-repositorio">3. Obtener URL del Repositorio</a></li>
+<li><a href="#4-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4. Abrimos la ventana de Clone dentro del GitKraken</a></li>
+<li><a href="#4-alternativa-1-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4 (Alternativa 1). Abrimos la ventana de Clone dentro del GitKraken</a></li>
+<li><a href="#4-alternativa-2-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4 (Alternativa 2). Abrimos la ventana de Clone dentro del GitKraken</a></li>
+<li><a href="#5-pegamos-la-url">5. Pegamos la URL</a></li>
+<li><a href="#5-notificacion-de-exito">5. Notificación de Éxito</a></li>
+</ul>
+</li>
+<li><a href="#abrir-un-repositorio">Abrir un repositorio</a><ul>
+<li><a href="#1-ventana-de-open">1. Ventana de Open</a></li>
+<li><a href="#1-alternativa-1-ventana-de-open">1 (Alternativa 1). Ventana de Open</a></li>
+<li><a href="#1-alternativa-2-ventana-de-open">1 (Alternativa 2). Ventana de Open</a></li>
+<li><a href="#2-seleccionar-el-repositorio">2. Seleccionar el repositorio</a></li>
+<li><a href="#3-seleccionar-la-carpeta">3. Seleccionar la carpeta</a></li>
+</ul>
+</li>
+<li><a href="#elementos-de-la-interfaz">Elementos de la interfaz</a><ul>
+<li><a href="#interfaz-basica">Interfaz básica</a></li>
+<li><a href="#arbol-de-commits-y-branches">Arbol de Commits y Branches</a></li>
+</ul>
+</li>
+<li><a href="#anadir-cambios">Añadir Cambios</a></li>
+<li><a href="#sincronizacion-con-repositorios-remotos">Sincronización con repositorios remotos</a><ul>
+<li><a href="#descargar-los-cambios-del-repositorio-remoto">Descargar los cambios del repositorio remoto</a></li>
+<li><a href="#subir-los-cambios-al-repositorio-remoto">Subir los cambios al repositorio remoto</a></li>
+<li><a href="#ejemplo-de-fetch-y-pull">Ejemplo de Fetch y Pull</a></li>
+</ul>
+</li>
+<li><a href="#trabajo-en-multiples-branches">Trabajo en múltiples branches</a><ul>
+<li><a href="#crear-branch">Crear Branch</a></li>
+<li><a href="#unir-branches-merge">Unir Branches (Merge)</a></li>
+<li><a href="#borrar-branch">Borrar Branch</a></li>
+</ul>
+</li>
+<li><a href="#pull-requests">Pull Requests</a></li>
+<li><a href="#caracteristicas-adicionales">Características Adicionales</a></li>
+</ul>
+<h2 id="introduccion-a-git"><a class="toclink" href="#introduccion-a-git">Introducción a Git</a></h2>
+<p>Git es una tecnología de sistema de control de versiones (VCS), surge como alternativa a SVN, Hg y TFS y su propósito original fue controlar las versiones del kernel de Linux.</p>
+<p>Antes de comenzar con el vocabulario específico es necesario explicar por qué se debe usar git u otro VCS.</p>
+<p>Problema: Al estar trabajando en un proyecto, los archivos sufren múltiples transformaciones, esto es especialmente notorio en proyectos de diseño gráfico y de desarrollo de software. Con el avance del tiempo, es normal que se detecten errores y se desee volver a una instancia anterior, muchas veces lo que hace en este caso es hacer copias de respaldo, sin embargo, este enfoque es poco práctico en entornos con cambios constantes y al aumentar la cantidad de archivos y crece de manera sustancial cuando se trabaja en equipos grandes.</p>
+<p>Solución de los VCS: Cada sistema propone una solución distinta, en el caso de Git siempre se hablan de cambios a nivel de línea, es decir, un archivo cambia cuando una de sus líneas cambias y si se realizan varios cambios en una misma línea, cuenta como un único cambio. Asimismo, si se realiza un cambio en varias líneas en un mismo archivo, cuentan como varios cambios, tantos como líneas se hayan modificado. Siempre que se hable de cambios se hará con este sentido, cambios en líneas. Esto hace que Git sea sumamente útil para archivos de texto con múltiples líneas (como los archivos fuente de un lenguaje de programación) y poco aplicable a archivos que no siguen este formato (como por ejemplo, los ejecutables, imágenes, etc.)</p>
+<h3 id="areas-en-git"><a class="toclink" href="#areas-en-git">Areas en Git</a></h3>
+<p>Git trabaja principalmente separando los cambios en 3 áreas:</p>
+<ol>
+<li>Working Area: Son los archivos con los que uno está actualmente trabajando.</li>
+<li>Staging Area: Son los próximos cambios que serán guardados en el repositorio.</li>
+<li>Repository: Son los archivos guardados, generalmente local y en internet.</li>
+</ol>
+<p>Así mismo, para pasar de un área a otro, existen distintas transiciones. Para pasar del Working Area al Staging Area se realiza un "Stage" y para pasar del Staging Area al repository se realiza un “Commit”</p>
+<h3 id="stage-vs-commit"><a class="toclink" href="#stage-vs-commit">Stage vs Commit</a></h3>
+<p>En un proceso, un usuario trabaja con sus archivos en el Working Area, una vez que haya terminado los cambios deseados, puede seleccionar exactamente que cambios desea agregar al repositorio, estos cambios son elegidos y se "mueven" a la Staging Area (el término mover en este caso es engañoso ya que en el sistema local los archivos no sufren ninguna modificación). Una vez que todos los cambios hayan sido movidos al Staging Area se puede realizar un “Commit”, el commit consiste básicamente en “empaquetar todo lo que esté en el Staging Area, asociarle un título y una descripción y subirlo al repositorio”.</p>
+<p>Al principio esta forma de trabajo podría dar la impresión de que la Staging Area no cumple ninguna función, sin embargo cobra relevancia especialmente cuando uno quiere realizar un commit con un subconjunto de todos los cambios hechos, por ejemplo, se realizaron cambios en la interfaz gráfica y en la base de datos y uno quiere que cada "paquete de cambios" esté en un commit distinto, para eso, primero movería al Staging Area los cambios de la base de datos, haría el commit y luego repetiría el proceso con los cambios de la interfaz gráfica.</p>
+<p>El usuario no está obligado a realizar un commit con todos los cambios. OJO: Uno podría mover al Staging Area sólo un subconjunto de las líneas modificadas en un archivo, es por eso que es importante recordar que el término "cambio" hace referencia a líneas y no a archivos.</p>
+<p>Una vez realizado el commit, los cambios quedan definitivamente guardados en el repositorio, el repositorio siempre existe en un nivel local en la máquina del usuario y adicionalmente suele utilizarse una copia de manera remota en algún proveedor que lo permita, los más comunes son GitHub, Gitlab y Bitbucket.</p>
+<h3 id="repositorios-remotos"><a class="toclink" href="#repositorios-remotos">Repositorios remotos</a></h3>
+<p>Cuando uno trabaja con un repositorio remoto, surgen tres términos importantes: Pull (Tirar), Push (Empujar) y Clone (Clonar). Como sugieren los nombres, Pull trae los cambios del repositorio remoto y los aplica en el repositorio local, Push sube los cambios del repositorio local al repositorio remoto. Clone, por otro lado, copia el repositorio remoto y crea uno local, esta operación sólo se realiza una vez (No confundir con Fork).</p>
+<p><strong>Fork vs Clone:</strong>  Un Fork es una copia independiente de un repositorio. Cuando uno realiza un Clone, se tiene la intención de trabajar en ese repositorio, cuando uno realiza un Fork se tiene la intención de realizar una variante e independizarse (hasta cierto punto) del repositorio original. Hacer un Fork reemplaza el proceso de creación del repositorio y para hacerlo uno debe ir al repositorio original</p>
+<p>NOTA: Siempre y cuando los cambios no se solapen (es decir que dos usuarios no hayan modificado la misma línea), el mismo sistema Git se encarga de combinarlos. Cuando dos o más usuarios modifican la misma línea del mismo archivo es necesaria una "Resolución de conflictos". Es un tema avanzado sin embargo puede requerirse a diario en entornos con múltiples programadores, aquellos que utilicen git como únicos usuarios no deberían preocuparse por este aspecto.</p>
+<h3 id="branches"><a class="toclink" href="#branches">Branches</a></h3>
+<p>El último concepto importante son las "branches", esta es la clave de la utilidad de Git, dentro de un repositorio uno puede tener múltiples branches (ramas en español), cada branch permite tener una Working Area independiente, esto se hace para mantener los cambios aislados, si bien el proceso de Stage-Commit es el mismo que el mencionado anteriormente, uno puede desear experimentar una nueva característica pero sin riesgos que se pierda o mezcle con el código que ya funciona correctamente, para eso se hace un nuevo branch y en el caso de éxito, se puede unir (merge en inglés) a la branch principal. Existen múltiples criterios para la creación de branches, algunas organizaciones utilizan una branch por características, otras una branch por desarrollador, etc. A la forma de utilizar las branches se la suele llamar “Git Strategy” o “Git Workflow”, siendo considerada una buena práctica tener un esquema simplificado con las siguientes branches:</p>
+<ul>
+<li>Master: Donde se tiene el código de la última versión estable</li>
+<li>Release: Donde se concentran todos los cambios que estarán en la próxima versión y se realizan las pruebas finales</li>
+<li>Develop: Donde se tiene el código experimental y que aún está siendo probado</li>
+<li>Hot Fix: Donde se reparan errores detectados a posteriori (fuera de las pruebas)</li>
+<li>Features: Una rama independiente por cada característica que se le quiera agregar al software.</li>
+</ul>
+<p>Lo anterior puede visualizarse mucho mejor en una imagen. Cada flecha indica una operación de unión (merge)</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_0.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_0.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_0-thumbnail.png" width="658"></a></p>
+<h3 id="software-adicional"><a class="toclink" href="#software-adicional">Software adicional</a></h3>
+<p>Git es una aplicación de consola, sin embargo, existen múltiples softwares con interfaz gráfica construidos sobre la aplicación de consola base. En este caso vamos a detallar el uso típico de uno de los más populares: GitKraken</p>
+<p>Por cuestiones de simplicidad, se asume que el usuario tiene correctamente instalado el software Gitkraken y que está listo para usarse, por lo tanto no se detallan pasos de instalación y configuración inicial.</p>
+<h2 id="fork-de-un-repositorio"><a class="toclink" href="#fork-de-un-repositorio">Fork de un repositorio</a></h2>
+<p>Como se mencionó, un fork es una copia independiente de un repositorio. El repositorio ya tiene su propio creador e historial de branches y commits pero uno desea hacer una copia independiente. Este procedimiento puede variar de un proveedor de repositorios remoto a otro, a continuación se muestra el procedimiento para hacer esto en Github</p>
+<h3 id="1-encontrar-el-repositorio-original"><a class="toclink" href="#1-encontrar-el-repositorio-original">1. Encontrar el repositorio original</a></h3>
+<p>Primero buscamos en Github el repositorio del cual queremos hacer un Fork, en este caso se utilizará el repositorio de Manim, el motor de animaciones creado  por 3Blue1Brown</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_1.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_1.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_1-thumbnail.png" width="1280"></a></p>
+<p>Como se puede ver en la imagen, el creador del repositorio es 3b1b y el usuario logeado actualmente es ELC por lo que el repositorio no es propio.</p>
+<h3 id="2-realizar-el-fork"><a class="toclink" href="#2-realizar-el-fork">2. Realizar el Fork</a></h3>
+<p>Para hacer un fork, basta con hacer clic en el botón Fork en la parte superior</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_2.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_2.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_2-thumbnail.png" width="922"></a></p>
+<p>Inmediatamente después, GitHub nos redireccionará a una pantalla que nos indica que se está creando el Fork</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_3.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_3.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_3-thumbnail.png" width="1268"></a></p>
+<p>Una vez finalizado el proceso, se creará un repositorio homónimo en la cuenta logeada</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_4.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_4.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_4-thumbnail.png" width="924"></a></p>
+<p>Como se puede ver en la imagen anterior, ahora el repositorio pertenece a ELC, con una pequeña leyenda debajo que indica que el repositorio es un Fork. Una muestra de que este repositorio es independiente y pertenece a la cuenta logeada es que aparece una nueva sección "Settings" que de otra forma no aparecería </p>
+<p><strong>NOTA:</strong>  Esta sección podría aparecer si uno fuera colaborador del repositorio, sin embargo esa característica puede variar de proveedor en proveedor y no se detallará en esta guía.</p>
+<p>Una última confirmación podría ser el conteo de Forks que es un número común para todos los Forks.</p>
+<p>A partir de ahora el avance de este nuevo repositorio puede ser completamente independiente del original.</p>
+<p><strong>IMPORTANTE:</strong> ¿Cúal es la diferencia entre hacer un fork y crear un repositorio idéntico con los mismos archivos? Al realizar un Fork uno tiene una historia de commits compartida con el repositorio original, de forma tal que es posible combinar cambios nuevos del original a cualquiera de los Forks (merge) y de los Forks de nuevo al original (Pull Request).</p>
+<p>El procedimiento alternativo de crear un repositorio desde cero así como clonarno desde GitKraken se detalla en la siguiente sección</p>
+<h2 id="clonar-un-repositorio"><a class="toclink" href="#clonar-un-repositorio">Clonar un repositorio</a></h2>
+<p>El enfoque más tradicional es crear primeramente el repositorio en el servidor remoto (Github o similar) y luego clonarlo. En este caso vamos a crear un repositorio llamado "gitkraken-tutorial" en Github.</p>
+<h3 id="1-crear-un-repositorio"><a class="toclink" href="#1-crear-un-repositorio">1. Crear un repositorio</a></h3>
+<p>Esto puede hacerse desde la página principal de Github</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_5.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_5.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_5-thumbnail.png" width="1279"></a></p>
+<h3 id="1-alternativa-crear-un-repositorio"><a class="toclink" href="#1-alternativa-crear-un-repositorio">1 (Alternativa). Crear un repositorio</a></h3>
+<p>O desde la sección de repositorios</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_6.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_6.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_6-thumbnail.png" width="1279"></a></p>
+<h3 id="2-completar-la-informacion-necesaria"><a class="toclink" href="#2-completar-la-informacion-necesaria">2. Completar la información necesaria</a></h3>
+<p><strong>IMPORTANTE:</strong> Para poder clonar nuestro repositorio debe estar "Inicializado" por lo tanto, es indispensable tildar la opción “Initialize this repository with a README”. Las opciones de gitignore permiten a git ignorar ciertos archivos (archivos temporales, caches, etc.) y la licencia permite elegir una licencia estándar entre un listado.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_7.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_7.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_7-thumbnail.png" width="678"></a></p>
+<h3 id="3-obtener-url-del-repositorio"><a class="toclink" href="#3-obtener-url-del-repositorio">3. Obtener URL del Repositorio</a></h3>
+<p>Para poder clonar el repositorio desde GitKraken pueden utilizarse dos perspectivas:</p>
+<ol>
+<li>Vincular la cuenta de GitHub con la de Gitkraken</li>
+<li>Utilizar la URL del repositorio</li>
+</ol>
+<p>Todos los servicios de repositorios tienen una URL pública así que se tomará este enfoque por ser el más universal. Una vez seguido los pasos en las imágenes, la URL quedará copiada en el portapapeles.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_8.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_8.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_8-thumbnail.png" width="1277"></a></p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_9.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_9.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_9-thumbnail.png" width="1277"></a></p>
+<h3 id="4-abrimos-la-ventana-de-clone-dentro-del-gitkraken"><a class="toclink" href="#4-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4. Abrimos la ventana de Clone dentro del GitKraken</a></h3>
+<p>En el menú File, Seleccionar la opción "Clone Repo"</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_10.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_10.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_10-thumbnail.png" width="370"></a></p>
+<h3 id="4-alternativa-1-abrimos-la-ventana-de-clone-dentro-del-gitkraken"><a class="toclink" href="#4-alternativa-1-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4 (Alternativa 1). Abrimos la ventana de Clone dentro del GitKraken</a></h3>
+<p>En todo momento, se puede utilizar el botón que se encuentra en la esquina superior izquierda</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_11.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_11.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_11-thumbnail.png" width="1302"></a></p>
+<p>A continuación, se deberá escoger la opción Clone</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_12.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_12.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_12-thumbnail.png" width="164"></a></p>
+<h3 id="4-alternativa-2-abrimos-la-ventana-de-clone-dentro-del-gitkraken"><a class="toclink" href="#4-alternativa-2-abrimos-la-ventana-de-clone-dentro-del-gitkraken">4 (Alternativa 2). Abrimos la ventana de Clone dentro del GitKraken</a></h3>
+<p>En caso de no tener ningún repositorio abierto, puede accederse al menú directamente desde la pantalla de inicio</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_13.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_13.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_13-thumbnail.png" width="1302"></a></p>
+<h3 id="5-pegamos-la-url"><a class="toclink" href="#5-pegamos-la-url">5. Pegamos la URL</a></h3>
+<p>Adicionalmente se puede detallar la ruta donde se clonará el repositorio y así como cambiar el nombre de la carpeta destino. Es recomendable tener una carpeta "Repositories" y clonar todos los repositorios allí.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_14.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_14.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_14-thumbnail.png" width="796"></a></p>
+<h3 id="5-notificacion-de-exito"><a class="toclink" href="#5-notificacion-de-exito">5. Notificación de Éxito</a></h3>
+<p>Una vez clonado el repositorio deberá aparecer en la parte superior una notificación que detalla que la operación fue exitosa. Uno puede utilizar el botón "Open Now" para abrir el repositorio inmediatamente. En este caso no se hará para ilustrar como se abre un repositorio desde cero.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_15.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_15.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_15-thumbnail.png" width="1302"></a></p>
+<h2 id="abrir-un-repositorio"><a class="toclink" href="#abrir-un-repositorio">Abrir un repositorio</a></h2>
+<p>Una vez clonado el repositorio es necesario abrirlo para empezar a trabajar.</p>
+<p><strong>NOTA:</strong> El repositorio podría haber sido inicializado en lugar de clonado pero este escenario es poco probable ya que luego se debería realizar una vinculación con el repositorio remoto. Por lo que por lo general se utiliza el enfoque planteado al principio, la inicialización de repositorios queda fuera del alcance de esta guía.</p>
+<h3 id="1-ventana-de-open"><a class="toclink" href="#1-ventana-de-open">1. Ventana de Open</a></h3>
+<p>En el menú File, seleccionar la opción "Open Repo"</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_16.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_16.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_16-thumbnail.png" width="368"></a></p>
+<h3 id="1-alternativa-1-ventana-de-open"><a class="toclink" href="#1-alternativa-1-ventana-de-open">1 (Alternativa 1). Ventana de Open</a></h3>
+<p>Adicionalmente puede utilizarse el ícono de la esquina superior izquierda</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_17.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_17.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_17-thumbnail.png" width="1302"></a></p>
+<h3 id="1-alternativa-2-ventana-de-open"><a class="toclink" href="#1-alternativa-2-ventana-de-open">1 (Alternativa 2). Ventana de Open</a></h3>
+<p>En caso de no tener ningún repositorio abierto, puede utilizarse el botón de la pantalla de inicio.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_18.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_18.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_18-thumbnail.png" width="1302"></a></p>
+<h3 id="2-seleccionar-el-repositorio"><a class="toclink" href="#2-seleccionar-el-repositorio">2. Seleccionar el repositorio</a></h3>
+<p>Se seleccionar "Open a Repository"</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_19.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_19.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_19-thumbnail.png" width="360"></a></p>
+<h3 id="3-seleccionar-la-carpeta"><a class="toclink" href="#3-seleccionar-la-carpeta">3. Seleccionar la carpeta</a></h3>
+<p>Navegar hasta la carpeta donde se encuentra el repositorio, una manera fácil de identificarla es que debería verse una carpeta llamada ".git" (Esta carpeta puede no aparecer si uno no tiene habilitados los archivos ocultos de Windows).</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_20.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_20.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_20-thumbnail.png" width="875"></a></p>
+<h2 id="elementos-de-la-interfaz"><a class="toclink" href="#elementos-de-la-interfaz">Elementos de la interfaz</a></h2>
+<h3 id="interfaz-basica"><a class="toclink" href="#interfaz-basica">Interfaz básica</a></h3>
+<p>Al abrir un repositorio nos encontraremos con la interfaz básica</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_21.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_21.png" src="https://elc.github.io/blog/images/git-guide-with-visual-interface/image_21-thumbnail.png" width="1300"></a></p>
+<h3 id="arbol-de-commits-y-branches"><a class="toclink" href="#arbol-de-commits-y-branches">Arbol de Commits y Branches</a></h3>
+<p>Al tener varios commits y branches, en la parte central, es posible ver las bifurcaciones y las uniones, en la siguiente imagen se muestra un proyecto con varios branches (Sólo a modo de ejemplo).</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_22.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_22.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_22-thumbnail.png" width="807"></a></p>
+<h2 id="anadir-cambios"><a class="toclink" href="#anadir-cambios">Añadir Cambios</a></h2>
+<p>Las herramientas de git pueden separarse en dos categorías:</p>
+<ul>
+<li>Integradas con los IDE</li>
+<li>Desacopladas</li>
+</ul>
+<p>Muchos IDE vienen con su propia integración con Git, algunos ejemplos de esto son Eclipse, Visual Studio, PyCharm. Sin embargo, es posible utilizar aplicaciones completamente desacopladas como Gitkraken, Github Desktop o el mismo git de consola.</p>
+<p>Las primeras tienen la ventaja de que el usuario no tiene que salir de la aplicación en la que desarrolla el código y las pruebas, pero tiene la desventaja de que puede confundir fácilmente cual es su branch actual y si el sistema está en un estado consistente, además, cada IDE tendrá su interfaz especial, y los IDE suelen cambiar si se cambia el lenguaje de programación. Por otro lado, las herramientas desacopladas como Gitkraken permiten que el desarrollador utilice el IDE sólo para lo que fue diseñado, la programación, la depuración y las pruebas, abstrayéndose totalmente del sistema de control de versiones, este enfoque tiene como ventaja que el usuario sólo debe preocuparse por el control de versiones al comenzar a trabajar y al momento de hacer los Stage-Commit y que se utiliza la misma interfaz independientemente de que IDE se haya utilizado, pero trae como desventaja que debe contarse con otro software adicional instalado.</p>
+<p>Gracias a que Gitkraken tiene este enfoque es posible trabajar como se suele hacer habitualmente en el IDE tradicional y cuando se deseen añadir cambios al repositorio lo que aparecerá será algo como lo siguiente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_23.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_23.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_23-thumbnail.png" width="343"></a></p>
+<p>La sigla WIP (Work in Progress) hace referencia al Working Area. Al hacer clic en este recuadro se podrá ver en la parte derecha los cambios realizados separados por archivos y también una clara división entre la Working Area y la Staging Area.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_24.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_24.png" src="https://elc.github.io/blog/images/git-guide-with-visual-interface/image_24-thumbnail.png" width="322"></a></p>
+<p>Asimismo, es importante aclarar la función de tres botones:</p>
+<ul>
+<li>Cesto de basura en la esquina superior derecha: BORRA todos los cambios del Working Area, usar sólo si se sabe lo que se está haciendo</li>
+<li>Tree: Permite visualizar los archivos en forma de árbol de directorios, dependiendo de la configuración puede no estar seleccionado por defecto, se recomienda utilizarlo</li>
+<li>Stage Files/changes to commit: Genera un commit con el título y la descripción dados de todos los cambios que están en el Staging Area</li>
+</ul>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_25.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_25.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_25.png" width="329"></a></p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_26.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_26.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_26.png" width="336"></a></p>
+<p>Si uno hace clic sobre alguno de los archivos ya sea dentro del Working como del Staging Area, puede ver un detalle de los cambios:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_27.png"><img alt="image alt text" class="b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_27.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_27-thumbnail.png" width="1261"></a></p>
+<p>Cada línea sombreada con rojo implica que esa línea estaba en la última versión y será eliminada, las sombreadas con verde indican que no estaban en la última versión y serán añadidas. En Git no existe el concepto de modificar una línea por lo tanto si se hace una modificación, se borrará la línea de la versión anterior y se añadirá una idéntica pero con los cambios realizados.</p>
+<p>Si uno posiciona el mouse sobre una de esas líneas aparecerá un botón con un signo más (+) que nos permitirá mover líneas individuales al Staging Area:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_28.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_28.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_28-thumbnail.png" width="80"></a></p>
+<p>Gitkraken, a su vez, identifica cambios por secciones en archivos y permite agregar varias secciones al Staging Area</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_29.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_29.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_29-thumbnail.png" width="173"></a></p>
+<p>Por último, si uno desea añadir todos los cambios de un archivo al Staging Area, puede posicionar el cursor sobre ese archivo y utilizar el botón "Stage File" que aparecerá. También es posible pasar TODOS los archivos del Working Area al Staging Area con el botón “Stage all Changes”:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_30.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_30.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_30-thumbnail.png" width="414"></a></p>
+<p>El proceso para quitar cambios del Staging Area y pasarlos al Working Area es idéntico, sólo se debe seleccionar primeramente el archivo correspondiente desde el Staging Area, en este caso los botones son de color rojo y el botón con el más (+) pasa a ser un menos (-):</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_31.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_31.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_31-thumbnail.png" width="74"></a>
+<a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_32.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_32.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_32-thumbnail.png" width="131"></a>
+<a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_33.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_33.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_33-thumbnail.png" width="424"></a></p>
+<p>Una vez movidos los cambios deseados al Staging Area, se puede crear el commit deseado, para ello hace falta asignarle un título, también se puede detallar una descripción opcional:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_34.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_34.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_34-thumbnail.png" width="328"></a></p>
+<p>Una vez hecho el commit, aparecerá en la pantalla principal con el nombre que se le haya asignado:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_35.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_35.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_35-thumbnail.png" width="346"></a></p>
+<p>Es importante descatar que esto genera el commit en el repositorio LOCAL y que estos cambios no impactaron aún en el repositorio remoto, Gitkraken nos muestra esto utilizando una computadora para el repositorio Local y el logo del usuario de Github para representar el repositorio remoto. En la siguiente sección se verá como sincronizar ambos repositorios.</p>
+<h2 id="sincronizacion-con-repositorios-remotos"><a class="toclink" href="#sincronizacion-con-repositorios-remotos">Sincronización con repositorios remotos</a></h2>
+<p>Como se mencionó antes, para mantener dos repositorios actualizados hace falta utilizar las acciones de Pull y Push</p>
+<h3 id="descargar-los-cambios-del-repositorio-remoto"><a class="toclink" href="#descargar-los-cambios-del-repositorio-remoto">Descargar los cambios del repositorio remoto</a></h3>
+<p>Es considerado una buena práctica, siempre antes de subir los cambios, hacer un Pull para traer cualquier cambio que no pudiéramos tener en nuestro equipo local. En esta oportunidad tendremos que distinguir entre la acción Pull y la acción Fetch.</p>
+<ul>
+<li>Fetch: Revisa si hay cambios en el repositorio remoto y nos muestra cual es el estado del remoto con respecto al local</li>
+<li>Pull: Hace Fetch y aplica esos cambios en el repositorio local.</li>
+</ul>
+<p>Fetch es por lo tanto una acción completamente segura, mientras que Pull puede traer cambios que generen colisiones con los nuestros, a pesar de que lo anterior no sea frecuente y sólo sea posible en entornos con múltiples usuarios, es considerado una buena práctica que el usuario resuelva los conflictos en su computadora local y que luego pueda subir los cambios. De no ser así, el repositorio remoto podría quedar en un estado inconsistente, deteniendo el avance de los demás miembros del equipo.</p>
+<p>En la barra de acciones del Gitkraken tenemos la acción de Fetch:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_36.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_36.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_36-thumbnail.png" width="398"></a></p>
+<p>Para acceder a la acción Pull debemos elegir la flecha que está junto a Fetch:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_37.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_37.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_37-thumbnail.png" width="398"></a></p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_38.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_38.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_38-thumbnail.png" width="376"></a></p>
+<p>En el caso del repositorio de ejemplo el Pull debería ser exitoso ya que no hubo cambios en el repositorio remoto</p>
+<h3 id="subir-los-cambios-al-repositorio-remoto"><a class="toclink" href="#subir-los-cambios-al-repositorio-remoto">Subir los cambios al repositorio remoto</a></h3>
+<p>Para subir los cambios es necesario primero realizar un Pull para resolver los conflictos (si los hubiera) una vez resueltos, se puede realizar un Push utilizando el botón asociado en la barra de acciones:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_39.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_39.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_39-thumbnail.png" width="393"></a></p>
+<p>Una vez realizado, la forma más fácil de verificar que fue exitoso se ver el árbol de commits</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_40.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_40.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_40-thumbnail.png" width="350"></a></p>
+<p>En esta oportunidad tanto el logo de usuario de Github como la computadora se encuentran juntos, mostrando así que el contenido se encuentra sincronizado.</p>
+<h3 id="ejemplo-de-fetch-y-pull"><a class="toclink" href="#ejemplo-de-fetch-y-pull">Ejemplo de Fetch y Pull</a></h3>
+<p>Para ilustrar como se vería una situación inversa (se hicieron cambios en el repositorio remoto y queremos descargarlos). Primeramente hacemos Fetch y veremos algo como lo siguiente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_41.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_41.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_41-thumbnail.png" width="362"></a></p>
+<p>Como se puede ver, el branch master está "adelantado" y tiene un commit llamado “Update README.md” que sólo está en el repositorio remoto (evidenciado por el logo de la cuenta de Github). Y nuestra versión local está “detrás”. En esta situación debemos evaluar los cambios y si existen conflictos (incluyendo los archivos del Working Area).  Es recomendable no tener nada en el Working Area al momento de hacer Pull, es decir, que todos los cambios ya estén dentro de commits, esto simplifica el proceso y disminuye la probabilidad de hallar conflictos. </p>
+<p><strong>NOTA:</strong>  Existen situaciones avanzadas donde uno puede guardar temporalmente los cambios del Working Area en un Stash pero esta característica se encuentra fuera del alcance de esta guía.</p>
+<p>En caso de no existir conflictos, se puede realizar un Pull sin problemas:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_42.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_42.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_42-thumbnail.png" width="340"></a></p>
+<p>El resultado es el esperado, tanto el repositorio local como el remoto se encuentran sincronizados.</p>
+<h2 id="trabajo-en-multiples-branches"><a class="toclink" href="#trabajo-en-multiples-branches">Trabajo en múltiples branches</a></h2>
+<p>Una vez que se pueda trabajar eficientemente en una rama, es sumamente recomendable seleccionar una Git Strategy y utilizar múltiples ramas.</p>
+<h3 id="crear-branch"><a class="toclink" href="#crear-branch">Crear Branch</a></h3>
+<p>Para crear rama primero debemos posicionarnos en una rama base, esta es la rama de la cual se bifurcará el nuevo branch </p>
+<p><strong>NOTA:</strong>  Existe el concepto de ramas huérfanas, que son ramas que no se derivan de ninguna otra rama. Sin embargo su uso suele ser muy particular y específico y por ende están fuera del alcance de esta guía.</p>
+<p>En este caso vamos a crear una rama de master, le agregaremos dos commits, la uniremos y luego la borraremos.</p>
+<p>En primer lugar nos posicionamos en master, para ello bastan con hacer doble clic en "master"</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_43.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_43.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_43-thumbnail.png" width="391"></a></p>
+<p>Luego utilizamos el botón "Branch" de la barra de acciones</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_44.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_44.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_44-thumbnail.png" width="381"></a></p>
+<p>Luego escribimos el nombre de la rama y presionamos enter:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_45.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_45.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_45-thumbnail.png" width="356"></a></p>
+<p>Gitkraken nos permite ver en varios lugares que la rama fue creada con éxito</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_46.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_46.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_46-thumbnail.png" width="503"></a></p>
+<p>Sin embargo, es posible observar que en el árbol de commits no aparece la rama master, esto se debe a que se encuentra oculta en el ícono +1:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_47.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_47.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_47-thumbnail.png" width="503"></a></p>
+<p>Al pasar el cursor por arriba podemos ver que la rama es visible nuevamente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_48.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_48.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_48-thumbnail.png" width="330"></a></p>
+<p>Esta simplificación de la intefaz se debe a que el contenido de ambas ramas es idéntico (todavía no realizamos cambios) y si bien puede ser un poco confusos para los principiantes es sumamente útil cuando se tienen múltiples ramas. Por otro lado, la ayuda visual de GitKraken nos permite observar que el branch "add-license" sólo existe en el contexto local y que aún no existe en el repositorio remoto.</p>
+<h3 id="unir-branches-merge"><a class="toclink" href="#unir-branches-merge">Unir Branches (Merge)</a></h3>
+<p>Para poder unir dos branches es necesario que éstas sean diferentes, para ello se añaden algunos commits a la rama "add-license". Luego de añadir los commits, se obtiene algo como lo siguiente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_49.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_49.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_49-thumbnail.png" width="327"></a></p>
+<p>Si bien la rama sigue existiendo sólo en el contexto local, es importante ver como se encuentra "adelantada" a la rama master. Si bien en el esquema presentado al principio las ramas se disponen de forma paralela una a la otra, Gitkraken sólo las dispone de esa forma cuando existen varias “líneas de cambios”, es decir, sólo cuando la rama master se haya modificado y que esa modificación no sea alguno de los commits de la rama con la que está alineada (add-license) en este caso. Para ilustrar este ejemplo se añadirá un cambio a la rama master directamente (no en la rama add-license).</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_50.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_50.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_50-thumbnail.png" width="331"></a></p>
+<p>Esta forma de visualizar las ramas es más similar a la vista con anterioridad, la vista cambió porque se agregó el commit "Add Contribution Guide" directamente en master.</p>
+<p>Antes de unir las ramas vamos a realizar un Push, en este caso, como la rama no existe en el repositorio remoto, nos preguntará si la queremos vincular con alguna rama del repositorio remoto ya existente, en caso de dejar el espacio en blanco y clickear en "Submit", creará una rama homónima en el repositorio remoto.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_51.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_51.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_51-thumbnail.png" width="777"></a></p>
+<p>Ahora ambas ramas están sincronizadas con el repositorio remoto:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_52.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_52.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_52-thumbnail.png" width="333"></a></p>
+<p>Si bien no era necesario hacer un Push de la rama antes de unirla, es considerado una buena práctica para que quede público el historial de cambios y que los demás usuarios puedan visualizar quien, y como hizo los cambios.</p>
+<p>Para unir las ramas (merge) Uno debe hacer clic en el nombre de la rama origen y arrastrar y soltar en el nombre de la rama destino, esto desplegará el siguiente menú, donde seleccionamos la opción de Merge.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_53.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_53.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_53-thumbnail.png" width="356"></a></p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_54.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_54.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_54-thumbnail.png" width="446"></a></p>
+<p>Una vez elegida la opción, el árbol de commits y branches se verá similar al siguiente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_55.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_55.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_55-thumbnail.png" width="332"></a></p>
+<p>Como puede verse el merge fue exitoso, sin embargo aún no se verá reflejado en el repositorio remoto, por lo tanto, es necesario activar el repositorio master (haciendo doble click en el nombre) y luego hacer un Push.</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_56.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_56.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_56-thumbnail.png" width="329"></a></p>
+<p>Una vez hecho el Push, tanto las ramas como la operación de Merge se encuentran sincronizadas en el repositorio remoto y local</p>
+<h3 id="borrar-branch"><a class="toclink" href="#borrar-branch">Borrar Branch</a></h3>
+<p>A lo largo de la vida de un proyecto de desarrollo pueden crearse infinidad de ramas, por lo tanto, para mantener la interfaz limpia, es una buena práctica eliminar las ramas luego de que se unieron (merge) a master (o a la rama que corresponda según el Git Workflow establecido)</p>
+<p>Para eliminar una rama basta con hacer clic derecho sobre el nombre y seleccionamos la opción que la elimina tanto del repositorio local como del remoto</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_57.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_57.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_57-thumbnail.png" width="460"></a></p>
+<p>GitKraken nos advertirá que esta es una operación destructiva y que no puede deshacerse, seleccionamos Delete</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_58.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_58.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_58-thumbnail.png" width="717"></a></p>
+<p>Una vez que la rama se haya eliminado exitosamente el árbol de commits y branches se verá similar al siguiente:</p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_59.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_59.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_59-thumbnail.png" width="331"></a></p>
+<p>Como puede verse, ya no existe la rama borrada ni en el repositorio local ni en el remoto, sin embargo, y es en esto donde está la utilidad, puede verse como claramente alguna vez existió y consistió en dos commits que luego fueron unidos al master. La ventaja de esta funcionalidad es que uno puede eliminar las ramas y no perder la historia de lo que se hizo, teniendo una separación en los commits que permite fácilmente rastrear quien hizo que cambios y como fueron hechos. Esto no sería posible (o mejor dicho, sería muchísimo más complejo) si sólo se trabajara con la rama master.</p>
+<h2 id="pull-requests"><a class="toclink" href="#pull-requests">Pull Requests</a></h2>
+<p>En un entorno de desarrollo, es poco común que los desarrolladores realicen merge a master directamente, es por eso que se utiliza un mecanismo de aprobación y revisión antes de que se puedan realizar los merge en las ramas críticas. Cada proveedor llama a ese proceso de manera distinta, en el más popular (Github) ese proceso se llama Pull Request.</p>
+<p>Una Pull Request es básicamente decir lo siguiente: Tengo cambios hechos y quisiera unirlos a esta rama. Es una práctica común en las ramas más críticas dentro de proyectos de desarrollo, donde a la persona encargada de esas revisiones y aprobaciones se la suele llamar Release Manager y también es sumamente popular en los proyectos Open Source, donde se tiene el repositorio principal y las personas que quieran contribuir, al no tener permisos de editar el repositorio directamente, pueden realizar Pull Requests. El creador del repositorio podrá, luego, aceptarlas o rechazarlas.</p>
+<p>Si bien las Pull Requests suelen hacerse mediante la interfaz del proveedor (Github en este caso). Son posibles hacerlas desde GitKraken también.</p>
+<p>Sólo con fines ilustrativos se muestra el procedimiento:</p>
+<ol>
+<li>Se hace clic derecho en la rama desde la cual se quiere hacer la Pull Request</li>
+<li>Se selecciona la opción de la Pull Request</li>
+<li>Se completan los campos solicitados</li>
+</ol>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_60.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_60.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_60-thumbnail.png" width="397"></a></p>
+<p><a class="gallery" href="/blog/images/git-guide-with-visual-interface/image_61.png"><img alt="image alt text" class="narrow b-lazy" data-src="/blog/images/git-guide-with-visual-interface/image_61.png" src="https://elc.github.io/posts/git-guide-with-visual-interface/images/git-guide-with-visual-interface/image_61-thumbnail.png" width="479"></a></p>
+<p><strong>NOTA:</strong>  Las Pull Requests generalmente se deben realizar de una manera específica que se detalla en el mismo repositorio del software al que uno quiere contribuir por lo que el ejemplo mostrado es trivial, sólo para tener una noción de cómo sería el procedimiento.</p>
+<h2 id="caracteristicas-adicionales"><a class="toclink" href="#caracteristicas-adicionales">Características Adicionales</a></h2>
+<p>Aparte de todo lo mencionado en esta guía, queda aún mucho terreno para explorar tanto en lo que permite Git como en lo que se puede hacer con GitKraken, a continuación se listan algunas de estas posibilidades para que el lector pueda indagar en mayor detalle si lo desea</p>
+<ul>
+<li>Tener repositorios dentro de repositorios. Buscar: <strong>Submodules</strong> y<strong> Subtree</strong></li>
+<li>Aplicar sólo un commit de una rama a otra y no hacer una unión de historial. Buscar: <strong>Cherry Pick Commit</strong></li>
+<li>Tener ramas completamente independientes de otras: Buscar: <strong>Orphan Branch</strong></li>
+<li>Unificar ramas olvidando la historia. Buscar: <strong>Rebase</strong></li>
+<li>Agregar contenidos a un commit anterior. Buscar: <strong>Amend</strong></li>
+<li>Deshacer varios commits conservando los cambios. Buscar: <strong>Soft Reset</strong></li>
+<li>Forzar cambios en el repositorio remoto. Buscar: <strong>Push Force</strong></li>
+<li>Es posible revertir cambios de un commit específico. Buscar: <strong>Revert</strong></li>
+<li>Guardar en un espacio temporal los cambios del Working Area. Buscar: <strong>Stash</strong></li>
+<li>Crear etiquetas para identificar versiones específicas de todo el repositorio cuando se encuentra en un estado consistente (linea base). Buscar: <strong>Tags</strong></li>
+</ul>
+<p>Algunas de las características mencionadas sólo pueden realizarse desde la consola, es decir, no son soportadas completamente en GitKraken</p>
+<h2 id="recursos-adicionales"><a class="toclink" href="#recursos-adicionales">Recursos Adicionales</a></h2>
+<ul>
+<li><a href="https://www.gitkraken.com/" target="_blank">Página web oficial de GitKraken</a></li>
+<li><a href="https://git-scm.com/" target="_blank">Página web oficial de Git</a></li>
+<li><a href="https://learngitbranching.js.org/" target="_blank">Git Console Sandbox</a>: Permite experimentar con varios comandos de la consola git en un entorno Sandbox dentro del navegador.</li>
+<li><a href="https://github.com/dictcp/awesome-git" target="_blank">Awesome Git</a>: Una lista compilada de increíbles herramientas de Git y recursos.</li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic">Multi-Floor Elevator Simulation with AnyLogic</a>
+        <a class="article__button" href="https://elc.github.io/posts/embed-interactive-notebooks">Embed Interactive Jupyter Notebooks in Static Websites for Free</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/git-guide-with-visual-interface-es.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/git-guide-with-visual-interface/es&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Gu%C3%ADa%20introductoria%20de%20Git%20con%20Interfaz%20Visual" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/git-guide-with-visual-interface/es&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Gu%C3%ADa%20introductoria%20de%20Git%20con%20Interfaz%20Visual" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/git-guide-with-visual-interface/es';  
+      this.page.identifier = 'git-guide-with-visual-interface';
+      this.page.title = 'Guía introductoria de Git con Interfaz Visual';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>

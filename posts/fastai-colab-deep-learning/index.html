@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Deep Learning With Free GPU (Fastai + Colab) 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2018-09-28" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Deep Learning With Free GPU (Fastai + Colab)"/>
+      <meta property="og:description" content="Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/fastai-colab-deep-learning/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Deep Learning With Free GPU (Fastai + Colab)">
+      <meta name="twitter:description" content="Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/fastai-colab-deep-learning/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=4d6a473">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Deep Learning With Free GPU (Fastai + Colab)</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2018-09-28 00:00:00-03:00"><b>28 Sep 2018</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>9 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+
+        <!-- Level -->
+            <div class="article__metadata-item">
+                <b><span data-l10n-id="level">Level:</span> <span data-l10n-id="Begginer">Begginer</span></b>
+            </div>
+
+        <!-- Comments -->
+        <div class="article__metadata-item">
+            <b><a href="https://elc.github.io/posts/fastai-colab-deep-learning#disqus_thread"></a> <span data-l10n-id="comments">Comments</span></b>
+        </div>      
+            
+    </div>
+
+    <!-- Badges -->
+    <span class="article__badges">        
+        <a href="http://pdfy.net/api/GeneratePDF.aspx?url=https://elc.github.io/posts/fastai-colab-deep-learning/index.html" aria-label="Convert to PDF">
+            <img alt="Convert To PDF" src="https://elc.github.io/theme/images/PDF.svg">
+        </a>
+        
+            <a href="https://gist.github.com/ELC/756040fe84a8bb3d14c59b0e997c84e9" aria-label="Jupyter Notebook">
+                <img alt="Jupyter Notebook" src="https://elc.github.io/theme/images/Jupyter.svg">
+            </a>
+
+
+    </span>
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a class="gallery" href="/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png"><img alt="FastAi Header Image" class="b-lazy" data-src="/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage-thumbnail.png" width="1246"></a></p>
+
+
+<p>Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.</p>
+
+
+<p><strong>EDIT: this post is now OBSOLETE since the FastAI Team prepare specific tutorial for this an other setups, this could be found in <a href="#https://course.fast.ai/index.html" target="_blank">their official course page</a>.</strong></p>
+<p><strong>WARNING: The fastai framework is migrating because of the release of PyTorch 1.0. The content of this notebook will be updated but the code might not work until the version 1.x of fastai has clear instructions about its installation.</strong></p>
+<p>First of all I'm going to introduce some definitions and concepts just for those that are not familiar with these topics. If you just want to  jump directly to the tutorialn, scroll down to the <a href="#tutorial"><strong>tutorial section</strong></a></p>
+<h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+<p>More often than not I find people who are confused about the relationship of the terms "Artificial Inteligence", "Machine Learning" and "Deep Learning". Let's try to explain it a bit (no rigorous math!). Artificial Inteligence is the broad term, lots of areas fall into this category for example, neural networks, computer vision, natural language, chatbots, sentiment analisis, etc. When people used Machine Learning they refer to more "statistical" methods such as Support Vector Machines (SVMs), Classification Trees, K-Means, Mean-Shift, etc. Another are is Deep Learning which is the narrower of all since it focuses just in one topic artificial neural networks, there are several type of neural networks and when they have several "hidden layers" we are talking about "Deep" Learning.</p>
+<p>If you want to know more about which are the fields of Computer Science, I suggest you to watch <a href="https://www.youtube.com/watch?v=SzJ46YA_RaA" target="_blank">Map of Computer Science by Domain of Science</a></p>
+<p>One of the most common libraries to solve Machine Learning Problems is Scikit-Learn and they provide a beautiful roadmap to understand which algorithms are inside this field and their categorizations (there may be much more but it's enough for an introduction):</p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/sklearn-roadmap.png"><img alt="Scikit-Learn Roadmap" class="b-lazy" data-src="/blog/images/fast-colab-deep-learning/sklearn-roadmap.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/sklearn-roadmap-thumbnail.png" width="2122"></a></p>
+<p>Simirlarly there is a beautiful image which shows all the types of neural networks, along with <a href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">a medium post</a> explaining them.</p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/neural-networks-types.png"><img alt="Scikit-Learn Roadmap" class="b-lazy" data-src="/blog/images/fast-colab-deep-learning/neural-networks-types.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/neural-networks-types-thumbnail.png" width="2000"></a></p>
+<h2 id="the-problem"><a class="toclink" href="#the-problem">The problem</a></h2>
+<p>Generally, when talking about computers, the more you want to scale and parallelize, the simpler the algorithm should be. Complex algorithms are slow and don't usually scale well, this is why nowadays there is a lot of hype arround AI. Artificial Neural Nets were first proposed in 1943! Why nobody used them until now? Because although they are simple, they need lots of computations and CPUs aren't that good at that, they have to perform logic operation, memory management and many other things. But GPUs on the other hand were created primarily for aritmetic calculations and it is today that we have GPUs that powerful that Deep Learning and Machine Learning are indeed possible in a reasonable amount of time. Other things influenced too of course, such as cloud services, fast disks and lots of research.</p>
+<p>This is why according to the Gartner Hype Cycle Deep Learning is at its peak:</p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/gartnet-2017.jpg"><img alt="Gartnet Cycle" class="b-lazy" data-src="/blog/images/fast-colab-deep-learning/gartnet-2017.jpg" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/gartnet-2017-thumbnail.jpg" width="1385"></a></p>
+<p>So, just buy a GPU and you will be ready for Deep learning! Not so fast, frameworks and libraries work better on GPUs, but those should be Nvidia and support CUDA and cuDNN which is another requirement many won't meet. Additionally, the GPU is generally (unless you are building a server), the most expensive part of a PC System.</p>
+<p>This is why finding a way to experiment with deep learning may not be free. There are several cloud based services where you can rent a GPU for hour and even seconds and they are pretty cheap, but if you just want to try without paying, those might not be a suitable option. This is where <a href="https://colab.research.google.com/">Colaboratory</a> comes in, it's a service offered by Google which provides free GPU (up to 12 GB of Video RAM) for your computations, it also supports colaboratory editing (like Google Docs) and it can be saved in Google Drive or Github.</p>
+<h2 id="tools-and-requirements"><a class="toclink" href="#tools-and-requirements">Tools and requirements</a></h2>
+<p>Developing software implies learning a programming language, usually a framework, learn arquitecture patterns, best practices and of course a lot more. But AI goes in another direction, it is math heavy (although you can build amazing stuff with high school algebra), it realies in a predifined set of algorithms and the cutting edge news usually comes in the form of a scientific paper rather than a fancy framework. Because of this, two different roles emerged, in one hand, there is the Software Developer and in the other hand there is the Data Scientist, both know data structures, algorithms, programming but their skillset is quite different. We will see which tools you will need to start digging in AI and Deep Learning.</p>
+<p>First you will need to learn programming basics, control flow structures and decisions, it isn't needed to know OOP or Functional programming although it might be useful for some. Second, you will need to know Python, it is the most used language in the field and it seems it will continue like that and third you will need to feel confortable with a new "environment" called notebooks, particularly Jupyter Notebooks. I know some might disagree, specially in the last point, there are lots of opinions and I strongly believe that if you learn these things you will be able to watch most of video-tutorials on youtube and you will be on track without issues. You can convice yourselves looking at this survey, based on 10.153 responses:</p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/data-science-tools.png"><img alt="data-science-tools" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/data-science-tools.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/data-science-tools-thumbnail.png" width="601"></a></p>
+<p>Once you know this prerequirements, you will face a very common dilemma, which Deep Learning Framework should you use? Using a framework is recommended (although doing it manually help a lot to understand the underlying process) so for this tutorial I chose fastai because it's built over PyTorch which is known for being the most pythonic and thus the friendlier to begginers.</p>
+<h2 id="tutorial"><a class="toclink" href="#tutorial">Tutorial</a></h2>
+<p>In case you want to see the final result, this is the final notebook:</p>
+<script src="https://gist.github.com/ELC/756040fe84a8bb3d14c59b0e997c84e9.js"></script>
+
+<p>Now I'm going to explain how that notebook works.</p>
+<p>First we have to make sure GPU acceleration is enabled, to achieved this by setting "Hardware Accelerator" to GPU in the menu: <code>Edit &gt; Notebook settings &gt; set "Hardware Accelerator" to GPU</code>.</p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-edit.png"><img alt="Colab Edit" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-edit.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/colab-edit-thumbnail.png" width="484"></a></p>
+<p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-gpu.png"><img alt="Colab GPU" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-gpu.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/colab-gpu-thumbnail.png" width="532"></a></p>
+<p>Since Fastai is not built in Colaboratory, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.</p>
+<div class="highlight "><pre><span></span>%%bash
+
+<span class="k">if</span> ! <span class="o">[</span> -d fastai <span class="o">]</span>
+<span class="k">then</span>
+git clone https://github.com/fastai/fastai.git
+<span class="k">fi</span>
+
+<span class="nb">cd</span> fastai
+
+git pull
+
+pip -q install .
+
+pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
+
+pip -q install torchvision
+</pre></div>
+
+
+<p>Now we can import fastai with all its modules</p>
+<div class="highlight "><pre><span></span><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.transforms</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.conv_learner</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.dataset</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.sgdr</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.plots</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+
+<p>And we are ready to go! You can check that the GPU is enabled with the following command:</p>
+<div class="highlight "><pre><span></span><span class="n">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: {torch.cuda.is_available() and torch.backends.cudnn.enabled}&#39;</span>
+</pre></div>
+
+
+<p>And if you want to check exactly how much Video RAM you have you can run the following snippet:</p>
+<div class="highlight "><pre><span></span><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+<span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">gputil</span>
+<span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">psutil</span>
+<span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">humanize</span>
+
+<span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">humanize</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">GPUtil</span> <span class="kn">as</span> <span class="nn">GPU</span>
+
+<span class="n">GPUs</span> <span class="o">=</span> <span class="n">GPU</span><span class="o">.</span><span class="n">getGPUs</span><span class="p">()</span>
+<span class="n">gpu</span> <span class="o">=</span> <span class="n">GPUs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Number of GPUs: {len(GPUs)}&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Gen RAM Free: {humanize.naturalsize( psutil.virtual_memory().available )} | Proc size: {humanize.naturalsize( process.memory_info().rss)}&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: {0:.0f}MB | Used: {1:.0f}MB | Util {2:3.0f}% | Total {3:.0f}MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
+</pre></div>
+
+
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
+<p>It is indeed possible to do Deep Learning with GPU without paying nothing, we just have to wait until the right set of technologies is available.</p>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/executable-flask-pyinstaller">Create one executable file for a Flask app with PyInstaller</a>
+        <a class="article__button" href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python">Plotting Fractals Step by Step with Python</a>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/fastai-colab-deep-learning.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Change the document and Submit!
+        </a>
+    </div>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
+
+    <div class="share">
+        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/fastai-colab-deep-learning&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Deep%20Learning%20With%20Free%20GPU%20%28Fastai%20%2B%20Colab%29" target="_blank" class="facebook-button"
+        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
+            <i class="fa fa-facebook"></i>
+            Facebook
+        </a>
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/fastai-colab-deep-learning&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Deep%20Learning%20With%20Free%20GPU%20%28Fastai%20%2B%20Colab%29" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+    </div>
+</section>
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/embed-interactive-notebooks" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/embed-interactive-notebooks">Embed Interactive Jupyter Notebooks in Static Websites for Free</a></h3>
+                
+                <p class="article-related-post-body-description">After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fractals/factals_headerimage.png" src="https://elc.github.io/blog/images/fractals/factals_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python">Plotting Fractals Step by Step with Python</a></h3>
+                
+                <p class="article-related-post-body-description">Fractals are awesome, they are built with very complex pattern and they allow you to zoom in forever! In this post we will see how easily it is to plot several kinds of fractals using a tool called L-Systems and the Python Turtle module for the step to step plotting.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/executable-flask-pyinstaller" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage.png" src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/executable-flask-pyinstaller">Create one executable file for a Flask app with PyInstaller</a></h3>
+                
+                <p class="article-related-post-body-description">Having a single executable file could be a great advantage in so many cases and nowadays more a more desktop applications are using web technologies (React Native, Cordova, Ionic, etc.). It was time for the Python stack to join the Group via PyFlaDesk, a simple script to combine Flask, Qt and PyInstaller to create desktop Apps.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+  <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/fastai-colab-deep-learning';  
+      this.page.identifier = 'fastai-colab-deep-learning';
+      this.page.title = 'Deep Learning With Free GPU (Fastai + Colab)';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/pages/about/" data-l10n-id="about">about</a></li>
+                <li><a href="https://elc.github.io/pages/projects/" data-l10n-id="projects">projects</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archives</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy;  Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>    
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=37c7440" ></script>
+
+
+<!-- Inspectlet Asynchronous Code -->
+<script>
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 201674813]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=201674813&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+</script>
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+  </body>
+
+</html>
