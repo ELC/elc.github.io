@@ -253,6 +253,15 @@ a[href*="github.com"]:after {
     max-width: calc(100% + 14vw);
   }
 }
+.article .headerimage-article,
+.page .headerimage-article {
+  box-shadow: inset 0px 0px 10px 15px #FCFCFC;
+}
+.article .headerimage-article img,
+.page .headerimage-article img {
+  position: relative;
+  z-index: -2;
+}
 @media only screen and (min-width: 1024px) {
   .article .headerimage-article img,
 .page .headerimage-article img {
@@ -341,9 +350,8 @@ a[href*="github.com"]:after {
   padding: 25px 0;
 }
 .article-loop {
-  padding: 25px 40px 25px;
-  background-color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px 40px 55px;
+  border-bottom: 0.2rem solid #555;
 }
 .article__body {
   text-align: justify;
@@ -1155,8 +1163,7 @@ table div {
 
 /* nav-bar */
 .nav-bar {
-  background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fcfcfc;
   position: fixed;
   transition: all 0.7s cubic-bezier(0.45, 0.05, 0.55, 0.95);
   width: 100%;
@@ -1208,7 +1215,7 @@ table div {
   .nav-menu__entry a {
     font-size: 18pt;
     margin: 0;
-    padding: 20px 30px;
+    padding: 15px 30px;
   }
 }
 @media (min-width: 768px) {
