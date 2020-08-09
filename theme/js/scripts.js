@@ -457,6 +457,6 @@ function hideMenu() {
 
 window.addEventListener('load', function () {
     var bLazy = new Blazy({
-        offset: 300
+        offset: 600
       });
 });
