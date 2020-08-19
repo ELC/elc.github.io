@@ -1,0 +1,13 @@
+{
+    "repos": {
+        "tabubiblico": {
+            "branch": "production",
+            "folders": ["css", "img", "js"]
+        },
+        "jupyter-map": {
+            "branch": "gh-pages"
+        },
+        "lyrics-presentation": {}
+    },
+    "URLs": []
+}

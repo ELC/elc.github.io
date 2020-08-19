@@ -213,6 +213,8 @@ FILES_TO_CACHE_BUSTING = (
 
 SERVICE_WORKER_THEMPLATE = './content/extra/sw_template.js'
 
+EXTERNAL_CACHE_FILE = 'cache.json'
+
 # Blur Thumbnails
 
 BLUR_PATH = './content/blog'

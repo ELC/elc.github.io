@@ -20,6 +20,7 @@ import os
 from pelican import signals
 import hashlib
 import json
+import urllib.request
 
 # Function extracted from https://stackoverflow.com/a/19308592/7690767
 def get_filepaths(directory, extensions=None, ignores=None): 
@@ -99,6 +100,70 @@ def create_service_worker(sender):
             path = f'{filename_without_index}?v={hash_digest}'
 
         files_to_cache.append(path)
+    
+    # External Files
+
+    external_cache_file = sender.settings.get('EXTERNAL_CACHE_FILE', None)
+
+    if external_cache_file is not None:
+
+        with open(external_cache_file) as f:
+            external_cache = json.load(f)
+
+        hasher = hashlib.md5()
+
+        # External Repos
+        for repo_name, repo_data in external_cache['repos'].items():
+            owner = repo_data.get('owner', "ELC")
+            branch = repo_data.get('branch', "master")
+            folders = repo_data.get('folders', [])
+            folders += [''] # Root Folder
+
+            for folder in folders:
+                url = f"https://api.github.com/repos/{owner}/{repo_name}/contents/{folder}?ref={branch}"
+                
+                with urllib.request.urlopen(url, timeout=10) as f:
+                    data = json.loads(f.read())
+                
+                files = {f"/{repo_name}/{data_item['path']}":data_item['download_url'] for data_item in data}
+
+                for filename, url in files.items():
+                    if url is None:
+                        continue
+
+                    with urllib.request.urlopen(url, timeout=10) as f:
+                        buf = f.read()
+
+                    hasher.update(buf)
+                    hash_digest = hasher.hexdigest()[-7:]
+
+                    path = f'{filename}?v={hash_digest}'
+
+                    if filename.endswith('index.html'):
+                        filename_without_index = filename[:-10]
+                        path = f'{filename_without_index}?v={hash_digest}'
+
+                    files_to_cache.append(path)
+
+        # External URLs
+
+        for url in external_cache['URLs']:
+
+            with urllib.request.urlopen(url) as f:
+                buf = f.read()
+
+            hasher.update(buf)
+            hash_digest = hasher.hexdigest()[-7:]
+
+            url = url.partition("://")[2] # Remove Protocol
+            filename = '/' + url.partition("/")[2] # Remove Domain
+            path = f'{filename}?v={hash_digest}'
+
+            if filename.endswith('index.html'):
+                filename_without_index = filename[:-10]
+                path = f'{filename_without_index}?v={hash_digest}'
+
+            files_to_cache.append(path)
 
     # Remove output from path - Compatible with Travis
     files_to_cache = [path.split('output')[-1] for path in files_to_cache]
@@ -109,7 +174,7 @@ def create_service_worker(sender):
 
     files_to_cache.append(path)
 
-    FILES_TO_CACHE = tuple(set(files_to_cache))
+    FILES_TO_CACHE = sorted(set(files_to_cache))
 
 
     with open(sw_template, 'r+') as f:
