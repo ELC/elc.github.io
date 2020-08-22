@@ -1,10 +1,7 @@
-const version = "00c8c7a";
+const version = "73316fa";
 const currentCacheName = `ELCWEB-${version}`;
 const filesToCache = [
     "/?v=f8d61c4",
-    "/android-chrome-192x192.png?v=b6d58eb",
-    "/android-chrome-512x512.png?v=4fb40cc",
-    "/apple-touch-icon.png?v=0d40906",
     "/archives/?v=7888c7c",
     "/author/ezequiel-leonardo-castano/?v=34beb95",
     "/author/ezequiel-leonardo-castano/page/2/?v=087b63b",
@@ -152,8 +149,6 @@ const filesToCache = [
     "/drafts/probability-world.html?v=a0760d3",
     "/extra/browserconfig.xml?v=8dbb903",
     "/extra/sw_template.js?v=4cee959",
-    "/favicon-16x16.png?v=80769f4",
-    "/favicon-32x32.png?v=9c2446b",
     "/favicon.ico?v=b758f8a",
     "/feeds/all-en.atom.xml?v=b25e6b5",
     "/feeds/all-es.atom.xml?v=97e2dc6",
@@ -204,8 +199,6 @@ const filesToCache = [
     "/lyrics-presentation/media_image.png?v=eccbe27",
     "/lyrics-presentation/pptx.js?v=c264150",
     "/lyrics-presentation/webl10n.min.js?v=8525916",
-    "/mstile-150x150.png?v=39af76c",
-    "/mstile-310x310.png?v=75805e8",
     "/page/2/?v=7dc5c07",
     "/pages/about/?v=7119713",
     "/pages/projects/?v=82c5386",
@@ -238,7 +231,7 @@ const filesToCache = [
     "/posts/times-tables/?v=d0978fe",
     "/safari-pinned-tab.svg?v=4686042",
     "/site.webmanifest?v=7ba4ab1",
-    "/sitemap.xml?v=9c12630",
+    "/sitemap.xml?v=494dfdb",
     "/tabubiblico/?v=4d48021",
     "/tabubiblico/android-chrome-192x192.png?v=26f8443",
     "/tabubiblico/android-chrome-384x384.png?v=cedeeac",
@@ -294,11 +287,7 @@ const filesToCache = [
     "/theme/images/Jupyter.svg?v=056bcc4",
     "/theme/images/PDF.svg?v=872b33e",
     "/theme/images/RevealJS.svg?v=eb946c8",
-    "/theme/js/scripts.js?v=29380c0",
-    "https://use.fontawesome.com/6af5d1a69f.css",
-    "https://use.fontawesome.com/6af5d1a69f.js",
-    "https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css",
-    "https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff2"
+    "/theme/js/scripts.js?v=29380c0"
 ]
 
 self.addEventListener('install', event => {
