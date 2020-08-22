@@ -236,24 +236,24 @@
 <p>This is the most important part and where <strong>NBInteract</strong> comes in. For all the previous steps we used online tools such as <strong>Github Gists</strong> and <strong>MyBinder</strong>. But for this step, <code>nbinteract</code> should be install.</p>
 <h3 id="installation"><a class="toclink" href="#installation">Installation</a></h3>
 <p>These are the installation instructions:</p>
-<div class="highlight "><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">nbinteract</span>
+<div class="highlight "><pre><span></span>pip install nbinteract
 
-<span class="o">#</span> <span class="n">The</span> <span class="k">next</span> <span class="n">two</span> <span class="n">lines</span> <span class="n">can</span> <span class="n">be</span> <span class="n">skipped</span> <span class="k">for</span> <span class="n">notebook</span> <span class="k">version</span> <span class="mi">5</span><span class="p">.</span><span class="mi">3</span> <span class="k">and</span> <span class="n">above</span>
-<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="c1">--py --sys-prefix widgetsnbextension</span>
-<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="c1">--py --sys-prefix bqplot</span>
-</code></pre></div>
+# The next two lines can be skipped for notebook version 5.3 and above
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+jupyter nbextension enable --py --sys-prefix bqplot
+</pre></div>
 
 
 <p>The steps for the installation could be found in its <a href="https://github.com/SamLau95/nbinteract" target="_blank">official repo</a>, make sure to check it in case there is an update.</p>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
 <p>The nbinteract is a command line application (CLI), so first navigate to the directory where the notebook file is and then run:</p>
-<div class="highlight "><pre><span></span><code><span class="err">nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}</span>
-</code></pre></div>
+<div class="highlight "><pre><span></span>nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}
+</pre></div>
 
 
 <p>This will create an HTML file with the same filename of the notebook, but as mentioned earlier, the current version of NBInteract (0.2.4 when writing this) only supports Github <em>Repositories</em> and not <em>Gists</em>.</p>
 <p>To fix this problem, just open the HTML file and look for this snippet (it should be at the end of the file):</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
@@ -271,11 +271,11 @@
         <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
     <span class="p">})()</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Only a small change is needed, change the <strong><code>provider</code></strong> from <strong><code>gh</code></strong> to <strong><code>gist</code></strong>. It should be something like this:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
@@ -293,7 +293,7 @@
         <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
     <span class="p">})()</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+</pre></div>
 
 
 <h3 id="adjustments"><a class="toclink" href="#adjustments">Adjustments</a></h3>
@@ -328,8 +328,8 @@
 </div>
 
 <p>If you want to embed this widget in your website, just add the following HTML:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
 
 
 <p>Read the <a href="https://elc.github.io/posts/ordinary-differential-equations-with-python" target="_blank">Full Article</a></p>
@@ -340,8 +340,8 @@
 </div>
 
 <p>If you want to embed this widget in your website, just add the following HTML:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
 
 
 <p>Read the <a href="https://elc.github.io/posts/times-tables" target="_blank">Full Article</a></p>
