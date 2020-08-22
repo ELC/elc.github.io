@@ -172,7 +172,7 @@
 <p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-edit.png"><img alt="Colab Edit" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-edit.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/colab-edit-thumbnail.png" width="484"></a></p>
 <p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-gpu.png"><img alt="Colab GPU" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-gpu.png" src="https://elc.github.io/posts/fastai-colab-deep-learning/images/fast-colab-deep-learning/colab-gpu-thumbnail.png" width="532"></a></p>
 <p>Since Fastai is not built in Colaboratory, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.</p>
-<div class="highlight "><pre><span></span>%%bash
+<div class="highlight "><pre><span></span><code>%%bash
 
 <span class="k">if</span> ! <span class="o">[</span> -d fastai <span class="o">]</span>
 <span class="k">then</span>
@@ -188,27 +188,27 @@ pip -q install .
 pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
 
 pip -q install torchvision
-</pre></div>
+</code></pre></div>
 
 
 <p>Now we can import fastai with all its modules</p>
-<div class="highlight "><pre><span></span><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.transforms</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.conv_learner</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.model</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.dataset</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.sgdr</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.plots</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>And we are ready to go! You can check that the GPU is enabled with the following command:</p>
-<div class="highlight "><pre><span></span><span class="n">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: {torch.cuda.is_available() and torch.backends.cudnn.enabled}&#39;</span>
-</pre></div>
+<div class="highlight "><pre><span></span><code><span class="sa">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">enabled</span><span class="si">}</span><span class="s1">&#39;</span>
+</code></pre></div>
 
 
 <p>And if you want to check exactly how much Video RAM you have you can run the following snippet:</p>
-<div class="highlight "><pre><span></span><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+<div class="highlight "><pre><span></span><code><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">gputil</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">psutil</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">humanize</span>
@@ -216,16 +216,16 @@ pip -q install torchvision
 <span class="kn">import</span> <span class="nn">psutil</span>
 <span class="kn">import</span> <span class="nn">humanize</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">GPUtil</span> <span class="kn">as</span> <span class="nn">GPU</span>
+<span class="kn">import</span> <span class="nn">GPUtil</span> <span class="k">as</span> <span class="nn">GPU</span>
 
 <span class="n">GPUs</span> <span class="o">=</span> <span class="n">GPU</span><span class="o">.</span><span class="n">getGPUs</span><span class="p">()</span>
 <span class="n">gpu</span> <span class="o">=</span> <span class="n">GPUs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Number of GPUs: {len(GPUs)}&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Gen RAM Free: {humanize.naturalsize( psutil.virtual_memory().available )} | Proc size: {humanize.naturalsize( process.memory_info().rss)}&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: {0:.0f}MB | Used: {1:.0f}MB | Util {2:3.0f}% | Total {3:.0f}MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of GPUs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">GPUs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gen RAM Free: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">available</span> <span class="p">)</span><span class="si">}</span><span class="s2"> | Proc size: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: </span><span class="si">{0:.0f}</span><span class="s2">MB | Used: </span><span class="si">{1:.0f}</span><span class="s2">MB | Util </span><span class="si">{2:3.0f}</span><span class="s2">% | Total </span><span class="si">{3:.0f}</span><span class="s2">MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
+</code></pre></div>
 
 
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>

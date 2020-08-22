@@ -177,13 +177,13 @@
 <p>After reading all the previous posts and some of the <a href="https://pythonhosted.org/PyInstaller/" target="_blank">PyInstaller docs</a>. I found that some people actually solved it! But, the solution they propose was editing the spec file, which is generated after a first run of PyInstaller. I thought that solution was a hack and not the proper way to achieve what I wanted.</p>
 <p>So I tried to understand what the changes in the spec file did and it turned out that that changes was to copy the folders Flask uses into the file directory/file (Actually one of the proposed solutions was build and then copy paste the folders, but besides being unpractical it wouldn't work with one file builds). After a little reasearch, I came across the command line arguments to achieve the same.</p>
 <p>Windows:</p>
-<div class="highlight "><pre><span></span>pyinstaller -w -F --add-data &quot;templates;templates&quot; --add-data &quot;static;static&quot; app.py
-</pre></div>
+<div class="highlight "><pre><span></span><code><span class="err">pyinstaller -w -F --add-data &quot;templates;templates&quot; --add-data &quot;static;static&quot; app.py</span>
+</code></pre></div>
 
 
 <p>Linux (NOT TESTED):</p>
-<div class="highlight "><pre><span></span>pyinstaller -w -F --add-data &quot;templates:templates&quot; --add-data &quot;static:static&quot; app.py
-</pre></div>
+<div class="highlight "><pre><span></span><code><span class="err">pyinstaller -w -F --add-data &quot;templates:templates&quot; --add-data &quot;static:static&quot; app.py</span>
+</code></pre></div>
 
 
 <p>This will create a folder <code>dist</code> with our executable ready to be shipped. The executable will open the main window of our app.</p>
@@ -191,8 +191,8 @@
 <p>There is no simple solution to the size problem but some suggestions are proposed in a <a href="#the-size-problem">following section</a>.</p>
 <h2 id="tutorial"><a class="toclink" href="#tutorial">Tutorial</a></h2>
 <p>If you haven't already, install it with pip (if you use virtual environments you should install it inside it)</p>
-<div class="highlight "><pre><span></span>pip install pyinstaller
-</pre></div>
+<div class="highlight "><pre><span></span><code><span class="err">pip install pyinstaller</span>
+</code></pre></div>
 
 
 <p>Some parameters to consider:</p>
