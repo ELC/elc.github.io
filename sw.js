@@ -1,4 +1,4 @@
-const version = "9bef902";
+const version = "91405eb";
 const currentCacheName = `ELCWEB-${version}`;
 const filesToCache = [
     "/?v=e0a5468",
@@ -342,7 +342,7 @@ const filesToCache = [
     "/posts/times-tables/images/times_tables/times-tables-headerimage-thumbnail.png?v=3df5cb0",
     "/safari-pinned-tab.svg?v=4686042",
     "/site.webmanifest?v=7ba4ab1",
-    "/sitemap.xml?v=1afd8c5",
+    "/sitemap.xml?v=f6f3a15",
     "/tabubiblico/?v=4d48021",
     "/tabubiblico/android-chrome-192x192.png?v=26f8443",
     "/tabubiblico/android-chrome-384x384.png?v=cedeeac",
