@@ -132,7 +132,7 @@
   <section>
     <!-- Status: draft -->
 
-<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-simulation-headerimage.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-simulation-headerimage.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/elevator-simulation-headerimage-thumbnail.png" width="1920"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-simulation-headerimage.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-simulation-headerimage.png" src="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage-thumbnail.png" width="1920"></a></p>
 
 
 <p>In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best.</p>
@@ -151,7 +151,7 @@
 <h2 id="context"><a class="toclink" href="#context">Context</a></h2>
 <p>I study at the "Universidad Tecnológica Nacional (UTN)" also translated as (National Technological University), it has several buildings but the biggest is the main one. There are 5 different departments, Mechanical Engineering, Chemistry Engineering, Electric Engineering, Civil Engineering, and Information Systems Engineering, each department has its own floor. The building has 5 floors and one underground level. The building is old, preserving the really high ceilings and the long stairs common in the time of construction, making the elevators a must. There are two elevators but only one goes to the fourth and fifth floor.</p>
 <p>To better represent the distribution, the blueprints were used (with permission):</p>
-<p><a class="gallery" href="./blog/images/elevator-simulation/floor-distribution.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/floor-distribution.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/floor-distribution-thumbnail.png" width="1202"></a></p>
+<p><a class="gallery" href="./blog/images/elevator-simulation/floor-distribution.png"><img alt="Elevator Header Image" class="b-lazy" data-src="/blog/images/elevator-simulation/floor-distribution.png" src="https://elc.github.io/blog/images/elevator-simulation/floor-distribution-thumbnail.png" width="1202"></a></p>
 <h2 id="problem"><a class="toclink" href="#problem">Problem</a></h2>
 <p>The university has approximately 1000 students (first year aside), and for two elevators in the rush hour, it is natural to think that long queues will form. In my fourth year, I had the chance to experiment and try to fix this situation, most people believe that the long queues are due to the internal logic of the elevator so I thought, what if we change that? As a result, with another two classmates, we decided to test several alternatives.</p>
 <p>But before trying new alternatives, we had to identify how to the elevator is working now.</p>
@@ -186,7 +186,7 @@
 <p>All of the previous allow us to introduce a more specific problem: The GF queue. The main objective of the simulation will be reducing as much as possible both the length of the queue and the waiting time of the GF since this is the scenario where there is the lowest tolerance.</p>
 <p>It is also necessary to mention that since the tolerance is too low, an auxiliary system should be modeled too since many of the users will "abandon" the queue and use the stairs instead.</p>
 <p>The behavior of the students is represented in the following diagram:</p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/student-behavior.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/student-behavior.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/student-behavior-thumbnail.jpg" width="1752"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/student-behavior.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/student-behavior.jpg" src="https://elc.github.io/blog/images/elevator-simulation/student-behavior-thumbnail.jpg" width="1752"></a></p>
 <h2 id="model"><a class="toclink" href="#model">Model</a></h2>
 <p>There are different types of simulation but for this particular situation, we choose "Agent-Based", since it is natural to think the elevators and the students as two agents interacting with each other.</p>
 <p>When talking about Agents and how they interact, a tool called "State Machines" is used. This artifact models the possible "states" of a particular agent and "transitions" which are how the agent goes from one state to the other</p>
@@ -216,7 +216,7 @@
 <li>Destination Floor: Floor of the currently served Request.</li>
 </ul>
 <p>The state machine of this agent is the following:</p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-state-machine.jpg"><img alt="Elevator State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-state-machine.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/elevator-state-machine-thumbnail.jpg" width="1374"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/elevator-state-machine.jpg"><img alt="Elevator State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/elevator-state-machine.jpg" src="https://elc.github.io/blog/images/elevator-simulation/elevator-state-machine-thumbnail.jpg" width="1374"></a></p>
 <p>Where there are two main states:</p>
 <ul>
 <li>Waiting: The elevator is stopped at a certain floor, it could be loading/unloading people, empty or full.</li>
@@ -235,7 +235,7 @@
 <li>Destination Floor: Floor the student is willing to go.</li>
 </ul>
 <p>The state machine of the students is the following:</p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/pedestrian-state-machine.jpg"><img alt="Student State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/pedestrian-state-machine.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/pedestrian-state-machine-thumbnail.jpg" width="1346"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/pedestrian-state-machine.jpg"><img alt="Student State Machine" class="b-lazy" data-src="/blog/images/elevator-simulation/pedestrian-state-machine.jpg" src="https://elc.github.io/blog/images/elevator-simulation/pedestrian-state-machine-thumbnail.jpg" width="1346"></a></p>
 <p>Each student has 3 possible states:</p>
 <ul>
 <li>Walking: When the user is neither inside the elevator or waiting in a queue</li>
@@ -245,12 +245,12 @@
 <h3 id="the-experiment"><a class="toclink" href="#the-experiment">The Experiment</a></h3>
 <p>Once everything is set up in the software, a set of experiments are run and then statistical methods are used to determine which alternative is the best (with a certain level of confidence). This post was more of the "theory" behind the model but to really understand how it works I recommend you to play with the demo available in the next section.</p>
 <p>Among the five alternatives, it was necessary to identify which were the worsts, so both the average length and the average waiting time were calculated, each with its confidence interval. Resulting in the following:</p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/stats-01.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-01.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-01-thumbnail.png" width="1054"></a></p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/stats-02.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-02.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-02-thumbnail.png" width="1039"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-01.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-01.png" src="https://elc.github.io/blog/images/elevator-simulation/stats-01-thumbnail.png" width="1054"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-02.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-02.png" src="https://elc.github.io/blog/images/elevator-simulation/stats-02-thumbnail.png" width="1039"></a></p>
 <p>Looking at the confidence interval of the waiting time, it is evident that FIFO and ALT2 were the worst and the other 3 options are quite similar. That's why Ranking and Selection was used to discern which was the best, increasing the sample size and the final result was the following (now the % of people leaving the queue is added):</p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/stats-03.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-03.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-03-thumbnail.png" width="928"></a></p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/stats-04.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-04.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-04-thumbnail.png" width="928"></a></p>
-<p><a class="gallery" href="/blog/images/elevator-simulation/stats-05.png"><img alt="Leaving the Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-05.png" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/stats-05-thumbnail.png" width="928"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-03.png"><img alt="Length of Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-03.png" src="https://elc.github.io/blog/images/elevator-simulation/stats-03-thumbnail.png" width="928"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-04.png"><img alt="Waiting Time" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-04.png" src="https://elc.github.io/blog/images/elevator-simulation/stats-04-thumbnail.png" width="928"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/stats-05.png"><img alt="Leaving the Queue" class="b-lazy" data-src="/blog/images/elevator-simulation/stats-05.png" src="https://elc.github.io/blog/images/elevator-simulation/stats-05-thumbnail.png" width="928"></a></p>
 <h2 id="demo"><a class="toclink" href="#demo">Demo</a></h2>
 <p>This is the final result, the initial menu is in Spanish but the rest of the GUI is in English. In case you can't run it you can go to the <a href="#screenshots">screenshots</a> section to see how it looks like and then run the model from a PC.</p>
 <div class="iframe-container" style="padding-top: 71%">
@@ -276,19 +276,19 @@
 <h2 id="screenshots"><a class="toclink" href="#screenshots">Screenshots</a></h2>
 <p>The following are some screenshots of the running model</p>
 <h3 id="main-screen"><a class="toclink" href="#main-screen">Main Screen</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part1.jpg"><img alt="Main Screen" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part1.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part1-thumbnail.jpg" width="1439"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part1.jpg"><img alt="Main Screen" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part1.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part1-thumbnail.jpg" width="1439"></a></p>
 <h3 id="elevator-control-panel"><a class="toclink" href="#elevator-control-panel">Elevator Control Panel</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part2.jpg"><img alt="Elevator Panel" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part2.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part2-thumbnail.jpg" width="1440"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part2.jpg"><img alt="Elevator Panel" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part2.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part2-thumbnail.jpg" width="1440"></a></p>
 <h3 id="student-behavior"><a class="toclink" href="#student-behavior">Student Behavior</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part3.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part3.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part3-thumbnail.jpg" width="1440"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part3.jpg"><img alt="Student Behavior" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part3.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part3-thumbnail.jpg" width="1440"></a></p>
 <h3 id="2d-view"><a class="toclink" href="#2d-view">2D View</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part4.jpg"><img alt="2D View" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part4.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part4-thumbnail.jpg" width="1441"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part4.jpg"><img alt="2D View" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part4.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part4-thumbnail.jpg" width="1441"></a></p>
 <h3 id="2d-view-with-flow-density"><a class="toclink" href="#2d-view-with-flow-density">2D View with Flow Density</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part5.jpg"><img alt="2D View with Flow Density" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part5.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part5-thumbnail.jpg" width="1439"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part5.jpg"><img alt="2D View with Flow Density" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part5.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part5-thumbnail.jpg" width="1439"></a></p>
 <h3 id="waiting-time-histogram"><a class="toclink" href="#waiting-time-histogram">Waiting Time Histogram</a></h3>
-<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part6.jpg"><img alt="Waiting Time Histogram" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part6.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part6-thumbnail.jpg" width="1440"></a></p>
+<p><a class="gallery" href="/blog/images/elevator-simulation/simulation-part6.jpg"><img alt="Waiting Time Histogram" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part6.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part6-thumbnail.jpg" width="1440"></a></p>
 <h3 id="number-of-people-vs-time-multiple-graphs"><a class="toclink" href="#number-of-people-vs-time-multiple-graphs">Number of people vs Time (Multiple graphs)</a></h3>
-<p><a class="gallery" href="./blog/images/elevator-simulation/simulation-part7.jpg"><img alt="Number of people multi-graph" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part7.jpg" src="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic/images/elevator-simulation/simulation-part7-thumbnail.jpg" width="1439"></a></p>
+<p><a class="gallery" href="./blog/images/elevator-simulation/simulation-part7.jpg"><img alt="Number of people multi-graph" class="b-lazy" data-src="/blog/images/elevator-simulation/simulation-part7.jpg" src="https://elc.github.io/blog/images/elevator-simulation/simulation-part7-thumbnail.jpg" width="1439"></a></p>
 <h2 id="additional-resources"><a class="toclink" href="#additional-resources">Additional Resources</a></h2>
 <ul>
 <li><a href="https://www.anylogic.com/" target="_blank">AnyLogic Official Website</a>: Here you can see the software features, case studies and examples.</li>

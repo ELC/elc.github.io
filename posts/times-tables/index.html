@@ -130,7 +130,7 @@
 
 
   <section>
-    <p><a class="gallery" href="/blog/images/times_tables/times-tables-headerimage.png"><img alt="Times Table Header Image" class="b-lazy" data-src="/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/posts/times-tables/images/times_tables/times-tables-headerimage-thumbnail.png" width="1120"></a></p>
+    <p><a class="gallery" href="/blog/images/times_tables/times-tables-headerimage.png"><img alt="Times Table Header Image" class="b-lazy" data-src="/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage-thumbnail.png" width="1120"></a></p>
 
 
 <p>After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!</p>
@@ -141,7 +141,7 @@
 
 <p>These animations were made using Wolfram Mathematica, but in Python, there are enough tools to achieve the same.</p>
 <p>This is the results built with Python:</p>
-<p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/posts/times-tables/images/times_tables/times-tables-2-100-thumbnail.png" width="613"></p>
+<p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="613"></p>
 <p>Now I will examine the code used to produced the previous image and also how to create animations, there will be a <a href="#notebook"><strong>link to a online notebook</strong></a> in case you want to experiment yourself. In this post I will show you several scenarios:</p>
 <ul>
 <li>Static Version (as the one seen above)</li>
@@ -262,7 +262,7 @@
 </code></pre></div>
 
 
-<p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/posts/times-tables/images/times_tables/times-tables-2-100-thumbnail.png" width="900"></p>
+<p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="900"></p>
 <h2 id="parametric-version"><a class="toclink" href="#parametric-version">Parametric Version</a></h2>
 <p>One approach is to manually change the <code>factor</code> and <code>points</code> variables and then just execute the cell/funtion again but since Jupyter provides support for interaction, a more user friendly approach can be used through Sliders (a built in UI of IPython). Here the function <code>plot_parametric</code> is exactly the same as <code>plot_static</code> but it uses <code>plt.show()</code> at the end to plot the image. Here the image is also static but can be change moving the sliders to either side.</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_parametric</span><span class="p">(</span><span class="n">Factor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
