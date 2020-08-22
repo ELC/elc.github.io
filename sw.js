@@ -1,4 +1,4 @@
-const version = "eef1861";
+const version = "00c8c7a";
 const currentCacheName = `ELCWEB-${version}`;
 const filesToCache = [
     "/?v=f8d61c4",
@@ -238,7 +238,7 @@ const filesToCache = [
     "/posts/times-tables/?v=d0978fe",
     "/safari-pinned-tab.svg?v=4686042",
     "/site.webmanifest?v=7ba4ab1",
-    "/sitemap.xml?v=9678729",
+    "/sitemap.xml?v=9c12630",
     "/tabubiblico/?v=4d48021",
     "/tabubiblico/android-chrome-192x192.png?v=26f8443",
     "/tabubiblico/android-chrome-384x384.png?v=cedeeac",
@@ -295,9 +295,10 @@ const filesToCache = [
     "/theme/images/PDF.svg?v=872b33e",
     "/theme/images/RevealJS.svg?v=eb946c8",
     "/theme/js/scripts.js?v=29380c0",
-    "https://use.fontawesome.com/6af5d1a69f.js?v=c05de38",
-    "https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css?v=0e947d3",
-    "https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff2?v=8ea1d1d"
+    "https://use.fontawesome.com/6af5d1a69f.css",
+    "https://use.fontawesome.com/6af5d1a69f.js",
+    "https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css",
+    "https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff2"
 ]
 
 self.addEventListener('install', event => {
