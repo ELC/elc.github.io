@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pelican = "*"
-Markdown = "*"
-invoke = "*"
-pillow = "*"
+pelican = "==4.5.0"
+Markdown = "==3.2.2"
+invoke = "==1.4.1"
+pillow = "==7.2.0"
 
 [dev-packages]
-pylint = "*"
+pylint = "==2.6.0"
 
 [scripts]
 build = "invoke build"
