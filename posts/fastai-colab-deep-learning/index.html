@@ -203,7 +203,7 @@ pip -q install torchvision
 
 
 <p>And we are ready to go! You can check that the GPU is enabled with the following command:</p>
-<div class="highlight "><pre><span></span><span class="n">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: {torch.cuda.is_available() and torch.backends.cudnn.enabled}&#39;</span>
+<div class="highlight "><pre><span></span><span class="sa">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">enabled</span><span class="si">}</span><span class="s1">&#39;</span>
 </pre></div>
 
 
@@ -216,15 +216,15 @@ pip -q install torchvision
 <span class="kn">import</span> <span class="nn">psutil</span>
 <span class="kn">import</span> <span class="nn">humanize</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">GPUtil</span> <span class="kn">as</span> <span class="nn">GPU</span>
+<span class="kn">import</span> <span class="nn">GPUtil</span> <span class="k">as</span> <span class="nn">GPU</span>
 
 <span class="n">GPUs</span> <span class="o">=</span> <span class="n">GPU</span><span class="o">.</span><span class="n">getGPUs</span><span class="p">()</span>
 <span class="n">gpu</span> <span class="o">=</span> <span class="n">GPUs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Number of GPUs: {len(GPUs)}&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Gen RAM Free: {humanize.naturalsize( psutil.virtual_memory().available )} | Proc size: {humanize.naturalsize( process.memory_info().rss)}&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: {0:.0f}MB | Used: {1:.0f}MB | Util {2:3.0f}% | Total {3:.0f}MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of GPUs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">GPUs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gen RAM Free: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">available</span> <span class="p">)</span><span class="si">}</span><span class="s2"> | Proc size: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: </span><span class="si">{0:.0f}</span><span class="s2">MB | Used: </span><span class="si">{1:.0f}</span><span class="s2">MB | Util </span><span class="si">{2:3.0f}</span><span class="s2">% | Total </span><span class="si">{3:.0f}</span><span class="s2">MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
 </pre></div>
 
 

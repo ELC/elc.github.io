@@ -225,14 +225,14 @@
 <h4 id="directory-structure"><a class="toclink" href="#directory-structure">Directory Structure</a></h4>
 <p>Some tutorials use the pelican-quickstart command but personally I think it's much easier to define the structure yourself:</p>
 <p>Minimal structure</p>
-<div class="highlight "><pre><span></span>.
-├── .travis.yml
-├── conf.py
-├── requirements.txt
-└── content
-    ├── article1.md
-    └── pages
-        └── page1.md
+<div class="highlight "><pre><span></span><span class="err">.</span>
+<span class="err">├── .travis.yml</span>
+<span class="err">├── conf.py</span>
+<span class="err">├── requirements.txt</span>
+<span class="err">└── content</span>
+<span class="err">    ├── article1.md</span>
+<span class="err">    └── pages</span>
+<span class="err">        └── page1.md</span>
 </pre></div>
 
 
@@ -242,18 +242,18 @@
 - requirements.txt tells the interpreter which software is needed, it will be used by Travis and here you will write all your dependences (if none, just pelican and markdown)
 - Content is the folder where all the files will be stored, is you put a markdown file inside it will become an article and if it's inside the page subfolder, a page</p>
 <p>Complete structure</p>
-<div class="highlight "><pre><span></span>.
-├── .travis.yml
-├── .pyup.yml
-├── .gitignore
-├── README.md
-├── LICENSE
-├── conf.py
-├── requirements.txt
-└── content
-    ├── article1.md
-    └── pages
-        └── page1.md
+<div class="highlight "><pre><span></span><span class="err">.</span>
+<span class="err">├── .travis.yml</span>
+<span class="err">├── .pyup.yml</span>
+<span class="err">├── .gitignore</span>
+<span class="err">├── README.md</span>
+<span class="err">├── LICENSE</span>
+<span class="err">├── conf.py</span>
+<span class="err">├── requirements.txt</span>
+<span class="err">└── content</span>
+<span class="err">    ├── article1.md</span>
+<span class="err">    └── pages</span>
+<span class="err">        └── page1.md</span>
 </pre></div>
 
 
@@ -300,10 +300,10 @@ markdown
 <span class="c1"># Server</span>
 
 <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;username&gt;.github.io/&#39;</span>
-<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;&lt;Your name&gt;&#39;</span>
 <span class="n">SITENAME</span> <span class="o">=</span> <span class="s1">&#39;&lt;Your site name&gt;&#39;</span>
-<span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
 <span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;&lt;Your TimeZone&gt;&#39;</span>
 <span class="c1"># find it here:  https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>

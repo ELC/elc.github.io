@@ -236,18 +236,18 @@
 <p>This is the most important part and where <strong>NBInteract</strong> comes in. For all the previous steps we used online tools such as <strong>Github Gists</strong> and <strong>MyBinder</strong>. But for this step, <code>nbinteract</code> should be install.</p>
 <h3 id="installation"><a class="toclink" href="#installation">Installation</a></h3>
 <p>These are the installation instructions:</p>
-<div class="highlight "><pre><span></span>pip install nbinteract
+<div class="highlight "><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nbinteract</span>
 
-# The next two lines can be skipped for notebook version 5.3 and above
-jupyter nbextension enable --py --sys-prefix widgetsnbextension
-jupyter nbextension enable --py --sys-prefix bqplot
+<span class="o">#</span> <span class="n">The</span> <span class="k">next</span> <span class="n">two</span> <span class="n">lines</span> <span class="n">can</span> <span class="n">be</span> <span class="n">skipped</span> <span class="k">for</span> <span class="n">notebook</span> <span class="k">version</span> <span class="mi">5</span><span class="p">.</span><span class="mi">3</span> <span class="k">and</span> <span class="n">above</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="c1">--py --sys-prefix widgetsnbextension</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="c1">--py --sys-prefix bqplot</span>
 </pre></div>
 
 
 <p>The steps for the installation could be found in its <a href="https://github.com/SamLau95/nbinteract" target="_blank">official repo</a>, make sure to check it in case there is an update.</p>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
 <p>The nbinteract is a command line application (CLI), so first navigate to the directory where the notebook file is and then run:</p>
-<div class="highlight "><pre><span></span>nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}
+<div class="highlight "><pre><span></span><span class="err">nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}</span>
 </pre></div>
 
 
