@@ -11,6 +11,8 @@ from __future__ import unicode_literals
 import re
 import collections
 import os.path
+import json
+import re
 
 from datetime import datetime
 from logging import warning, info
@@ -54,6 +56,15 @@ def format_date(date):
         tz = "-00:00"
     return date.strftime("%Y-%m-%dT%H:%M:%S") + tz
 
+datetime_format = "%Y-%m-%d"
+datetime_format_regex = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+
+def datetime_parser(dct):
+    for k, v in dct.items():
+        if isinstance(v, str) and datetime_format_regex.match(v):
+            dct[k] = datetime.strptime(v, datetime_format)
+    return dct
+
 class SitemapGenerator(object):
 
     def __init__(self, context, settings, path, theme, output_path, *null):
@@ -83,6 +94,14 @@ class SitemapGenerator(object):
         }
 
         self.sitemapExclude = []
+
+        sitemap_external_json = settings.get('SITEMAP_EXTERNAL', "")
+
+        self.externals_url = {}
+
+        if sitemap_external_json:
+            with open(sitemap_external_json) as f:
+                self.externals_url = json.load(f, object_hook=datetime_parser)
 
         config = settings.get('SITEMAP', {})
 
@@ -133,7 +152,7 @@ class SitemapGenerator(object):
                 warning("sitemap plugin: SITEMAP['changefreqs'] must be a dict")
                 warning("sitemap plugin: using the default values")
 
-    def write_url(self, page, fd):
+    def write_url(self, page, fd, external=False):
 
         if getattr(page, 'status', 'published') != 'published':
             return
@@ -142,11 +161,11 @@ class SitemapGenerator(object):
             return
 
         # We can disable categories/authors/etc by using False instead of ''
-        if not page.save_as:
+        if not page.save_as and not external:
             return
 
         page_path = os.path.join(self.output_path, page.save_as)
-        if not os.path.exists(page_path):
+        if not os.path.exists(page_path) and not external:
             return
 
         lastdate = getattr(page, 'date', self.now)
@@ -258,6 +277,13 @@ class SitemapGenerator(object):
 
             for page in pages:
                 self.write_url(page, fd)
+
+            for page_data in self.externals_url.values():
+                fake = FakePage(status='published',
+                                date=page_data['date'],
+                                url=page_data['url'],
+                                save_as=" ")
+                self.write_url(fake, fd, external=True)
 
             if self.format == 'xml':
                 fd.write(XML_FOOTER)

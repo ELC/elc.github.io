@@ -101,16 +101,18 @@ PLUGINS = [
 SITEMAP = {
     'format': 'xml',
     'priorities': {
-        'articles': 0.99,
-        'indexes': 0.5,
+        'articles': 0.75,
+        'indexes': 1,
         'pages': 0.5
     },
     'changefreqs': {
-        'articles': 'daily',
+        'articles': 'weekly',
         'indexes': 'daily',
         'pages': 'monthly'
     }
 }
+
+SITEMAP_EXTERNAL = 'sitemap_external.json'
 
 # Math Plugin
 
