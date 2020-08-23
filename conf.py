@@ -202,7 +202,7 @@ SOCIAL = (
 
 SHORTENER_FILE = "shortener.json"
 SHORTENER_FOLDER = "link"
-SHORTENER_SKIP_FOLDER = ['cv', 'cv-ref', 'portfolio']
+SHORTENER_SKIP_FOLDER = ['cv', 'cv-ref', 'portfolio', 'research']
 
 # Cache Busting
 
