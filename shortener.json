@@ -51,6 +51,11 @@
 
     "soporte-jupyter": "https://mybinder.org/v2/gh/ELC/utn-jupyter-tutorial/master?filepath=Presentation.ipynb",
 
-    "vias": "https://docs.google.com/document/d/1Z1jxJKie895-RNhK4kEG2dHuK6o6T1-jsTlnsgXc6ZU/export?format=pdf"
+    "vias": "https://docs.google.com/document/d/1Z1jxJKie895-RNhK4kEG2dHuK6o6T1-jsTlnsgXc6ZU/export?format=pdf",
+
+    "EMSS-Slides": "https://docs.google.com/presentation/d/1h5itlg0KLjE2CJIPmOCM684BGwirqBPWyFHDGmaclj8/edit",
+    "EMSS-Code": "https://mybinder.org/v2/gist/ELC/6a0f1716bc39d0ef21285722f0c57bd3/master",
+    "EMSS-Paper": "https://www.cal-tek.eu/proceedings/i3m/2020/emss/033/pdf",
+    "EMSS-Dataset": "https://doi.org/10.5281/zenodo.3929778"
 
 }
