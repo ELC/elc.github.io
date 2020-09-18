@@ -5,21 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/</loc>
-<lastmod>2020-09-18T23:29:18-00:00</lastmod>
+<lastmod>2020-09-18T23:32:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
 <loc>https://elc.github.io/about/</loc>
-<lastmod>2020-09-18T23:29:18-00:00</lastmod>
+<lastmod>2020-09-18T23:32:58-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://elc.github.io/projects/</loc>
-<lastmod>2020-09-18T23:29:18-00:00</lastmod>
+<lastmod>2020-09-18T23:32:58-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://elc.github.io/publications/</loc>
+<lastmod>2020-09-18T23:32:58-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
