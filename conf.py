@@ -134,7 +134,6 @@ DEFAULT_LANG = 'en'
 LANG_MESSAGES = {
     'en': 'English',
     'es': 'Español',
-    'de': 'Deutsch',
 }
 
 # Directories Layout
@@ -156,11 +155,11 @@ ARTICLE_LANG_SAVE_AS = 'posts/{slug}/{lang}/index.html'
 ARCHIVES_URL = 'archives/'
 ARCHIVES_SAVE_AS = 'archives/index.html'
 
-PAGE_URL = 'pages/{slug}/'
-PAGE_SAVE_AS = 'pages/{slug}/index.html'
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
 
-PAGE_LANG_URL = 'pages/{slug}/{lang}'
-PAGE_LANG_SAVE_AS = 'pages/{slug}/{lang}/index.html'
+PAGE_LANG_URL = '{slug}/{lang}'
+PAGE_LANG_SAVE_AS = '{slug}/{lang}/index.html'
 
 YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
