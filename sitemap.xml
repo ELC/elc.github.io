@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/</loc>
-<lastmod>2020-09-18T23:32:58-00:00</lastmod>
+<lastmod>2020-09-20T08:40:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
 <loc>https://elc.github.io/about/</loc>
-<lastmod>2020-09-18T23:32:58-00:00</lastmod>
+<lastmod>2020-09-20T08:40:50-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://elc.github.io/projects/</loc>
-<lastmod>2020-09-18T23:32:58-00:00</lastmod>
+<lastmod>2020-09-20T08:40:50-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://elc.github.io/publications/</loc>
-<lastmod>2020-09-18T23:32:58-00:00</lastmod>
+<lastmod>2020-09-20T08:40:50-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -349,6 +349,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://elc.github.io/lyrics-presentation</loc>
 <lastmod>2019-05-29T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>https://elc.github.io/interactive-optimization</loc>
+<lastmod>2020-09-20T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
