@@ -112,6 +112,8 @@ def create_service_worker(sender):
 
         hasher = hashlib.md5()
 
+        repo_extensions_ignore = [".md", "LICENSE"]
+
         # External Repos
         for repo_name, repo_data in external_cache['repos'].items():
             owner = repo_data.get('owner', "ELC")
@@ -128,7 +130,10 @@ def create_service_worker(sender):
                 files = {f"/{repo_name}/{data_item['path']}":data_item['download_url'] for data_item in data}
 
                 for filename, url in files.items():
-                    if url is None:
+                    
+                    is_in_ignore = any(filename.endswith(suffix) for suffix in repo_extensions_ignore) 
+
+                    if url is None or is_in_ignore:
                         continue
 
                     with urllib.request.urlopen(url, timeout=10) as f:
