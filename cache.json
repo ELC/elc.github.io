@@ -8,12 +8,7 @@
             "branch": "gh-pages"
         },
         "lyrics-presentation": {},
-        "interactive-optimization": {},
-        "systems-optimization-methods": {},
-        "quasi-newton-method": {},
-        "levenberg-marquardt-method": {},
-        "gradient-descent-method": {},
-        "newton-method-multi-variable": {}
+        "interactive-optimization": {}
     },
     "URLs": []
 }
