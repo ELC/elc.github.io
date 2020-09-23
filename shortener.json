@@ -57,6 +57,8 @@
     "EMSS-Slides": "https://docs.google.com/presentation/d/1h5itlg0KLjE2CJIPmOCM684BGwirqBPWyFHDGmaclj8/edit",
     "EMSS-Code": "https://mybinder.org/v2/gist/ELC/6a0f1716bc39d0ef21285722f0c57bd3/master",
     "EMSS-Paper": "https://www.cal-tek.eu/proceedings/i3m/2020/emss/033/pdf",
-    "EMSS-Dataset": "https://doi.org/10.5281/zenodo.3929778"
+    "EMSS-Dataset": "https://doi.org/10.5281/zenodo.3929778",
+
+    "Slides-Pelican": "https://docs.google.com/presentation/d/1-46Ma-gom69zERgPGS4M7d0tajz2bvymrnaltiVWj1Y/edit?usp=sharing"
 
 }
