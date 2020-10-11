@@ -59,6 +59,9 @@
     "EMSS-Paper": "https://www.cal-tek.eu/proceedings/i3m/2020/emss/033/pdf",
     "EMSS-Dataset": "https://doi.org/10.5281/zenodo.3929778",
 
-    "Slides-Pelican": "https://docs.google.com/presentation/d/1-46Ma-gom69zERgPGS4M7d0tajz2bvymrnaltiVWj1Y/edit?usp=sharing"
+    "Slides-Pelican": "https://docs.google.com/presentation/d/1-46Ma-gom69zERgPGS4M7d0tajz2bvymrnaltiVWj1Y/edit?usp=sharing",
+    
+    "Pelican-Tutorial-0": "https://github.com/ELC/python-tutorial/blob/es/chapter0/chapter0.md",
+    "Pelican-Tutorial-1": "https://github.com/ELC/python-tutorial/blob/es/chapter1.py"
 
 }
