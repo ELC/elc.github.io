@@ -115,11 +115,50 @@ def create_service_worker(sender):
         repo_extensions_ignore = [".md", "LICENSE"]
 
         # External Repos
+        token = None
+        try:
+            from github import Github
+            GITHUB_API = True
+            token = os.environ.get("GITHUB_ACCESS", None)
+        except:
+            if token is not None:
+                print("GITHUB Library NOT INSTALLED")
+            else:
+                print("NO GITHUB TOKEN WAS PROVIDED")
+            GITHUB_API = False
+            token = None
+
+        if GITHUB_API and token is not None:
+            g = Github(token)
+
+            for repo_name, repo_data in external_cache['repos'].items():
+                owner = repo_data.get('owner', "ELC")
+                branch = repo_data.get('branch', "master")
+                repo = g.get_user().get_repo(repo_name)
+                contents = repo.get_contents("", ref=branch)
+
+                while contents:
+                    file_content = contents.pop(0)
+                    if file_content.type == "dir":
+                        contents.extend(repo.get_contents(file_content.path, ref=branch))
+                        continue
+                    
+                    filename = f"/{repo_name}/{file_content.path}"
+                    
+                    if filename.endswith('index.html'):
+                        filename = filename[:-10]
+                    
+                    path = f'{filename}?v={file_content.sha[-7:]}'
+                    files_to_cache.append(path)
+
         for repo_name, repo_data in external_cache['repos'].items():
             owner = repo_data.get('owner', "ELC")
             branch = repo_data.get('branch', "master")
             folders = repo_data.get('folders', [])
             folders += [''] # Root Folder
+
+            if GITHUB_API and token is not None:
+                break
 
             for folder in folders:
                 url = f"https://api.github.com/repos/{owner}/{repo_name}/contents/{folder}?ref={branch}"
