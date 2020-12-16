@@ -1,0 +1,48 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: source
+
+  workflow_dispatch:
+  repository_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+          
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: Install Pipenv
+        run: pip install pipenv
+      
+      - name: Install Dependencies
+        env:
+          PIPENV_IGNORE_VIRTUALENVS: 1
+          PIPENV_VENV_IN_PROJECT: 1
+        run: |
+          pipenv install --ignore-pipfile --deploy
+          npm install -g sass
+      
+      - name: Build
+        env:
+          ENVIRONMENT: PRODUCTION
+        run: pipenv run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_branch: master
+          publish_dir: output
+          full_commit_message: ${{ github.event.head_commit.message }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
