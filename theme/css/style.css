@@ -74,7 +74,7 @@ a[href*="github.com"]:after {
 }
 .paginator_archive a {
   background-color: #004b85;
-  color: #B8B8B8;
+  color: #FCFCFC;
   text-decoration: none;
   font-weight: 300;
   transition: background-color 0.5s ease;
@@ -94,7 +94,7 @@ a[href*="github.com"]:after {
   background-color: #006cc1;
 }
 .paginator_active {
-  color: #B8B8B8;
+  color: #FCFCFC;
   text-decoration: none;
   background-color: #004b85;
   padding: 6px;
@@ -113,7 +113,7 @@ a[href*="github.com"]:after {
   display: inline;
 }
 .paginator a {
-  color: #B8B8B8;
+  color: #FCFCFC;
   text-decoration: none;
   background-color: #004b85;
   transition: background-color 0.5s ease;
@@ -139,7 +139,6 @@ a[href*="github.com"]:after {
   color: #B8B8B8;
   font-size: 16pt;
   padding: 20px 0 20px 0;
-  max-width: 900px;
 }
 .footer a {
   color: #B8B8B8;
@@ -156,6 +155,7 @@ a[href*="github.com"]:after {
   justify-content: space-evenly;
   margin: 0 auto 30px auto;
   flex-direction: column;
+  max-width: 900px;
 }
 @media only screen and (min-width: 425px) {
   .footer-container {
@@ -167,6 +167,7 @@ a[href*="github.com"]:after {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 .footer-container__column-header {
   font-weight: bold;
@@ -398,7 +399,7 @@ a[href*="github.com"]:after {
 }
 .article__button {
   text-align: center;
-  color: #B8B8B8;
+  color: #FCFCFC;
   text-decoration: none;
   background-color: #004b85;
   padding: 10px 25px;
@@ -579,7 +580,7 @@ a[href*="github.com"]:after {
 
 .newsletter-button {
   text-decoration: none;
-  color: #B8B8B8;
+  color: #FCFCFC;
   background-color: #004b85;
 }
 
@@ -591,7 +592,7 @@ a[href*="github.com"]:after {
 
 .email-button {
   text-decoration: none;
-  color: #B8B8B8;
+  color: #FCFCFC;
   background-color: #f44336;
 }
 
