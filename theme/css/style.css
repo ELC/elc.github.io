@@ -498,6 +498,7 @@ a[href*="github.com"]:after {
   box-sizing: border-box;
   flex-direction: column;
   margin-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 0.1rem solid #333333aa;
 }
 @media only screen and (min-width: 1024px) {
@@ -627,7 +628,7 @@ a[href*="github.com"]:after {
   right: 4vw;
   z-index: 1;
   background-color: #333;
-  color: #E8E8E8;
+  color: #FCFCFC;
   text-align: center;
   font-size: 12pt;
   border-radius: 40px;
