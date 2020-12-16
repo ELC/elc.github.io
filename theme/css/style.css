@@ -43,7 +43,7 @@ a[href*="github.com"]:after {
   }
 }
 .paginator_disabled {
-  color: black;
+  color: #333333;
   background-color: #fcfcfc !important;
   padding: 6px;
 }
@@ -73,8 +73,8 @@ a[href*="github.com"]:after {
   }
 }
 .paginator_archive a {
-  background-color: #055899;
-  color: white;
+  background-color: #004b85;
+  color: #B8B8B8;
   text-decoration: none;
   font-weight: 300;
   transition: background-color 0.5s ease;
@@ -91,12 +91,12 @@ a[href*="github.com"]:after {
   }
 }
 .paginator_archive a:hover {
-  background-color: #007bdd;
+  background-color: #006cc1;
 }
 .paginator_active {
-  color: white;
+  color: #B8B8B8;
   text-decoration: none;
-  background-color: #007bdd;
+  background-color: #004b85;
   padding: 6px;
 }
 @media (min-width: 425px) {
@@ -113,9 +113,9 @@ a[href*="github.com"]:after {
   display: inline;
 }
 .paginator a {
-  color: white;
+  color: #B8B8B8;
   text-decoration: none;
-  background-color: #055899;
+  background-color: #004b85;
   transition: background-color 0.5s ease;
   padding: 6px;
 }
@@ -130,30 +130,31 @@ a[href*="github.com"]:after {
   }
 }
 .paginator a:hover {
-  background-color: #007bdd;
+  background-color: #006cc1;
 }
 
 .footer {
-  background-color: #000;
+  background-color: #111111;
   text-align: center;
-  color: white;
+  color: #B8B8B8;
   font-size: 16pt;
   padding: 20px 0 20px 0;
+  max-width: 900px;
 }
 .footer a {
-  color: #9b9b9b;
+  color: #B8B8B8;
   text-decoration: none;
   font-weight: 500;
   transition: color 1s ease;
 }
 .footer a:hover {
-  color: white;
+  color: #E8E8E8;
   transition: color 1s ease;
 }
 .footer-container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;
   flex-direction: column;
 }
 @media only screen and (min-width: 425px) {
@@ -169,7 +170,7 @@ a[href*="github.com"]:after {
 }
 .footer-container__column-header {
   font-weight: bold;
-  margin: 25px 0 0px;
+  margin: 25px 0 0;
 }
 @media only screen and (min-width: 425px) {
   .footer-container__column-header {
@@ -255,7 +256,7 @@ a[href*="github.com"]:after {
 }
 .article .headerimage-article,
 .page .headerimage-article {
-  box-shadow: inset 0px 0px 10px 15px #FCFCFC;
+  box-shadow: inset 0px 0px 10px 15px #fcfcfc;
 }
 .article .headerimage-article img,
 .page .headerimage-article img {
@@ -326,12 +327,12 @@ a[href*="github.com"]:after {
 
 .article section a,
 .page a {
-  color: #0E5996;
+  color: #004b85;
   text-decoration: none;
 }
 .article section a:hover,
 .page a:hover {
-  color: #0f8bef;
+  color: #006cc1;
   transition: color 0.5s ease;
 }
 
@@ -343,7 +344,7 @@ a[href*="github.com"]:after {
   font-size: 22pt;
 }
 .article__header a {
-  color: black;
+  color: #333333;
   text-decoration: none;
 }
 .article-complete {
@@ -384,7 +385,7 @@ a[href*="github.com"]:after {
   }
 }
 .article__category {
-  color: #0E5996;
+  color: #004b85;
   text-decoration: none;
   padding: 5px;
   font-size: 14pt;
@@ -392,14 +393,14 @@ a[href*="github.com"]:after {
   transition: color 0.5s ease;
 }
 .article__category:hover {
-  color: #0f8bef;
+  color: #006cc1;
   transition: color 0.5s ease;
 }
 .article__button {
   text-align: center;
-  color: white;
+  color: #B8B8B8;
   text-decoration: none;
-  background-color: #0E5996;
+  background-color: #004b85;
   padding: 10px 25px;
   align-self: flex-end;
   box-sizing: border-box;
@@ -414,7 +415,7 @@ a[href*="github.com"]:after {
   }
 }
 .article__button:hover {
-  background-color: #2e8cd8;
+  background-color: #006cc1;
   transition: background-color 0.5s ease;
 }
 .article__subheader {
@@ -467,10 +468,10 @@ a[href*="github.com"]:after {
   text-align: left;
 }
 .article__translations a {
-  color: #0E5996 !important;
+  color: #004b85 !important;
 }
 .article__translations a:hover {
-  color: #0f8bef;
+  color: #E8E8E8;
   transition: color 0.5s ease;
 }
 
@@ -489,16 +490,14 @@ a[href*="github.com"]:after {
 }
 .article-related-title {
   margin: 0 0 10px 0;
-  color: #0E5996;
+  color: #004b85;
 }
 .article-related-post {
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  background-color: white;
   margin-bottom: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 15px;
+  border-bottom: 0.1rem solid #333333aa;
 }
 @media only screen and (min-width: 1024px) {
   .article-related-post {
@@ -507,7 +506,7 @@ a[href*="github.com"]:after {
   }
 }
 .article-related-post-link {
-  flex: 6 1 0;
+  flex: 5 1 0;
   align-self: center;
 }
 .article-related-post-link-img {
@@ -527,7 +526,7 @@ a[href*="github.com"]:after {
   text-align: center;
 }
 .article-related-post-body-title a {
-  color: #2196F3 !important;
+  color: #004b85 !important;
   text-decoration: none;
 }
 .article-related-post-body-description {
@@ -549,7 +548,7 @@ a[href*="github.com"]:after {
 }
 .share a {
   text-decoration: none;
-  color: white !important;
+  color: #B8B8B8 !important;
 }
 .share img {
   margin: 0;
@@ -580,19 +579,19 @@ a[href*="github.com"]:after {
 
 .newsletter-button {
   text-decoration: none;
-  color: white;
-  background-color: #0e5996;
+  color: #B8B8B8;
+  background-color: #004b85;
 }
 
 .contribute-button {
   text-decoration: none;
-  color: white;
+  color: #B8B8B8;
   background-color: #333333;
 }
 
 .email-button {
   text-decoration: none;
-  color: white;
+  color: #B8B8B8;
   background-color: #f44336;
 }
 
@@ -627,7 +626,7 @@ a[href*="github.com"]:after {
   right: 4vw;
   z-index: 1;
   background-color: #333;
-  color: #fff;
+  color: #E8E8E8;
   text-align: center;
   font-size: 12pt;
   border-radius: 40px;
