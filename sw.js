@@ -1,4 +1,4 @@
-const version = "6cf4eb8";
+const version = "76c6e4a";
 const currentCacheName = `ELCWEB-${version}`;
 const filesToCache = [
     "/?v=0a7829a",
@@ -254,7 +254,7 @@ const filesToCache = [
     "/research/?v=a28eabb",
     "/safari-pinned-tab.svg?v=4686042",
     "/site.webmanifest?v=7ba4ab1",
-    "/sitemap.xml?v=4606a65",
+    "/sitemap.xml?v=991be9f",
     "/tabubiblico/?v=4d48021",
     "/tabubiblico/android-chrome-192x192.png?v=26f8443",
     "/tabubiblico/android-chrome-384x384.png?v=cedeeac",
