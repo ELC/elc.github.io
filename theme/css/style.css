@@ -696,10 +696,10 @@ a[href*="github.com"]:after {
   padding: 25px 0;
 }
 .article-loop {
-  padding: 10px 0 55px;
+  padding: 10px 0 35px;
   border-bottom: 0.2rem solid #555;
 }
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 1024px) {
   .article-loop {
     padding: 10px 40px 55px;
   }
@@ -803,7 +803,7 @@ a[href*="github.com"]:after {
   .article__metadata-item {
     display: inline-block;
     wrap: nowrap;
-    margin: 0 5px 0;
+    margin-right: 10px;
     font-size: 14pt;
   }
 }
