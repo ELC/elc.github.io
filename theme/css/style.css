@@ -486,8 +486,18 @@ a[href*="github.com"]:after {
   background-color: #111111;
   text-align: center;
   color: #B8B8B8;
-  font-size: 16pt;
+  font-size: 12pt;
   padding: 20px 0 20px 0;
+}
+@media only screen and (min-width: 768px) {
+  .footer {
+    font-size: 14pt;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .footer {
+    font-size: 16pt;
+  }
 }
 .footer a {
   color: #B8B8B8;
