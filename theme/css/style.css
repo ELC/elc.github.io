@@ -810,6 +810,7 @@ a[href*="github.com"]:after {
 }
 .article__translations {
   text-align: left;
+  margin-bottom: 10px;
 }
 .article__translations a {
   color: #004b85 !important;
