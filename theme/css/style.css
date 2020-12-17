@@ -352,6 +352,7 @@ table div {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #fcfcfc;
+  color: #222222;
   margin: 0;
 }
 
@@ -391,7 +392,7 @@ a[href*="github.com"]:after {
   }
 }
 .paginator_disabled {
-  color: #333333;
+  color: #222222;
   background-color: #fcfcfc !important;
   padding: 6px;
 }
@@ -689,7 +690,7 @@ a[href*="github.com"]:after {
   font-size: 22pt;
 }
 .article__header a {
-  color: #333333;
+  color: #222222;
   text-decoration: none;
 }
 .article-complete {
