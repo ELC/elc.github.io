@@ -773,7 +773,7 @@ a[href*="github.com"]:after {
   line-height: 100%;
   white-space: nowrap;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .article__subheader {
     display: flex;
     align-items: center;
@@ -787,7 +787,7 @@ a[href*="github.com"]:after {
   justify-content: space-evenly;
   margin-bottom: 10px;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .article__metadata {
     margin: 0;
   }
@@ -1210,7 +1210,7 @@ iframe {
   .nav-menu__entry a {
     font-size: 18pt;
     margin: 0;
-    padding: 15px 30px;
+    padding: 15px;
   }
 }
 @media (min-width: 768px) {
