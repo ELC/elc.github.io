@@ -21,8 +21,9 @@ else:
     SITEURL = 'http://localhost:5500'
     RELATIVE_URLS = True
 
+COPYRIGHT_YEAR = 2020
 AUTHOR = 'Ezequiel Leonardo Castaño'
-AUTHOR_EMAIL = 'skielcast@gmail.com'
+AUTHOR_EMAIL = 'castanoezequielleonardo@gmail.com'
 AUTHOR_AVATAR = r'https://i.imgur.com/6xypjCl.png'
 SITESUBTITLE = 'Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math'
 SITENAME = 'Ezequiel Leonardo Castaño Personal Website'
