@@ -193,13 +193,13 @@ $$</div>
 <h3 id="code"><a class="toclink" href="#code">Code</a></h3>
 <p>Now I will comment part by part the code used, at the end of this section, I will place the full code for easy copy/paste</p>
 <h4 id="function-definition"><a class="toclink" href="#function-definition">Function Definition</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ration</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
 </code></pre></div>
 
 
 <p>First, we defined a function called <code>main</code> for easier use of <code>interact</code> which will produce the interactive widget. After that, all the constants are calculated, in this case <code>saving_limit</code> which is analogous to <span class="math">\(s\)</span> in the equation.</p>
 <h4 id="ode-specifics"><a class="toclink" href="#ode-specifics">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ration</span> <span class="o">*</span> <span class="n">initial_salary</span>
+<div class="highlight "><pre><span></span><code><span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ratio</span> <span class="o">*</span> <span class="n">initial_salary</span>
 
 <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">capital</span> <span class="o">&lt;=</span> <span class="n">saving_limit</span><span class="p">:</span>
