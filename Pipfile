@@ -7,7 +7,7 @@ name = "pypi"
 pelican = "==4.5.0"
 Markdown = "==3.2.2"
 invoke = "==1.4.1"
-pillow = "==7.2.0"
+pillow = "==8.2.0"
 pygithub = "==1.53"
 
 [dev-packages]
