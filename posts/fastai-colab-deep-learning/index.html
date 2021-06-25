@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -169,7 +169,6 @@ pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux
 pip -q install torchvision
 </code></pre></div>
 
-
 <p>Now we can import fastai with all its modules</p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.transforms</span> <span class="kn">import</span> <span class="o">*</span>
@@ -180,11 +179,9 @@ pip -q install torchvision
 <span class="kn">from</span> <span class="nn">fastai.plots</span> <span class="kn">import</span> <span class="o">*</span>
 </code></pre></div>
 
-
 <p>And we are ready to go! You can check that the GPU is enabled with the following command:</p>
 <div class="highlight "><pre><span></span><code><span class="sa">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">enabled</span><span class="si">}</span><span class="s1">&#39;</span>
 </code></pre></div>
-
 
 <p>And if you want to check exactly how much Video RAM you have you can run the following snippet:</p>
 <div class="highlight "><pre><span></span><code><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
@@ -205,7 +202,6 @@ pip -q install torchvision
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gen RAM Free: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">available</span> <span class="p">)</span><span class="si">}</span><span class="s2"> | Proc size: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: </span><span class="si">{0:.0f}</span><span class="s2">MB | Used: </span><span class="si">{1:.0f}</span><span class="s2">MB | Util </span><span class="si">{2:3.0f}</span><span class="s2">% | Total </span><span class="si">{3:.0f}</span><span class="s2">MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
 </code></pre></div>
-
 
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>It is indeed possible to do Deep Learning with GPU without paying nothing, we just have to wait until the right set of technologies is available.</p>
@@ -373,7 +369,7 @@ pip -q install torchvision
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -209,29 +209,27 @@
 <p>Use your favourite text editor (notepad or similar, NOT MS Word) and open these files</p>
 <p>.travis.yml</p>
 <p>In this file you should change the following line and replace /<username> with your github username:</p>
-<div class="highlight "><pre><span></span><code><span class="p">...</span>
+<div class="highlight "><pre><span></span><code>...
 
-<span class="n">deploy</span><span class="p">:</span>
-    <span class="p">...</span>
-    <span class="n">repo</span><span class="p">:</span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span>
-    <span class="p">...</span>
+deploy:
+    ...
+    repo:&lt;username&gt;/&lt;username&gt;.github.io
+    ...
 </code></pre></div>
-
 
 <p>Now you should open this file</p>
 <p>conf.py</p>
 <p>And change these lines with the data of your website</p>
-<div class="highlight "><pre><span></span><code><span class="err">...</span>
-<span class="err">SITEURL = &#39;https://&lt;username&gt;.github.io/&#39;</span>
-<span class="err">...</span>
-<span class="err">AUTHOR = &#39;&lt;Your name&gt;&#39;</span>
-<span class="err">SITENAME = &#39;&lt;Your site name&gt;&#39;</span>
-<span class="err">...</span>
-<span class="err">TIMEZONE = &#39;&lt;Your TimeZone&gt;&#39;</span>
-<span class="err"># find it here:  https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
-<span class="err">...</span>
+<div class="highlight "><pre><span></span><code>...
+SITEURL = &#39;https://&lt;username&gt;.github.io/&#39;
+...
+AUTHOR = &#39;&lt;Your name&gt;&#39;
+SITENAME = &#39;&lt;Your site name&gt;&#39;
+...
+TIMEZONE = &#39;&lt;Your TimeZone&gt;&#39;
+# find it here:  https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+...
 </code></pre></div>
-
 
 <p>Addicionally we should configure TravisCI</p>
 <p>$GITHUB_TOKEN is a public token you have associated with your GitHub account, you should <a href="https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token">set it on the Travis CI Repository settings</a></p>
@@ -361,7 +359,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

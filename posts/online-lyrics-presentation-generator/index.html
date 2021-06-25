@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -225,7 +225,6 @@
 <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h3 id="main-function"><a class="toclink" href="#main-function">Main Function</a></h3>
 <p>The <code>createPPT</code> function is the main function which is called whenever the "Generate Presentation" Button is clicked. It performs the following actions:</p>
 <ol>
@@ -251,7 +250,6 @@
     <span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h4 id="template-definition"><a class="toclink" href="#template-definition">Template Definition</a></h4>
 <p>In order to achieve a consistent style, a template should be used. In my own experience, black background with white letters gives the best results. To define a Template the method <code>defineSlideMaster</code>. Its parameters corresponds to achieving slides with the following characteristics:</p>
@@ -294,7 +292,6 @@
 <span class="p">});</span>
 </code></pre></div>
 
-
 <h4 id="text-extraction"><a class="toclink" href="#text-extraction">Text Extraction</a></h4>
 <p>Once the template is defined, the text should be extracted, to achieved this a very common practice is used in JS. Just referenced the element by a given ID and then extract its value. In this case the element is a TextArea defined in HTML5</p>
 <p>The resulting code is the following:</p>
@@ -302,7 +299,6 @@
 
 <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span>
 </code></pre></div>
-
 
 <h4 id="add-slide"><a class="toclink" href="#add-slide">Add Slide</a></h4>
 <p>After extracting the text, it should be parsed and then a new slide should be added for each verse.</p>
@@ -319,7 +315,6 @@
 <span class="p">});</span>
 </code></pre></div>
 
-
 <h3 id="parsing"><a class="toclink" href="#parsing">Parsing</a></h3>
 <p>One would never know what the user would write, and, in order to support several languages (specially those with special characters), it is important to use a separator that works universally, in this case the blank line will separate two verses and the three dashes (---) will separate songs.</p>
 <p>In order to ignore several blank lines and then split a regular expression and then the <code>split</code> method is used.</p>
@@ -327,7 +322,6 @@
     <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h3 id="create-slide"><a class="toclink" href="#create-slide">Create Slide</a></h3>
 <p>Each slide will have a different text so to create a slide one should provide the engine (in this case the library <code>pptx</code>) and the text to be inserted (the <code>text</code> argument), then the new slide is created using the predefined template, after that the text in upper case is added using the placeholder defined in the template.</p>
@@ -339,14 +333,12 @@
 <span class="p">}</span>
 </code></pre></div>
 
-
 <h3 id="clear-text-button"><a class="toclink" href="#clear-text-button">Clear Text Button</a></h3>
 <p>In case the user wants to delete everything in the Lyrics Area, a button is provided, the functionality is overwriting the current content of the TextArea with an empty string.</p>
 <div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">clearText</span><span class="p">()</span> <span class="p">{</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h3 id="localization"><a class="toclink" href="#localization">Localization</a></h3>
 <p>This extra feature provides client-side localization via <a href="https://github.com/fabi1cazenave/webL10n" target="_blank">WebL10n</a>, each string of the web app is both available in English and Spanish, but more languages could be added in the future if needed.</p>
@@ -501,7 +493,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -159,23 +159,20 @@
 <p>After reading all the previous posts and some of the <a href="https://pythonhosted.org/PyInstaller/" target="_blank">PyInstaller docs</a>. I found that some people actually solved it! But, the solution they propose was editing the spec file, which is generated after a first run of PyInstaller. I thought that solution was a hack and not the proper way to achieve what I wanted.</p>
 <p>So I tried to understand what the changes in the spec file did and it turned out that that changes was to copy the folders Flask uses into the file directory/file (Actually one of the proposed solutions was build and then copy paste the folders, but besides being unpractical it wouldn't work with one file builds). After a little reasearch, I came across the command line arguments to achieve the same.</p>
 <p>Windows:</p>
-<div class="highlight "><pre><span></span><code><span class="err">pyinstaller -w -F --add-data &quot;templates;templates&quot; --add-data &quot;static;static&quot; app.py</span>
+<div class="highlight "><pre><span></span><code>pyinstaller -w -F --add-data &quot;templates;templates&quot; --add-data &quot;static;static&quot; app.py
 </code></pre></div>
-
 
 <p>Linux (NOT TESTED):</p>
-<div class="highlight "><pre><span></span><code><span class="err">pyinstaller -w -F --add-data &quot;templates:templates&quot; --add-data &quot;static:static&quot; app.py</span>
+<div class="highlight "><pre><span></span><code>pyinstaller -w -F --add-data &quot;templates:templates&quot; --add-data &quot;static:static&quot; app.py
 </code></pre></div>
-
 
 <p>This will create a folder <code>dist</code> with our executable ready to be shipped. The executable will open the main window of our app.</p>
 <p>It first started as a contribution for the <a href="https://elc.github.io/link/pyfladesk_repo" target="_blank">PyFladesk</a> project and then, I realize that since Qt is quite big, our executable were big too. The example app of that repository is 70 MB (much of which was the Qt Component for displaying HTML (WebEngine)). This is reasonable taking into account that we were shipping a self contain web browser.</p>
 <p>There is no simple solution to the size problem but some suggestions are proposed in a <a href="#the-size-problem">following section</a>.</p>
 <h2 id="tutorial"><a class="toclink" href="#tutorial">Tutorial</a></h2>
 <p>If you haven't already, install it with pip (if you use virtual environments you should install it inside it)</p>
-<div class="highlight "><pre><span></span><code><span class="err">pip install pyinstaller</span>
+<div class="highlight "><pre><span></span><code>pip install pyinstaller
 </code></pre></div>
-
 
 <p>Some parameters to consider:</p>
 <ul>
@@ -371,7 +368,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

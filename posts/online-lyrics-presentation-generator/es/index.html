@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -224,7 +224,6 @@
 <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h3 id="funcion-principal"><a class="toclink" href="#funcion-principal">Función principal</a></h3>
 <p>La función <code>createPPT</code> es la función principal que se llama cada vez que se hace clic en el botón "Generar presentación". Realiza las siguientes acciones:</p>
 <ol>
@@ -250,7 +249,6 @@
     <span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h4 id="definicion-de-plantilla"><a class="toclink" href="#definicion-de-plantilla">Definición de plantilla</a></h4>
 <p>Para lograr un estilo consistente, se debe utilizar una plantilla. Según mi propia experiencia, el fondo negro con letras blancas da los mejores resultados. Para definir una Plantilla se utiliza el método <code>defineSlideMaster</code>. Sus parámetros corresponden a la obtención de diapositivas con las siguientes características:</p>
@@ -294,7 +292,6 @@
 <span class="p">});</span>
 </code></pre></div>
 
-
 <h4 id="extraccion-de-texto"><a class="toclink" href="#extraccion-de-texto">Extracción de texto</a></h4>
 <p>Una vez definida la plantilla, se debe extraer el texto, para ello se utiliza una práctica muy común en JS. Simplemente se hace referencia al elemento mediante un ID determinado y luego se extrae su valor. En este caso el elemento es un TextArea definido en HTML5</p>
 <p>El código resultante es el siguiente:</p>
@@ -302,7 +299,6 @@
 
 <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span>
 </code></pre></div>
-
 
 <h4 id="anadir-diapositiva"><a class="toclink" href="#anadir-diapositiva">Añadir diapositiva</a></h4>
 <p>Después de extraer el texto, debe ser analizado y luego se debe agregar una nueva diapositiva para cada verso.</p>
@@ -319,7 +315,6 @@
 <span class="p">});</span>
 </code></pre></div>
 
-
 <h3 id="parsing"><a class="toclink" href="#parsing">Parsing</a></h3>
 <p>Uno nunca podría saber lo que el usuario escribiría, y, para soportar varios idiomas (especialmente aquellos con caracteres especiales), es importante usar un separador que funcione universalmente, en este caso la línea en blanco separará dos versos y los tres guiones (---) separarán las canciones.</p>
 <p>Para ignorar varias líneas en blanco y luego dividirla se utiliza una expresión regular y luego se usa el método <code>split</code>.</p>
@@ -327,7 +322,6 @@
     <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h3 id="crear-diapositiva"><a class="toclink" href="#crear-diapositiva">Crear diapositiva</a></h3>
 <p>Cada diapositiva tendrá un texto diferente, así que para crear una diapositiva se debe proporcionar el motor de presentación (en este caso la biblioteca <code>pptx</code>) y el texto a insertar (el argumento <code>text</code>), luego se crea la nueva diapositiva usando la plantilla predefinida, después de lo cual el texto en mayúsculas se añade usando el placeholder definido en la plantilla.</p>
@@ -339,14 +333,12 @@
 <span class="p">}</span>
 </code></pre></div>
 
-
 <h3 id="boton-borrar-texto"><a class="toclink" href="#boton-borrar-texto">Botón Borrar texto</a></h3>
 <p>En caso de que el usuario desee eliminar todo en el Área de letras, se proporciona un botón, la funcionalidad es sobrescribir el contenido actual del Área de texto con una cadena vacía.</p>
 <div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">clearText</span><span class="p">()</span> <span class="p">{</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h3 id="localizacion"><a class="toclink" href="#localizacion">Localización</a></h3>
 <p>Esta función adicional proporciona localización del lado del cliente a través de <a href="https://github.com/fabi1cazenave/webL10n" target="_blank">WebL10n</a>, cada cadena de caracteres de la aplicación web está disponible tanto en inglés como en español, pero se podrían añadir más idiomas en el futuro si fuera necesario.</p>
@@ -490,7 +482,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

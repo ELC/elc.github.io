@@ -112,7 +112,6 @@
 &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="funcion-principal"&gt;&lt;a class="toclink" href="#funcion-principal"&gt;Función principal&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;La función &lt;code&gt;createPPT&lt;/code&gt; es la función principal que se llama cada vez que se hace clic en el botón "Generar presentación". Realiza las siguientes acciones:&lt;/p&gt;
 &lt;ol&gt;
@@ -138,7 +137,6 @@
     &lt;span class="nx"&gt;pptx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Presentation - Created with ELCs Presentation Generator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="definicion-de-plantilla"&gt;&lt;a class="toclink" href="#definicion-de-plantilla"&gt;Definición de plantilla&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Para lograr un estilo consistente, se debe utilizar una plantilla. Según mi propia experiencia, el fondo negro con letras blancas da los mejores resultados. Para definir una Plantilla se utiliza el método &lt;code&gt;defineSlideMaster&lt;/code&gt;. Sus parámetros corresponden a la obtención de diapositivas con las siguientes características:&lt;/p&gt;
@@ -182,7 +180,6 @@
 &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4 id="extraccion-de-texto"&gt;&lt;a class="toclink" href="#extraccion-de-texto"&gt;Extracción de texto&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Una vez definida la plantilla, se debe extraer el texto, para ello se utiliza una práctica muy común en JS. Simplemente se hace referencia al elemento mediante un ID determinado y luego se extrae su valor. En este caso el elemento es un TextArea definido en HTML5&lt;/p&gt;
 &lt;p&gt;El código resultante es el siguiente:&lt;/p&gt;
@@ -190,7 +187,6 @@
 
 &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lyrics&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="anadir-diapositiva"&gt;&lt;a class="toclink" href="#anadir-diapositiva"&gt;Añadir diapositiva&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Después de extraer el texto, debe ser analizado y luego se debe agregar una nueva diapositiva para cada verso.&lt;/p&gt;
@@ -207,7 +203,6 @@
 &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="parsing"&gt;&lt;a class="toclink" href="#parsing"&gt;Parsing&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Uno nunca podría saber lo que el usuario escribiría, y, para soportar varios idiomas (especialmente aquellos con caracteres especiales), es importante usar un separador que funcione universalmente, en este caso la línea en blanco separará dos versos y los tres guiones (---) separarán las canciones.&lt;/p&gt;
 &lt;p&gt;Para ignorar varias líneas en blanco y luego dividirla se utiliza una expresión regular y luego se usa el método &lt;code&gt;split&lt;/code&gt;.&lt;/p&gt;
@@ -215,7 +210,6 @@
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\r\n]{3,}/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="crear-diapositiva"&gt;&lt;a class="toclink" href="#crear-diapositiva"&gt;Crear diapositiva&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Cada diapositiva tendrá un texto diferente, así que para crear una diapositiva se debe proporcionar el motor de presentación (en este caso la biblioteca &lt;code&gt;pptx&lt;/code&gt;) y el texto a insertar (el argumento &lt;code&gt;text&lt;/code&gt;), luego se crea la nueva diapositiva usando la plantilla predefinida, después de lo cual el texto en mayúsculas se añade usando el placeholder definido en la plantilla.&lt;/p&gt;
@@ -227,14 +221,12 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="boton-borrar-texto"&gt;&lt;a class="toclink" href="#boton-borrar-texto"&gt;Botón Borrar texto&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;En caso de que el usuario desee eliminar todo en el Área de letras, se proporciona un botón, la funcionalidad es sobrescribir el contenido actual del Área de texto con una cadena vacía.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;clearText&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lyrics&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="localizacion"&gt;&lt;a class="toclink" href="#localizacion"&gt;Localización&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Esta función adicional proporciona localización del lado del cliente a través de &lt;a href="https://github.com/fabi1cazenave/webL10n" target="_blank"&gt;WebL10n&lt;/a&gt;, cada cadena de caracteres de la aplicación web está disponible tanto en inglés como en español, pero se podrían añadir más idiomas en el futuro si fuera necesario.&lt;/p&gt;
@@ -751,7 +743,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Koch-Snowflake_450x450.mp4" type="video/mp4"&gt;
@@ -766,7 +757,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 4&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -783,7 +773,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Crystal_450x450.mp4" type="video/mp4"&gt;
@@ -798,7 +787,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -815,7 +803,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Box-Fractal_450x450.mp4" type="video/mp4"&gt;
@@ -830,7 +817,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 16&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -847,7 +833,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Sierpinski-Arrowhead_450x450.mp4" type="video/mp4"&gt;
@@ -862,7 +847,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 8&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -879,7 +863,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Board_450x450.mp4" type="video/mp4"&gt;
@@ -894,7 +877,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 4&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -911,7 +893,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Rings_450x450.mp4" type="video/mp4"&gt;
@@ -926,7 +907,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -943,7 +923,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;36&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Pentaplexity_450x450.mp4" type="video/mp4"&gt;
@@ -958,7 +937,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 3&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -975,7 +953,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Peano-Gosper-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -991,7 +968,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Sierpinski-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -1006,7 +982,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 9&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1024,7 +999,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Quadratic-Gosper_450x450.mp4" type="video/mp4"&gt;
@@ -1039,7 +1013,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 8&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1056,7 +1029,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Hilberts-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -1071,7 +1043,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1088,7 +1059,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Peano-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -1103,7 +1073,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1120,7 +1089,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Triangle_450x450.mp4" type="video/mp4"&gt;
@@ -1135,7 +1103,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 16&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1152,7 +1119,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/TerDragon-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -1168,7 +1134,6 @@
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Twin-Dragon-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -1183,7 +1148,6 @@
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 15&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -1243,11 +1207,9 @@
     &lt;span class="n"&gt;wn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exitonclick&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="explicacion-del-codigo"&gt;&lt;a class="toclink" href="#explicacion-del-codigo"&gt;Explicación del Código&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;turtle&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Lo primero que necesitamos hacer es importar el módulo Turtle&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_l_system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axiom&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1262,7 +1224,6 @@
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;end_string&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Luego lo que necesitamos es generar el Sistema L que será el conjunto de instrucciones para Turtle. Definimos una función llamada &lt;code&gt;create_l_system&lt;/code&gt; que recibe el número de iteraciones, el axioma y las reglas de producción. Comienza con el axioma y utiliza una variable auxiliar llamada &lt;code&gt;end_string&lt;/code&gt;, si la iteración es igual a 0, retorna el axioma ya que algunos fractales pueden ser graficados con iteraciones iguales a 0. Se asume que las reglas con un diccionario así que la clave será única y representa al símbolo mientras que el valor representa con que símbolos debe ser remplazado. Se concatenan todos los remplazos para cada símbolo y luego se acaba con la cadena para la próxima iteración.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;draw_l_system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -1273,7 +1234,6 @@
         &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Posteriormente definimos &lt;code&gt;draw_l_system&lt;/code&gt; que recibe a Turtle, un conjunto de instrucciones (la salida del sistema L), un ángulo para girar tanto a la derecha como a la izquiera y la longitud de cada línea individual. Luego se tiene una simple estructura elif para cada uno de los comandos definidos anteriormente.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axiom&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_offset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -1299,7 +1259,6 @@
     &lt;span class="n"&gt;wn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exitonclick&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Finalmente se tiene una función &lt;code&gt;main&lt;/code&gt; que recibe todos los parámetros que necesita para la generación del Sistema L así como &lt;code&gt;y_offset&lt;/code&gt;, &lt;code&gt;x_offset&lt;/code&gt;, &lt;code&gt;offset_angle&lt;/code&gt;, &lt;code&gt;width&lt;/code&gt; y &lt;code&gt;height&lt;/code&gt;. Los primeros tres representan la traslación de Turtle, esto es sencillamente para posicionar el gráfico en el lugar deseado del lienzo.&lt;/p&gt;
 &lt;p&gt;La función primeramente genera el conjunto de instrucciones y lo guarda en &lt;code&gt;inst&lt;/code&gt; y luego inicializa Turtle y la Screen, lo posiciona en el lugar definido y luego grafica las instrucciones, por último, espera al evento click para cerrarse.&lt;/p&gt;
 &lt;h2 id="consideraciones-especiales"&gt;&lt;a class="toclink" href="#consideraciones-especiales"&gt;Consideraciones Especiales&lt;/a&gt;&lt;/h2&gt;
@@ -1310,15 +1269,11 @@
 &lt;div class="youtube-container"&gt;
     &lt;iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/f6ra024-ASY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
     &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;p&gt;&lt;strong&gt;3Blue1Brown&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="youtube-container"&gt;
     &lt;iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/gB9n2gHsHN4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
     &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;h2 id="fuente-y-referencias"&gt;&lt;a class="toclink" href="#fuente-y-referencias"&gt;Fuente y Referencias&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Este post fue inspirado por &lt;a href="http://mathworld.wolfram.com/LindenmayerSystem.html" target="_blank"&gt;un post de Math World&lt;/a&gt;, por el &lt;a href="http://paulbourke.net/fractals/lsys/" target="_blank"&gt;blog de Paul Broke&lt;/a&gt; y por un trabajo práctico para la materia de Algoritmos Genéticos.&lt;/p&gt;</content><category term="Programming"></category><category term="Python"></category><category term="Fractals"></category><category term="Turtle"></category></entry></feed>

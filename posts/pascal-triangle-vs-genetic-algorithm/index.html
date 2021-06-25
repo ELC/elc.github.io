@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -145,7 +145,6 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> <span class="c1"># Only required for Jupyter</span>
 </code></pre></div>
 
-
 <h3 id="pascal-triangle"><a class="toclink" href="#pascal-triangle">Pascal Triangle</a></h3>
 <p>Secondly, define the proper functions to create a Pascal triangle, since for every frame only the last row is represented, a separate function that returns only that row is generated, to avoid unnecessary array manipulation. Additionally since many frames could be asked, it's important to cache the intermediate results since every pascal triangle is build based on the previous one, for this purpose a technique named memoization is used and this is the reason of why pascal_triangle is a recursive function.</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">memoize</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
@@ -168,7 +167,6 @@
 <span class="k">def</span> <span class="nf">pascal_last_row</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pascal_triangle</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-
 
 <h3 id="animation-function"><a class="toclink" href="#animation-function">Animation Function</a></h3>
 <p>Thirdly, Matplotlib asks a function to animate which will generate each frame. For this purpose each frame is generated, adding extra white space to the sides when needed and returning a blank image for the 0 frame</p>
@@ -202,7 +200,6 @@
     <span class="k">return</span> <span class="n">im</span><span class="p">,</span>
 </code></pre></div>
 
-
 <h3 id="animation-video"><a class="toclink" href="#animation-video">Animation Video</a></h3>
 <p>Finally, the main part of the script is where the crucial variables are defined such as the number of frames and the width of the window.</p>
 <div class="highlight "><pre><span></span><code><span class="n">frames</span> <span class="o">=</span> <span class="mi">20</span>
@@ -231,7 +228,6 @@
 <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span> <span class="c1"># Only required for Jupyter, replace this line with plt.show() for scripts</span>
 </code></pre></div>
 
-
 <h3 id="export"><a class="toclink" href="#export">Export</a></h3>
 <p>As a bonus, if the animation is needed as a separate file, ffmpeg can be used through Matplotlib to generate the corresponding mp4 file</p>
 <div class="highlight "><pre><span></span><code><span class="n">Writer</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">writers</span><span class="p">[</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">]</span>
@@ -239,7 +235,6 @@
 
 <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;im.mp4&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h2 id="final-result"><a class="toclink" href="#final-result">Final Result</a></h2>
 <p>As seen at the beginning the previous code resulted in the following animation:</p>
@@ -419,7 +414,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->

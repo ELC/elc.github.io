@@ -112,7 +112,6 @@
 &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="main-function"&gt;&lt;a class="toclink" href="#main-function"&gt;Main Function&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The &lt;code&gt;createPPT&lt;/code&gt; function is the main function which is called whenever the "Generate Presentation" Button is clicked. It performs the following actions:&lt;/p&gt;
 &lt;ol&gt;
@@ -138,7 +137,6 @@
     &lt;span class="nx"&gt;pptx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Presentation - Created with ELCs Presentation Generator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="template-definition"&gt;&lt;a class="toclink" href="#template-definition"&gt;Template Definition&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;In order to achieve a consistent style, a template should be used. In my own experience, black background with white letters gives the best results. To define a Template the method &lt;code&gt;defineSlideMaster&lt;/code&gt;. Its parameters corresponds to achieving slides with the following characteristics:&lt;/p&gt;
@@ -181,7 +179,6 @@
 &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4 id="text-extraction"&gt;&lt;a class="toclink" href="#text-extraction"&gt;Text Extraction&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Once the template is defined, the text should be extracted, to achieved this a very common practice is used in JS. Just referenced the element by a given ID and then extract its value. In this case the element is a TextArea defined in HTML5&lt;/p&gt;
 &lt;p&gt;The resulting code is the following:&lt;/p&gt;
@@ -189,7 +186,6 @@
 
 &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lyrics&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="add-slide"&gt;&lt;a class="toclink" href="#add-slide"&gt;Add Slide&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;After extracting the text, it should be parsed and then a new slide should be added for each verse.&lt;/p&gt;
@@ -206,7 +202,6 @@
 &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="parsing"&gt;&lt;a class="toclink" href="#parsing"&gt;Parsing&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;One would never know what the user would write, and, in order to support several languages (specially those with special characters), it is important to use a separator that works universally, in this case the blank line will separate two verses and the three dashes (---) will separate songs.&lt;/p&gt;
 &lt;p&gt;In order to ignore several blank lines and then split a regular expression and then the &lt;code&gt;split&lt;/code&gt; method is used.&lt;/p&gt;
@@ -214,7 +209,6 @@
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\r\n]{3,}/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="create-slide"&gt;&lt;a class="toclink" href="#create-slide"&gt;Create Slide&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Each slide will have a different text so to create a slide one should provide the engine (in this case the library &lt;code&gt;pptx&lt;/code&gt;) and the text to be inserted (the &lt;code&gt;text&lt;/code&gt; argument), then the new slide is created using the predefined template, after that the text in upper case is added using the placeholder defined in the template.&lt;/p&gt;
@@ -226,14 +220,12 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="clear-text-button"&gt;&lt;a class="toclink" href="#clear-text-button"&gt;Clear Text Button&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In case the user wants to delete everything in the Lyrics Area, a button is provided, the functionality is overwriting the current content of the TextArea with an empty string.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;clearText&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lyrics&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="localization"&gt;&lt;a class="toclink" href="#localization"&gt;Localization&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This extra feature provides client-side localization via &lt;a href="https://github.com/fabi1cazenave/webL10n" target="_blank"&gt;WebL10n&lt;/a&gt;, each string of the web app is both available in English and Spanish, but more languages could be added in the future if needed.&lt;/p&gt;
@@ -355,20 +347,18 @@
 &lt;p&gt;This is the most important part and where &lt;strong&gt;NBInteract&lt;/strong&gt; comes in. For all the previous steps we used online tools such as &lt;strong&gt;Github Gists&lt;/strong&gt; and &lt;strong&gt;MyBinder&lt;/strong&gt;. But for this step, &lt;code&gt;nbinteract&lt;/code&gt; should be install.&lt;/p&gt;
 &lt;h3 id="installation"&gt;&lt;a class="toclink" href="#installation"&gt;Installation&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;These are the installation instructions:&lt;/p&gt;
-&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;nbinteract&lt;/span&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;pip&lt;/span&gt; &lt;span class="nv"&gt;install&lt;/span&gt; &lt;span class="nv"&gt;nbinteract&lt;/span&gt;
 
-&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="k"&gt;next&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;skipped&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;notebook&lt;/span&gt; &lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;above&lt;/span&gt;
-&lt;span class="n"&gt;jupyter&lt;/span&gt; &lt;span class="n"&gt;nbextension&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="c1"&gt;--py --sys-prefix widgetsnbextension&lt;/span&gt;
-&lt;span class="n"&gt;jupyter&lt;/span&gt; &lt;span class="n"&gt;nbextension&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="c1"&gt;--py --sys-prefix bqplot&lt;/span&gt;
+# &lt;span class="nv"&gt;The&lt;/span&gt; &lt;span class="k"&gt;next&lt;/span&gt; &lt;span class="nv"&gt;two&lt;/span&gt; &lt;span class="nv"&gt;lines&lt;/span&gt; &lt;span class="nv"&gt;can&lt;/span&gt; &lt;span class="nv"&gt;be&lt;/span&gt; &lt;span class="nv"&gt;skipped&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;notebook&lt;/span&gt; &lt;span class="nv"&gt;version&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;.&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="nv"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;above&lt;/span&gt;
+&lt;span class="nv"&gt;jupyter&lt;/span&gt; &lt;span class="nv"&gt;nbextension&lt;/span&gt; &lt;span class="nv"&gt;enable&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;py&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;prefix&lt;/span&gt; &lt;span class="nv"&gt;widgetsnbextension&lt;/span&gt;
+&lt;span class="nv"&gt;jupyter&lt;/span&gt; &lt;span class="nv"&gt;nbextension&lt;/span&gt; &lt;span class="nv"&gt;enable&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;py&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nv"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;prefix&lt;/span&gt; &lt;span class="nv"&gt;bqplot&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;The steps for the installation could be found in its &lt;a href="https://github.com/SamLau95/nbinteract" target="_blank"&gt;official repo&lt;/a&gt;, make sure to check it in case there is an update.&lt;/p&gt;
 &lt;h3 id="usage"&gt;&lt;a class="toclink" href="#usage"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The nbinteract is a command line application (CLI), so first navigate to the directory where the notebook file is and then run:&lt;/p&gt;
-&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}&lt;/span&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nbinteract {notebook_filename}.ipynb -s {GitHub_UserName}/{Gist_ID}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This will create an HTML file with the same filename of the notebook, but as mentioned earlier, the current version of NBInteract (0.2.4 when writing this) only supports Github &lt;em&gt;Repositories&lt;/em&gt; and not &lt;em&gt;Gists&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;To fix this problem, just open the HTML file and look for this snippet (it should be at the end of the file):&lt;/p&gt;
@@ -392,7 +382,6 @@
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Only a small change is needed, change the &lt;strong&gt;&lt;code&gt;provider&lt;/code&gt;&lt;/strong&gt; from &lt;strong&gt;&lt;code&gt;gh&lt;/code&gt;&lt;/strong&gt; to &lt;strong&gt;&lt;code&gt;gist&lt;/code&gt;&lt;/strong&gt;. It should be something like this:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;setupNbinteract&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -413,7 +402,6 @@
     &lt;span class="p"&gt;})()&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="adjustments"&gt;&lt;a class="toclink" href="#adjustments"&gt;Adjustments&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Now the file is already prepared to be embedded as an HTML IFrame, but although that's technically true, we might want to make other adjustments:&lt;/p&gt;
@@ -450,7 +438,6 @@
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Read the &lt;a href="https://elc.github.io/posts/ordinary-differential-equations-with-python" target="_blank"&gt;Full Article&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="circular-times-table"&gt;&lt;a class="toclink" href="#circular-times-table"&gt;Circular Times Table&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Use NBInteract to produce a video with matplotlib animation and FFmpeg. The user can create an image and a video with the set of parameters of their choice and then save them.&lt;/p&gt;
@@ -461,7 +448,6 @@
 &lt;p&gt;If you want to embed this widget in your website, just add the following HTML:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Read the &lt;a href="https://elc.github.io/posts/times-tables" target="_blank"&gt;Full Article&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="additional-resources"&gt;&lt;a class="toclink" href="#additional-resources"&gt;Additional resources&lt;/a&gt;&lt;/h2&gt;
@@ -954,7 +940,6 @@
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/elevator-simulation/simulation-anylogic-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="conclusion"&gt;&lt;a class="toclink" href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Although the results were contrary to the expected, it is worth mentioning that there are some limitations to take into consideration, which may vary the final result such as:&lt;/p&gt;
 &lt;ul&gt;
@@ -1031,7 +1016,6 @@
 &lt;span class="n"&gt;slider_layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="economy-of-a-home"&gt;&lt;a class="toclink" href="#economy-of-a-home"&gt;Economy of a Home&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A home economy (family) has a fixed income at the beginning of some periodic interval (usually a month), there are also two kind of outcomes, fixed costs and extraordinary expenses, which are proportional to the money at the moment. Additionally, the family decides to set apart some proportion of the income just for fixed costs. This way, when the capital of the family is below this amount, the extraordinary expenses are 0.&lt;/p&gt;
 &lt;p&gt;The model has the following variables:&lt;/p&gt;
@@ -1064,13 +1048,11 @@ $$&lt;/div&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/home-economy-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="code"&gt;&lt;a class="toclink" href="#code"&gt;Code&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Now I will comment part by part the code used, at the end of this section, I will place the full code for easy copy/paste&lt;/p&gt;
 &lt;h4 id="function-definition"&gt;&lt;a class="toclink" href="#function-definition"&gt;Function Definition&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;initial_salary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;savings_ratio&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;extraordinary_expenses&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fixed_costs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;First, we defined a function called &lt;code&gt;main&lt;/code&gt; for easier use of &lt;code&gt;interact&lt;/code&gt; which will produce the interactive widget. After that, all the constants are calculated, in this case &lt;code&gt;saving_limit&lt;/code&gt; which is analogous to &lt;span class="math"&gt;\(s\)&lt;/span&gt; in the equation.&lt;/p&gt;
 &lt;h4 id="ode-specifics"&gt;&lt;a class="toclink" href="#ode-specifics"&gt;ODE Specifics&lt;/a&gt;&lt;/h4&gt;
@@ -1087,7 +1069,6 @@ $$&lt;/div&gt;
 
 &lt;span class="n"&gt;solution&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;odeint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;initial_salary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;A nested function is defined (there could be better ways to do this but I find this the simplest), this function is the differential equation, it should take two parameters and return the value of &lt;span class="math"&gt;\(\frac{\mathrm{d} x}{\mathrm{d} t}\)&lt;/span&gt;. The first parameter can be used as the current value of &lt;span class="math"&gt;\(x\)&lt;/span&gt; for a given &lt;span class="math"&gt;\(t\)&lt;/span&gt;. For the numerical integration &lt;a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html" target="_blank"&gt;&lt;code&gt;scipy.integrate.odeint&lt;/code&gt;&lt;/a&gt; is used and that's why this format is required. Using a nested function has the advantage that its name doesn't conflict with the outer scope of the function containing it and that it has access to all the parameters the outer function has, avoiding unnecessary indirection due to reference (If you know a better way to implement this, let me know in the comments).&lt;/p&gt;
 &lt;p&gt;Then the &lt;code&gt;time&lt;/code&gt; variable is defined and initialized, this will be the &lt;span class="math"&gt;\(t\)&lt;/span&gt; steps. We have basically two options here:&lt;/p&gt;
@@ -1128,7 +1109,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Next, the graphics part, here matplotlib is used and this snipped is specific to this library but I will explain it in order to be self-contained (although I might produce a matplotlib tutorial in the future).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: I know there are plenty of plotting libraries, and many even more elegant and powerful than matplotlib but for this use case, where the complexity lies in the differential equation and not in the graphic itself, I believe it is more than enough. For complex graphics such as statistics or big data, I would recommend another library such as &lt;a href="https://github.com/bloomberg/bqplot" target="_blank"&gt;&lt;strong&gt;bqplot&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;First we define a &lt;code&gt;figure&lt;/code&gt; and an &lt;code&gt;axes&lt;/code&gt; object, explicitly initializing the figure size through &lt;code&gt;figsize&lt;/code&gt;. Then a horizontal line with the label &lt;code&gt;Saving Limit&lt;/code&gt; is plot at the heigh of the &lt;code&gt;saving_limit&lt;/code&gt; and after that the solution is plot with the label &lt;code&gt;Capital(t)&lt;/code&gt;.&lt;/p&gt;
@@ -1142,7 +1122,6 @@ $$&lt;/div&gt;
                &lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Total Number of Days&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;slider_layout&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Finally, the code for the interaction, here the &lt;code&gt;interact&lt;/code&gt; function from &lt;a href="https://ipywidgets.readthedocs.io/en/stable/" target="_blank"&gt;&lt;code&gt;ipywidgets&lt;/code&gt;&lt;/a&gt; is used. A separate slider is used for each parameter with the default parameters set for a nice default visualization, with a description and the style and layout is used from the initialization cells.&lt;/p&gt;
 &lt;h3 id="full-code"&gt;&lt;a class="toclink" href="#full-code"&gt;Full code&lt;/a&gt;&lt;/h3&gt;
@@ -1198,7 +1177,6 @@ $$&lt;/div&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="sales-of-houses-and-air-conditionings"&gt;&lt;a class="toclink" href="#sales-of-houses-and-air-conditionings"&gt;Sales of Houses and Air Conditionings&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In a city there are houses and air conditionings (AC) for sale and it's known that these are complementary goods, which means that if the sales of one increase the sales of the other will also increase. The number of houses sales is proportional to the number of houses that weren't sold yet and the number of AC sales is proportional to the houses sold that doesn't yet have an AC.&lt;/p&gt;
 &lt;p&gt;The model has the following variables:&lt;/p&gt;
@@ -1234,7 +1212,6 @@ $$&lt;/div&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/houses-air_conditioning-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="code_1"&gt;&lt;a class="toclink" href="#code_1"&gt;Code&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In this scenario and the followings the code will be explain where it differs from the first example to avoid unnecesary repetition&lt;/p&gt;
 &lt;h4 id="ode-specifics_1"&gt;&lt;a class="toclink" href="#ode-specifics_1"&gt;ODE Specifics&lt;/a&gt;&lt;/h4&gt;
@@ -1251,14 +1228,12 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;solution&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;odeint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;initial_conditions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;In this case the constants &lt;code&gt;avg_time_house&lt;/code&gt; and &lt;code&gt;avg_time_ac&lt;/code&gt; are used directly inside the function since it is much clearer this way. To define a system of ODEs, first the initial condition should be a list, each element of the list represents the initial condition for each of the variables. The nested function also changes a bit, in order to work, the first parameter would also be a list so it is necessary to unpack it into the variables and then a variable &lt;code&gt;dydt&lt;/code&gt; is used (the &lt;code&gt;dydt&lt;/code&gt; name doesn't refer to the variable &lt;code&gt;y&lt;/code&gt; but rather is the convention in &lt;code&gt;scipy&lt;/code&gt;) to represent the system where each element is the left side of each equation (in canonical form).&lt;/p&gt;
 &lt;p&gt;Although it may differ from PEP8 (Python style for coding), I prefer to split the elements one per line to improve readability. Finally the &lt;code&gt;dydt&lt;/code&gt; variable is returned. The definition of &lt;code&gt;time&lt;/code&gt; is the same as previously seen and the solution variable is now a nested array containing the solution for both variables. This is specially useful when plotting.&lt;/p&gt;
 &lt;h4 id="graphics-specifics_1"&gt;&lt;a class="toclink" href="#graphics-specifics_1"&gt;Graphics Specifics&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Houses(t)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Air Conditionings(t)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;These are the only lines that differ in which instead of plotting the &lt;code&gt;solution&lt;/code&gt; variable, the &lt;a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html" target="_blank"&gt;numpy indexing and slicing syntax&lt;/a&gt; is used to easily split the results from each of the variables.&lt;/p&gt;
 &lt;h3 id="full-code_1"&gt;&lt;a class="toclink" href="#full-code_1"&gt;Full code&lt;/a&gt;&lt;/h3&gt;
@@ -1316,7 +1291,6 @@ $$&lt;/div&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="stock-control"&gt;&lt;a class="toclink" href="#stock-control"&gt;Stock Control&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A company wants a desired stock, they started with an initial stock and they work with a provider which sends deliveries goods through sales orders. The company asks the provider each day a sales order proportional to the missing or surplus quantity to the desired stock and the market demand. The provider deliver the goods according to the sales order with a constant delay. Finally, the market demand is consider constant. The company wants to know how their stock and their request to the provider will behave and they will try to avoid alternating behavior (oscillation in stock).&lt;/p&gt;
 &lt;p&gt;The model has the following variables:&lt;/p&gt;
@@ -1353,7 +1327,6 @@ $$&lt;/div&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/stock-control-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="code_2"&gt;&lt;a class="toclink" href="#code_2"&gt;Code&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="ode-specifics_2"&gt;&lt;a class="toclink" href="#ode-specifics_2"&gt;ODE Specifics&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1364,7 +1337,6 @@ $$&lt;/div&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;dydt&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This time the code is only changed in the variables names and the equations but it is very similar to the previous example, the particularity of this model doesn't lie in the code but rather in the behavior, since it can show the differences between an oscillation behavior and a damped one. Going through all kinds of possibilities such as underdamped, overdamped, critically damped and undamped. I encourage you to experiment with the parameters in the widget.&lt;/p&gt;
 &lt;h3 id="full-code_2"&gt;&lt;a class="toclink" href="#full-code_2"&gt;Full code&lt;/a&gt;&lt;/h3&gt;
@@ -1422,7 +1394,6 @@ $$&lt;/div&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="useful-life"&gt;&lt;a class="toclink" href="#useful-life"&gt;Useful Life&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A patient takes a certain drug with a recipe, the recipe says how many milligrams the patient should have per intake, how often the intakes should be and how many. Additionally the drug itself provides information about its useful life which helps to determine the optimal interval between intakes. It's also known that the useful life of the drug follows a natural decay.&lt;/p&gt;
 &lt;p&gt;The model has the following variables:&lt;/p&gt;
@@ -1452,7 +1423,6 @@ $$&lt;/div&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="code_3"&gt;&lt;a class="toclink" href="#code_3"&gt;Code&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="ode-specifics_3"&gt;&lt;a class="toclink" href="#ode-specifics_3"&gt;ODE Specifics&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1478,7 +1448,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;times&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;solutions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This model doesn't introduces complexity in the ODE but rather in the way one can model the successive intakes. It is usually helpful to keep this 'iteration logic' independent from the ODE itself, that's why no particular changes are needed in the equations.&lt;/p&gt;
 &lt;p&gt;There are many ways for achieving this but the one I used is the following:&lt;/p&gt;
@@ -1563,7 +1532,6 @@ $$&lt;/div&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="foxes-and-rabbits"&gt;&lt;a class="toclink" href="#foxes-and-rabbits"&gt;Foxes and Rabbits&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This is the model known as predator–prey or Lotka–Volterra equations. There are two species, a predator and a prey, like foxes and rabbits. Each has a certain birthrate and a deathrate. The birthrate of the prey is proportional to its current population and the birthrate of the predator is proportional to both its population and the prey population. The deathrate of the prey is proportional to both its population and the predator population and the deathrate of the predator is proportional to its population.&lt;/p&gt;
 &lt;p&gt;The model has the following variables:&lt;/p&gt;
@@ -1603,7 +1571,6 @@ $$&lt;/div&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="code_4"&gt;&lt;a class="toclink" href="#code_4"&gt;Code&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="ode-specifics_4"&gt;&lt;a class="toclink" href="#ode-specifics_4"&gt;ODE Specifics&lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1615,7 +1582,6 @@ $$&lt;/div&gt;
 
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;dydt&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;In this case the equations are similar to the houses and air conditioning example but the main difference is that the equations are non-linear since they include &lt;span class="math"&gt;\(xy\)&lt;/span&gt;, this implies that finding an analytical solution will be much harder but for the numerical integration the problem isn't any more difficult.&lt;/p&gt;
 &lt;h4 id="graphics-specifics_2"&gt;&lt;a class="toclink" href="#graphics-specifics_2"&gt;Graphics Specifics&lt;/a&gt;&lt;/h4&gt;
@@ -1632,7 +1598,6 @@ $$&lt;/div&gt;
 
 &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Foxes vs Rabbits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This scenario also introduces some variations in the plotting since, it is quite useful to have a parametric plot of the variables, where, instead of using the &lt;code&gt;time&lt;/code&gt; as independent variables the two variables are plot. This is simply achieved with &lt;code&gt;ax.plot(solution[:, 0], solution[:, 1], label='Foxes vs Rabbits')&lt;/code&gt; also, this model uses subplots and that's why the &lt;code&gt;axes&lt;/code&gt; list is used to place the plots one next to the other. This parametric plot also reveals an interesting fact, since the parametric plot is a closed curve, it implies that the functions are periodic which really reflect the natural behavior of predators and preys.&lt;/p&gt;
 &lt;h3 id="full-code_4"&gt;&lt;a class="toclink" href="#full-code_4"&gt;Full code&lt;/a&gt;&lt;/h3&gt;
@@ -1703,7 +1668,6 @@ $$&lt;/div&gt;
                &lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;FloatSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Total number of Days&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;slider_layout&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
         &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
@@ -1829,7 +1793,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;animation&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;html5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="basic-functions"&gt;&lt;a class="toclink" href="#basic-functions"&gt;Basic Functions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Once everything is imported and ready to use, several functions must be defined, namely:&lt;/p&gt;
 &lt;ol&gt;
@@ -1845,7 +1808,6 @@ $$&lt;/div&gt;
     &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;theta&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Second, in order to generate the lines, the list of points is given and a new line is generated, a different approach is needed when using this function in an animation so two sets of logic are defined inside de function.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_lines_from_points&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;animated&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1863,7 +1825,6 @@ $$&lt;/div&gt;
             &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Now it's time to plot and in the &lt;code&gt;plot_circle_points&lt;/code&gt;, both the circle, the points and the labels are ploted&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plot_circle_points&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;annotate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Points: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.9&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -1872,7 +1833,6 @@ $$&lt;/div&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
             &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;annotate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Finally, a function which receives the axis object plot all the lines, with the option to use a color in a HSV format (this will be used in the final animation)&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plot_lines&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1885,7 +1845,6 @@ $$&lt;/div&gt;
 
     &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_collection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;line_segments&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="static-version"&gt;&lt;a class="toclink" href="#static-version"&gt;Static Version&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;After all the functions needed are defined, now plotting a static version is quite simple, just generate the axis object and invoke the functions in the logical order and you get the image. This approach is useful to quickly experiment with a fixed number of factor and points&lt;/p&gt;
@@ -1903,7 +1862,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;points&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
 &lt;span class="n"&gt;plot_static&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;points&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="900"&gt;&lt;/p&gt;
 &lt;h2 id="parametric-version"&gt;&lt;a class="toclink" href="#parametric-version"&gt;Parametric Version&lt;/a&gt;&lt;/h2&gt;
@@ -1924,7 +1882,6 @@ $$&lt;/div&gt;
         &lt;span class="n"&gt;Factor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;FloatSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
         &lt;span class="n"&gt;Points&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="iframe-container" style="padding-top: 101%"&gt;
     &lt;iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-parametric-iframe.html"&gt;&lt;/iframe&gt;
@@ -1955,7 +1912,6 @@ $$&lt;/div&gt;
         &lt;span class="n"&gt;Points&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
         &lt;span class="n"&gt;Interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="iframe-container" style="padding-top: 101%"&gt;
     &lt;iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html"&gt;&lt;/iframe&gt;
@@ -1990,7 +1946,6 @@ $$&lt;/div&gt;
         &lt;span class="n"&gt;Max_Points&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
         &lt;span class="n"&gt;Interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="iframe-container" style="padding-top: 101%"&gt;
     &lt;iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-point-by-point-iframe.html"&gt;&lt;/iframe&gt;
@@ -2028,7 +1983,6 @@ $$&lt;/div&gt;
         &lt;span class="n"&gt;Interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="iframe-container" style="padding-top: 101%"&gt;
     &lt;iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-factor-by-factor-iframe.html"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -2065,7 +2019,6 @@ $$&lt;/div&gt;
         &lt;span class="n"&gt;Interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;IntSlider&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;step&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Layout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;99%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="iframe-container" style="padding-top: 101%"&gt;
     &lt;iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-factor-by-factor-colored-iframe.html"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -2083,7 +2036,6 @@ $$&lt;/div&gt;
 
 &lt;span class="n"&gt;anim&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;filename.mp4&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;writer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;writer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="notebook"&gt;&lt;a class="toclink" href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Everything showed above can be executed without installing anything just by using Binder, &lt;a href="https://elc.github.io/link/times_table_binder" target="_blank"&gt;&lt;strong&gt;open the gist online&lt;/strong&gt;&lt;/a&gt; and experiment yourself.&lt;/p&gt;</content><category term="Data Visualization"></category><category term="Data Visualization"></category><category term="Programming"></category><category term="Math"></category></entry><entry><title>Pascal Triangle and Genetic Algorithm - A Visualization</title><link href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" rel="alternate"></link><published>2019-01-21T00:00:00-03:00</published><updated>2019-01-21T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2019-01-21:/posts/pascal-triangle-vs-genetic-algorithm</id><summary type="html">
@@ -2123,7 +2075,6 @@ $$&lt;/div&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;matplotlib&lt;/span&gt; &lt;span class="n"&gt;inline&lt;/span&gt; &lt;span class="c1"&gt;# Only required for Jupyter&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="pascal-triangle"&gt;&lt;a class="toclink" href="#pascal-triangle"&gt;Pascal Triangle&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Secondly, define the proper functions to create a Pascal triangle, since for every frame only the last row is represented, a separate function that returns only that row is generated, to avoid unnecessary array manipulation. Additionally since many frames could be asked, it's important to cache the intermediate results since every pascal triangle is build based on the previous one, for this purpose a technique named memoization is used and this is the reason of why pascal_triangle is a recursive function.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;memoize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2146,7 +2097,6 @@ $$&lt;/div&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pascal_last_row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pascal_triangle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="animation-function"&gt;&lt;a class="toclink" href="#animation-function"&gt;Animation Function&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Thirdly, Matplotlib asks a function to animate which will generate each frame. For this purpose each frame is generated, adding extra white space to the sides when needed and returning a blank image for the 0 frame&lt;/p&gt;
@@ -2180,7 +2130,6 @@ $$&lt;/div&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="animation-video"&gt;&lt;a class="toclink" href="#animation-video"&gt;Animation Video&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Finally, the main part of the script is where the crucial variables are defined such as the number of frames and the width of the window.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;frames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;
@@ -2209,7 +2158,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;HTML&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anim&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_html5_video&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="c1"&gt;# Only required for Jupyter, replace this line with plt.show() for scripts&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="export"&gt;&lt;a class="toclink" href="#export"&gt;Export&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As a bonus, if the animation is needed as a separate file, ffmpeg can be used through Matplotlib to generate the corresponding mp4 file&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Writer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;animation&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writers&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ffmpeg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -2217,7 +2165,6 @@ $$&lt;/div&gt;
 
 &lt;span class="n"&gt;anim&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;im.mp4&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;writer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;writer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="final-result"&gt;&lt;a class="toclink" href="#final-result"&gt;Final Result&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As seen at the beginning the previous code resulted in the following animation:&lt;/p&gt;
@@ -2395,7 +2342,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Koch-Snowflake_450x450.mp4" type="video/mp4"&gt;
@@ -2410,7 +2356,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 4&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2427,7 +2372,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Crystal_450x450.mp4" type="video/mp4"&gt;
@@ -2442,7 +2386,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2459,7 +2402,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Box-Fractal_450x450.mp4" type="video/mp4"&gt;
@@ -2474,7 +2416,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 16&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2491,7 +2432,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Sierpinski-Arrowhead_450x450.mp4" type="video/mp4"&gt;
@@ -2506,7 +2446,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 8&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2523,7 +2462,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Board_450x450.mp4" type="video/mp4"&gt;
@@ -2538,7 +2476,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 4&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2555,7 +2492,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Rings_450x450.mp4" type="video/mp4"&gt;
@@ -2570,7 +2506,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2587,7 +2522,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;36&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Pentaplexity_450x450.mp4" type="video/mp4"&gt;
@@ -2602,7 +2536,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 3&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2619,7 +2552,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Peano-Gosper-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2635,7 +2567,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Sierpinski-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2650,7 +2581,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 9&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2668,7 +2598,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Quadratic-Gosper_450x450.mp4" type="video/mp4"&gt;
@@ -2683,7 +2612,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 8&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2700,7 +2628,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Hilberts-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2715,7 +2642,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2732,7 +2658,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Peano-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2747,7 +2672,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 6&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2764,7 +2688,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Triangle_450x450.mp4" type="video/mp4"&gt;
@@ -2779,7 +2702,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 16&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2796,7 +2718,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/TerDragon-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2812,7 +2733,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
     &lt;source data-src="/blog/images/fractals/450/Twin-Dragon-Curve_450x450.mp4" type="video/mp4"&gt;
@@ -2827,7 +2747,6 @@ $$&lt;/div&gt;
 &lt;span class="n"&gt;iterations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="c1"&gt;# TOP: 15&lt;/span&gt;
 &lt;span class="n"&gt;angle&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="two-column"&gt;
 &lt;video class="b-lazy" autoplay loop&gt;
@@ -2887,11 +2806,9 @@ $$&lt;/div&gt;
     &lt;span class="n"&gt;wn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exitonclick&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="code-explanation"&gt;&lt;a class="toclink" href="#code-explanation"&gt;Code Explanation&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;turtle&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;First we need to import the Turtle Module&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_l_system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axiom&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -2906,7 +2823,6 @@ $$&lt;/div&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;end_string&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Then we need to generate the L-System which will be the set of instructions for the turtle. We define a function called &lt;code&gt;create_l_system&lt;/code&gt; which receives the number of iterations, the axiom and the production rules. It starts with the axiom and uses an auxiliary variable called &lt;code&gt;end_string&lt;/code&gt; if iteration is equal to 0 it will return the axiom since some fractals can be plot with iterations equal to 0. Rules here are assumed to be dictionaries, so the key will be unique and represents the symbol and the value represents what should be replaced with. So we join all the replacements for each symbol and we end up with the string for the next iteration.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;draw_l_system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;instructions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -2917,7 +2833,6 @@ $$&lt;/div&gt;
         &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Then we define a &lt;code&gt;draw_l_system&lt;/code&gt; which takes the turtle, the set of instructions (the output of the L-System), the angle for the turn right/left and the length of each individual line. It consist of a simple elif structure for each of the previously defined commands.&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axiom&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;angle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_offset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -2943,7 +2858,6 @@ $$&lt;/div&gt;
     &lt;span class="n"&gt;wn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exitonclick&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;And finally the &lt;code&gt;main&lt;/code&gt; function, it receives all the parameters it need for the generation of the L-Systems and also &lt;code&gt;y_offset&lt;/code&gt;, &lt;code&gt;x_offset&lt;/code&gt;, &lt;code&gt;offset_angle&lt;/code&gt;, &lt;code&gt;width&lt;/code&gt; and &lt;code&gt;height&lt;/code&gt;. The first three represent the offset of the turtle, this is merely for positioning the plot as we want inside the canvas. &lt;/p&gt;
 &lt;p&gt;The function first generates a set of instructions and stores it in &lt;code&gt;inst&lt;/code&gt; then it initializes the turtle and the screen and it positions the turtle in the defined position, then it plots the instructions and wait for a click to close.&lt;/p&gt;
 &lt;h2 id="special-considerations"&gt;&lt;a class="toclink" href="#special-considerations"&gt;Special Considerations&lt;/a&gt;&lt;/h2&gt;
@@ -2954,16 +2868,12 @@ $$&lt;/div&gt;
 &lt;div class="youtube-container"&gt;
     &lt;iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/f6ra024-ASY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
     &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;p&gt;&lt;strong&gt;3Blue1Brown&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="youtube-container"&gt;
     &lt;iframe class="b-lazy" width="560px" height="315px" data-src="https://www.youtube.com/embed/gB9n2gHsHN4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
     &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;h2 id="sources-and-references"&gt;&lt;a class="toclink" href="#sources-and-references"&gt;Sources and References&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This post was inspired by a &lt;a href="http://mathworld.wolfram.com/LindenmayerSystem.html" target="_blank"&gt;Math World post&lt;/a&gt;, the &lt;a href="http://paulbourke.net/fractals/lsys/" target="_blank"&gt;Paul Broke Blog&lt;/a&gt; and an university assignment for Genetic Algorithms.&lt;/p&gt;</content><category term="Programming"></category><category term="Python"></category><category term="Fractals"></category><category term="Turtle"></category></entry><entry><title>Configuring FastAI with Google Colab</title><link href="https://elc.github.io/posts/fastai-colab-deep-learning" rel="alternate"></link><published>2018-09-28T00:00:00-03:00</published><updated>2018-09-28T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2018-09-28:/posts/fastai-colab-deep-learning</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png"&gt;&lt;img alt="FastAi Header Image" class="b-lazy" data-src="/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage-thumbnail.png" width="1246"&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -3025,7 +2935,6 @@ pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux
 pip -q install torchvision
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Now we can import fastai with all its modules&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fastai.imports&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fastai.transforms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
@@ -3036,11 +2945,9 @@ pip -q install torchvision
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fastai.plots&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;And we are ready to go! You can check that the GPU is enabled with the following command:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Is CUDA and CUDNN enabled: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cuda&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_available&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cudnn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;And if you want to check exactly how much Video RAM you have you can run the following snippet:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nvidia&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;smi&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nvidia&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;smi&lt;/span&gt;
@@ -3061,7 +2968,6 @@ pip -q install torchvision
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Gen RAM Free: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;humanize&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;naturalsize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;psutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;virtual_memory&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; | Proc size: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;humanize&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;naturalsize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;memory_info&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rss&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;GPU RAM Free: &lt;/span&gt;&lt;span class="si"&gt;{0:.0f}&lt;/span&gt;&lt;span class="s2"&gt;MB | Used: &lt;/span&gt;&lt;span class="si"&gt;{1:.0f}&lt;/span&gt;&lt;span class="s2"&gt;MB | Util &lt;/span&gt;&lt;span class="si"&gt;{2:3.0f}&lt;/span&gt;&lt;span class="s2"&gt;% | Total &lt;/span&gt;&lt;span class="si"&gt;{3:.0f}&lt;/span&gt;&lt;span class="s2"&gt;MB&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gpu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;memoryFree&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gpu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;memoryUsed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gpu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;memoryUtil&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gpu&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;memoryTotal&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="conclusion"&gt;&lt;a class="toclink" href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;It is indeed possible to do Deep Learning with GPU without paying nothing, we just have to wait until the right set of technologies is available.&lt;/p&gt;</content><category term="Programming"></category><category term="Python"></category><category term="fastai"></category><category term="deep-learning"></category></entry><entry><title>Create one executable file for a Flask app with PyInstaller</title><link href="https://elc.github.io/posts/executable-flask-pyinstaller" rel="alternate"></link><published>2018-02-24T00:00:00-03:00</published><updated>2018-02-24T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2018-02-24:/posts/executable-flask-pyinstaller</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage.png"&gt;&lt;img alt="Flask_pyinstaller_logo" class="b-lazy" data-src="/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage.png" src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage-thumbnail.png" width="1401"&gt;&lt;/a&gt;&lt;/p&gt;
@@ -3112,23 +3018,20 @@ pip -q install torchvision
 &lt;p&gt;After reading all the previous posts and some of the &lt;a href="https://pythonhosted.org/PyInstaller/" target="_blank"&gt;PyInstaller docs&lt;/a&gt;. I found that some people actually solved it! But, the solution they propose was editing the spec file, which is generated after a first run of PyInstaller. I thought that solution was a hack and not the proper way to achieve what I wanted.&lt;/p&gt;
 &lt;p&gt;So I tried to understand what the changes in the spec file did and it turned out that that changes was to copy the folders Flask uses into the file directory/file (Actually one of the proposed solutions was build and then copy paste the folders, but besides being unpractical it wouldn't work with one file builds). After a little reasearch, I came across the command line arguments to achieve the same.&lt;/p&gt;
 &lt;p&gt;Windows:&lt;/p&gt;
-&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pyinstaller -w -F --add-data &amp;quot;templates;templates&amp;quot; --add-data &amp;quot;static;static&amp;quot; app.py&lt;/span&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pyinstaller -w -F --add-data &amp;quot;templates;templates&amp;quot; --add-data &amp;quot;static;static&amp;quot; app.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Linux (NOT TESTED):&lt;/p&gt;
-&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pyinstaller -w -F --add-data &amp;quot;templates:templates&amp;quot; --add-data &amp;quot;static:static&amp;quot; app.py&lt;/span&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pyinstaller -w -F --add-data &amp;quot;templates:templates&amp;quot; --add-data &amp;quot;static:static&amp;quot; app.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;This will create a folder &lt;code&gt;dist&lt;/code&gt; with our executable ready to be shipped. The executable will open the main window of our app.&lt;/p&gt;
 &lt;p&gt;It first started as a contribution for the &lt;a href="https://elc.github.io/link/pyfladesk_repo" target="_blank"&gt;PyFladesk&lt;/a&gt; project and then, I realize that since Qt is quite big, our executable were big too. The example app of that repository is 70 MB (much of which was the Qt Component for displaying HTML (WebEngine)). This is reasonable taking into account that we were shipping a self contain web browser.&lt;/p&gt;
 &lt;p&gt;There is no simple solution to the size problem but some suggestions are proposed in a &lt;a href="#the-size-problem"&gt;following section&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="tutorial"&gt;&lt;a class="toclink" href="#tutorial"&gt;Tutorial&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;If you haven't already, install it with pip (if you use virtual environments you should install it inside it)&lt;/p&gt;
-&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install pyinstaller&lt;/span&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install pyinstaller
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Some parameters to consider:&lt;/p&gt;
 &lt;ul&gt;
@@ -3179,11 +3082,9 @@ pip -q install torchvision
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;or&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Or this:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
@@ -3191,13 +3092,11 @@ pip -q install torchvision
 &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Or maybe you use it at the top of a for loop:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;names&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Peter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="extended-tuple-unpacking"&gt;&lt;a class="toclink" href="#extended-tuple-unpacking"&gt;Extended Tuple Unpacking&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;These are common uses of the tuple unpacking but a more powerful feature is built on top of it: The extended version, which uses the &lt;a href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists" target="_blank"&gt;Unpacking Argument Lists (splat)&lt;/a&gt;&lt;/p&gt;
@@ -3206,32 +3105,26 @@ pip -q install torchvision
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Which by the way can also be written as:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Or even more simplified:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="examples"&gt;&lt;a class="toclink" href="#examples"&gt;Examples&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Get the first item of a list:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;list_&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Get the last item of a list:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;list_&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Get the first and the last item of a list&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;list_&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="caveats"&gt;&lt;a class="toclink" href="#caveats"&gt;Caveats&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Although it may seem quite simple an easy, there are lots of ways to get it wrong:&lt;/p&gt;
@@ -3242,7 +3135,6 @@ pip -q install torchvision
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;                  &lt;span class="c1"&gt;# ERROR -- too many values to unpack&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;                &lt;span class="c1"&gt;# ERROR - &amp;#39;int&amp;#39; object is not iterable&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="is-there-any-logic-behind-it"&gt;&lt;a class="toclink" href="#is-there-any-logic-behind-it"&gt;Is there any logic behind it?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Of course there is! This is programming and for a full explanation I recommend you to read the PEP and this &lt;a href="https://stackoverflow.com/a/6968451" target="_blank"&gt;answer&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="Haskell"></category><category term="Python"></category><category term="Tuple Unpacking"></category></entry></feed>

@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=024e23f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=9484118">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -171,7 +171,6 @@
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s1">&#39;html5&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <h2 id="basic-functions"><a class="toclink" href="#basic-functions">Basic Functions</a></h2>
 <p>Once everything is imported and ready to use, several functions must be defined, namely:</p>
 <ol>
@@ -187,7 +186,6 @@
     <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>Second, in order to generate the lines, the list of points is given and a new line is generated, a different approach is needed when using this function in an animation so two sets of logic are defined inside de function.</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">get_lines_from_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">animated</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -205,7 +203,6 @@
             <span class="k">yield</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span>
 </code></pre></div>
 
-
 <p>Now it's time to plot and in the <code>plot_circle_points</code>, both the circle, the points and the labels are ploted</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Points: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
@@ -214,7 +211,6 @@
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)):</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </code></pre></div>
-
 
 <p>Finally, a function which receives the axis object plot all the lines, with the option to use a color in a HSV format (this will be used in the final animation)</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -227,7 +223,6 @@
 
     <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">line_segments</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h2 id="static-version"><a class="toclink" href="#static-version">Static Version</a></h2>
 <p>After all the functions needed are defined, now plotting a static version is quite simple, just generate the axis object and invoke the functions in the logical order and you get the image. This approach is useful to quickly experiment with a fixed number of factor and points</p>
@@ -245,7 +240,6 @@
 <span class="n">points</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">plot_static</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="900"></p>
 <h2 id="parametric-version"><a class="toclink" href="#parametric-version">Parametric Version</a></h2>
@@ -266,7 +260,6 @@
         <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
         <span class="n">Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
 </code></pre></div>
-
 
 <div class="iframe-container" style="padding-top: 101%">
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-parametric-iframe.html"></iframe>
@@ -297,7 +290,6 @@
         <span class="n">Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
         <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
 </code></pre></div>
-
 
 <div class="iframe-container" style="padding-top: 101%">
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-line-by-line-iframe.html"></iframe>
@@ -332,7 +324,6 @@
         <span class="n">Max_Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
         <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
 </code></pre></div>
-
 
 <div class="iframe-container" style="padding-top: 101%">
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-point-by-point-iframe.html"></iframe>
@@ -370,7 +361,6 @@
         <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
 </code></pre></div>
 
-
 <div class="iframe-container" style="padding-top: 101%">
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-factor-by-factor-iframe.html"></iframe>
 </div>
@@ -407,7 +397,6 @@
         <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
 </code></pre></div>
 
-
 <div class="iframe-container" style="padding-top: 101%">
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/times-tables/times-table-factor-by-factor-colored-iframe.html"></iframe>
 </div>
@@ -425,7 +414,6 @@
 
 <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.mp4&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h2 id="notebook"><a class="toclink" href="#notebook">Notebook</a></h2>
 <p>Everything showed above can be executed without installing anything just by using Binder, <a href="https://elc.github.io/link/times_table_binder" target="_blank"><strong>open the gist online</strong></a> and experiment yourself.</p>
@@ -593,7 +581,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=e1dc7c9" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=0664792" ></script>
 
 
 <!-- Google Analytics -->
