@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pelican = "==4.5.0"
-Markdown = "==3.2.2"
-invoke = "==1.4.1"
-pillow = "==7.2.0"
-pygithub = "==1.53"
+pelican = "==4.6.0"
+Markdown = "==3.3.4"
+invoke = "==1.5.0"
+pillow = "==8.2.0"
+pygithub = "==1.55"
 
 [dev-packages]
 pylint = "==2.6.0"
@@ -19,4 +19,4 @@ buildWin = "invoke buildWin"
 serve = "python -m http.server --directory output"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
