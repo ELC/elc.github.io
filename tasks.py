@@ -25,7 +25,7 @@ def get_filepaths(directory, extensions=[], ignores=[]):
         igns = [ignores]
 
     # Walk the tree.
-    for root, directories, files in os.walk(directory):
+    for root, _, files in os.walk(directory):
         for filename in files:
 
             if filename in igns or not any(
