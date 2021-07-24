@@ -14,5 +14,9 @@
     "interactive-optimization": {
         "date": "2020-09-20", 
         "url": "interactive-optimization"
+    },
+    "control": {
+        "date": "2021-07-24", 
+        "url": "control-theory-with-matlab"
     }
 }

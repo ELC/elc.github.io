@@ -76,5 +76,9 @@
     "pelican": "https://www.linkedin.com/posts/ezequielcastano_notedetengas-python-pelican-activity-6763502477322027008-hLRr/",
     "pelican-curso": "https://ed.team/cursos/pelican",
     
-    "flask-boilerplate": "https://github.com/ELC/flask-boilerplate"
+    "flask-boilerplate": "https://github.com/ELC/flask-boilerplate",
+
+    "control": "https://elc.github.io/control-theory-with-matlab/",
+    "control_01": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC01_Transformada_de_Laplace.ipynb",
+    "control_02": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC02_Funcion_de_transferencia.ipynb"
 }
