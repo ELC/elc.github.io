@@ -79,13 +79,13 @@
     "flask-boilerplate": "https://github.com/ELC/flask-boilerplate",
 
     "control": "https://elc.github.io/control-theory-with-matlab/",
-    "control_01": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC01_Transformada_de_Laplace.ipynb",
-    "control_02": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC02_Funcion_de_transferencia.ipynb",
-    "control_03": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC03_Sistemas_Primer_Orden.ipynb",
-    "control_04": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC04_Sistemas_Segundo_Orden.ipynb",
-    "control_05": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC05_Root_Locus.ipynb",
-    "control_06": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC06_Controladores.ipynb",
-    "control_07": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC07_Sintonización.ipynb",
-    "control_08": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC08_Bode.ipynb",
-    "control_09": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC09_Nyquist.ipynb"
+    "control_01": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC01_Transformada_de_Laplace.ipynb",
+    "control_02": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC02_Funcion_de_transferencia.ipynb",
+    "control_03": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC03_Sistemas_Primer_Orden.ipynb",
+    "control_04": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC04_Sistemas_Segundo_Orden.ipynb",
+    "control_05": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC05_Root_Locus.ipynb",
+    "control_06": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC06_Controladores.ipynb",
+    "control_07": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC07_Sintonización.ipynb",
+    "control_08": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC08_Bode.ipynb",
+    "control_09": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/0.1/ELC09_Nyquist.ipynb"
 }
