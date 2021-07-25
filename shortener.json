@@ -80,5 +80,8 @@
 
     "control": "https://elc.github.io/control-theory-with-matlab/",
     "control_01": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC01_Transformada_de_Laplace.ipynb",
-    "control_02": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC02_Funcion_de_transferencia.ipynb"
+    "control_02": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC02_Funcion_de_transferencia.ipynb",
+    "control_03": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC03_Sistemas_Primer_Orden.ipynb",
+    "control_04": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC04_Sistemas_Segundo_Orden.ipynb",
+    "control_05": "https://nbviewer.jupyter.org/github/elc/control-theory-with-matlab/blob/master/ELC05_Root_Locus.ipynb"
 }
