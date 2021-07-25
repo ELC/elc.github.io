@@ -83,5 +83,9 @@
     "control_02": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC02_Funcion_de_transferencia.ipynb",
     "control_03": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC03_Sistemas_Primer_Orden.ipynb",
     "control_04": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC04_Sistemas_Segundo_Orden.ipynb",
-    "control_05": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC05_Root_Locus.ipynb"
+    "control_05": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC05_Root_Locus.ipynb",
+    "control_06": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC06_Controladores.ipynb",
+    "control_07": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC07_Sintonización.ipynb",
+    "control_08": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC08_Bode.ipynb",
+    "control_09": "https://nbviewer.jupyter.org/github/ELC/control-theory-with-matlab/blob/master/ELC09_Nyquist.ipynb"
 }
