@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Ezequiel Leonardo Castaño Personal Website - Ezequiel Leonardo Castaño</title><link>https://elc.github.io/</link><description>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</description><lastBuildDate>Wed, 22 May 2019 00:00:00 -0300</lastBuildDate><item><title>Lyrics Presentation Generator</title><link>https://elc.github.io/posts/online-lyrics-presentation-generator</link><description>&lt;!-- Status: draft --&gt;
+<rss version="2.0"><channel><title>Ezequiel Leonardo Castaño Personal Website - Ezequiel Leonardo Castaño</title><link>https://elc.github.io/</link><description>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</description><lastBuildDate>Sat, 07 Aug 2021 00:00:00 -0300</lastBuildDate><item><title>Jupyter Publishing Guide: From Embedded to Book</title><link>https://elc.github.io/posts/jupyter-publishing</link><description>&lt;p&gt;Jupyter Notebooks are the lingua franca for data science, however, sharing them
+is not always straightforward. This is a brief survey of the different
+publishing solutions available for personal and/or commercial projects.&lt;/p&gt;
+
+
+&lt;h1 id="jupyter-notebooks"&gt;&lt;a class="toclink" href="#jupyter-notebooks"&gt;Jupyter Notebooks&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Jupyter notebooks are used everywhere in the data science ecosystem they are
+present without exceptions …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ezequiel Leonardo Castaño</dc:creator><pubDate>Sat, 07 Aug 2021 00:00:00 -0300</pubDate><guid isPermaLink="false">tag:elc.github.io,2021-08-07:/posts/jupyter-publishing</guid><category>Programming</category><category>Jupyter</category></item><item><title>Lyrics Presentation Generator</title><link>https://elc.github.io/posts/online-lyrics-presentation-generator</link><description>&lt;!-- Status: draft --&gt;
 
 &lt;p&gt;&lt;a class="gallery" href="/blog/images/online-lyrics/online-lyrics-headerimage.png"&gt;&lt;img alt="Online Lyrics Presentation Generator Header Image" class="b-lazy" data-src="/blog/images/online-lyrics/online-lyrics-headerimage.png" src="https://elc.github.io/blog/images/online-lyrics/online-lyrics-headerimage-thumbnail.png" width="1920"&gt;&lt;/a&gt;&lt;/p&gt;
 
