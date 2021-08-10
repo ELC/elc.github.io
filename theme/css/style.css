@@ -561,7 +561,7 @@ a[href*="github.com"]:after {
 }
 .share a {
   text-decoration: none;
-  color: #B8B8B8 !important;
+  color: #FAFAFA !important;
 }
 .share img {
   margin: 0;
