@@ -25,14 +25,14 @@
 
       <meta property="og:type" content="article"/>
       <meta property="og:title" content="Jupyter Publishing Guide: From Embedded to Book"/>
-      <meta property="og:description" content="{: .b-lazy width=1444 data-src=/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png } Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects."/>
+      <meta property="og:description" content="Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects."/>
       <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
       <meta property="og:url" content="https://elc.github.io/posts/jupyter-publishing/"/>
       <meta property="og:image" content="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png"/>
 
       <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="Jupyter Publishing Guide: From Embedded to Book">
-      <meta name="twitter:description" content="{: .b-lazy width=1444 data-src=/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png } Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.">
+      <meta name="twitter:description" content="Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.">
       <meta name="twitter:url" content="https://elc.github.io/posts/jupyter-publishing/">
       <meta name="twitter:image" content="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png">
     
@@ -99,7 +99,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>32 min <span data-l10n-id="to-read">to read</span></b>
+                <b>31 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -115,11 +115,7 @@
 
 
   <section>
-    <p><a href="/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png"><img alt="Jupyter Publishing Header
-Image" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">{:
-.b-lazy width=1444
-data-src=/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png
-}</a></p>
+    <p><a href="/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png" width="1444"></a></p>
 <p>Jupyter Notebooks are the lingua franca for Data Science. There is hardly any
 data scientist that has never used this IDE. However, in contrast to its
 popularity and usefulness, the process of sharing a Jupyter Notebook is not
@@ -188,10 +184,7 @@ advantages, disadvantages, and a "when to use" section.</p>
 <li><a href="#additional-resources">Additional Resources</a></li>
 </ul>
 <h2 id="optional-a-bit-of-context-the-ipynb-format"><a class="toclink" href="#optional-a-bit-of-context-the-ipynb-format">(Optional) A bit of Context: The .ipynb format</a></h2>
-<p><a href="/blog/images/jupyter-publishing/ipynb-format.png"><img alt="IPYNB
-format" src="https://elc.github.io/blog/images/jupyter-publishing/ipynb-format-thumbnail.png">{: .b-lazy
-width=500 data-src=/blog/images/jupyter-publishing/ipynb-format.png
-}</a></p>
+<p><a href="/blog/images/jupyter-publishing/ipynb-format.png"><img alt="IPYNB format" class="b-lazy" data-src="/blog/images/jupyter-publishing/ipynb-format.png" src="https://elc.github.io/blog/images/jupyter-publishing/ipynb-format-thumbnail.png" width="500"></a></p>
 <p>The format for a Jupyter notebook is JSON, but the extension used is <code>ipynb</code>.
 The reason behind using a different extension is twofold:</p>
 <ol>
@@ -209,9 +202,7 @@ Python Package.</p>
 <h3 id="problems-with-the-format"><a class="toclink" href="#problems-with-the-format">Problems with the format</a></h3>
 <p>This JSON-based format is also the main cause of trouble when working in teams,
 such as edit collaboratively and version control. That is why tools such as
-<a href="https://blog.jupyter.org/how-we-made-jupyter-notebooks-collaborative-with-yjs-b8dff6a9d8af"><code>Yjs</code></a>{:
-target="_blank"} and <a href="https://nbdime.readthedocs.io/en/latest/"><code>nbdime</code></a>{:
-target="_blank"} were developed to solve those issues, respectively.</p>
+<a href="https://blog.jupyter.org/how-we-made-jupyter-notebooks-collaborative-with-yjs-b8dff6a9d8af" target="_blank"><code>Yjs</code></a> and <a href="https://nbdime.readthedocs.io/en/latest/" target="_blank"><code>nbdime</code></a> were developed to solve those issues, respectively.</p>
 <h3 id="developer-exchange"><a class="toclink" href="#developer-exchange">Developer Exchange</a></h3>
 <p>All that said, among developers, .json files are just ordinary everyday files,
 and exchanging them is nothing new. On the other hand, even if those files are
@@ -219,13 +210,10 @@ and exchanging them is nothing new. On the other hand, even if those files are
 visualize the content of such files. That is why the first and most simple way
 to share and publish a notebook is through the built-in Export solutions.</p>
 <h2 id="using-built-ins-export-solutions"><a class="toclink" href="#using-built-ins-export-solutions">Using Built-Ins: Export Solutions</a></h2>
-<p><a href="/blog/images/jupyter-publishing/html-export.png"><img alt="IPYNB format" src="https://elc.github.io/blog/images/jupyter-publishing/html-export-thumbnail.png">{:
-.b-lazy width=703 data-src=/blog/images/jupyter-publishing/html-export.png
-}</a></p>
-<p>Jupyter, in particular JupyterLab, introduces <a href="https://jupyterlab.readthedocs.io/en/stable/user/export.html">several
-formats</a>{:
-target="_blank"} for exporting the notebook. However, in this section one will
-be highlighted: <strong>HTML</strong></p>
+<p><a href="/blog/images/jupyter-publishing/html-export.png"><img alt="IPYNB format" class="b-lazy" data-src="/blog/images/jupyter-publishing/html-export.png" src="https://elc.github.io/blog/images/jupyter-publishing/html-export-thumbnail.png" width="703"></a></p>
+<p>Jupyter, in particular JupyterLab, introduces <a href="https://jupyterlab.readthedocs.io/en/stable/user/export.html" target="_blank">several formats</a>
+for exporting the notebook. However, in this section one will be highlighted: 
+<strong>HTML</strong></p>
 <h3 id="advantages"><a class="toclink" href="#advantages">Advantages</a></h3>
 <ul>
 <li>It can be sent in most commonly used media such as email, instant messaging
@@ -263,9 +251,8 @@ be highlighted: <strong>HTML</strong></p>
 the notebook. For example, when sending sample code to a fellow developer, for
 documentation examples, and also for simple web hosting.</p>
 <p>Some examples of this approach can be found in the PyMC3 official
-documentation, where <a href="https://docs.pymc.io/nb_examples/index.html" target="_blank">all their
-examples</a> are
-HTML exports of Jupyter Notebooks.</p>
+documentation, where <a href="https://docs.pymc.io/nb_examples/index.html" target="_blank">all their examples</a> 
+are HTML exports of Jupyter Notebooks.</p>
 <h3 id="why-not-other-export-formats"><a class="toclink" href="#why-not-other-export-formats">Why not other export formats?</a></h3>
 <p>Some may argue that <strong>PDF</strong> is also a good choice. However, due to pagination,
 generally the content and the output is split in unpredictable ways and thus
@@ -286,17 +273,13 @@ section will focus on non-built-it approaches. Moreover, all of the solutions
 presented require some configuration or additional steps, the results might be
 worthwhile depending on the particular scenario.</p>
 <h2 id="github-publishing"><a class="toclink" href="#github-publishing">Github Publishing</a></h2>
-<p><a href="/blog/images/jupyter-publishing/github-jupyter.png"><img alt="Gitub
-HTML" src="https://elc.github.io/blog/images/jupyter-publishing/github-jupyter-thumbnail.png">{: .b-lazy
-width=1831 data-src=/blog/images/jupyter-publishing/github-jupyter.png
-}</a></p>
+<p><a href="/blog/images/jupyter-publishing/github-jupyter.png"><img alt="Gitub HTML" class="b-lazy" data-src="/blog/images/jupyter-publishing/github-jupyter.png" src="https://elc.github.io/blog/images/jupyter-publishing/github-jupyter-thumbnail.png" width="1831"></a></p>
 <p>Github is the most widespread solution for hosted git version control
-repositories, this is also the case for the whole <a href="https://github.com/jupyter" target="_blank">Project
-Jupyter</a>, whose repositories are
-hosted in this platform. With time, they <a href="https://docs.github.com/en/github/managing-files-in-a-repository/working-with-non-code-files/working-with-jupyter-notebook-files-on-github">included a
-feature</a>{:
-target="_blank"} that shows the Jupyter Notebook as HTML without requiring the
-user to do such conversion.</p>
+repositories, this is also the case for the whole <a href="https://github.com/jupyter" target="_blank">Project Jupyter</a>, 
+whose repositories are
+hosted in this platform. With time, they <a href="https://docs.github.com/en/github/managing-files-in-a-repository/working-with-non-code-files/working-with-jupyter-notebook-files-on-github" target="_blank">included a feature</a> 
+that shows the Jupyter Notebook as HTML without requiring the user to do such 
+conversion.</p>
 <p>The view will be the same as the one with the HTML export, there are some
 differences to keep in mind though.</p>
 <h3 id="advantages_1"><a class="toclink" href="#advantages_1">Advantages</a></h3>
@@ -326,23 +309,16 @@ working with them, other options like Google Colab or NBViewer might be better.
 Another possible scenario is when old versions of particular notebooks should
 be re-visited, Github makes it easy and intuitive. Nonetheless, If cell
 execution or interactive plots are necessary, this option is not suitable.</p>
-<p>Most Github <a href="https://github.com/search?l=Jupyter+Notebook&amp;q=notebook&amp;type=Repositories">Repositories with Jupyter
-Notebooks</a>{:
-target="_blank"} can be used as examples (there were more than 66.000 at the
-time of this writing). One popular instance is the <a href="https://github.com/ctgk/PRML/tree/master/notebooks">Python implementation
-repository</a>{:
-target="_blank"} of the algorithms of the <a href="https://github.com/ctgk/PRML/blob/master/notebooks/ch01_Introduction.ipynb">Pattern Recognition and Machine
-Learning by Christopher
-Bishop.</a>{:
-target="_blank"}</p>
+<p>Most Github <a href="https://github.com/search?l=Jupyter+Notebook&amp;q=notebook&amp;type=Repositories" target="_blank">Repositories with Jupyter Notebooks</a> 
+can be used as examples (there were more than 66.000 at the
+time of this writing). One popular instance is the <a href="https://github.com/ctgk/PRML/tree/master/notebooks" target="_blank">Python implementation repository</a> 
+of the algorithms of the <a href="https://github.com/ctgk/PRML/blob/master/notebooks/ch01_Introduction.ipynb" target="_blank">Pattern Recognition and Machine Learning by Christopher Bishop.</a></p>
 <h2 id="nbviewer-publishing"><a class="toclink" href="#nbviewer-publishing">NBViewer Publishing</a></h2>
-<p><a href="/blog/images/jupyter-publishing/nbviewer.png"><img alt="NBviewer" src="https://elc.github.io/blog/images/jupyter-publishing/nbviewer-thumbnail.png">{:
-.b-lazy width=1496 data-src=/blog/images/jupyter-publishing/nbviewer.png
-}</a></p>
+<p><a href="/blog/images/jupyter-publishing/nbviewer.png"><img alt="NBviewer" class="b-lazy" data-src="/blog/images/jupyter-publishing/nbviewer.png" src="https://elc.github.io/blog/images/jupyter-publishing/nbviewer-thumbnail.png" width="1496"></a></p>
 <p><a href="https://nbviewer.jupyter.org/" target="_blank">NBviewer</a> is a free, online
 tool from the project Jupyter to display notebooks online. It combines two
-Python packages, <a href="https://nbconvert.readthedocs.io/en/latest/">NBconvert</a>{:
-target="_blank"} for notebook transformations and
+Python packages, <a href="https://nbconvert.readthedocs.io/en/latest/" target="_blank">NBconvert</a> f
+or notebook transformations and
 <a href="https://www.tornadoweb.org/en/stable/" target="_blank">Tornado</a> as web
 service.</p>
 <p>In this platform, notebooks are presented in HTML, the same way as with Github
@@ -374,25 +350,18 @@ integrated with any version control system.</p>
 users (e.g. mathematicians and statisticians may not have a background with
 version control). Furthermore, it is commonly used for writing static books,
 one of the most popular ones being
-<a href="https://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/">Probabilistic-Programming-and-Bayesian-Methods-for-Hackers</a>{:
-target="_blank"}. As well as other HTML-based approaches, If cell execution or
+<a href="https://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" target="_blank">Probabilistic-Programming-and-Bayesian-Methods-for-Hackers</a>. 
+As well as other HTML-based approaches, If cell execution or
 interactive plots are necessary, this option is not suitable.</p>
 <h2 id="static-site-generator-integration"><a class="toclink" href="#static-site-generator-integration">Static Site Generator Integration</a></h2>
-<p><a href="/blog/images/jupyter-publishing/static-site-generators.png"><img alt="Static Site
-Generators" src="https://elc.github.io/blog/images/jupyter-publishing/static-site-generators-thumbnail.png">{:
-.b-lazy width=722
-data-src=/blog/images/jupyter-publishing/static-site-generators.png
-}</a></p>
+<p><a href="/blog/images/jupyter-publishing/static-site-generators.png"><img alt="Static Site Generators" class="b-lazy" data-src="/blog/images/jupyter-publishing/static-site-generators.png" src="https://elc.github.io/blog/images/jupyter-publishing/static-site-generators-thumbnail.png" width="722"></a></p>
 <p>Nowadays, there is an increasing trend in popularity for Jamstack tools, i.e.
 Static Site Generators. That is why there are plenty of options available in
-the Python ecosystem (<a href="https://jamstack.org/generators/">50 at the time of this
-writting</a>){: target="_blank"}. That been said
-the most popular ones are <a href="https://blog.getpelican.com/">Pelican</a>{:
-target="_blank"}, <a href="https://www.getlektor.com/" target="_blank">Lektor</a> and
-<a href="https://getnikola.com/" target="_blank">Nikola</a> based on Github Stars.</p>
-<p>From these three options, Nikola is the only one with <a href="https://getnikola.com/handbook.html#supported-input-formats">native
-support</a>{:
-target="_blank"} for .ipynb files, whereas
+the Python ecosystem (<a href="https://jamstack.org/generators/">50 at the time of this writting</a>){: target="_blank"}. 
+That been said the most popular ones are <a href="https://blog.getpelican.com/" target="_blank">Pelican</a>, 
+<a href="https://www.getlektor.com/" target="_blank">Lektor</a> and <a href="https://getnikola.com/" target="_blank">Nikola</a> 
+based on Github Stars.</p>
+<p>From these three options, Nikola is the only one with <a href="https://getnikola.com/handbook.html#supported-input-formats" target="_blank">native support</a> for .ipynb files, whereas
 <a href="https://github.com/danielfrg/pelican-jupyter" target="_blank">Pelican</a> and
 <a href="https://github.com/baldwint/lektor-jupyter" target="_blank">Lektor</a> require
 plugins, once installed their use should be straightforward.</p>
@@ -449,14 +418,12 @@ solution that can be used in Static, Executable, and printable scenarios,
 however, the advantages and disadvantages of each are slightly different and
 the level of maturity is not the same either. Therefore, in this article, it
 will be repeated for each category.</p>
-<p>This tool has been <a href="https://youtu.be/2Z7wDaYt53Y" target="_blank">migrated to the Python
-ecosystem</a> (it used Ruby and
-Jekyll in the past), and although it is not extremely popular at the moment,
-the project is gaining traction and seems it would be the new standard in the
-short-term</p>
-<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter">template
-repository</a>{:
-target="_blank"} to get started with Jupyter-Book was prepared, it works for
+<p>This tool has been <a href="https://youtu.be/2Z7wDaYt53Y" target="_blank">migrated to the Python ecosystem</a> 
+(it used Ruby and Jekyll in the past), and although it is not extremely popular
+at the moment, the project is gaining traction and seems it would be the new 
+standard in the short-term</p>
+<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter" target="_blank">template repository</a>
+to get started with Jupyter-Book was prepared, it works for
 static, executable, and also printable scenarios and can help getting started.</p>
 <h3 id="advantages_4"><a class="toclink" href="#advantages_4">Advantages</a></h3>
 <ul>
@@ -484,14 +451,12 @@ static, executable, and also printable scenarios and can help getting started.</
 <h3 id="when-to-use_4"><a class="toclink" href="#when-to-use_4">When to use</a></h3>
 <p>Despite having a "book" in the name, the actual layout is similar to modern
 software documentation. The reason being the main theme is inspired by the
-<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html">pandas
-docs</a>{:
-target="_blank"}. If the content consists of several Jupyter Books that can be
+<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html" target="_blank">pandas docs</a>. 
+If the content consists of several Jupyter Books that can be
 ordered into sections, chapters, or a similar hierarchical structure,
 Jupyter-Book is extremely useful</p>
 <p>As an example, the data visualization library Altair used this tool to build
-their <a href="https://altair-viz.github.io/altair-tutorial/">official tutorial</a>{:
-target="_blank"}.</p>
+their <a href="https://altair-viz.github.io/altair-tutorial/" target="_blank">official tutorial</a>.</p>
 <h2 id="executable-solutions"><a class="toclink" href="#executable-solutions">Executable Solutions</a></h2>
 <p>In the previous sections, all solutions aimed at providing a static
 representation of the notebook. That was the most convenient way to share a
@@ -510,18 +475,13 @@ indirect.</p>
 environment, meaning that there are no risks of running insecure code, neither
 for the writer or the reader.</p>
 <h2 id="embedded-solution"><a class="toclink" href="#embedded-solution">Embedded Solution</a></h2>
-<p><a href="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png"><img alt="Static Site
-Generators" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png">{:
-.b-lazy width=1401
-data-src=/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png
-}</a></p>
+<p><a href="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png"><img alt="Static Site Generators" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png" width="1401"></a></p>
 <p>Embedding a notebook means <em>inserting</em> some input/output cells into an existing
 web page (generally but not necessarily static). The aforementioned interaction
 with the back-end is taken care of by
 <a href="https://www.nbinteract.com/" target="_blank">NBInteract</a>, a python package
-that was developed for this very purpose. In this blog, there is a <a href="https://elc.github.io/posts/embed-interactive-notebooks/">brief
-tutorial</a>{:
-target="_blank"} explaining how to do this step by step</p>
+that was developed for this very purpose. In this blog, there is a <a href="https://elc.github.io/posts/embed-interactive-notebooks/" target="_blank">brief tutorial</a> 
+explaining how to do this step by step</p>
 <h3 id="advantages_5"><a class="toclink" href="#advantages_5">Advantages</a></h3>
 <ul>
 <li>It is fully compatible with Jupyter Widgets (ipywidgets).</li>
@@ -548,20 +508,15 @@ target="_blank"} explaining how to do this step by step</p>
 <p>This approach resembles the "Flash Application" or the "Java Applet" where a
 small piece of an external tool is embedded into a static website. In this
 case, that external tool is a Jupyter notebook.</p>
-<p>One of the <a href="https://elc.github.io/posts/ordinary-differential-equations-with-python/">articles of this
-blog</a>{:
-target="_blank"} uses this approach extensively to showcase Ordinary
+<p>One of the <a href="https://elc.github.io/posts/ordinary-differential-equations-with-python/" target="_blank">articles of this blog</a> 
+uses this approach extensively to showcase Ordinary
 Differential Equations with the aid of different ipywidgets.</p>
 <p>Although requiring some setup, it is one of the less disruptive approaches for
 writers and readers alike.</p>
 <h2 id="google-colaboratory"><a class="toclink" href="#google-colaboratory">Google Colaboratory</a></h2>
-<p><a href="/blog/images/jupyter-publishing/google-colab.png"><img alt="Google
-Colab" src="https://elc.github.io/blog/images/jupyter-publishing/google-colab-thumbnail.png">{: .b-lazy
-width=722 data-src=/blog/images/jupyter-publishing/google-colab.png
-}</a></p>
-<p><a href="https://colab.research.google.com/notebooks/welcome.ipynb">Google
-Colaboratory</a>{:
-target="_blank"} or simply Colab is a service provided for free by Google that
+<p><a href="/blog/images/jupyter-publishing/google-colab.png"><img alt="Google Colab" class="b-lazy" data-src="/blog/images/jupyter-publishing/google-colab.png" src="https://elc.github.io/blog/images/jupyter-publishing/google-colab-thumbnail.png" width="722"></a></p>
+<p><a href="https://colab.research.google.com/notebooks/welcome.ipynb" target="_blank">Google Colaboratory</a> 
+or simply Colab is a service provided for free by Google that
 comes with these main features:</p>
 <ul>
 <li>All commonly used data science libraries are pre-installed.</li>
@@ -598,10 +553,7 @@ directly from Colab by changing the URL.</p>
 it for free. Some teams may choose this solution solely because of this,
 especially in deep learning applications.</p>
 <h2 id="my-binder"><a class="toclink" href="#my-binder">My Binder</a></h2>
-<p><a href="/blog/images/jupyter-publishing/my-binder.png"><img alt="Static Site
-Generators" src="https://elc.github.io/blog/images/jupyter-publishing/my-binder-thumbnail.png">{:
-.b-lazy width=722 data-src=/blog/images/jupyter-publishing/my-binder.png
-}</a></p>
+<p><a href="/blog/images/jupyter-publishing/my-binder.png"><img alt="Static Site Generators" class="b-lazy" data-src="/blog/images/jupyter-publishing/my-binder.png" src="https://elc.github.io/blog/images/jupyter-publishing/my-binder-thumbnail.png" width="722"></a></p>
 <p><a href="https://mybinder.org/" target="_blank">MyBinder</a> or simply Binder is a free
 online service that creates sandbox environments to run Jupyter. It has support
 for both Jupyter Notebook and Jupyter Lab. However, it offers CPU-only
@@ -648,10 +600,9 @@ three different services:</p>
 <a href="https://thebe.readthedocs.io/en/latest/" target="_blank">Thebe</a>.</p>
 <p>Thebe is a service that acts as the embedded approach described above with the
 difference is that it is integrated with Jupyter-book since both projects are
-under the bigger <a href="https://executablebooks.org/en/latest/" target="_blank">Executable Books
-Project</a>, but it is
-not limited to Jupyter-Book. Thebe uses MyBinder as a back-end and provides an
-execution environment for static sites. </p>
+under the bigger <a href="https://executablebooks.org/en/latest/" target="_blank">Executable Books Project</a>, 
+but it is not limited to Jupyter-Book. Thebe uses MyBinder as a back-end and 
+provides an execution environment for static sites. </p>
 <h3 id="advantages_8"><a class="toclink" href="#advantages_8">Advantages</a></h3>
 <ul>
 <li>All of the advantages of using MyBinder</li>
@@ -674,9 +625,8 @@ experience.</p>
 <p>At the moment, it is the ideal solution if already using Jupyter-Book, for a
 similar approach using a more standalone tool, the embedded approach should be
 preferred.</p>
-<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter">template
-repository</a>{:
-target="_blank"} to get started with Jupyter-Book was prepared, it works for
+<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter" target="_blank">template repository</a>
+to get started with Jupyter-Book was prepared, it works for
 static, executable, and also printable scenarios and can help getting started.</p>
 <h2 id="printable-solutions"><a class="toclink" href="#printable-solutions">Printable Solutions</a></h2>
 <p>In some cases like academic publishing, book writing, or learning material the
@@ -751,15 +701,11 @@ default LaTeX export.</p>
 <p>At the moment LaTeX and PDF are not the main focus of Jupyter-Book and the
 design might appear basic, however, it is indeed a good starting point for
 books. Using the tool for single notebooks might be excessive.</p>
-<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter">template
-repository</a>{:
-target="_blank"} to get started with Jupyter-Book was prepared, it works for
+<p>As an additional resource for this article, a <a href="https://github.com/ELC/jupyter-book-template-cookiecutter" target="_blank">template repository</a>
+to get started with Jupyter-Book was prepared, it works for
 static, executable, and also printable scenarios and can help getting started.</p>
-<p>As an example, the official Jupyter-Book project generates a <a href="https://github.com/executablebooks/jupyter-book/suites/3444456225/artifacts/81694222">PDF version of
-their
-docs</a>{:
-target="_blank"} in the form of a book, using the LaTeX export option in the
-middle</p>
+<p>As an example, the official Jupyter-Book project generates a <a href="https://github.com/executablebooks/jupyter-book/suites/3444456225/artifacts/81694222" target="_blank">PDF version of their docs</a> in the form of a book, using 
+the LaTeX export option in the middle</p>
 <h2 id="honorable-mentions"><a class="toclink" href="#honorable-mentions">Honorable Mentions</a></h2>
 <p>Some tools could be useful in some contexts but are not so widespread
 as the ones presented so far.</p>
@@ -818,28 +764,16 @@ inspiration.</p>
 <h2 id="additional-resources"><a class="toclink" href="#additional-resources">Additional Resources</a></h2>
 <p>Awesome Lists:</p>
 <ul>
-<li><a href="https://github.com/jupyter/jupyter/wiki/a-gallery-of-interesting-jupyter-notebooks">Official Jupyter
-  Gallery</a>{:
-  target="_blank"}</li>
-<li><a href="https://github.com/markusschanta/awesome-jupyter" target="_blank">Markusschanta (2.3k
-  stars)</a></li>
-<li><a href="https://github.com/mauhai/awesome-jupyterlab">Mauhai (1.9k stars)</a>{:
-  target="_blank"}</li>
+<li><a href="https://github.com/jupyter/jupyter/wiki/a-gallery-of-interesting-jupyter-notebooks" target="_blank">Official Jupyter Gallery</a></li>
+<li><a href="https://github.com/markusschanta/awesome-jupyter" target="_blank">Markusschanta (2.3k stars)</a></li>
+<li><a href="https://github.com/mauhai/awesome-jupyterlab" target="_blank">Mauhai (1.9k stars)</a></li>
 </ul>
-<p><a href="https://executablebooks.org/en/latest/gallery.html">Gallery of
-Jupyter-Books</a>{:
-target="_blank"}</p>
+<p><a href="https://executablebooks.org/en/latest/gallery.html" target="_blank">Gallery of Jupyter-Books</a></p>
 <p>Some Books built with Jupyter Notebooks:</p>
 <ul>
-<li><a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/">Probabilistic Programming &amp; Bayesian Methods for
-  Hackers</a>{:
-  target="_blank"}</li>
-<li><a href="https://github.com/thomas-haslwanter/statsintro_python">Introduction to Statistics with
-  Python</a>{:
-  target="_blank"}</li>
-<li><a href="https://github.com/jakevdp/PythonDataScienceHandbook">Python Data Science
-  Handbook</a>{:
-  target="_blank"}</li>
+<li><a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" target="_blank">Probabilistic Programming &amp; Bayesian Methods for Hackers</a></li>
+<li><a href="https://github.com/thomas-haslwanter/statsintro_python" target="_blank">Introduction to Statistics with Python</a></li>
+<li><a href="https://github.com/jakevdp/PythonDataScienceHandbook" target="_blank">Python Data Science Handbook</a></li>
 </ul>
   </section>
 
