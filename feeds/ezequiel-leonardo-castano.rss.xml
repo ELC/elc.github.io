@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>Ezequiel Leonardo Castaño Personal Website - Ezequiel Leonardo Castaño</title><link>https://elc.github.io/</link><description>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</description><lastBuildDate>Sat, 07 Aug 2021 00:00:00 -0300</lastBuildDate><item><title>Jupyter Publishing Guide: From Embedded to Book</title><link>https://elc.github.io/posts/jupyter-publishing</link><description>&lt;p&gt;&lt;a href="/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
 &lt;p&gt;Jupyter Notebooks are the lingua franca for Data Science. There is hardly any
 data scientist that has never used this IDE. However, in contrast to its
 popularity and usefulness, the process of sharing a Jupyter Notebook is not
