@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/</loc>
-<lastmod>2021-08-16T03:34:37-00:00</lastmod>
+<lastmod>2021-08-16T03:42:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
@@ -33,7 +33,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/posts/jupyter-publishing</loc>
-<lastmod>2021-08-07T00:00:00-03:00</lastmod>
+<lastmod>2021-08-16T00:00:00-03:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.75</priority>
 </url>
@@ -138,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/category/programming/</loc>
-<lastmod>2021-08-07T00:00:00-03:54</lastmod>
+<lastmod>2021-08-16T00:00:00-03:54</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
@@ -159,7 +159,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/tag/jupyter/</loc>
-<lastmod>2021-08-07T00:00:00-03:54</lastmod>
+<lastmod>2021-08-16T00:00:00-03:54</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
@@ -313,7 +313,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://elc.github.io/author/ezequiel-leonardo-castano/</loc>
-<lastmod>2021-08-07T00:00:00-03:54</lastmod>
+<lastmod>2021-08-16T00:00:00-03:54</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
