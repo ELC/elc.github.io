@@ -247,7 +247,7 @@ one of the most popular ones being
 As well as other HTML-based approaches, If cell execution or
 interactive plots are necessary, this option is not suitable.&lt;/p&gt;
 &lt;h2 id="static-site-generator-integration"&gt;&lt;a class="toclink" href="#static-site-generator-integration"&gt;Static Site Generator Integration&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-publishing/static-site-generators.png"&gt;&lt;img alt="Static Site Generators" class="narrow b-lazy" data-src="/blog/images/jupyter-publishing/static-site-generators.png" src="https://elc.github.io/blog/images/jupyter-publishing/static-site-generators-thumbnail.png" width="722"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/blog/images/jupyter-publishing/static-site-generators.png"&gt;&lt;img alt="Static Site Generators" class="narrow b-lazy" data-src="/blog/images/jupyter-publishing/static-site-generators.png" src="https://elc.github.io/blog/images/jupyter-publishing/static-site-generators-thumbnail.png" width="798"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Nowadays, there is an increasing trend in popularity for Jamstack tools, i.e.
 Static Site Generators. That is why there are plenty of options available in
 the Python ecosystem (&lt;a href="https://jamstack.org/generators/"&gt;50 at the time of this writting&lt;/a&gt;){: target="_blank"}. 
