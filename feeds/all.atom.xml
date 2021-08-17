@@ -258,6 +258,10 @@ based on Github Stars.&lt;/p&gt;
 &lt;a href="https://github.com/danielfrg/pelican-jupyter" target="_blank"&gt;Pelican&lt;/a&gt; and
 &lt;a href="https://github.com/baldwint/lektor-jupyter" target="_blank"&gt;Lektor&lt;/a&gt; require
 plugins, once installed their use should be straightforward.&lt;/p&gt;
+&lt;p&gt;Another possibility is to use &lt;a href="https://fastpages.fast.ai/" target="_blank"&gt;FastPages&lt;/a&gt;, 
+an static site generator thought specifically for Jupyter Notebooks by the
+FastAI team. It is not as popular as the other three but it is raising in
+popularity in the last couple of years.&lt;/p&gt;
 &lt;p&gt;Independently of the particular generator, the advantages and disadvantages are
 identical.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This approach is &lt;strong&gt;not&lt;/strong&gt; embedding Jupyter Notebooks in a static
@@ -603,6 +607,22 @@ the LaTeX export option in the middle&lt;/p&gt;
 &lt;p&gt;Some tools could be useful in some contexts but are not so widespread
 as the ones presented so far.&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://nbdev.fast.ai/" target="_blank"&gt;NBdev&lt;/a&gt;: is a tool developed by 
+  the &lt;a href="https://www.fast.ai/" target="_blank"&gt;FastAI&lt;/a&gt; team and can be used
+  to create Python libraries from Jupyter Notebooks. The whole FastAI framework
+  is built with it. Not in the list because building libraries from notebooks
+  is more of a niche application and the project is still very young (just a 
+  few years). &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://fastai.github.io/fastdoc/" target="_blank"&gt;Fastdoc&lt;/a&gt;: also from 
+  the &lt;a href="https://www.fast.ai/" target="_blank"&gt;FastAI&lt;/a&gt; team, it is a library
+  to create publication ready books from Jupyter Notebooks. It was used to 
+  write the &lt;a href="https://github.com/fastai/fastbook/" target="_blank"&gt;O'Reilly FastAI Book&lt;/a&gt;.
+  Not in the list because the project is not currently active (Latest release 
+  October 2020) and it is not as widespread as Jupyter-Book.&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="https://spell.ml/" target="_blank"&gt;Spell.ml&lt;/a&gt;: it is a service to provide
   workspaces to run Jupyter Notebooks. It has CPU support for free with

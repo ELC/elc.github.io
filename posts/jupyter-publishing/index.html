@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=43acd1f">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=e8a2fd7">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -99,7 +99,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>31 min <span data-l10n-id="to-read">to read</span></b>
+                <b>32 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -367,6 +367,10 @@ based on Github Stars.</p>
 <a href="https://github.com/danielfrg/pelican-jupyter" target="_blank">Pelican</a> and
 <a href="https://github.com/baldwint/lektor-jupyter" target="_blank">Lektor</a> require
 plugins, once installed their use should be straightforward.</p>
+<p>Another possibility is to use <a href="https://fastpages.fast.ai/" target="_blank">FastPages</a>, 
+an static site generator thought specifically for Jupyter Notebooks by the
+FastAI team. It is not as popular as the other three but it is raising in
+popularity in the last couple of years.</p>
 <p>Independently of the particular generator, the advantages and disadvantages are
 identical.</p>
 <p><strong>Note:</strong> This approach is <strong>not</strong> embedding Jupyter Notebooks in a static
@@ -712,6 +716,22 @@ the LaTeX export option in the middle</p>
 <p>Some tools could be useful in some contexts but are not so widespread
 as the ones presented so far.</p>
 <ul>
+<li>
+<p><a href="https://nbdev.fast.ai/" target="_blank">NBdev</a>: is a tool developed by 
+  the <a href="https://www.fast.ai/" target="_blank">FastAI</a> team and can be used
+  to create Python libraries from Jupyter Notebooks. The whole FastAI framework
+  is built with it. Not in the list because building libraries from notebooks
+  is more of a niche application and the project is still very young (just a 
+  few years). </p>
+</li>
+<li>
+<p><a href="https://fastai.github.io/fastdoc/" target="_blank">Fastdoc</a>: also from 
+  the <a href="https://www.fast.ai/" target="_blank">FastAI</a> team, it is a library
+  to create publication ready books from Jupyter Notebooks. It was used to 
+  write the <a href="https://github.com/fastai/fastbook/" target="_blank">O'Reilly FastAI Book</a>.
+  Not in the list because the project is not currently active (Latest release 
+  October 2020) and it is not as widespread as Jupyter-Book.</p>
+</li>
 <li>
 <p><a href="https://spell.ml/" target="_blank">Spell.ml</a>: it is a service to provide
   workspaces to run Jupyter Notebooks. It has CPU support for free with

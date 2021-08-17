@@ -5,7 +5,6 @@
 /*# sourceMappingURL=auxiliary.scss.css.map */
 
 
-@charset "UTF-8";
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #fcfcfc;
@@ -23,11 +22,11 @@ video {
 
 a[target=_blank]:not([href*="github.com"]):not(:has(img)):after {
   font-family: "FontAwesome";
-  content: " ";
+  content: " \f08e";
 }
 a[href*="github.com"]:after {
   font-family: "FontAwesome";
-  content: " ";
+  content: " \f09b";
 }
 
 .paginator {
