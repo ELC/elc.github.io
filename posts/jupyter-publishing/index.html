@@ -99,7 +99,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>32 min <span data-l10n-id="to-read">to read</span></b>
+                <b>35 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -480,6 +480,44 @@ indirect.</p>
 <p><strong>Important Note:</strong> The execution of the code will be always on a sandbox
 environment, meaning that there are no risks of running insecure code, neither
 for the writer or the reader.</p>
+<h2 id="jupyter-lite"><a class="toclink" href="#jupyter-lite">Jupyter Lite</a></h2>
+<p><a href="/blog/images/jupyter-publishing/jupyter-lite.png"><img alt="Static Site Generators" class="narrow b-lazy" data-src="/blog/images/jupyter-publishing/jupyter-lite.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-lite-thumbnail.png" width="900"></a></p>
+<p><a href="https://github.com/jupyterlite/jupyterlite" target="_blank">Jupyter Lite</a>
+is a young (First commit on the 21st March 2021) yet popular tool (1.6k stars)
+developed by the Jupyter team. The tool is still <em>unofficial</em> as per their docs
+but, managed to achieve something that was never done before: <strong>Jupyter in the Browser
+without a Backend</strong>. That means that having only a static server could bring a
+whole Jupyter Notebook/Lab environment.</p>
+<p>This works thanks to <a href="https://pyodide.org/en/stable/" target="_blank">Mozilla's Pyodide</a>,
+this other project ships the scientific Python stack compiled to WebAssembly
+and thus a backend is not needed as everything happens in the front-end.</p>
+<h3 id="advantages_5"><a class="toclink" href="#advantages_5">Advantages</a></h3>
+<ul>
+<li>One of the most transparent experiences for Executable Jupyter Notebooks.</li>
+<li>It does not require a setup for the reader.</li>
+<li>The data is persisted to the browser localstorage.</li>
+<li>It has multiple kernels (Python and Javascript) support built-in.</li>
+</ul>
+<h3 id="disadvantages_5"><a class="toclink" href="#disadvantages_5">Disadvantages</a></h3>
+<ul>
+<li>It requires some setup for the writer.</li>
+<li>It is a Notebook-only environment, it does not integrate with the existing
+  website or platform.</li>
+<li>Configuration is not as straightforward as with other solutions.</li>
+<li>It is still in Alpha, meaning breaking changes can be introduced without
+  prior notice. And the performance might be unstable (crashes).</li>
+<li>Slower than solutions with a dedicated back-end.</li>
+<li>Since there is no dedicated Back-End, performance might be compromised in
+  low-end PCs.</li>
+<li>Good with the defaults but, having a custom configuration may require
+  additional setup.</li>
+</ul>
+<h3 id="when-to-use_5"><a class="toclink" href="#when-to-use_5">When to use</a></h3>
+<p>For proofs of concepts without complex dependencies, good internet connection,
+and modern hardware. This might be a great choice. Uses cases might be MOOCs or
+other events where participants need Jupyter and no dedicated server is
+provided.</p>
+<p>However, it is not recommended when a stable and robust solution is needed.</p>
 <h2 id="embedded-solution"><a class="toclink" href="#embedded-solution">Embedded Solution</a></h2>
 <p><a href="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png"><img alt="Static Site Generators" class="b-lazy" data-src="/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png" width="1401"></a></p>
 <p>Embedding a notebook means <em>inserting</em> some input/output cells into an existing
@@ -488,7 +526,7 @@ with the back-end is taken care of by
 <a href="https://www.nbinteract.com/" target="_blank">NBInteract</a>, a python package
 that was developed for this very purpose. In this blog, there is a <a href="https://elc.github.io/posts/embed-interactive-notebooks/" target="_blank">brief tutorial</a> 
 explaining how to do this step by step</p>
-<h3 id="advantages_5"><a class="toclink" href="#advantages_5">Advantages</a></h3>
+<h3 id="advantages_6"><a class="toclink" href="#advantages_6">Advantages</a></h3>
 <ul>
 <li>It is fully compatible with Jupyter Widgets (ipywidgets).</li>
 <li>There is full control about dependencies and environment.</li>
@@ -498,7 +536,7 @@ explaining how to do this step by step</p>
 <li>It is compatible with Analytics solutions like Google Analytics. Should be
   added manually.</li>
 </ul>
-<h3 id="disadvantages_5"><a class="toclink" href="#disadvantages_5">Disadvantages</a></h3>
+<h3 id="disadvantages_6"><a class="toclink" href="#disadvantages_6">Disadvantages</a></h3>
 <ul>
 <li>Requires a Github account and basic use of git.</li>
 <li>The configuration should be done on a notebook by notebook basis.</li>
@@ -510,7 +548,7 @@ explaining how to do this step by step</p>
 <li>The user experience might be a little uncomfortable because one has to wait
   until the kernel is ready</li>
 </ul>
-<h3 id="when-to-use_5"><a class="toclink" href="#when-to-use_5">When to use</a></h3>
+<h3 id="when-to-use_6"><a class="toclink" href="#when-to-use_6">When to use</a></h3>
 <p>This approach resembles the "Flash Application" or the "Java Applet" where a
 small piece of an external tool is embedded into a static website. In this
 case, that external tool is a Jupyter notebook.</p>
@@ -531,7 +569,7 @@ comes with these main features:</p>
 </ul>
 <p>One of the interesting features is that any public Github repo can be opened
 directly from Colab by changing the URL.</p>
-<h3 id="advantages_6"><a class="toclink" href="#advantages_6">Advantages</a></h3>
+<h3 id="advantages_7"><a class="toclink" href="#advantages_7">Advantages</a></h3>
 <ul>
 <li>Seemless import from Github.</li>
 <li>It does not require Github at all. Any user with a Google Gmail account can
@@ -544,7 +582,7 @@ directly from Colab by changing the URL.</p>
 <li>URL replacement integration with Github.</li>
 <li>There are no set up times.</li>
 </ul>
-<h3 id="disadvantages_6"><a class="toclink" href="#disadvantages_6">Disadvantages</a></h3>
+<h3 id="disadvantages_7"><a class="toclink" href="#disadvantages_7">Disadvantages</a></h3>
 <ul>
 <li>The interface is custom from Google, it is different than the traditional
   Jupyter Lab.</li>
@@ -554,7 +592,7 @@ directly from Colab by changing the URL.</p>
 <li>The only possible storage is Google Drive, hence inheriting size limitations
   of the associated account (15GB at the time of this writing).</li>
 </ul>
-<h3 id="when-to-use_6"><a class="toclink" href="#when-to-use_6">When to use</a></h3>
+<h3 id="when-to-use_7"><a class="toclink" href="#when-to-use_7">When to use</a></h3>
 <p>The fact that Colab offers GPU support is a game-changer, no other service does
 it for free. Some teams may choose this solution solely because of this,
 especially in deep learning applications.</p>
@@ -564,13 +602,13 @@ especially in deep learning applications.</p>
 online service that creates sandbox environments to run Jupyter. It has support
 for both Jupyter Notebook and Jupyter Lab. However, it offers CPU-only
 processing capabilities.</p>
-<h3 id="advantages_7"><a class="toclink" href="#advantages_7">Advantages</a></h3>
+<h3 id="advantages_8"><a class="toclink" href="#advantages_8">Advantages</a></h3>
 <ul>
 <li>It is used as a base for many other services.</li>
 <li>New dependencies can be installed if needed automatically.</li>
 <li>No apparent limit for data while the session is alive.</li>
 </ul>
-<h3 id="disadvantages_7"><a class="toclink" href="#disadvantages_7">Disadvantages</a></h3>
+<h3 id="disadvantages_8"><a class="toclink" href="#disadvantages_8">Disadvantages</a></h3>
 <ul>
 <li>It takes some time to build and run.</li>
 <li>The user has to navigate to a different website to execute the notebook.</li>
@@ -579,7 +617,7 @@ processing capabilities.</p>
 <li>The notebook kernel is shut down after some time of inactivity.</li>
 <li>There are no storage capabilities, the results should be manually downloaded.</li>
 </ul>
-<h3 id="when-to-use_7"><a class="toclink" href="#when-to-use_7">When to use</a></h3>
+<h3 id="when-to-use_8"><a class="toclink" href="#when-to-use_8">When to use</a></h3>
 <p>MyBinder is a backbone service and for a notebook writer, it may not be that
 useful since other services like Jupyter-book or the Embedded approach use it
 under the hood. However, it is helpful to know some of the details of the
@@ -609,20 +647,20 @@ difference is that it is integrated with Jupyter-book since both projects are
 under the bigger <a href="https://executablebooks.org/en/latest/" target="_blank">Executable Books Project</a>, 
 but it is not limited to Jupyter-Book. Thebe uses MyBinder as a back-end and 
 provides an execution environment for static sites. </p>
-<h3 id="advantages_8"><a class="toclink" href="#advantages_8">Advantages</a></h3>
+<h3 id="advantages_9"><a class="toclink" href="#advantages_9">Advantages</a></h3>
 <ul>
 <li>All of the advantages of using MyBinder</li>
 <li>The user sees the execution inside the same page, no redirections are needed.</li>
 <li>Seamless integration with Jupyter-book, no additional configuration needed.</li>
 <li>Full support for custom dependencies through MyBinder</li>
 </ul>
-<h3 id="disadvantages_8"><a class="toclink" href="#disadvantages_8">Disadvantages</a></h3>
+<h3 id="disadvantages_9"><a class="toclink" href="#disadvantages_9">Disadvantages</a></h3>
 <ul>
 <li>The user experience might be a little uncomfortable because one has to wait
   until the kernel is ready</li>
 <li>Configuring without using Jupyter-book might require HTML/JS knowledge</li>
 </ul>
-<h3 id="when-to-use_8"><a class="toclink" href="#when-to-use_8">When to use</a></h3>
+<h3 id="when-to-use_9"><a class="toclink" href="#when-to-use_9">When to use</a></h3>
 <p>Thebe is a young project (223 Github stars at the moment of this writing) and
 there is not a big collection of examples nor is it a well-known tool. However,
 when used integrated with Jupyter-Book, it gives the reader the ability to
@@ -659,21 +697,21 @@ structure the document.</p>
 <p>The native LaTeX export will convert the notebook to the LaTeX format. This is
 ideal for single file conversions and should be the preferred way to start
 articles based on Jupyter Notebooks.</p>
-<h3 id="advantages_9"><a class="toclink" href="#advantages_9">Advantages</a></h3>
+<h3 id="advantages_10"><a class="toclink" href="#advantages_10">Advantages</a></h3>
 <ul>
 <li>The same notebooks can be used for static/executable printing, no
   printing-exclusive modifications are needed</li>
 <li>It is a native, straightforward solution.</li>
 <li>All images and figures are handled automatically.</li>
 </ul>
-<h3 id="disadvantages_9"><a class="toclink" href="#disadvantages_9">Disadvantages</a></h3>
+<h3 id="disadvantages_10"><a class="toclink" href="#disadvantages_10">Disadvantages</a></h3>
 <ul>
 <li>If using more than one notebook, each should be exported manually (can be
   automated with <code>nbconvert</code> though).</li>
 <li>Usually, the code should be removed manually.</li>
 <li>It requires final editing on an external platform.</li>
 </ul>
-<h3 id="when-to-use_9"><a class="toclink" href="#when-to-use_9">When to use</a></h3>
+<h3 id="when-to-use_10"><a class="toclink" href="#when-to-use_10">When to use</a></h3>
 <p>The built-in LaTeX export is suitable when dealing with single notebooks that
 are not connected. It might be helpful to start an academic article but in such
 media often the code should be removed. </p>
@@ -686,7 +724,7 @@ create a .tex with all the notebooks converted to LaTeX. This approach will
 produce a consistent and book-like structured document. Some final formatting
 might still be needed in third-party tools but it is much less work than the
 default LaTeX export.</p>
-<h3 id="advantages_10"><a class="toclink" href="#advantages_10">Advantages</a></h3>
+<h3 id="advantages_11"><a class="toclink" href="#advantages_11">Advantages</a></h3>
 <ul>
 <li>The same notebooks can be used for static/executable printing, no
   printing-exclusive modifications are needed</li>
@@ -697,13 +735,13 @@ default LaTeX export.</p>
 <li>It supports basic PDF export.</li>
 <li>Can be integrated to generate a PDF on each commit.</li>
 </ul>
-<h3 id="disadvantages_10"><a class="toclink" href="#disadvantages_10">Disadvantages</a></h3>
+<h3 id="disadvantages_11"><a class="toclink" href="#disadvantages_11">Disadvantages</a></h3>
 <ul>
 <li>The support is still experimental and might change.</li>
 <li>It requires configuring a CI/CD Pipeline.</li>
 <li>It requires final editing on an external platform.</li>
 </ul>
-<h3 id="when-to-use_10"><a class="toclink" href="#when-to-use_10">When to use</a></h3>
+<h3 id="when-to-use_11"><a class="toclink" href="#when-to-use_11">When to use</a></h3>
 <p>At the moment LaTeX and PDF are not the main focus of Jupyter-Book and the
 design might appear basic, however, it is indeed a good starting point for
 books. Using the tool for single notebooks might be excessive.</p>
@@ -731,6 +769,29 @@ as the ones presented so far.</p>
   write the <a href="https://github.com/fastai/fastbook/" target="_blank">O'Reilly FastAI Book</a>.
   Not in the list because the project is not currently active (Latest release 
   October 2020) and it is not as widespread as Jupyter-Book.</p>
+</li>
+<li>
+<p><a href="https://starboard.gg/" target="_blank">Starboard</a> is an online service
+  that provides literal notebooks (not Jupyter) with Jupyter-like capabilities
+  such as Code and Text cells. It runs completely on the browser (with Pyodide)
+  and its goal is to make notebooks easier to share. Not in the list because it
+  is its own format, not Jupyter (although Jupyter import is <em>possible</em>), and
+  because it is in early development.</p>
+</li>
+<li>
+<p><a href="https://github.com/features/codespaces" target="_blank">Github Codespaces</a>:
+  is a Github project to work online in a Visual Studio Code hosted on the
+  browser. At the time of this writing, it can be used in any repository by
+  pressing "." (dot), one can navigate and edit the files with the free tier.
+  To attach a compute instance, a paid service is offered to selected
+  beta-tester organizations. Not in the list because it does not work with
+  Jupyter out of the box and it only has a paid solution.</p>
+</li>
+<li>
+<p><a href="https://cocalc.com/" target="_blank">Cocalc</a>: a tool very similar to
+  Google Colab but with a less powerful free tier plan. It does have unique
+  features such as Chat Rooms and collaborative editing. Not in the list
+  because there is a feature overlap with Colab and it is not as widespread. </p>
 </li>
 <li>
 <p><a href="https://spell.ml/" target="_blank">Spell.ml</a>: it is a service to provide
