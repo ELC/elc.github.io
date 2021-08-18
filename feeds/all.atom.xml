@@ -60,6 +60,7 @@ advantages, disadvantages, and a "when to use" section.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#executable-solutions"&gt;Executable Solutions&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#jupyter-lite"&gt;JupyterLite&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#embedded-solution"&gt;Embedded&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#google-colaboratory"&gt;Google Colab&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#my-binder"&gt;MyBinder&lt;/a&gt;&lt;/li&gt;
