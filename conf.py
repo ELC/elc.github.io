@@ -40,6 +40,8 @@ STATIC_PATHS = [
 ]
 
 
+ETHICALADS_DOMAIN = "elcgithubio"
+
 # Contribution
 
 CONTRIBUTION_URL = "https://github.com/ELC/elc.github.io-content/edit/master"
