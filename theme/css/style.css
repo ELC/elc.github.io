@@ -793,8 +793,8 @@ a[href*="github.com"]:after {
 @media only screen and (min-width: 1024px) {
   .article img,
 .page img {
-    margin-left: -7vw;
-    max-width: calc(100% + 14vw);
+    margin-left: -4vw;
+    max-width: calc(100% + 8vw);
   }
 }
 .article .headerimage-article img,
@@ -1289,6 +1289,30 @@ iframe {
 }
 .newsletter-container input:checked ~ .newsletter-content {
   display: block;
+}
+
+.ethical-text {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 80px;
+}
+@media only screen and (min-width: 1500px) {
+  .ethical-text {
+    display: none;
+  }
+}
+.ethical-image {
+  display: none;
+}
+@media only screen and (min-width: 1500px) {
+  .ethical-image {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    right: 1vw;
+    bottom: 30%;
+  }
 }
 
 /*# sourceMappingURL=main.scss.css.map */

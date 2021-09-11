@@ -41,7 +41,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=5721583">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -77,6 +77,13 @@
     </ul>
 </nav>
 <div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-publisher="elcgithubio" data-ea-keywords=></div>
+    </div>
+    </aside>
+
 
 <div class="tag">
   <h1><span data-l10n-id="articles-tagged">Articles tagged with </span> #tutorial</h1>
@@ -126,6 +133,22 @@
 
 <script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
 
+
+      <script>
+        var ethicalAd = document.querySelector('[data-ea-publisher]');
+
+        if (window.matchMedia("(min-width: 1500px)").matches) {
+            ethicalAd.setAttribute("data-ea-type", "image");
+            ethicalAd.setAttribute("id", "right-sidebar-image");
+            ethicalAd.parentElement.classList.add("ethical-image")
+        } else {
+            ethicalAd.setAttribute("data-ea-type", "text");
+            ethicalAd.setAttribute("id", "top-text");
+            ethicalAd.parentElement.classList.add("ethical-text")
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
 
   </body>
 
