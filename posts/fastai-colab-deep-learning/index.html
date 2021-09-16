@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=Python|fastai|deep-learning></div>
+      <div data-ea-keywords=Python|FastAI|deep-learning|Jupyter Notebooks|Colab></div>
     </div>
     </aside>
 
@@ -294,6 +294,17 @@ pip -q install torchvision
 <section class="article-related">
     <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
         <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-publishing" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-publishing">Jupyter Publishing Guide: From Embedded to Book</a></h3>
+                
+                <p class="article-related-post-body-description">Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
                     <a class="article-related-post-link" href="https://elc.github.io/posts/embed-interactive-notebooks" aria-label="Related Post">
                         <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage.png" src="https://elc.github.io/blog/images/embed_interactive_notebooks/embed-interactive-notebooks_headerimage-thumbnail.png">
                     </a>
@@ -305,25 +316,14 @@ pip -q install torchvision
             </div>
         </article>
         <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fractals/factals_headerimage.png" src="https://elc.github.io/blog/images/fractals/factals_headerimage-thumbnail.png">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/ordinary-differential-equations-with-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png" src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage-thumbnail.png">
                     </a>
           
             <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/plotting-fractals-step-by-step-with-python">Step by Step Fractals with Python</a></h3>
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python</a></h3>
                 
-                <p class="article-related-post-body-description">Fractals are awesome, they are built with very complex pattern and they allow you to zoom in forever! In this post we will see how easily it is to plot several kinds of fractals using a tool called L-Systems and the Python Turtle module for the step to step plotting.</p>
-            </div>
-        </article>
-        <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/executable-flask-pyinstaller" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage.png" src="https://elc.github.io/blog/images/flask_pyinstaller/flask-pyinstaller_headerimage-thumbnail.png">
-                    </a>
-          
-            <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/executable-flask-pyinstaller">Create one executable file for a Flask app with PyInstaller</a></h3>
-                
-                <p class="article-related-post-body-description">Having a single executable file could be a great advantage in so many cases and nowadays more a more desktop applications are using web technologies (React Native, Cordova, Ionic, etc.). It was time for the Python stack to join the Group via PyFlaDesk, a simple script to combine Flask, Qt and PyInstaller to create desktop Apps.</p>
+                <p class="article-related-post-body-description">When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.</p>
             </div>
         </article>
 </section>
@@ -410,16 +410,21 @@ pip -q install torchvision
 </script>
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

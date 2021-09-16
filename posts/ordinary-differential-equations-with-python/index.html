@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=Simulation|Programming|Math></div>
+      <div data-ea-keywords=Simulation|Math|Python|Scipy|ODE></div>
     </div>
     </aside>
 
@@ -983,14 +983,14 @@ $$</div>
             </div>
         </article>
         <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="article-related-post-link-img" src="https://elc.github.io/blog/images/pascal_triangle/pascal_triangle_headerimage.gif">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-publishing" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">
                     </a>
           
             <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm">Pascal Triangle and Genetic Algorithm - A Visualization</a></h3>
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-publishing">Jupyter Publishing Guide: From Embedded to Book</a></h3>
                 
-                <p class="article-related-post-body-description">Inspired by a Wikipedia article, I replicate a way to visualize the Pascal Triangle and used the same approach in Genetic Algorithms</p>
+                <p class="article-related-post-body-description">Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.</p>
             </div>
         </article>
 </section>
@@ -1077,16 +1077,21 @@ $$</div>
 </script>
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

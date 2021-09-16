@@ -797,6 +797,19 @@ a[href*="github.com"]:after {
     max-width: calc(100% + 8vw);
   }
 }
+.article video,
+.page video {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1024px) {
+  .article video,
+.page video {
+    margin-left: -4vw;
+    max-width: calc(100% + 8vw);
+  }
+}
 .article .headerimage-article img,
 .page .headerimage-article img {
   position: relative;

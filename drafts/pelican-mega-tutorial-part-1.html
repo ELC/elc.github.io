@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=pelican|tutorial|programming></div>
+      <div data-ea-keywords=pelican|tutorial|programming></div>
     </div>
     </aside>
 
@@ -398,17 +398,6 @@ markdown
             </div>
         </article>
         <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/ordinary-differential-equations-with-python" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png" src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage-thumbnail.png">
-                    </a>
-          
-            <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python</a></h3>
-                
-                <p class="article-related-post-body-description">When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.</p>
-            </div>
-        </article>
-        <article class="article-related-post">
                     <a class="article-related-post-link" href="https://elc.github.io/posts/times-tables" aria-label="Related Post">
                         <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage-thumbnail.png">
                     </a>
@@ -503,16 +492,21 @@ markdown
 </script>
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

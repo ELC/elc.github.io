@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>#fastai &ndash; Ezequiel Leonardo Castaño Personal Website</title>
+    <title>#FastAI &ndash; Ezequiel Leonardo Castaño Personal Website</title>
 
     <!-- Meta -->
     <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
@@ -41,7 +41,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -80,13 +80,13 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=></div>
+      <div data-ea-keywords=></div>
     </div>
     </aside>
 
 
 <div class="tag">
-  <h1><span data-l10n-id="articles-tagged">Articles tagged with </span> #fastai</h1>
+  <h1><span data-l10n-id="articles-tagged">Articles tagged with </span> #FastAI</h1>
 </div>
 
 
@@ -136,8 +136,10 @@
     <footer class="article__footer">
         <span class="article_tags">
                     <a class="article__category" href="https://elc.github.io/tag/python/" title="All articles with Python tag">#Python</a>
-                    <a class="article__category" href="https://elc.github.io/tag/fastai/" title="All articles with Fastai tag">#fastai</a>
+                    <a class="article__category" href="https://elc.github.io/tag/fastai/" title="All articles with Fastai tag">#FastAI</a>
                     <a class="article__category" href="https://elc.github.io/tag/deep-learning/" title="All articles with Deep-Learning tag">#deep-learning</a>
+                    <a class="article__category" href="https://elc.github.io/tag/jupyter-notebooks/" title="All articles with Jupyter Notebooks tag">#Jupyter Notebooks</a>
+                    <a class="article__category" href="https://elc.github.io/tag/colab/" title="All articles with Colab tag">#Colab</a>
         </span>
         <a class="article__button" href="https://elc.github.io/posts/fastai-colab-deep-learning/" data-l10n-id="continue-reading">Continue Reading</a>
     </footer>
@@ -186,16 +188,21 @@
 
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

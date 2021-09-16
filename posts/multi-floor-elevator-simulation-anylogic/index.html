@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=Simulation|Programming|Math></div>
+      <div data-ea-keywords=Simulation|Programming|Math|AnyLogic></div>
     </div>
     </aside>
 
@@ -389,17 +389,6 @@
                 <p class="article-related-post-body-description">After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!</p>
             </div>
         </article>
-        <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="article-related-post-link-img" src="https://elc.github.io/blog/images/pascal_triangle/pascal_triangle_headerimage.gif">
-                    </a>
-          
-            <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm">Pascal Triangle and Genetic Algorithm - A Visualization</a></h3>
-                
-                <p class="article-related-post-body-description">Inspired by a Wikipedia article, I replicate a way to visualize the Pascal Triangle and used the same approach in Genetic Algorithms</p>
-            </div>
-        </article>
 </section>
 
     <!-- Comments -->
@@ -484,16 +473,21 @@
 </script>
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

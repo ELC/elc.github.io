@@ -41,7 +41,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -80,7 +80,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=></div>
+      <div data-ea-keywords=></div>
     </div>
     </aside>
 
@@ -94,10 +94,25 @@
 
   <section class="page-content">
     <ul>      <li>
+        <a href="https://elc.github.io/tag/animation/">Animation (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/anylogic/">AnyLogic (1)</a>
+      </li>
+      <li>
         <a href="https://elc.github.io/tag/bible/">Bible (1)</a>
       </li>
       <li>
+        <a href="https://elc.github.io/tag/binder/">Binder (1)</a>
+      </li>
+      <li>
         <a href="https://elc.github.io/tag/christian/">Christian (2)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/colab/">Colab (2)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/collaboration/">collaboration (1)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/data-visualization/">Data Visualization (2)</a>
@@ -106,7 +121,7 @@
         <a href="https://elc.github.io/tag/deep-learning/">deep-learning (1)</a>
       </li>
       <li>
-        <a href="https://elc.github.io/tag/fastai/">fastai (1)</a>
+        <a href="https://elc.github.io/tag/fastai/">FastAI (1)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/flask/">Flask (1)</a>
@@ -130,25 +145,58 @@
         <a href="https://elc.github.io/tag/haskell/">Haskell (1)</a>
       </li>
       <li>
-        <a href="https://elc.github.io/tag/jupyter/">Jupyter (2)</a>
+        <a href="https://elc.github.io/tag/jupyter/">Jupyter (3)</a>
       </li>
       <li>
-        <a href="https://elc.github.io/tag/math/">Math (4)</a>
+        <a href="https://elc.github.io/tag/jupyter-notebooks/">Jupyter Notebooks (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/latex/">LaTeX (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/lyrics/">Lyrics (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/math/">Math (3)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/matplotlib/">Matplotlib (1)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/nbinteract/">NBinteract (1)</a>
       </li>
       <li>
-        <a href="https://elc.github.io/tag/programming/">Programming (4)</a>
+        <a href="https://elc.github.io/tag/ngrok/">Ngrok (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/notebooks/">Notebooks (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/ode/">ODE (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/presentation/">Presentation (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/programming/">Programming (2)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/pyinstaller/">PyInstaller (1)</a>
       </li>
       <li>
-        <a href="https://elc.github.io/tag/python/">Python (5)</a>
+        <a href="https://elc.github.io/tag/python/">Python (8)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/scipy/">Scipy (1)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/security/">security (1)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/simulation/">Simulation (2)</a>
+      </li>
+      <li>
+        <a href="https://elc.github.io/tag/static-website/">Static Website (1)</a>
       </li>
       <li>
         <a href="https://elc.github.io/tag/tuple-unpacking/">Tuple Unpacking (1)</a>
@@ -205,16 +253,21 @@
 
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       

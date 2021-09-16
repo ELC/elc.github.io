@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0d71ce5">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-publisher="elcgithubio" data-ea-keywords=Jupyter></div>
+      <div data-ea-keywords=Jupyter|Colab|Python|Notebooks|Binder|LaTeX></div>
     </div>
     </aside>
 
@@ -875,6 +875,7 @@ inspiration.</p>
 <section class="invisible">
     <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
         <a class="article__button" href="https://elc.github.io/posts/online-lyrics-presentation-generator">Lyrics Presentation Generator</a>
+        <a class="article__button" href="https://elc.github.io/posts/jupyter-collaborative">Secure Live Collaboration in Jupyter Lab</a>
 </section>
 
 <!-- Contribution -->
@@ -955,6 +956,28 @@ inspiration.</p>
                 <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/embed-interactive-notebooks">Embed Interactive Jupyter Notebooks in Static Websites for Free</a></h3>
                 
                 <p class="article-related-post-body-description">After a lot of research on the internet, I found no practical tutorial explaining how to embed Jupyter Notebooks in Static Websites using only free technologies. I found a way to do it using Github Gists, MyBinder and NBInteract along with IPython Widgets and I want to share it so no one has to reinvent the wheel.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/fastai-colab-deep-learning" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/fast-colab-deep-learning_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/fastai-colab-deep-learning">Configuring FastAI with Google Colab</a></h3>
+                
+                <p class="article-related-post-body-description">Nowadays there are lots of tutorials and material to learn Artificial Inteligence, Machine Learning and Deep Learning but whenever you want to do something interesting you notice you need a Nvidia GPU. In this tutorial we are going to solve this issue with a free cloud solution.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-collaborative" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-collaborative">Secure Live Collaboration in Jupyter Lab</a></h3>
+                
+                <p class="article-related-post-body-description">The single most requested feature for Jupyter Notebooks/Lab was live collaboration á la Google Docs. Today, this is possible but should be done with caution, since it gives access to the whole internet to run any (including malicious) code on our local PC. This is a quick guide to prevent this by implementing several layers of security.</p>
             </div>
         </article>
 </section>
@@ -1041,16 +1064,21 @@ inspiration.</p>
 </script>
 
       <script>
-        var ethicalAd = document.querySelector('[data-ea-publisher]');
+        var omitAds = false;
+        if (!omitAds){
+          var ethicalAd = document.querySelector('[data-ea-keywords]');
 
-        if (window.matchMedia("(min-width: 1500px)").matches) {
-            ethicalAd.setAttribute("data-ea-type", "image");
-            ethicalAd.setAttribute("id", "right-sidebar-image");
-            ethicalAd.parentElement.classList.add("ethical-image")
-        } else {
-            ethicalAd.setAttribute("data-ea-type", "text");
-            ethicalAd.setAttribute("id", "top-text");
-            ethicalAd.parentElement.classList.add("ethical-text")
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+              ethicalAd.setAttribute("data-ea-type", "image");
+              ethicalAd.setAttribute("id", "right-sidebar-image");
+              ethicalAd.parentElement.classList.add("ethical-image")
+          } else {
+              ethicalAd.setAttribute("data-ea-type", "text");
+              ethicalAd.setAttribute("id", "top-text");
+              ethicalAd.parentElement.classList.add("ethical-text")
+          }
         }
       </script>
       
