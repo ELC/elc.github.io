@@ -39,8 +39,13 @@ STATIC_PATHS = [
     "extra",
 ]
 
+# Ads
 
 ETHICALADS_DOMAIN = "elcgithubio"
+
+# Share
+
+SHARE = ["twitter", "linkedin"]
 
 # Contribution
 
