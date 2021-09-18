@@ -41,7 +41,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=fbc8b28">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=2903373">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -183,30 +183,30 @@
       <script>
         var omitAds = false;
         if (!omitAds){
-          var ethicalAd = document.querySelector('[data-ea-keywords]');
-
-          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
-
+          
           let dataType = "text";
           let cssClasses = [];
           let adPosition = "";
           let adOrientation = "";
-
+          
           if (window.matchMedia("(min-width: 1500px)").matches) {
-              dataType = "image"
-
-              const position = ["fixed", "absolute"];
-              const randomPosition = Math.floor(Math.random() * position.length);
-              adPosition = position[randomPosition]
-              cssClasses.push(`ethical-image--${adPosition}`)
+            dataType = "image"
               
-              const orientations = ["left", "right"];
-              const randomOrientation = Math.floor(Math.random() * orientations.length);
-              adOrientation = orientations[randomOrientation]
-              cssClasses.push(`ethical-image--${adOrientation}`)
-
-          }
-
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
           ethicalAd.setAttribute("data-ea-type", dataType);
           ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
           ethicalAd.parentElement.classList.add(`ethical-${dataType}`)

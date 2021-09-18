@@ -1112,6 +1112,7 @@ a[href*="github.com"]:after {
 
 .facebook-button,
 .twitter-button,
+.linkedin-button,
 .newsletter-button,
 .email-button,
 .contribute-button {
@@ -1125,6 +1126,10 @@ a[href*="github.com"]:after {
 
 .twitter-button {
   background-color: #2196F3;
+}
+
+.linkedin-button {
+  background-color: #0e76a8;
 }
 
 .newsletter-button {
@@ -1156,9 +1161,10 @@ a[href*="github.com"]:after {
 
 .colaboration-invitation,
 .share-invitation {
-  font-size: 10pt;
+  font-size: 15pt;
   font-style: italic;
   text-align: center;
+  color: #004b85;
 }
 
 @media only screen and (min-width: 1024px) {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/ELCWEB" rel="self"></link><id>https://elc.github.io/</id><updated>2021-09-04T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>Secure Live Collaboration in Jupyter Lab</title><link href="https://elc.github.io/posts/jupyter-collaborative" rel="alternate"></link><published>2021-09-04T00:00:00-03:00</published><updated>2021-09-04T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2021-09-04:/posts/jupyter-collaborative</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/ELCWEB" rel="self"></link><id>https://elc.github.io/</id><updated>2021-09-04T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>Secure Live Collaboration in Jupyter Lab</title><link href="https://elc.github.io/posts/jupyter-collaborative" rel="alternate"></link><published>2021-09-04T00:00:00-03:00</published><updated>2021-09-04T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2021-09-04:/posts/jupyter-collaborative</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;The single most requested feature for Jupyter Notebooks/Lab was live
 collaboration &lt;em&gt;á la Google Docs&lt;/em&gt;. Today, this is possible but should be done
 with caution, since it gives access to the whole internet to run any (including
-malicious) code on our local PC. This is a quick guide to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+malicious) code on our local PC. This is a quick guide to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;The single most requested feature for Jupyter Notebooks/Lab was live
@@ -39,12 +39,12 @@ by some example use cases that would not be possible without this feature:&lt;/p
 &lt;ul&gt;
 &lt;li&gt;A teacher can invite their students to actively collaborate on a notebook and
   write comments and questions in a centralized way.&lt;/li&gt;
-&lt;li&gt;A small team can leaverage a server (or powerful computer) to run the
+&lt;li&gt;A small team can leverage a server (or powerful computer) to run the
   notebooks instead of each having to run the kernels on their local PCs.&lt;/li&gt;
 &lt;li&gt;Two team members can work in different parts of the same problem, like
-  hyperparameter tuning and data visualization cuncurrently.&lt;/li&gt;
+  hyperparameter tuning and data visualization concurrently.&lt;/li&gt;
 &lt;li&gt;A presenter can invite a small audience to try some Jupyter app (e.g. built
-  with widgets) and have them use it with zero install.&lt;/li&gt;
+  with widgets) and have them use it with zero-install.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Of course, this is probably not the best solution for all possible scenarios
 but for small teams, mentoring / teaching and showing proof of concepts, it
@@ -89,7 +89,8 @@ details might be overlooked.&lt;/p&gt;
 BACKDOOR&lt;/strong&gt; for your PC so, one can never have too many security measures. If
 this makes you feel uneasy, do all your experiments inside a sandbox (like a
 container or a virtual machine).&lt;/p&gt;
-&lt;p&gt;To further illustrate this, Ribaka Nazmara &lt;a href="https://www.quora.com/What-is-the-most-dangerous-Python-line-of-code/answer/Ribaka-Nazmara" target="_blank"&gt;showed in Quora&lt;/a&gt;
+&lt;p&gt;To further illustrate this, Ribaka Nazmara 
+&lt;a href="https://www.quora.com/What-is-the-most-dangerous-Python-line-of-code/answer/Ribaka-Nazmara" target="_blank"&gt;showed in Quora&lt;/a&gt;
 some dangerous yet simple code a malicious user might run:&lt;/p&gt;
 &lt;p&gt;Fill up disk:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; 
@@ -136,7 +137,7 @@ conda update jupyterlab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id="use-case-1-collaborative-work-inside-lan-or-vpn"&gt;&lt;a class="toclink" href="#use-case-1-collaborative-work-inside-lan-or-vpn"&gt;Use Case 1: Collaborative work inside LAN or VPN&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_1.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_1.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_1-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_1.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_1.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_1-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Once Jupyterlab 3.1.0 or newer is installed, it is possible to enable the
 collaborative feature by running:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;jupyter lab --collaborative
@@ -176,7 +177,7 @@ rejected or they will be asked to provide a token.&lt;/p&gt;
 seemingly random text, that is why they will be replaced with a user-defined
 password.&lt;/p&gt;
 &lt;h3 id="first-layer-of-security-jupyter-password"&gt;&lt;a class="toclink" href="#first-layer-of-security-jupyter-password"&gt;First Layer of Security: Jupyter Password&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_2.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_2.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_2-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_2.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_2.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_2-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The Jupyter CLI provides a straightforward way to set a global password by
 running:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;jupyter lab --generate-config
@@ -193,7 +194,7 @@ new for some users.&lt;/p&gt;
 http://localhost:8888, it can access by writing the pre-defined password.&lt;/p&gt;
 &lt;p&gt;If configured correctly, the next time Jupyter is run, it will prompt for the
 password:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter_password.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_password.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_password-thumbnail.png" width="790"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter_password.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_password.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_password-thumbnail.png" width="790"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Technical Details&lt;/strong&gt;: The password is stored as a hashed in the configuration
 file, so it is not stored as plain-text anywhere in the system and is a global
 setting for all Jupyter Lab sessions (Jupyter Notebook sessions are not
@@ -202,11 +203,11 @@ affected). &lt;/p&gt;
 &lt;a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html" target="_blank"&gt;Official Docs&lt;/a&gt;
 in case some of the information presented here changes.&lt;/p&gt;
 &lt;h3 id="second-layer-of-security-local-tls-encryption"&gt;&lt;a class="toclink" href="#second-layer-of-security-local-tls-encryption"&gt;Second Layer of Security: Local TLS Encryption&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_3.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_3.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_3-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_3.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_3.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_3-thumbnail.png" width="826"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Even having configured a password, the connection is not encrypted, which means
 that, inside the local network, the password travels as plain text through the
 network and thus is susceptible to man-in-the-middle attacks.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter_insecure.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_insecure.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_insecure-thumbnail.png" width="488"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter_insecure.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_insecure.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_insecure-thumbnail.png" width="488"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If you trust your VPN or local network, this step is &lt;strong&gt;optional&lt;/strong&gt;.
 Nevertheless, this is &lt;strong&gt;mandatory&lt;/strong&gt; when using public networks (cafés,
 airports, etc.).&lt;/p&gt;
@@ -245,7 +246,7 @@ command:&lt;/p&gt;
 https://localhost:8888 (with HTTPS) explicitly because there might not be an
 automatic redirection to HTTPS if using HTTP. The browser might show a warning
 as described earlier but this should be ignored and continue anyways.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter_self_signed.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_self_signed.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_self_signed-thumbnail.png" width="1508"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter_self_signed.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_self_signed.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_self_signed-thumbnail.png" width="1508"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To remove the browser warning one should add the local certificate to the
 truststore, that, however, is beyond the scope of this article.&lt;/p&gt;
 &lt;p&gt;With the previous configuration the connection between the PC running Jupyter
@@ -285,12 +286,12 @@ simply open connections in a single command:&lt;/p&gt;
 environment is password-protected, there is no immediate threat. And this
 provides an additional layer of security out of the box: &lt;strong&gt;obscurity&lt;/strong&gt;, which
 will be explained further in the next section.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_http.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_http.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_http-thumbnail.png" width="1306"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_http.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_http.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_http-thumbnail.png" width="1306"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;However, if one navigates to the URL shown, a 403 Forbidden message will be
 displayed:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_forbidden.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_forbidden.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_forbidden-thumbnail.png" width="413"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_forbidden.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_forbidden.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_forbidden-thumbnail.png" width="413"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This is a security measure from Jupyter, it forbids all non-local connections:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/jupyter_blocking.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_blocking.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_blocking-thumbnail.png" width="1745"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter_blocking.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter_blocking.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter_blocking-thumbnail.png" width="1745"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To allow non-local connections the &lt;code&gt;ServerApp.allow_remote_access&lt;/code&gt; should be
 enabled. This can be done from the Jupyter Config file created with the
 &lt;code&gt;--generate-config&lt;/code&gt; command. Simply append this line to the end of the file:&lt;/p&gt;
@@ -299,10 +300,10 @@ enabled. This can be done from the Jupyter Config file created with the
 
 &lt;p&gt;Now after restarting the Jupyter instance, the URL provided by ngrok should be
 accessible:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_success.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_success.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_success-thumbnail.png" width="645"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_success.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_success.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_success-thumbnail.png" width="645"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="possible-error-failed-to-complete-tunnel-connection"&gt;&lt;a class="toclink" href="#possible-error-failed-to-complete-tunnel-connection"&gt;Possible Error: Failed to complete tunnel connection&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;If a message like the following is shown:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/failed_tunnel.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/failed_tunnel.png" src="https://elc.github.io/blog/images/jupyter-collaborative/failed_tunnel-thumbnail.png" width="790"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/failed_tunnel.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/failed_tunnel.png" src="https://elc.github.io/blog/images/jupyter-collaborative/failed_tunnel-thumbnail.png" width="790"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This means that there is no service running at port 8888. This means that
 Jupyter is either not running or is being served on another port.&lt;/p&gt;
 &lt;h3 id="local-certificate"&gt;&lt;a class="toclink" href="#local-certificate"&gt;Local Certificate&lt;/a&gt;&lt;/h3&gt;
@@ -313,12 +314,12 @@ target https://localhost as follows:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ngrok http https://localhost:8888
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_http_to_https.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_http_to_https.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_http_to_https-thumbnail.png" width="1373"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_http_to_https.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_http_to_https.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_http_to_https-thumbnail.png" width="1373"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This is an optional extra step, only needed when the local network is not
 trusted (e.g. public networks). This is &lt;strong&gt;mandatory&lt;/strong&gt; when used in combination
 with the second layer of security described earlier.&lt;/p&gt;
 &lt;h3 id="third-layer-of-security-obscurity"&gt;&lt;a class="toclink" href="#third-layer-of-security-obscurity"&gt;Third Layer of Security: Obscurity&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_4.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_4.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_4-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_4.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_4.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_4-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ngrok will generate a pseudo-random sequence of characters for the URL of the
 connection. One might think this is a disadvantage or a limited feature of the
 free plan (since the paid plan support custom subdomains) but, having a
@@ -335,6 +336,9 @@ communication mechanism with the involved users (e.g. email), and one should
 fall back on instant messaging methods (e.g. chats, calls, etc.). Nonetheless,
 if the computer running the Jupyter will be kept on for long periods (like a
 server), this drawback can be neglected.&lt;/p&gt;
+&lt;p&gt;That being said, obscurity on its own is not a robust security measure, it will
+not stand against deliberate malicious attacks but it constitutes a bare minimum
+layer of confidentiality.&lt;/p&gt;
 &lt;p&gt;When inspecting the console output, one can see that ngrok actually does two
 forwarding connections, one for the HTTP and the other for the HTTPS. For
 reasons already explained, if an encrypted connection is needed (as it is here
@@ -342,20 +346,20 @@ because we will be sending credentials), the HTTPS should be enforced by
 rejecting any incoming non-HTTPS connections. Ngrok facilitates this with a
 simple flag as explained in the next section.&lt;/p&gt;
 &lt;h3 id="fourth-layer-of-security-public-tls-encryption"&gt;&lt;a class="toclink" href="#fourth-layer-of-security-public-tls-encryption"&gt;Fourth Layer of Security: Public TLS Encryption&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_5.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_5.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_5-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_5.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_5.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_5-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The second layer of security introduced self-signed certificates for the
 connections inside the local network (LAN or VPN), ngrok supports TLS
 encryption with certificates coming from a Certificate Authority (CA) as part
 of the free plan. However, the default behavior is to allow both HTTP (without
 certificates) and HTTPS (with certificates).&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_with_without.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_with_without.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_with_without-thumbnail.png" width="1296"&gt;&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_with_without.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_with_without.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_with_without-thumbnail.png" width="1296"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To enforce the use of HTTPS simply run:&lt;/p&gt;
 &lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ngrok http -bind-tls=true 8888
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The console output now shows only one forwarding connection from HTTPS and all
 attempts to connect to HTTP will be forwarded to HTTPS.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_https_only.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_https_only.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_https_only-thumbnail.png" width="1310"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_https_only.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_https_only.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_https_only-thumbnail.png" width="1310"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main difference with the second layer of security is that ngrok uses a
 certificate coming from a CA and hence the browser displays no warning
 whatsoever, resulting in a smoother experience for the final user.&lt;/p&gt;
@@ -365,7 +369,7 @@ inconvenient to re-share the new password to all users. To mitigate this, it is
 possible to generate a per-session username and password. This procedure is
 explained in the next section.&lt;/p&gt;
 &lt;h3 id="fifth-layer-of-security-http-password"&gt;&lt;a class="toclink" href="#fifth-layer-of-security-http-password"&gt;Fifth Layer of Security: HTTP Password&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_6.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_6.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_6-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_6.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_6.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_6-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The HTTP protocol implements a basic authentication system via a
 username-password combination. These two fields travel as plain text unless
 the connection is encrypted (e.g. by using HTTPS), since the ngrok connection
@@ -377,10 +381,10 @@ can be enabled by adding &lt;code&gt;username:password&lt;/code&gt; to the comma
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;These credentials will be asked upon connecting to the ngrok URL&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_basic_auth.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_basic_auth.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_basic_auth-thumbnail.png" width="603"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_basic_auth.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_basic_auth.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_basic_auth-thumbnail.png" width="603"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After introducing the correct credentials, the password for the Jupyter server
 will be asked.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/ngrok_basic_auth_success.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_basic_auth_success.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_basic_auth_success-thumbnail.png" width="528"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_basic_auth_success.png"&gt;&lt;img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_basic_auth_success.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_basic_auth_success-thumbnail.png" width="528"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This has an unintended advantage and that is that all attempts to log in are
 against Ngrok servers and not our Jupyter Server. Providing a somewhat basic
 defense against DDoS attacks.&lt;/p&gt;
@@ -389,7 +393,7 @@ One of the things not done yet was filtering. There are several types of
 filters one can implement, being the most common IP and MAC filtering. In the
 next section, IP filtering is explained.&lt;/p&gt;
 &lt;h3 id="sixth-layer-of-security-ip-whitelist"&gt;&lt;a class="toclink" href="#sixth-layer-of-security-ip-whitelist"&gt;Sixth Layer of Security: IP Whitelist&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="/blog/images/jupyter-collaborative/network_diagram_7.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_7.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_7-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_7.png"&gt;&lt;img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_7.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_7-thumbnail.png" width="1026"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ngrok provides an IP Whitelist feature, this is feature is only supported in
 the paid plans. Having the possibility to only allow certain IPs is useful as
 long as the users connecting have static IP addresses and they indeed know
@@ -441,6 +445,11 @@ methods for the URL and the username-password, like sharing the
 username-password via a screen share and the URL via chat.&lt;/p&gt;
 &lt;h3 id="6-work-together-with-live-collaboration"&gt;&lt;a class="toclink" href="#6-work-together-with-live-collaboration"&gt;6. &lt;strong&gt;Work Together with Live Collaboration&lt;/strong&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Now everything is set up to work collaboratively.&lt;/p&gt;
+&lt;h3 id="7-publish-your-work"&gt;&lt;a class="toclink" href="#7-publish-your-work"&gt;7. &lt;strong&gt;Publish your work&lt;/strong&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Whenever the project is public, it is worth sharing. When working with Jupyter
+Notebooks there are several ways to do it. In 
+&lt;a href="https://elc.github.io/posts/jupyter-publishing/" target="_blank"&gt;this survey&lt;/a&gt; 
+some of the most popular options are explained.&lt;/p&gt;
 &lt;h2 id="common-pitfalls-and-questions"&gt;&lt;a class="toclink" href="#common-pitfalls-and-questions"&gt;Common Pitfalls and Questions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Everything has been configured and now the environment has at least some basic
 security measures. However, there are some common pitfalls to be aware of.&lt;/p&gt;
@@ -494,6 +503,12 @@ your particular scenario.&lt;/p&gt;
 used. Some security measures should be taken beforehand to avoid any potential
 breaches or risks. After understanding the underlying concepts, the new
 Jupyter Lab can be run and set up in just 2 commands.&lt;/p&gt;
+&lt;h2 id="contribute"&gt;&lt;a class="toclink" href="#contribute"&gt;Contribute¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This content is free and promotes both free and open source software, as well
+as monetary and intellectual accessibility. If you want to support it, please
+check out the privacy-first ad at the top of this page. Helping with fixing
+typos, suggesting edits, or leaving feedback in the comments is also valuable.
+If you like this content, please share it with others who might find it useful.&lt;/p&gt;
 &lt;h2 id="resources"&gt;&lt;a class="toclink" href="#resources"&gt;Resources&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html" target="_blank"&gt;Jupyter Official Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank"&gt;TLS Encryption&lt;/a&gt;&lt;/p&gt;

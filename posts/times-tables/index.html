@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=fbc8b28">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=2903373">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -436,37 +436,41 @@
         <a class="article__button" href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python</a>
 </section>
 
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
 <!-- Contribution -->
 <section>
-    <h2 class="colaboration-invitation"><span data-l10n-id="colaboration-invitation">Did you find a bug or a typo? Have a Suggestion?</span></h2>
+    <h2 class="share-invitation"><span data-l10n-id="colaboration-button">Contribute</span></h2>
 
     <div class="share">
         <a target="_blank" class="contribute-button" 
         href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2019-times-tables.md'
         onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
         data-l10n-id="colaboration-button">
-        Change the document and Submit!
+        Find a bug? Submit a PR!
         </a>
     </div>
 </section>
 
-<!-- Share -->
-<section>
-    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it with your friends!</span></h2>
-
-    <div class="share">
-        <a href="http://www.facebook.com/sharer.php?u=https%3A//elc.github.io/posts/times-tables&amp;t=Ezequiel%20Leonardo%20Casta%C3%B1o%20Personal%20Website%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="facebook-button"
-        onclick="ga('send', 'event', 'Facebook Share', 'click', 'Facebook Share'); return true" >
-            <i class="fa fa-facebook"></i>
-            Facebook
-        </a>
-        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="twitter-button"
-        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
-            <i class="fa fa-twitter"></i>
-            Twitter
-        </a>
-    </div>
-</section>
 
 <!-- News Letter Subscription -->
 
@@ -624,30 +628,30 @@
       <script>
         var omitAds = false;
         if (!omitAds){
-          var ethicalAd = document.querySelector('[data-ea-keywords]');
-
-          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
-
+          
           let dataType = "text";
           let cssClasses = [];
           let adPosition = "";
           let adOrientation = "";
-
+          
           if (window.matchMedia("(min-width: 1500px)").matches) {
-              dataType = "image"
-
-              const position = ["fixed", "absolute"];
-              const randomPosition = Math.floor(Math.random() * position.length);
-              adPosition = position[randomPosition]
-              cssClasses.push(`ethical-image--${adPosition}`)
+            dataType = "image"
               
-              const orientations = ["left", "right"];
-              const randomOrientation = Math.floor(Math.random() * orientations.length);
-              adOrientation = orientations[randomOrientation]
-              cssClasses.push(`ethical-image--${adOrientation}`)
-
-          }
-
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
           ethicalAd.setAttribute("data-ea-type", dataType);
           ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
           ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
