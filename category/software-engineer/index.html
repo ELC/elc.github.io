@@ -41,7 +41,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=921a828">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=fbc8b28">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -173,7 +173,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=2dac73f" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=d08a3f1" ></script>
 
 
 <!-- Google Analytics -->
@@ -195,15 +195,31 @@
 
           ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
 
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+
           if (window.matchMedia("(min-width: 1500px)").matches) {
-              ethicalAd.setAttribute("data-ea-type", "image");
-              ethicalAd.setAttribute("id", "right-sidebar-image");
-              ethicalAd.parentElement.classList.add("ethical-image")
-          } else {
-              ethicalAd.setAttribute("data-ea-type", "text");
-              ethicalAd.setAttribute("id", "top-text");
-              ethicalAd.parentElement.classList.add("ethical-text")
+              dataType = "image"
+
+              const position = ["fixed", "absolute"];
+              const randomPosition = Math.floor(Math.random() * position.length);
+              adPosition = position[randomPosition]
+              cssClasses.push(`ethical-image--${adPosition}`)
+              
+              const orientations = ["left", "right"];
+              const randomOrientation = Math.floor(Math.random() * orientations.length);
+              adOrientation = orientations[randomOrientation]
+              cssClasses.push(`ethical-image--${adOrientation}`)
+
           }
+
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
         }
       </script>
       
