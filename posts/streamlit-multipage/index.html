@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Multipage, State-Persistent Apps with Streamlit 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2022-01-14" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Multipage, State-Persistent Apps with Streamlit"/>
+      <meta property="og:description" content="Converting a Python script to a web app has never been easier thanks to libraries such as Streamlit. This library allows to create simple and responsive web apps with minimal effort but there is one potential limitation: No multipage support. In this post, a potential solution to this problem is presented with examples and demos."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/streamlit-multipage/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Multipage, State-Persistent Apps with Streamlit">
+      <meta name="twitter:description" content="Converting a Python script to a web app has never been easier thanks to libraries such as Streamlit. This library allows to create simple and responsive web apps with minimal effort but there is one potential limitation: No multipage support. In this post, a potential solution to this problem is presented with examples and demos.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/streamlit-multipage/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">portfolio</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/publications.html" data-l10n-id="publications">publications</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-keywords=Streamlit|Python|Github></div>
+    </div>
+    </aside>
+
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Multipage, State-Persistent Apps with Streamlit</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2022-01-14 00:00:00-03:00"><b>14 Jan 2022</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>15 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+            
+    </div>
+
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a href="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png" width="1444"></a></p>
+
+
+<p>Converting a Python script to a web app has never been easier thanks to
+libraries such as Streamlit. This library allows to create simple and
+responsive web apps with minimal effort but there is one potential limitation:
+No multipage support. In this post, a <em>potential</em> solution to this problem is
+presented with examples and demos. </p>
+
+
+<p>This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:</p>
+<ul>
+<li><strong>Multipage, State-Persistent Apps with Streamlit</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></li>
+</ul>
+<h2 id="tldr"><a class="toclink" href="#tldr">TL;DR</a></h2>
+<p>There is a pip installable plugin called <code>streamlit-multipage</code>, this post is an
+extension of the README of the <a href="https://github.com/ELC/streamlit-multipage" target="_blank">Github Repository</a>.</p>
+<p>Try it yourself by doing</p>
+<div class="highlight "><pre><span></span><code>pip install streamlit-multipage
+</code></pre></div>
+
+<p>An <a href="https://github.com/ELC/finance-tools" target="_blank">example Github Repo</a> 
+is available for inspiration, there is also a 
+<a href="https://elc.github.io/finance-tools/" target="_blank">demo app</a>
+attached to check the final result.</p>
+<p>For an alternative, more in-depth library, check
+<a href="https://github.com/TangleSpace/hydralit" target="_blank">Hydralit</a></p>
+<h2 id="why-multipage-apps"><a class="toclink" href="#why-multipage-apps">Why Multipage Apps?</a></h2>
+<p>Streamlit is an awesome tool for converting Python scripts into Webapps but,
+sometimes one wants to have many tiny scripts combined in a user-friendly way
+and, even though it is possible to develop one streamlit app for each, the
+process is tedious and the whole project loses maintainability.</p>
+<p>Multipage apps are apps that can host different apps in parallel with some
+additional features like state persistence or customizable UI.</p>
+<h2 id="streamlit-multipage"><a class="toclink" href="#streamlit-multipage">Streamlit-multipage</a></h2>
+<p>There are several solutions to these problems and to the best of the author's
+knowledge, these are the most popular ones:</p>
+<ul>
+<li><a href="https://github.com/TangleSpace/hydralit" target="_blank">Hydralit</a></li>
+<li><a href="https://github.com/upraneelnihar/streamlit-multiapps" target="_blank">streamlit-multiapps</a></li>
+<li><a href="https://github.com/bvenkatesh-ai/streamlit_pages" target="_blank">streamlit-pages</a></li>
+</ul>
+<p>However, for one reason or another, none of them fulfill the purpose of a
+"simple multipage experience". </p>
+<p><code>Hydralit</code> is a bit overkill because it is a big
+project deeply integrated with streamlit and one has to use <code>import hydralit as
+hy</code> instead of <code>import streamlit as st</code> which breaks the typical idioms built
+around streamlit.</p>
+<p><code>Streamlit-Multiapps</code> is not pip installable and has <code>NumPy</code> and <code>pandas</code> as
+dependencies, which, even if used in most cases, are not required always and
+are considered among the heaviest dependencies in the Python ecosystem.</p>
+<p><code>Streamlit-pages</code> is a 55 LoC script, which is too basic and provides no state
+persistence options.</p>
+<p>There is a fourth option called <a href="https://github.com/ELC/streamlit-multipage" target="_blank"><code>streamlit-multipage</code></a> 
+which is pip installable and it has state persistence while keeping streamlit
+idioms. It is not as feature-rich as Hydralit but has a much more friendly
+learning curve.</p>
+<p>In this post, the <code>streamlit-multipage</code> will be used and covered in depth.</p>
+<p>To start working with this library one can simply install it via pip:</p>
+<div class="highlight "><pre><span></span><code>pip install streamlit-multipage
+</code></pre></div>
+
+<p><strong>DISCLAIMER</strong>: The original development of <code>streamlit-multipage</code> was done by
+Yan Almeida, however, this blog's author contributed significantly to the
+library. Most of this post content will be extracted from the repository README
+with extended explanations.</p>
+<h2 id="features"><a class="toclink" href="#features">Features</a></h2>
+<p>Streamlit-multipage has several appealing features that may be useful for most
+users.</p>
+<h2 id="simplicity"><a class="toclink" href="#simplicity">Simplicity</a></h2>
+<p>Using <code>streamlit-multipage</code> is as simple as writing a native streamlit like
+this:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;My Amazing App&quot;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;Your Name: &quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>And refactoring in a function like this</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+
+<span class="k">def</span> <span class="nf">my_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;My Amazing App&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;Your Name: &quot;</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">my_page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<p>The function has to take one positional argument, ideally called <code>st</code>, that is
+the streamlit object. The function also needs to take arbitrary keyword
+argument <code>**state</code>, this is where the state of the app will be injected.</p>
+<p>As seen in the example, it is not necessary to use the <code>state</code> variable at all
+in the function.</p>
+<p>In the last part of the snippet, we see the <code>streamlit-multipage</code> specific part
+which consists of instantiating a <code>MultiPage</code> object, passing the streamlit
+object and then adding the app (or page) with the <code>add_app</code> function.</p>
+<p>This is ideal for short scripts but typically streamlit apps have many dozens
+if not hundreds of lines of code, for that the function could be moved to a
+different folder</p>
+<p>Since the <code>st</code> object used will be passed as a parameter, it is not needed to
+import streamlit anywhere else in the project besides where the <code>MultiPage</code>
+object was instantiated.</p>
+<p>Working in the functions <em>feels like native streamlit</em> because it is,
+the <code>st</code> parameter is not a mocked object nor is it monkey patched, providing
+the native streamlit experience.</p>
+<h2 id="state-persistence"><a class="toclink" href="#state-persistence">State Persistence</a></h2>
+<p>Another important feature is inter-page persistence, this is a type of
+persistence that allows saving variables from one page to the other but it
+also allows saving the state after restarting the app.</p>
+<p>Here is an example of this feature:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+
+<span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Body Mass Index&quot;</span><span class="p">)</span>
+
+    <span class="n">weight_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;weight&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Your weight (Kg): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">weight_</span><span class="p">)</span>
+
+    <span class="n">height_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;height&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Your height (m): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">height_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">height</span> <span class="ow">and</span> <span class="n">weight</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Body Mass Index&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;weight&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span> <span class="ow">or</span> <span class="s2">&quot;height&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Enter your data before computing. Go to the Input Page&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">weight</span> <span class="o">/</span> <span class="n">height</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Input Page&quot;</span><span class="p">,</span> <span class="n">input_page</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;BMI Result&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Here the app "Input Page" can pass variables to the "BMI Result" page by
+calling the <code>MultiPage.save</code> method. By default, all the variables are saved in
+a global namespace but different namespaces can be used as well (see next
+example).</p>
+<p>To access the state on a page one has to use the <code>state</code> variable, which is a
+Python dictionary, simply checking if the necessary keys are present should be
+enough. It is recommended to add warning messages if there are missing keys.</p>
+<p>If default values are desired for when the variables are not present the <code>get</code>
+method can be used as well.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">my_app</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">my_variable</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Internally the state is persisted in a pickle file which uses
+<a href="https://joblib.readthedocs.io/en/latest/" target="_blank"><code>joblib</code></a> 
+if available, if it is not installed it gracefully fallsback to the native
+<a href="https://docs.python.org/3/library/pickle.html" target="_blank">pickle module</a>.</p>
+<p><strong>WARNING</strong>: This feature has been tested locally but not with the Streamlit
+Sharing Service (Deploy App Option).</p>
+<h3 id="namespaces"><a class="toclink" href="#namespaces">Namespaces</a></h3>
+<p>The <code>MultiPage.save</code> method can take a second keyword argument <code>namespaces</code>
+which receives a list of all the namespaces the variables should be saved into.
+That is, a page can save a variable in multiple namespaces.</p>
+<p>There is no efficiency or comprehension consideration in the implementation so
+beware of storing heavy objects in multiple namespaces at once (especially
+important for large NumPy arrays or tensors).</p>
+<p>When using namespaces it is a good practice to add a <code>namespace</code> variable at
+the very top of the function for easy reference.</p>
+<p>The example below illustrates this feature</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+
+<span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">namespace</span> <span class="o">=</span> <span class="s2">&quot;input&quot;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">namespace</span><span class="p">]</span> <span class="k">if</span> <span class="n">namespace</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tax Deduction&quot;</span><span class="p">)</span>
+
+    <span class="n">salary_</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;salary&quot;</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">salary</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Your salary (USD): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">salary_</span><span class="p">)</span>
+
+    <span class="n">tax_percent_</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;tax_percent&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;tax_percent&quot;</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">tax_percent</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Taxes (%): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">tax_percent_</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tax_percent</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tax_percent</span> <span class="ow">and</span> <span class="n">salary</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="n">salary</span><span class="p">,</span> <span class="s2">&quot;tax_percent&quot;</span><span class="p">:</span> <span class="n">tax_percent</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="n">namespace</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="n">namespace</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">namespace</span> <span class="o">=</span> <span class="s2">&quot;result&quot;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">namespace</span><span class="p">]</span> <span class="k">if</span> <span class="n">namespace</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Your Salary After Taxes&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;total&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Enter your data before computing. Go to the Input Page&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Input Page&quot;</span><span class="p">,</span> <span class="n">input_page</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<p>When using custom namespaces, it is important to access <code>state[namespace]</code>,
+instead of the <code>state</code> alone, because <code>state</code> will contain all namespaces,
+including the global one.</p>
+<p><strong>WARNING</strong>: no variable in the global namespace should be named identically as
+another namespace.</p>
+<h3 id="automatic-namespaces"><a class="toclink" href="#automatic-namespaces">Automatic Namespaces</a></h3>
+<p>It is also possible to avoid that altogether and use Automatic Namespaces,
+<code>streamlit-multipage</code> will filter the <code>state</code> variable before passing it to a
+function if it detects that there is a namespace with the same name of the app.
+That is if the namespace is the same as the name used in the <code>add_app</code> method.</p>
+<p><strong>Note:</strong> The namespace should be explicitly specified in the <code>MultiPage.save</code>
+method.</p>
+<p>This is an example of automatic namespaces</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+
+<span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tax Deduction&quot;</span><span class="p">)</span>
+
+    <span class="n">salary_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;salary&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">salary</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Your salary (USD): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">salary_</span><span class="p">)</span>
+
+    <span class="n">tax_percent_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;tax_percent&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;tax_percent&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">tax_percent</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Taxes (%): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">tax_percent_</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tax_percent</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tax_percent</span> <span class="ow">and</span> <span class="n">salary</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="n">salary</span><span class="p">,</span> <span class="s2">&quot;tax_percent&quot;</span><span class="p">:</span> <span class="n">tax_percent</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Input Page&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Your Salary After Taxes&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;total&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Enter your data before computing. Go to the Input Page&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Input Page&quot;</span><span class="p">,</span> <span class="n">input_page</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="extensibility"><a class="toclink" href="#extensibility">Extensibility</a></h2>
+<p>When using <code>streamlit-multipage</code> projects can grow easily within a directory
+structure.</p>
+<p>Consider the following directory structure</p>
+<div class="highlight "><pre><span></span><code>.
+└── root/
+    ├── pages/
+    │   ├── __init__.py
+    │   ├── input_data.py
+    │   └── result.py
+    └── main.py/
+</code></pre></div>
+
+<p>Here the <code>main.py</code> is the entry point, it imports both <code>streamlit</code> and
+<code>streamlit-multipage</code>, it instantiates the <code>MultiPage</code> object and loads the
+pages and adds them to the object.</p>
+<p>Each app or page can be separated into its file and common code could be
+abstracted as well.</p>
+<p>The <code>__init__.py</code> facilitates the import hierarchy by giving a single entry
+point to the <code>pages</code> module.</p>
+<p>These could be the content of the files:</p>
+<p><strong><code>input_data.py</code></strong></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+
+<span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tax Deduction&quot;</span><span class="p">)</span>
+
+    <span class="n">salary_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;salary&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">salary</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Your salary (USD): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">salary_</span><span class="p">)</span>
+
+    <span class="n">tax_percent_</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;tax_percent&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;tax_percent&quot;</span> <span class="ow">in</span> <span class="n">state</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">tax_percent</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Taxes (%): &quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">tax_percent_</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tax_percent</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tax_percent</span> <span class="ow">and</span> <span class="n">salary</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;salary&quot;</span><span class="p">:</span> <span class="n">salary</span><span class="p">,</span> <span class="s2">&quot;tax_percent&quot;</span><span class="p">:</span> <span class="n">tax_percent</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Input Page&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p><strong><code>results.py</code></strong></p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Your Salary After Taxes&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;total&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Enter your data before computing. Go to the Input Page&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong><code>__init__.py</code></strong></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">.input_data</span> <span class="kn">import</span> <span class="n">input_page</span>
+<span class="kn">from</span> <span class="nn">.result</span> <span class="kn">import</span> <span class="n">compute_page</span>
+
+<span class="n">pages</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Input Page&quot;</span><span class="p">:</span> <span class="n">input_page</span><span class="p">,</span>
+    <span class="s2">&quot;Net Salary&quot;</span><span class="p">:</span> <span class="n">compute_page</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong><code>main.py</code></strong></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">pages</span> <span class="kn">import</span> <span class="n">pages</span>
+
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="k">for</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">app_function</span> <span class="ow">in</span> <span class="n">pages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">app_function</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Structuring the application this way makes all the files much shorter and with
+a single responsibility. This could have been done with just <code>streamlit</code> but
+with minor modifications </p>
+<h2 id="customization"><a class="toclink" href="#customization">Customization</a></h2>
+<p>It is also possible to add customizations to each app to enhance the user
+experience such as adding a header, a footer, additional sidebar elements,
+hiding the hamburger menu and customizing the default text (e.g. for
+localization)</p>
+<p>This code shows how these customizations can be used:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span><span class="p">,</span> <span class="n">save</span>
+
+
+<span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;See Example on Multipage&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;See Example on Multipage&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">footer</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Developed by [ELC](https://elc.github.io)&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;This app is free to use&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sidebar</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Donate (Dummy)&quot;</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">MultiPage</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">start_button</span> <span class="o">=</span> <span class="s2">&quot;Go to the main page&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">navbar_name</span> <span class="o">=</span> <span class="s2">&quot;Other Pages:&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">next_page_button</span> <span class="o">=</span> <span class="s2">&quot;Next Chapter&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">previous_page_button</span> <span class="o">=</span> <span class="s2">&quot;Previous Chapter&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">reset_button</span> <span class="o">=</span> <span class="s2">&quot;Delete Cache&quot;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">navbar_style</span> <span class="o">=</span> <span class="s2">&quot;SelectBox&quot;</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">header</span>
+<span class="n">app</span><span class="o">.</span><span class="n">footer</span> <span class="o">=</span> <span class="n">footer</span>
+<span class="n">app</span><span class="o">.</span><span class="n">navbar_extra</span> <span class="o">=</span> <span class="n">sidebar</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">hide_menu</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">app</span><span class="o">.</span><span class="n">hide_navigation</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Input Page&quot;</span><span class="p">,</span> <span class="n">input_page</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;BMI Result&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="non-functional-features"><a class="toclink" href="#non-functional-features">Non-Functional Features</a></h2>
+<p>In addition to the previous functional features, there are some non-functional
+ones that could be interesting for some.</p>
+<h3 id="single-file-project"><a class="toclink" href="#single-file-project">Single-File Project</a></h3>
+<p><code>Streamlit-multipage</code> is a single file project, meaning that instead of pip
+install it and add a dependency to track, the whole project can be simply add
+as a library in any other project standalone and it should work out of the box.</p>
+<h2 id="quality-of-code"><a class="toclink" href="#quality-of-code">Quality of Code</a></h2>
+<p>The code has been formatted with <a href="https://github.com/psf/black" target="_blank">Black</a> 
+and Type Hints were added whenever possible to improve integration with
+editors and IDEs.</p>
+<h2 id="limitations"><a class="toclink" href="#limitations">Limitations</a></h2>
+<p>The library itself has its limitations, namely:</p>
+<ul>
+<li>The state is saved in a dictionary and then in a pickled file, there is no
+  usage of <code>st.session_state</code> which would imply a better user experience, this
+  has been tried but due to <code>streamlit</code> lacking two-way binding in the
+  <code>session_state</code>, this is not possible at the moment.</li>
+<li>There are no tests, according to <a href="https://discuss.streamlit.io/t/how-can-you-py-test-your-code/400" target="_blank">this discussion</a>,
+  it is not straightforward to test streamlit apps nor libraries built around
+  it, mainly because this involves testing not only Python but also Front-End
+  code. This has not been done so far, contributions are much welcome though.</li>
+<li>Integration with Streamlit Sharing has not been tested thoroughly, the basic
+  multi-page app works but no state management has been tested on the managed
+  service. All the features shown in this post have been manually tested on a
+  locally running streamlit app.</li>
+</ul>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
+<p>Streamlit is one of the most popular tools for dashboarding and easily
+converting Python Scripts into Web Apps. <code>Streamlit-Multipage</code> is a lightweight
+app that can be pip installable (or drop in a standalone script) that allows
+for seamless integration of multi-page apps while keeping state and idioms.</p>
+<p>The <code>streamlit-multipage</code> has no tests and has not been thoroughly tested on
+the Streamlit Sharing but for self-hosted apps should be working without
+issues.</p>
+<p>An <a href="https://github.com/ELC/finance-tools" target="_blank">example Github Repo</a> 
+is available for inspiration, there is also a 
+<a href="https://elc.github.io/finance-tools/" target="_blank">demo app</a>
+attached to check the final result using the <code>streamlit-multipage</code>.</p>
+<h2 id="check-the-series"><a class="toclink" href="#check-the-series">Check the Series</a></h2>
+<p>If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:</p>
+<ul>
+<li><strong>Multipage, State-Persistent Apps with Streamlit</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/jupyter-collaborative">Secure Live Collaboration in Jupyter Lab</a>
+        <a class="article__button" href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/streamlit-multipage&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Multipage%2C%20State-Persistent%20Apps%20with%20Streamlit" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/streamlit-multipage&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Multipage%2C%20State-Persistent%20Apps%20with%20Streamlit" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="colaboration-button">Contribute</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2022-streamlit-multipage.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Find a bug? Submit a PR!
+        </a>
+    </div>
+</section>
+
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-google-analytics" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></h3>
+                
+                <p class="article-related-post-body-description">Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-lessons" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></h3>
+                
+                <p class="article-related-post-body-description">There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-publishing" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-publishing">Jupyter Publishing Guide: From Embedded to Book</a></h3>
+                
+                <p class="article-related-post-body-description">Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+
+  <script src="https://utteranc.es/client.js"
+          repo="elc/elc.github.io-content"
+          issue-term="title"
+          label="Comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/streamlit-multipage';  
+      this.page.identifier = 'streamlit-multipage';
+      this.page.title = 'Multipage, State-Persistent Apps with Streamlit';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> -->
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/about/" data-l10n-id="about">About</a></li>
+                <li><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">Portfolio</a></li>
+                <li><a href="https://elc.github.io/publications.html" data-l10n-id="publications">Publications</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archive</a></li>
+ 
+                    <li><a href="https://elc.github.io/disclaimer.html" data-l10n-id="disclaimer">Disclaimer</a></li>
+ 
+                    <li><a href="https://elc.github.io/donate.html" data-l10n-id="donate">Donate</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy; 2020 Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+      <script>
+        var omitAds = false;
+        if (!omitAds){
+          
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+          
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+            dataType = "image"
+              
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+  </body>
+
+</html>

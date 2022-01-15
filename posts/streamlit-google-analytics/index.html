@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Add Google Analytics (or any custom HTML) to Streamlit with Github Pages 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2022-01-14" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Add Google Analytics (or any custom HTML) to Streamlit with Github Pages"/>
+      <meta property="og:description" content="Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/streamlit-google-analytics/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Add Google Analytics (or any custom HTML) to Streamlit with Github Pages">
+      <meta name="twitter:description" content="Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/streamlit-google-analytics/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">portfolio</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/publications.html" data-l10n-id="publications">publications</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-keywords=Streamlit|Python|Github Pages|Google Analytics></div>
+    </div>
+    </aside>
+
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2022-01-14 00:00:00-03:00"><b>14 Jan 2022</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>9 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+            
+    </div>
+
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a href="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png" width="1444"></a></p>
+
+
+<p>Streamlit is one of the most popular libraries for creating web apps using
+Python, and they also provide 
+<a href="https://share.streamlit.io/" target="_blank">a service</a> to freely host and
+share your apps. One of the issues with this free sharing capability is that
+one losses control over the app, for instance, it is no longer possible to
+control how the precise HTML will look like or add custom
+<a href="https://en.wikipedia.org/wiki/Facebook_Platform#Open_Graph_protocol" target="_blank">Open Graph</a>
+or analytics. This post shows a simple and easy way to add all of this by using
+Github Pages.</p>
+
+
+<p>This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:</p>
+<ul>
+<li><strong>Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></li>
+</ul>
+<h2 id="tldr"><a class="toclink" href="#tldr">TL;DR</a></h2>
+<p>This post covers how to upload a Streamlit app to the Streamlit Sharing
+platform and embed it as an iframe in a custom HTML hosted in Github Pages.
+This is NOT suitable for sensitive data or commercial use.</p>
+<p>The technique used here <em>is a hack</em>, meaning it is not the best practice, but
+it will get the job done. In the end, a more <em>robust and professional</em>
+alternative will be mentioned for those interested.</p>
+<p>An <a href="https://github.com/ELC/finance-tools" target="_blank">example Github Repo</a>
+is available for inspiration, there is also a 
+<a href="https://elc.github.io/finance-tools/" target="_blank">demo app</a>
+attached to check the final result.</p>
+<h2 id="initial-clarification"><a class="toclink" href="#initial-clarification">Initial Clarification</a></h2>
+<p>This post assumes the Streamlit App is hosted via Streamlit Sharing since if
+the app is being hosted on its own servers, there should not be a problem to add
+tracking, Open Graph, or any custom HTML since one has full control over the
+code and deployment. Instead, this post focuses on a purely free and managed
+solution with no servers involved.</p>
+<h2 id="streamlit-sharing"><a class="toclink" href="#streamlit-sharing">Streamlit Sharing</a></h2>
+<p>Streamlit offers a free-forever Community plan for hosting and sharing an
+unlimited number of public Streamlit apps, the <a href="https://streamlit.io/cloud#plans" target="_blank">full plan comparison is available on their page</a>.
+To use that free service one has to create a free account and upload all the
+code to a Github Repo (Gitlab, BitBucket, and Azure DevOps only in Paid plans
+at the moment).</p>
+<h3 id="deployment"><a class="toclink" href="#deployment">Deployment</a></h3>
+<p>To deploy a Streamlit app it is important not to have any uncommitted changes,
+otherwise, streamlit will block the deployment. If all changes have been
+committed (and pushed), first run the app locally, typically with:</p>
+<div class="highlight "><pre><span></span><code>streamlit run python_script.py
+</code></pre></div>
+
+<p>And then go to the Hamburger Menu -&gt; "Deploy this app"</p>
+<p><a href="/blog/images/streamlit-google-analytics/deploy-streamlit.png"><img alt="Deploy to Streamlit" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/deploy-streamlit.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/deploy-streamlit-thumbnail.png" width="500"></a></p>
+<p>This will redirect to the Streamlit Sign in Page and after logging in, the
+Deployment Options will be shown, here the repository, the branch, and the file
+should be specified. It is also possible to add additional parameters (and even
+secrets) in the "Advanced Settings", there is a <a href="https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management" target="_blank">tutorial to do this in the docs</a></p>
+<p><a href="/blog/images/streamlit-google-analytics/deployment-options.png"><img alt="Deploy to Streamlit" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/deployment-options.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/deployment-options-thumbnail.png" width="500"></a></p>
+<p>Once the app is deployed it should be available at a URL with this format:</p>
+<div class="highlight "><pre><span></span><code>https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py
+</code></pre></div>
+
+<p>That URL is completely functional but it has the drawbacks mentioned in the
+introduction, namely it is not possible to:</p>
+<ul>
+<li>Add any kind of tracking/analytics</li>
+<li>Customize the Open Graph meta tags for social media sharing</li>
+<li>Add custom HTML</li>
+</ul>
+<p>It is not possible however to alter the Javascript, the HTML, or the CSS of the
+streamlit app itself because it is in a domain (<code>share.streamlit.io</code>) to which
+no access is granted. Nevertheless, analytics and meta tags are not "visible"
+content and should therefore not disrupt the typical user experience of the
+app. The main goal is to provide the final user with a seamless "Streamlit
+Experience" while enhancing the features on the developer's end.</p>
+<h2 id="github-pages"><a class="toclink" href="#github-pages">Github Pages</a></h2>
+<p>One advantage of Github repositories is that they come with a static webserver
+directly built-in called "Github Pages". It is disabled by default, but can be
+enabled by going to Settings -&gt; Pages -&gt; Enable. For simplicity, the master
+branch will be used but other branches can be used if configured.</p>
+<p><a href="/blog/images/streamlit-google-analytics/github-pages.png"><img alt="Deploy to Github Pages" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/github-pages.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/github-pages-thumbnail.png" width="500"></a></p>
+<p>Once enabled, the root of the repository will be served at this URL:</p>
+<div class="highlight "><pre><span></span><code>http://GITHUB_USERNAME.github.io/REPOSITORY_NAME
+</code></pre></div>
+
+<p>That means that an <code>index.html</code> can be added to the root of the repo and that
+file will be the landing page of the URL.</p>
+<p>A basic HTML as the following can be used for testing:</p>
+<div class="highlight "><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;ie=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h2 id="embedding-streamlit"><a class="toclink" href="#embedding-streamlit">Embedding Streamlit</a></h2>
+<p>Once both the Github Pages and the Streamlit Sharing are online, it is possible
+to embed the latter in the former by using an <code>iframe</code>. The <code>iframe`` by
+default will show the app in smaller dimensions but with some minimal CSS it is
+possible to extend the</code>iframe` to provide the same look and feel as the
+streamlit app.</p>
+<p>Moreover, it is also possible to add Google Analytics or another custom
+HTML/CSS/JS into the page, always checking it does not affect the user
+experience.</p>
+<p>The below example shows how to add the <code>iframe</code> to the boilerplate shown in the
+previous section.</p>
+<div class="highlight "><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;ie=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">iframe</span> <span class="p">{</span>
+      <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+      <span class="k">background</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+      <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+      <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+      <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py&quot;</span><span class="p">&gt;</span>
+        Your browser doesn&#39;t support iframes
+    <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>To add Google Analytics, the JS snippet can be appended after the <code>iframe</code>, do
+remember to add the <code>google-site-verification</code> as meta tag:</p>
+<div class="highlight "><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;ie=edge&quot;</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Google Verification --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;google-site-verification&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;GOOGLE_SITE_VERIFICATION_TOKEN&quot;</span> <span class="p">/&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">iframe</span> <span class="p">{</span>
+      <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+      <span class="k">background</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+      <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+      <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+      <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py&quot;</span><span class="p">&gt;</span>
+        Your browser doesn&#39;t support iframes
+    <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Google Analytics --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="p">(</span><span class="nx">ga</span><span class="p">.</span><span class="nx">q</span> <span class="o">=</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">q</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+      <span class="p">};</span>
+      <span class="nx">ga</span><span class="p">.</span><span class="nx">l</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">;</span>
+      <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;UA_TRACKING_CODE&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">);</span>
+      <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;pageview&#39;</span><span class="p">);</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://www.google-analytics.com/analytics.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>With this last change and upon committing and pushing the Github Pages site
+should show the Streamlit app seamlessly and it should also appear in the Real
+Time tracking of Google Analytics.</p>
+<h2 id="bonus-custom-domains"><a class="toclink" href="#bonus-custom-domains">Bonus: Custom Domains</a></h2>
+<p>As an additional advantage, Github Pages allows custom domain names, which, if
+using streamlit is a paid-only feature. To learn more about this feature, check
+the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site" target="_blank">official docs</a></p>
+<h2 id="do-it-the-right-way"><a class="toclink" href="#do-it-the-right-way">Do it the right way</a></h2>
+<p>The steps described above can and should be considered merely a <em>hack</em> since it
+is not the intended way to use the Streamlit Sharing platform.</p>
+<p>There is indeed one other way to achieve the same, building a custom Streamlit
+Component that achieves the same functionality. Streamlit Components are custom
+Web Components that can extend the built-in Streamlit features, programming
+those require React knowledge though and even if the result is <em>proper</em> and of
+higher quality it will be more time-consuming.</p>
+<p>If the <em>iframe-trick</em> does not work for a given use case, using Streamlit
+Components is a good next step.</p>
+<p>There is documentation about Streamlit Components in the <a href="https://docs.streamlit.io/library/components/create" target="_blank">official Docs</a>.</p>
+<h2 id="other-alternatives"><a class="toclink" href="#other-alternatives">Other Alternatives</a></h2>
+<p>Some alternatives to the shown method could be:</p>
+<ol>
+<li>Run a Flask server and use Jinja2 to inject the custom HTML into the served
+   streamlit</li>
+<li>Modify the default index.html the Streamlit library uses</li>
+<li>Host the HTML/CSS/JS snippet and embed that inside Streamlit using
+   <code>st.components.v1.iframe</code></li>
+</ol>
+<p>All of these are either less <em>elegant</em> or much more complex. The author
+recommends either the <em>iframe-trick</em> or <em>custom-components</em>.</p>
+<h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
+<p>Streamlit is one of the most popular dashboarding platforms in the Python
+Ecosystem and allows to create apps with ease, Streamlit Sharing provides a
+free forever hosting platform for unlimited public apps. However, it is not
+possible to add analytics or custom HTML out of the box. When embedded in a
+static site like a plain <code>index.html</code> and served via a free web server like
+Github Pages one can add these features on top of it without issues.</p>
+<p>An <a href="https://github.com/ELC/finance-tools" target="_blank">example Github Repo</a> 
+is available for inspiration, there is also a 
+<a href="https://elc.github.io/finance-tools/" target="_blank">demo app</a>
+attached to check the final result.</p>
+<h2 id="check-the-series"><a class="toclink" href="#check-the-series">Check the Series</a></h2>
+<p>If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:</p>
+<ul>
+<li><strong>Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/streamlit-google-analytics&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Add%20Google%20Analytics%20%28or%20any%20custom%20HTML%29%20to%20Streamlit%20with%20Github%20Pages" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/streamlit-google-analytics&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Add%20Google%20Analytics%20%28or%20any%20custom%20HTML%29%20to%20Streamlit%20with%20Github%20Pages" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="colaboration-button">Contribute</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2022-streamlit-google-analytics.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Find a bug? Submit a PR!
+        </a>
+    </div>
+</section>
+
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-lessons" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></h3>
+                
+                <p class="article-related-post-body-description">There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-multipage" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></h3>
+                
+                <p class="article-related-post-body-description">Converting a Python script to a web app has never been easier thanks to libraries such as Streamlit. This library allows to create simple and responsive web apps with minimal effort but there is one potential limitation: No multipage support. In this post, a potential solution to this problem is presented with examples and demos.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-publishing" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-publishing">Jupyter Publishing Guide: From Embedded to Book</a></h3>
+                
+                <p class="article-related-post-body-description">Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+
+  <script src="https://utteranc.es/client.js"
+          repo="elc/elc.github.io-content"
+          issue-term="title"
+          label="Comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/streamlit-google-analytics';  
+      this.page.identifier = 'streamlit-google-analytics';
+      this.page.title = 'Add Google Analytics (or any custom HTML) to Streamlit with Github Pages';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> -->
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/about/" data-l10n-id="about">About</a></li>
+                <li><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">Portfolio</a></li>
+                <li><a href="https://elc.github.io/publications.html" data-l10n-id="publications">Publications</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archive</a></li>
+ 
+                    <li><a href="https://elc.github.io/disclaimer.html" data-l10n-id="disclaimer">Disclaimer</a></li>
+ 
+                    <li><a href="https://elc.github.io/donate.html" data-l10n-id="donate">Donate</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy; 2020 Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+      <script>
+        var omitAds = false;
+        if (!omitAds){
+          
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+          
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+            dataType = "image"
+              
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+  </body>
+
+</html>

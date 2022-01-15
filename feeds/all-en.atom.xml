@@ -1,5 +1,1014 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/feeds/all-en.atom.xml" rel="self"></link><id>https://elc.github.io/</id><updated>2021-09-04T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>Secure Live Collaboration in Jupyter Lab</title><link href="https://elc.github.io/posts/jupyter-collaborative" rel="alternate"></link><published>2021-09-04T00:00:00-03:00</published><updated>2021-09-04T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2021-09-04:/posts/jupyter-collaborative</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/feeds/all-en.atom.xml" rel="self"></link><id>https://elc.github.io/</id><updated>2022-01-14T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</title><link href="https://elc.github.io/posts/streamlit-google-analytics" rel="alternate"></link><published>2022-01-14T00:00:00-03:00</published><updated>2022-01-14T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2022-01-14:/posts/streamlit-google-analytics</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Streamlit is one of the most popular libraries for creating web apps using
+Python, and they also provide 
+&lt;a href="https://share.streamlit.io/" target="_blank"&gt;a service&lt;/a&gt; to freely host and
+share your apps. One of the issues with this free sharing capability is that
+one losses control over the app, for instance, it is no longer …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Streamlit is one of the most popular libraries for creating web apps using
+Python, and they also provide 
+&lt;a href="https://share.streamlit.io/" target="_blank"&gt;a service&lt;/a&gt; to freely host and
+share your apps. One of the issues with this free sharing capability is that
+one losses control over the app, for instance, it is no longer possible to
+control how the precise HTML will look like or add custom
+&lt;a href="https://en.wikipedia.org/wiki/Facebook_Platform#Open_Graph_protocol" target="_blank"&gt;Open Graph&lt;/a&gt;
+or analytics. This post shows a simple and easy way to add all of this by using
+Github Pages.&lt;/p&gt;
+
+
+&lt;p&gt;This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-multipage"&gt;Multipage, State-Persistent Apps with Streamlit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-lessons"&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="tldr"&gt;&lt;a class="toclink" href="#tldr"&gt;TL;DR&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This post covers how to upload a Streamlit app to the Streamlit Sharing
+platform and embed it as an iframe in a custom HTML hosted in Github Pages.
+This is NOT suitable for sensitive data or commercial use.&lt;/p&gt;
+&lt;p&gt;The technique used here &lt;em&gt;is a hack&lt;/em&gt;, meaning it is not the best practice, but
+it will get the job done. In the end, a more &lt;em&gt;robust and professional&lt;/em&gt;
+alternative will be mentioned for those interested.&lt;/p&gt;
+&lt;p&gt;An &lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;example Github Repo&lt;/a&gt;
+is available for inspiration, there is also a 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;demo app&lt;/a&gt;
+attached to check the final result.&lt;/p&gt;
+&lt;h2 id="initial-clarification"&gt;&lt;a class="toclink" href="#initial-clarification"&gt;Initial Clarification&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This post assumes the Streamlit App is hosted via Streamlit Sharing since if
+the app is being hosted on its own servers, there should not be a problem to add
+tracking, Open Graph, or any custom HTML since one has full control over the
+code and deployment. Instead, this post focuses on a purely free and managed
+solution with no servers involved.&lt;/p&gt;
+&lt;h2 id="streamlit-sharing"&gt;&lt;a class="toclink" href="#streamlit-sharing"&gt;Streamlit Sharing&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit offers a free-forever Community plan for hosting and sharing an
+unlimited number of public Streamlit apps, the &lt;a href="https://streamlit.io/cloud#plans" target="_blank"&gt;full plan comparison is available on their page&lt;/a&gt;.
+To use that free service one has to create a free account and upload all the
+code to a Github Repo (Gitlab, BitBucket, and Azure DevOps only in Paid plans
+at the moment).&lt;/p&gt;
+&lt;h3 id="deployment"&gt;&lt;a class="toclink" href="#deployment"&gt;Deployment&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To deploy a Streamlit app it is important not to have any uncommitted changes,
+otherwise, streamlit will block the deployment. If all changes have been
+committed (and pushed), first run the app locally, typically with:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;streamlit run python_script.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And then go to the Hamburger Menu -&amp;gt; "Deploy this app"&lt;/p&gt;
+&lt;p&gt;&lt;a href="/blog/images/streamlit-google-analytics/deploy-streamlit.png"&gt;&lt;img alt="Deploy to Streamlit" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/deploy-streamlit.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/deploy-streamlit-thumbnail.png" width="500"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This will redirect to the Streamlit Sign in Page and after logging in, the
+Deployment Options will be shown, here the repository, the branch, and the file
+should be specified. It is also possible to add additional parameters (and even
+secrets) in the "Advanced Settings", there is a &lt;a href="https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management" target="_blank"&gt;tutorial to do this in the docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/blog/images/streamlit-google-analytics/deployment-options.png"&gt;&lt;img alt="Deploy to Streamlit" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/deployment-options.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/deployment-options-thumbnail.png" width="500"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Once the app is deployed it should be available at a URL with this format:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That URL is completely functional but it has the drawbacks mentioned in the
+introduction, namely it is not possible to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add any kind of tracking/analytics&lt;/li&gt;
+&lt;li&gt;Customize the Open Graph meta tags for social media sharing&lt;/li&gt;
+&lt;li&gt;Add custom HTML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is not possible however to alter the Javascript, the HTML, or the CSS of the
+streamlit app itself because it is in a domain (&lt;code&gt;share.streamlit.io&lt;/code&gt;) to which
+no access is granted. Nevertheless, analytics and meta tags are not "visible"
+content and should therefore not disrupt the typical user experience of the
+app. The main goal is to provide the final user with a seamless "Streamlit
+Experience" while enhancing the features on the developer's end.&lt;/p&gt;
+&lt;h2 id="github-pages"&gt;&lt;a class="toclink" href="#github-pages"&gt;Github Pages&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;One advantage of Github repositories is that they come with a static webserver
+directly built-in called "Github Pages". It is disabled by default, but can be
+enabled by going to Settings -&amp;gt; Pages -&amp;gt; Enable. For simplicity, the master
+branch will be used but other branches can be used if configured.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/blog/images/streamlit-google-analytics/github-pages.png"&gt;&lt;img alt="Deploy to Github Pages" class="narrow b-lazy" data-src="/blog/images/streamlit-google-analytics/github-pages.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/github-pages-thumbnail.png" width="500"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Once enabled, the root of the repository will be served at this URL:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;http://GITHUB_USERNAME.github.io/REPOSITORY_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That means that an &lt;code&gt;index.html&lt;/code&gt; can be added to the root of the repo and that
+file will be the landing page of the URL.&lt;/p&gt;
+&lt;p&gt;A basic HTML as the following can be used for testing:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X-UA-Compatible&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ie=edge&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;My App&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Hello World&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="embedding-streamlit"&gt;&lt;a class="toclink" href="#embedding-streamlit"&gt;Embedding Streamlit&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Once both the Github Pages and the Streamlit Sharing are online, it is possible
+to embed the latter in the former by using an &lt;code&gt;iframe&lt;/code&gt;. The &lt;code&gt;iframe`` by
+default will show the app in smaller dimensions but with some minimal CSS it is
+possible to extend the&lt;/code&gt;iframe` to provide the same look and feel as the
+streamlit app.&lt;/p&gt;
+&lt;p&gt;Moreover, it is also possible to add Google Analytics or another custom
+HTML/CSS/JS into the page, always checking it does not affect the user
+experience.&lt;/p&gt;
+&lt;p&gt;The below example shows how to add the &lt;code&gt;iframe&lt;/code&gt; to the boilerplate shown in the
+previous section.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X-UA-Compatible&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ie=edge&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;My App&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;vh&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;vw&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        Your browser doesn&amp;#39;t support iframes
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To add Google Analytics, the JS snippet can be appended after the &lt;code&gt;iframe&lt;/code&gt;, do
+remember to add the &lt;code&gt;google-site-verification&lt;/code&gt; as meta tag:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X-UA-Compatible&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ie=edge&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Google Verification --&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;google-site-verification&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GOOGLE_SITE_VERIFICATION_TOKEN&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;My App&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;vh&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;vw&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://share.streamlit.io/GITHUB_USERNAME/REPOSITORY_NAME/MAIN_SCRIPT.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        Your browser doesn&amp;#39;t support iframes
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Google Analytics --&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ga&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ga&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ga&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;q&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ga&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;q&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="p"&gt;[]).&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;};&lt;/span&gt;
+      &lt;span class="nx"&gt;ga&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="nx"&gt;ga&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;create&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;UA_TRACKING_CODE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;auto&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="nx"&gt;ga&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;send&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pageview&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;async&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;https://www.google-analytics.com/analytics.js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With this last change and upon committing and pushing the Github Pages site
+should show the Streamlit app seamlessly and it should also appear in the Real
+Time tracking of Google Analytics.&lt;/p&gt;
+&lt;h2 id="bonus-custom-domains"&gt;&lt;a class="toclink" href="#bonus-custom-domains"&gt;Bonus: Custom Domains&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As an additional advantage, Github Pages allows custom domain names, which, if
+using streamlit is a paid-only feature. To learn more about this feature, check
+the &lt;a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site" target="_blank"&gt;official docs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="do-it-the-right-way"&gt;&lt;a class="toclink" href="#do-it-the-right-way"&gt;Do it the right way&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The steps described above can and should be considered merely a &lt;em&gt;hack&lt;/em&gt; since it
+is not the intended way to use the Streamlit Sharing platform.&lt;/p&gt;
+&lt;p&gt;There is indeed one other way to achieve the same, building a custom Streamlit
+Component that achieves the same functionality. Streamlit Components are custom
+Web Components that can extend the built-in Streamlit features, programming
+those require React knowledge though and even if the result is &lt;em&gt;proper&lt;/em&gt; and of
+higher quality it will be more time-consuming.&lt;/p&gt;
+&lt;p&gt;If the &lt;em&gt;iframe-trick&lt;/em&gt; does not work for a given use case, using Streamlit
+Components is a good next step.&lt;/p&gt;
+&lt;p&gt;There is documentation about Streamlit Components in the &lt;a href="https://docs.streamlit.io/library/components/create" target="_blank"&gt;official Docs&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="other-alternatives"&gt;&lt;a class="toclink" href="#other-alternatives"&gt;Other Alternatives&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Some alternatives to the shown method could be:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Run a Flask server and use Jinja2 to inject the custom HTML into the served
+   streamlit&lt;/li&gt;
+&lt;li&gt;Modify the default index.html the Streamlit library uses&lt;/li&gt;
+&lt;li&gt;Host the HTML/CSS/JS snippet and embed that inside Streamlit using
+   &lt;code&gt;st.components.v1.iframe&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of these are either less &lt;em&gt;elegant&lt;/em&gt; or much more complex. The author
+recommends either the &lt;em&gt;iframe-trick&lt;/em&gt; or &lt;em&gt;custom-components&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id="conclusion"&gt;&lt;a class="toclink" href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit is one of the most popular dashboarding platforms in the Python
+Ecosystem and allows to create apps with ease, Streamlit Sharing provides a
+free forever hosting platform for unlimited public apps. However, it is not
+possible to add analytics or custom HTML out of the box. When embedded in a
+static site like a plain &lt;code&gt;index.html&lt;/code&gt; and served via a free web server like
+Github Pages one can add these features on top of it without issues.&lt;/p&gt;
+&lt;p&gt;An &lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;example Github Repo&lt;/a&gt; 
+is available for inspiration, there is also a 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;demo app&lt;/a&gt;
+attached to check the final result.&lt;/p&gt;
+&lt;h2 id="check-the-series"&gt;&lt;a class="toclink" href="#check-the-series"&gt;Check the Series&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-multipage"&gt;Multipage, State-Persistent Apps with Streamlit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-lessons"&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Programming"></category><category term="Streamlit"></category><category term="Python"></category><category term="Github Pages"></category><category term="Google Analytics"></category></entry><entry><title>Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</title><link href="https://elc.github.io/posts/streamlit-lessons" rel="alternate"></link><published>2022-01-14T00:00:00-03:00</published><updated>2022-01-14T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2022-01-14:/posts/streamlit-lessons</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;There are a lot of resources available online about personal finances, stocks,
+markets, cryptos, and many more economy-related topics. However the decisions
+one has to make should be informed in order to be good enough. This post covers
+the lessons learnt after developing similar tools using Streamlit and Altair.
+No …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;There are a lot of resources available online about personal finances, stocks,
+markets, cryptos, and many more economy-related topics. However the decisions
+one has to make should be informed in order to be good enough. This post covers
+the lessons learnt after developing similar tools using Streamlit and Altair.
+No HTML/CSS/JS were needed. This post will make the reader aware of some pros
+and cons of this libraries and also show an example app.&lt;/p&gt;
+
+
+&lt;p&gt;This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-google-analytics"&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-multipage"&gt;Multipage, State-Persistent Apps with Streamlit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="disclaimer"&gt;&lt;a class="toclink" href="#disclaimer"&gt;Disclaimer&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The author has no formal education in economics nor any related field, these
+tools have been thought for personal use only and may contain bugs or
+inaccuracies. They are provided for free "as is".&lt;/p&gt;
+&lt;h2 id="tldr"&gt;&lt;a class="toclink" href="#tldr"&gt;TL;DR&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This post explains how this 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;web app&lt;/a&gt; 
+was developed with a focus on  Streamlit, streamlit-multipage, NumPy, pandas
+, and Altair. The full code is available on
+&lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;this Github Repo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The app covers topics like compound interest, flex term vs fixed terms,
+inflation adjustment, fee recovery, and asset past profitability. If the reader
+is already familiar with these topics, it is suggested to check the app and
+come back in case of questions.&lt;/p&gt;
+&lt;h2 id="warning"&gt;&lt;a class="toclink" href="#warning"&gt;Warning&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This is NOT an economy/finance post, it is a technical post about the
+&lt;strong&gt;development&lt;/strong&gt; of personal finance tools, do not expect full details about the
+economic part, there are plenty of other resources online. This post will focus
+on the Python implementation, in particular in the use of Streamlit,
+Streamlit-MultiPage and Altair.&lt;/p&gt;
+&lt;h2 id="personal-finance-tools"&gt;&lt;a class="toclink" href="#personal-finance-tools"&gt;Personal Finance Tools&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Finance is a subject that in many cases is not taught in the depth it should,
+meaning there is a lot of confusion, misinformation and in many topics, scams.
+That is why having open-source and free tools to help taking decisions is
+critical nowadays.&lt;/p&gt;
+&lt;p&gt;This is a showcase of some of what is possible with Python, thanks to libraries
+like Streamlit that convert scripts into web apps and Altair that generate
+transparent vector plots, it is now easy to develop tools that everyone can
+use.&lt;/p&gt;
+&lt;h3 id="the-state-of-the-art"&gt;&lt;a class="toclink" href="#the-state-of-the-art"&gt;The State of the Art&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In the particular case of investing, there are already two pages that dominate
+the market &lt;a href="https://www.investing.com/" target="_blank"&gt;Investing&lt;/a&gt; and
+&lt;a href="https://www.tradingview.com/" target="_blank"&gt;TradingView&lt;/a&gt;. Both have free
+and paid plans and this post does not focus on that type of apps, but rather
+much simpler ones.&lt;/p&gt;
+&lt;p&gt;For example, can someone confidently invest in stocks or crypto if they do not
+understand how inflation or compound interest work? Sure it is technically
+possible, but the decision is not informed. The apps developed help to fill
+that gap and give the first contact with terms like inflation, interest and
+Fixed/Flex Terms.&lt;/p&gt;
+&lt;p&gt;At the moment on the internet there are plenty of online tools to achieve the
+same, those, however, are typically calculators that only return a single value
+and/or whose code is not available. In many cases, they "refer to the formula".
+Those apps have a main focus on computing, not teaching, if someone does not
+know how interests work, giving them the final interest at the end of the
+period might help but it is not the whole story.&lt;/p&gt;
+&lt;p&gt;That does not mean that the apps developed are the best online by any means
+but, by providing the code and a more customizable UI, the user can experiment
+more and "learn while doing" instead of staring at formulas that seem cryptic
+at times.&lt;/p&gt;
+&lt;h3 id="the-challenge"&gt;&lt;a class="toclink" href="#the-challenge"&gt;The Challenge&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Making something technically sound and user-friendly at the same time is a
+challenging task. The more visual a tool is, the more likely it is for the
+reader to understand how it is working and the underlying principle behind the
+tool.&lt;/p&gt;
+&lt;p&gt;Since the author has no formal education in economics or finance, it was also
+important to provide an easy way for others to contribute to fix bugs and add
+enhancements. That is why an open-source solution is a must in this case.&lt;/p&gt;
+&lt;p&gt;To the best of the author's knowledge, there are no Python-based tools like the
+developed, so the added-value lies not only in the tools themselves but also
+because the project serves as a baseline for future related projects.&lt;/p&gt;
+&lt;p&gt;It was also important to reduce the entry barrier as much as possible so that
+only some programming skills are needed to extend the existing apps.&lt;/p&gt;
+&lt;h3 id="the-result"&gt;&lt;a class="toclink" href="#the-result"&gt;The Result&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The result of this is having a web app that can be easily used by anyone
+with or without programming/economics knowledge and it is as easy to maintain
+and extend as possible. The app is 
+&lt;a href="https://elc.github.io/finance-tools" target="_blank"&gt;already online&lt;/a&gt; 
+and can be used.&lt;/p&gt;
+&lt;p&gt;The next section will focus on the technology more in-depth.&lt;/p&gt;
+&lt;h2 id="the-python-implementation"&gt;&lt;a class="toclink" href="#the-python-implementation"&gt;The Python Implementation&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The project uses Python, a programming language with a mature ecosystem of
+libraries like the Scipy Stack but at the same time it is an easy-to-learn
+language which can be taught in very few time. &lt;/p&gt;
+&lt;p&gt;That being said, to generate a fully working web app, web technologies should
+be used. Fortunately, there are Python libraries that allow the developer to
+bypass that step.&lt;/p&gt;
+&lt;h3 id="stack"&gt;&lt;a class="toclink" href="#stack"&gt;Stack&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The different apps within the project use the same stack which is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.python.org/" target="_blank"&gt;Python&lt;/a&gt; as the base programming language&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://streamlit.io/" target="_blank"&gt;Streamlit&lt;/a&gt; to handle the "web part"&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ELC/streamlit-multipage" target="_blank"&gt;Streamlit-multipage&lt;/a&gt; to bundle different apps together&lt;/li&gt;
+&lt;li&gt;[Altair]https://altair-viz.github.io/ for plots&lt;/li&gt;
+&lt;li&gt;Scipy Stack (&lt;a href="https://numpy.org/" target="_blank"&gt;Numpy&lt;/a&gt;, &lt;a href="https://pandas.pydata.org/" target="_blank"&gt;Pandas&lt;/a&gt; and &lt;a href="https://scipy.org/" target="_blank"&gt;Scipy&lt;/a&gt;) to run simulations faster&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.org/project/yfinance/" target="_blank"&gt;YFinance&lt;/a&gt; to download ticker information&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://joblib.readthedocs.io/" target="_blank"&gt;Joblib&lt;/a&gt; (optional) for the persistence of state, fallbacks to &lt;code&gt;pickle&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The choice of the dependencies and the pros and cons will be extended in the
+upcoming sections. The main objective was to keep the project simple and avoid
+lesser-known libraries when possible.&lt;/p&gt;
+&lt;p&gt;All the code is 
+&lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;hosted on Github&lt;/a&gt; 
+and can be starred, forked or clone right away.&lt;/p&gt;
+&lt;h3 id="simulation-challenges"&gt;&lt;a class="toclink" href="#simulation-challenges"&gt;Simulation Challenges&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The defacto standard for numerical simulations is the Scipy Stack, there have
+been some challenges though as some of the processes do not have a closed
+formula one can translate to Python.&lt;/p&gt;
+&lt;p&gt;In some cases like the Inflation Simulation a 
+&lt;a href="https://github.com/ELC/finance-tools/blob/a4a138b55fb2fa1638a1ff763038736b9db14b41/pages/inflation.py#L74-L105" target="_blank"&gt;pure numpy solution&lt;/a&gt; 
+could be achieved, but in others like the compound interest with recurring
+deposits with a different frequency than the compounding frequency a 
+&lt;a href="https://github.com/ELC/finance-tools/blob/a4a138b55fb2fa1638a1ff763038736b9db14b41/pages/common.py#L125-L178" target="_blank"&gt;for-loop&lt;/a&gt; 
+approach was used.&lt;/p&gt;
+&lt;p&gt;Nevertheless, even native for-loops being several orders of magnitude slower
+than NumPy, that was not the bottleneck of the app. The bottleneck was the
+plotting step, since the length of the data in these apps is usually under the
+tens of thousands which is fast enough, even when using native for-loops.&lt;/p&gt;
+&lt;p&gt;Having the app running locally would be enough for personal use however many
+non-technical people would have been excluded when doing so. Therefore, having
+the app available online is just as important as it working properly.&lt;/p&gt;
+&lt;h3 id="deployment-process"&gt;&lt;a class="toclink" href="#deployment-process"&gt;Deployment Process&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To deploy Streamlit apps there are two alternatives:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hosted by &lt;a href="https://share.streamlit.io/" target="_blank"&gt;Streamlit Sharing&lt;/a&gt; (Community plan is free forever)&lt;/li&gt;
+&lt;li&gt;Self-Hosted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The self-hosted approach will involve either server or Docker configuration and
+thus will not be covered in this post.&lt;/p&gt;
+&lt;p&gt;The use of Streamlit Sharing and how to deploy a streamlit app there has been
+already covered in detail in other of the posts in this Streamlit Series. That
+post also covers how to achieve Google Analytics (or any custom HTML)
+integration in the app, although that would be only relevant for the
+tech-savvy.&lt;/p&gt;
+&lt;h2 id="streamlit-review"&gt;&lt;a class="toclink" href="#streamlit-review"&gt;Streamlit Review&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit alone is a feature-rich, well-documented, and tested library,
+however, it would have been impractical to have several small streamlit apps.
+This is something also found in other online tools, they provide "Several
+calculators" each in different pages hindering accessibility and visibility.&lt;/p&gt;
+&lt;p&gt;However, streamlit does not support multi-page apps by default, which could be
+achieve by using &lt;a href="https://github.com/ELC/streamlit-multipage" target="_blank"&gt;&lt;code&gt;streamlit-multipage&lt;/code&gt;&lt;/a&gt;
+, a third-party library.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: The author is not the original developer of
+&lt;code&gt;streamlit-multipage&lt;/code&gt; but has contributed significantly to that library.&lt;/p&gt;
+&lt;p&gt;In one of the other posts in this Streamlit series, there is an extended
+explanation on how to use this library and what is possible.&lt;/p&gt;
+&lt;p&gt;The rest of this section will cover unresolved issues to consider when
+developing this kind of apps.&lt;/p&gt;
+&lt;h3 id="hot-reload-could-be-harmful"&gt;&lt;a class="toclink" href="#hot-reload-could-be-harmful"&gt;Hot reload could be harmful&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;By default, each time there is a change in any of the Streamlit Visual
+components, it triggers the execution of the whole app. This behavior might
+deteriorate the user experience if there are many inputs and the process takes
+more than a few seconds.&lt;/p&gt;
+&lt;p&gt;Having a "Run Button" is possible without any plugins but the "magic update" of
+streamlit is definitely a feature no one would want to lose.&lt;/p&gt;
+&lt;h3 id="lack-of-skeleton-elements"&gt;&lt;a class="toclink" href="#lack-of-skeleton-elements"&gt;Lack of skeleton elements&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A related issue to the previously mentioned is that when streamlit is
+"Loading" or "Processing" there is no visual hint for the user that this is the
+case. No spinners, skeletons, or anything like that. This should not be a
+problem for fast apps but in the case of taking several seconds, this might
+result in a suboptimal user experience.&lt;/p&gt;
+&lt;p&gt;There is no straightforward way to mitigate this besides programming the
+loading/skeletons themselves as independent Streamlit Components.&lt;/p&gt;
+&lt;h3 id="lack-of-basic-html-elements"&gt;&lt;a class="toclink" href="#lack-of-basic-html-elements"&gt;Lack of basic HTML Elements&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Streamlit combines Python and Web Technologies (in particular React) in a
+clever way, abstracting every web-related from the Python side. That has its
+costs though, thinking of custom yet basic HTML elements like a "Click me
+Button" that redirects to a page might be non-trivial to do and might require
+either custom HTML with styling or designing a React component just for that
+which seems excesive.&lt;/p&gt;
+&lt;p&gt;Streamlit is ideal for the use cases it was thought but deviating too much from
+it might increase developing time significantly and make the learning curve
+much steeper.&lt;/p&gt;
+&lt;h3 id="persistence-might-be-complex"&gt;&lt;a class="toclink" href="#persistence-might-be-complex"&gt;Persistence might be complex&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Even though the &lt;code&gt;streamlit-multipage&lt;/code&gt; provides persistence mechanisms, they
+were tested in Streamlit Sharing. This is because of how streamlit works under
+the hood, it runs "the whole script" with every change, making any kind of
+"initialization code" extremely hard to avoid repeating with each change.&lt;/p&gt;
+&lt;p&gt;There is support for some basic native persistence through &lt;code&gt;st.session_state&lt;/code&gt;
+but it has not been optimized for multipage apps nor it provides two-way
+binding as one might be used to from Front-End frameworks.&lt;/p&gt;
+&lt;h3 id="streamlit-conclusion"&gt;&lt;a class="toclink" href="#streamlit-conclusion"&gt;Streamlit Conclusion&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Streamlit is not the only of its kind, there is Panel, Dash, Voila, and there
+might be more in the future. That being said, Streamlit was the best tool for
+the job in this case for many reasons, it does not really on other tools (dash
+is heavily tiered towards plotly and voila works on Jupyter), and it has a
+mature and responsive community (panel is lacking in this aspect.)&lt;/p&gt;
+&lt;p&gt;Streamlit alone was initially not enough due to the lacking multipage support
+but using &lt;code&gt;streamlit-multipage&lt;/code&gt; solved this without disrupting the streamlit
+developer experience.&lt;/p&gt;
+&lt;h2 id="altair-review"&gt;&lt;a class="toclink" href="#altair-review"&gt;Altair Review&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://altair-viz.github.io/" target="_blank"&gt;Altair&lt;/a&gt;
+ is a plotting library that aims to provide a "declarative interface" rather
+than a "descriptive interface", in practice, this allows for simpler code and
+more code re-use.&lt;/p&gt;
+&lt;p&gt;It is not the most popular tool by any means, that would be matplotlib but one
+of the main disadvantages of the latter is that there is no support for
+transparency. Transparency might be a not-so-important feature, but, since
+Streamlit has a light and a dark theme, a transparent plot is necessary to
+ensure a consistent visual design that is not compatible with Matplotlib.&lt;/p&gt;
+&lt;p&gt;On the other side, matplotlib is much faster than Altair, this might change in
+the future but at least when using Altair one has to limit the number of data
+points to 5000. That being said, the interactiveness Altair provides makes it a
+perfect fit for web apps.&lt;/p&gt;
+&lt;p&gt;Learning Altair requires some time but if one is already familiar with
+matplotlib the learning curve is a bit flatter. There are many good materials
+already available to learn on 
+&lt;a href="https://pyvideo.org/search.html?q=altair" target="_blank"&gt;PyVideo&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="verbosity-and-modularity"&gt;&lt;a class="toclink" href="#verbosity-and-modularity"&gt;Verbosity and Modularity&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Unless using the defaults, producing highly customized plots requires many
+lines of code, regardless of the plotting library. The main difference with
+Altair is that those "extra-custom-lines" could be re-use across plots.&lt;/p&gt;
+&lt;p&gt;This is an example to add a text tooltip&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chart&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;chart&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mark_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;right&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dx&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dy&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontSize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform_filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This function returns an Altair object given a chart, a field, and a selection,
+that means that one can add the same tooltip to many plots at the same time
+while keeping the code centralized in a separate file.&lt;/p&gt;
+&lt;p&gt;This is an underrated feature that allows to re-use code and becomes critical
+when using multiple somewhat similar plots.&lt;/p&gt;
+&lt;h3 id="altair-is-slow"&gt;&lt;a class="toclink" href="#altair-is-slow"&gt;Altair is slow&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The main disadvantage of Altair is that everything that happens is handled over
+to Vega-Lite, the library Altair is built on. This means that Altair is much
+slower than other plotting libraries, this is especially true when compared
+with matplotlib. &lt;/p&gt;
+&lt;p&gt;Even so, having tooltips, panning and zooming are features that are worth the
+wait and the final user will notice the difference because the quality of the
+end result is evident.&lt;/p&gt;
+&lt;h3 id="altair-conclusion"&gt;&lt;a class="toclink" href="#altair-conclusion"&gt;Altair Conclusion&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There are many options when deciding over a plotting library, the most popular
+by far is Matplotlib, however, for web apps, it is lacking the features many
+consider basic like zooming and panning. And having the possibility to re-use
+code across plots is something that makes Altair a very good fit for any large
+software project.&lt;/p&gt;
+&lt;p&gt;There are drawbacks like the data point limit and the slowness, a balance
+between the two should be found and it will depend on every app.&lt;/p&gt;
+&lt;h2 id="overall-conclusion"&gt;&lt;a class="toclink" href="#overall-conclusion"&gt;Overall Conclusion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Developing Web Apps with Python has never been easier, Python has a strong
+mathematical and computational stack that makes most computations fast and
+efficient. It also has an ecosystem that makes it suitable for most use cases
+and on top of that, it is considered one of the easiest programming languages
+to learn.&lt;/p&gt;
+&lt;p&gt;Thanks to libraries like Streamlit and Altair, one can now develop web apps and
+make them available online so everyone can benefit from these amazing tools in
+more tangible ways.&lt;/p&gt;
+&lt;p&gt;There are some issues but the author believes this will be solved in the middle
+term as the libraries evolve and improve themselves.&lt;/p&gt;
+&lt;p&gt;The 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;Personal Finance Tools&lt;/a&gt; 
+is online and ready to use, the code is 
+&lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;hosted in Github&lt;/a&gt; 
+as well.&lt;/p&gt;
+&lt;h2 id="check-the-series"&gt;&lt;a class="toclink" href="#check-the-series"&gt;Check the Series&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-google-analytics"&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-multipage"&gt;Multipage, State-Persistent Apps with Streamlit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Programming"></category><category term="Streamlit"></category><category term="Python"></category><category term="Altair"></category></entry><entry><title>Multipage, State-Persistent Apps with Streamlit</title><link href="https://elc.github.io/posts/streamlit-multipage" rel="alternate"></link><published>2022-01-14T00:00:00-03:00</published><updated>2022-01-14T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2022-01-14:/posts/streamlit-multipage</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Converting a Python script to a web app has never been easier thanks to
+libraries such as Streamlit. This library allows to create simple and
+responsive web apps with minimal effort but there is one potential limitation:
+No multipage support. In this post, a &lt;em&gt;potential&lt;/em&gt; solution to this problem is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Converting a Python script to a web app has never been easier thanks to
+libraries such as Streamlit. This library allows to create simple and
+responsive web apps with minimal effort but there is one potential limitation:
+No multipage support. In this post, a &lt;em&gt;potential&lt;/em&gt; solution to this problem is
+presented with examples and demos. &lt;/p&gt;
+
+
+&lt;p&gt;This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multipage, State-Persistent Apps with Streamlit&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-google-analytics"&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-lessons"&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="tldr"&gt;&lt;a class="toclink" href="#tldr"&gt;TL;DR&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There is a pip installable plugin called &lt;code&gt;streamlit-multipage&lt;/code&gt;, this post is an
+extension of the README of the &lt;a href="https://github.com/ELC/streamlit-multipage" target="_blank"&gt;Github Repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Try it yourself by doing&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install streamlit-multipage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An &lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;example Github Repo&lt;/a&gt; 
+is available for inspiration, there is also a 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;demo app&lt;/a&gt;
+attached to check the final result.&lt;/p&gt;
+&lt;p&gt;For an alternative, more in-depth library, check
+&lt;a href="https://github.com/TangleSpace/hydralit" target="_blank"&gt;Hydralit&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="why-multipage-apps"&gt;&lt;a class="toclink" href="#why-multipage-apps"&gt;Why Multipage Apps?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit is an awesome tool for converting Python scripts into Webapps but,
+sometimes one wants to have many tiny scripts combined in a user-friendly way
+and, even though it is possible to develop one streamlit app for each, the
+process is tedious and the whole project loses maintainability.&lt;/p&gt;
+&lt;p&gt;Multipage apps are apps that can host different apps in parallel with some
+additional features like state persistence or customizable UI.&lt;/p&gt;
+&lt;h2 id="streamlit-multipage"&gt;&lt;a class="toclink" href="#streamlit-multipage"&gt;Streamlit-multipage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are several solutions to these problems and to the best of the author's
+knowledge, these are the most popular ones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/TangleSpace/hydralit" target="_blank"&gt;Hydralit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/upraneelnihar/streamlit-multiapps" target="_blank"&gt;streamlit-multiapps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bvenkatesh-ai/streamlit_pages" target="_blank"&gt;streamlit-pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, for one reason or another, none of them fulfill the purpose of a
+"simple multipage experience". &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Hydralit&lt;/code&gt; is a bit overkill because it is a big
+project deeply integrated with streamlit and one has to use &lt;code&gt;import hydralit as
+hy&lt;/code&gt; instead of &lt;code&gt;import streamlit as st&lt;/code&gt; which breaks the typical idioms built
+around streamlit.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Streamlit-Multiapps&lt;/code&gt; is not pip installable and has &lt;code&gt;NumPy&lt;/code&gt; and &lt;code&gt;pandas&lt;/code&gt; as
+dependencies, which, even if used in most cases, are not required always and
+are considered among the heaviest dependencies in the Python ecosystem.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Streamlit-pages&lt;/code&gt; is a 55 LoC script, which is too basic and provides no state
+persistence options.&lt;/p&gt;
+&lt;p&gt;There is a fourth option called &lt;a href="https://github.com/ELC/streamlit-multipage" target="_blank"&gt;&lt;code&gt;streamlit-multipage&lt;/code&gt;&lt;/a&gt; 
+which is pip installable and it has state persistence while keeping streamlit
+idioms. It is not as feature-rich as Hydralit but has a much more friendly
+learning curve.&lt;/p&gt;
+&lt;p&gt;In this post, the &lt;code&gt;streamlit-multipage&lt;/code&gt; will be used and covered in depth.&lt;/p&gt;
+&lt;p&gt;To start working with this library one can simply install it via pip:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install streamlit-multipage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: The original development of &lt;code&gt;streamlit-multipage&lt;/code&gt; was done by
+Yan Almeida, however, this blog's author contributed significantly to the
+library. Most of this post content will be extracted from the repository README
+with extended explanations.&lt;/p&gt;
+&lt;h2 id="features"&gt;&lt;a class="toclink" href="#features"&gt;Features&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit-multipage has several appealing features that may be useful for most
+users.&lt;/p&gt;
+&lt;h2 id="simplicity"&gt;&lt;a class="toclink" href="#simplicity"&gt;Simplicity&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Using &lt;code&gt;streamlit-multipage&lt;/code&gt; is as simple as writing a native streamlit like
+this:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My Amazing App&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your Name: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And refactoring in a function like this&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My Amazing App&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your Name: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;my_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The function has to take one positional argument, ideally called &lt;code&gt;st&lt;/code&gt;, that is
+the streamlit object. The function also needs to take arbitrary keyword
+argument &lt;code&gt;**state&lt;/code&gt;, this is where the state of the app will be injected.&lt;/p&gt;
+&lt;p&gt;As seen in the example, it is not necessary to use the &lt;code&gt;state&lt;/code&gt; variable at all
+in the function.&lt;/p&gt;
+&lt;p&gt;In the last part of the snippet, we see the &lt;code&gt;streamlit-multipage&lt;/code&gt; specific part
+which consists of instantiating a &lt;code&gt;MultiPage&lt;/code&gt; object, passing the streamlit
+object and then adding the app (or page) with the &lt;code&gt;add_app&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;This is ideal for short scripts but typically streamlit apps have many dozens
+if not hundreds of lines of code, for that the function could be moved to a
+different folder&lt;/p&gt;
+&lt;p&gt;Since the &lt;code&gt;st&lt;/code&gt; object used will be passed as a parameter, it is not needed to
+import streamlit anywhere else in the project besides where the &lt;code&gt;MultiPage&lt;/code&gt;
+object was instantiated.&lt;/p&gt;
+&lt;p&gt;Working in the functions &lt;em&gt;feels like native streamlit&lt;/em&gt; because it is,
+the &lt;code&gt;st&lt;/code&gt; parameter is not a mocked object nor is it monkey patched, providing
+the native streamlit experience.&lt;/p&gt;
+&lt;h2 id="state-persistence"&gt;&lt;a class="toclink" href="#state-persistence"&gt;State Persistence&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Another important feature is inter-page persistence, this is a type of
+persistence that allows saving variables from one page to the other but it
+also allows saving the state after restarting the app.&lt;/p&gt;
+&lt;p&gt;Here is an example of this feature:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Body Mass Index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;weight_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your weight (Kg): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;weight_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;height_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your height (m): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;height_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Body Mass Index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enter your data before computing. Go to the Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+
+    &lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;height&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BMI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BMI Result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here the app "Input Page" can pass variables to the "BMI Result" page by
+calling the &lt;code&gt;MultiPage.save&lt;/code&gt; method. By default, all the variables are saved in
+a global namespace but different namespaces can be used as well (see next
+example).&lt;/p&gt;
+&lt;p&gt;To access the state on a page one has to use the &lt;code&gt;state&lt;/code&gt; variable, which is a
+Python dictionary, simply checking if the necessary keys are present should be
+enough. It is recommended to add warning messages if there are missing keys.&lt;/p&gt;
+&lt;p&gt;If default values are desired for when the variables are not present the &lt;code&gt;get&lt;/code&gt;
+method can be used as well.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;my_variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2022&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Internally the state is persisted in a pickle file which uses
+&lt;a href="https://joblib.readthedocs.io/en/latest/" target="_blank"&gt;&lt;code&gt;joblib&lt;/code&gt;&lt;/a&gt; 
+if available, if it is not installed it gracefully fallsback to the native
+&lt;a href="https://docs.python.org/3/library/pickle.html" target="_blank"&gt;pickle module&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;: This feature has been tested locally but not with the Streamlit
+Sharing Service (Deploy App Option).&lt;/p&gt;
+&lt;h3 id="namespaces"&gt;&lt;a class="toclink" href="#namespaces"&gt;Namespaces&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;MultiPage.save&lt;/code&gt; method can take a second keyword argument &lt;code&gt;namespaces&lt;/code&gt;
+which receives a list of all the namespaces the variables should be saved into.
+That is, a page can save a variable in multiple namespaces.&lt;/p&gt;
+&lt;p&gt;There is no efficiency or comprehension consideration in the implementation so
+beware of storing heavy objects in multiple namespaces at once (especially
+important for large NumPy arrays or tensors).&lt;/p&gt;
+&lt;p&gt;When using namespaces it is a good practice to add a &lt;code&gt;namespace&lt;/code&gt; variable at
+the very top of the function for easy reference.&lt;/p&gt;
+&lt;p&gt;The example below illustrates this feature&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;input&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;variables&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tax Deduction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;salary_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your salary (USD): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;salary_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;tax_percent_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Taxes (%): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tax_percent_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;variables&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your Salary After Taxes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enter your data before computing. Go to the Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Net Salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When using custom namespaces, it is important to access &lt;code&gt;state[namespace]&lt;/code&gt;,
+instead of the &lt;code&gt;state&lt;/code&gt; alone, because &lt;code&gt;state&lt;/code&gt; will contain all namespaces,
+including the global one.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;: no variable in the global namespace should be named identically as
+another namespace.&lt;/p&gt;
+&lt;h3 id="automatic-namespaces"&gt;&lt;a class="toclink" href="#automatic-namespaces"&gt;Automatic Namespaces&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;It is also possible to avoid that altogether and use Automatic Namespaces,
+&lt;code&gt;streamlit-multipage&lt;/code&gt; will filter the &lt;code&gt;state&lt;/code&gt; variable before passing it to a
+function if it detects that there is a namespace with the same name of the app.
+That is if the namespace is the same as the name used in the &lt;code&gt;add_app&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The namespace should be explicitly specified in the &lt;code&gt;MultiPage.save&lt;/code&gt;
+method.&lt;/p&gt;
+&lt;p&gt;This is an example of automatic namespaces&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tax Deduction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;salary_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your salary (USD): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;salary_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;tax_percent_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Taxes (%): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tax_percent_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Net Salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your Salary After Taxes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enter your data before computing. Go to the Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Net Salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="extensibility"&gt;&lt;a class="toclink" href="#extensibility"&gt;Extensibility&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When using &lt;code&gt;streamlit-multipage&lt;/code&gt; projects can grow easily within a directory
+structure.&lt;/p&gt;
+&lt;p&gt;Consider the following directory structure&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;.
+└── root/
+    ├── pages/
+    │   ├── __init__.py
+    │   ├── input_data.py
+    │   └── result.py
+    └── main.py/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here the &lt;code&gt;main.py&lt;/code&gt; is the entry point, it imports both &lt;code&gt;streamlit&lt;/code&gt; and
+&lt;code&gt;streamlit-multipage&lt;/code&gt;, it instantiates the &lt;code&gt;MultiPage&lt;/code&gt; object and loads the
+pages and adds them to the object.&lt;/p&gt;
+&lt;p&gt;Each app or page can be separated into its file and common code could be
+abstracted as well.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;__init__.py&lt;/code&gt; facilitates the import hierarchy by giving a single entry
+point to the &lt;code&gt;pages&lt;/code&gt; module.&lt;/p&gt;
+&lt;p&gt;These could be the content of the files:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;input_data.py&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tax Deduction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;salary_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your salary (USD): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;salary_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;tax_percent_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Taxes (%): &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tax_percent_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;salary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tax_percent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tax_percent&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Net Salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;results.py&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Your Salary After Taxes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enter your data before computing. Go to the Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+
+    &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;__init__.py&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.input_data&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.result&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;
+
+&lt;span class="n"&gt;pages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;Net Salary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;main.py&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pages&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;app_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app_function&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app_function&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Structuring the application this way makes all the files much shorter and with
+a single responsibility. This could have been done with just &lt;code&gt;streamlit&lt;/code&gt; but
+with minor modifications &lt;/p&gt;
+&lt;h2 id="customization"&gt;&lt;a class="toclink" href="#customization"&gt;Customization&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;It is also possible to add customizations to each app to enhance the user
+experience such as adding a header, a footer, additional sidebar elements,
+hiding the hamburger menu and customizing the default text (e.g. for
+localization)&lt;/p&gt;
+&lt;p&gt;This code shows how these customizations can be used:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;streamlit&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;st&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;streamlit_multipage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;See Example on Multipage&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;See Example on Multipage&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Developed by [ELC](https://elc.github.io)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;This app is free to use&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;st&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Donate (Dummy)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MultiPage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start_button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Go to the main page&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;navbar_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Other Pages:&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next_page_button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Next Chapter&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;previous_page_button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Previous Chapter&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reset_button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Delete Cache&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;navbar_style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SelectBox&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;footer&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;navbar_extra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sidebar&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hide_menu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hide_navigation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Input Page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BMI Result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;compute_page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="non-functional-features"&gt;&lt;a class="toclink" href="#non-functional-features"&gt;Non-Functional Features&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In addition to the previous functional features, there are some non-functional
+ones that could be interesting for some.&lt;/p&gt;
+&lt;h3 id="single-file-project"&gt;&lt;a class="toclink" href="#single-file-project"&gt;Single-File Project&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Streamlit-multipage&lt;/code&gt; is a single file project, meaning that instead of pip
+install it and add a dependency to track, the whole project can be simply add
+as a library in any other project standalone and it should work out of the box.&lt;/p&gt;
+&lt;h2 id="quality-of-code"&gt;&lt;a class="toclink" href="#quality-of-code"&gt;Quality of Code&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The code has been formatted with &lt;a href="https://github.com/psf/black" target="_blank"&gt;Black&lt;/a&gt; 
+and Type Hints were added whenever possible to improve integration with
+editors and IDEs.&lt;/p&gt;
+&lt;h2 id="limitations"&gt;&lt;a class="toclink" href="#limitations"&gt;Limitations&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The library itself has its limitations, namely:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The state is saved in a dictionary and then in a pickled file, there is no
+  usage of &lt;code&gt;st.session_state&lt;/code&gt; which would imply a better user experience, this
+  has been tried but due to &lt;code&gt;streamlit&lt;/code&gt; lacking two-way binding in the
+  &lt;code&gt;session_state&lt;/code&gt;, this is not possible at the moment.&lt;/li&gt;
+&lt;li&gt;There are no tests, according to &lt;a href="https://discuss.streamlit.io/t/how-can-you-py-test-your-code/400" target="_blank"&gt;this discussion&lt;/a&gt;,
+  it is not straightforward to test streamlit apps nor libraries built around
+  it, mainly because this involves testing not only Python but also Front-End
+  code. This has not been done so far, contributions are much welcome though.&lt;/li&gt;
+&lt;li&gt;Integration with Streamlit Sharing has not been tested thoroughly, the basic
+  multi-page app works but no state management has been tested on the managed
+  service. All the features shown in this post have been manually tested on a
+  locally running streamlit app.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conclusion"&gt;&lt;a class="toclink" href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Streamlit is one of the most popular tools for dashboarding and easily
+converting Python Scripts into Web Apps. &lt;code&gt;Streamlit-Multipage&lt;/code&gt; is a lightweight
+app that can be pip installable (or drop in a standalone script) that allows
+for seamless integration of multi-page apps while keeping state and idioms.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;streamlit-multipage&lt;/code&gt; has no tests and has not been thoroughly tested on
+the Streamlit Sharing but for self-hosted apps should be working without
+issues.&lt;/p&gt;
+&lt;p&gt;An &lt;a href="https://github.com/ELC/finance-tools" target="_blank"&gt;example Github Repo&lt;/a&gt; 
+is available for inspiration, there is also a 
+&lt;a href="https://elc.github.io/finance-tools/" target="_blank"&gt;demo app&lt;/a&gt;
+attached to check the final result using the &lt;code&gt;streamlit-multipage&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="check-the-series"&gt;&lt;a class="toclink" href="#check-the-series"&gt;Check the Series&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multipage, State-Persistent Apps with Streamlit&lt;/strong&gt; (this post)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-google-analytics"&gt;Add Google Analytics (or any custom HTML) to Streamlit with Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elc.github.io/posts/streamlit-lessons"&gt;Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Programming"></category><category term="Streamlit"></category><category term="Python"></category><category term="Github"></category></entry><entry><title>Secure Live Collaboration in Jupyter Lab</title><link href="https://elc.github.io/posts/jupyter-collaborative" rel="alternate"></link><published>2021-09-04T00:00:00-03:00</published><updated>2021-09-04T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2021-09-04:/posts/jupyter-collaborative</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png"&gt;&lt;img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage.png" src="https://elc.github.io/blog/images/jupyter-collaborative/jupyter-collaborative-headerimage-thumbnail.png" width="1444"&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;The single most requested feature for Jupyter Notebooks/Lab was live

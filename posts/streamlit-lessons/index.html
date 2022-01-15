@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS) 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2022-01-14" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)"/>
+      <meta property="og:description" content="There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app."/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/posts/streamlit-lessons/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)">
+      <meta name="twitter:description" content="There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app.">
+      <meta name="twitter:url" content="https://elc.github.io/posts/streamlit-lessons/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">portfolio</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/publications.html" data-l10n-id="publications">publications</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-keywords=Streamlit|Python|Altair></div>
+    </div>
+    </aside>
+
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2022-01-14 00:00:00-03:00"><b>14 Jan 2022</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>16 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+            
+    </div>
+
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a href="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png" width="1444"></a></p>
+
+
+<p>There are a lot of resources available online about personal finances, stocks,
+markets, cryptos, and many more economy-related topics. However the decisions
+one has to make should be informed in order to be good enough. This post covers
+the lessons learnt after developing similar tools using Streamlit and Altair.
+No HTML/CSS/JS were needed. This post will make the reader aware of some pros
+and cons of this libraries and also show an example app.</p>
+
+
+<p>This post is one part of a three posts series regarding Streamlit, the posts
+can be read in any order and the three are built around the same demo app:</p>
+<ul>
+<li><strong>Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></li>
+</ul>
+<h2 id="disclaimer"><a class="toclink" href="#disclaimer">Disclaimer</a></h2>
+<p>The author has no formal education in economics nor any related field, these
+tools have been thought for personal use only and may contain bugs or
+inaccuracies. They are provided for free "as is".</p>
+<h2 id="tldr"><a class="toclink" href="#tldr">TL;DR</a></h2>
+<p>This post explains how this 
+<a href="https://elc.github.io/finance-tools/" target="_blank">web app</a> 
+was developed with a focus on  Streamlit, streamlit-multipage, NumPy, pandas
+, and Altair. The full code is available on
+<a href="https://github.com/ELC/finance-tools" target="_blank">this Github Repo</a></p>
+<p>The app covers topics like compound interest, flex term vs fixed terms,
+inflation adjustment, fee recovery, and asset past profitability. If the reader
+is already familiar with these topics, it is suggested to check the app and
+come back in case of questions.</p>
+<h2 id="warning"><a class="toclink" href="#warning">Warning</a></h2>
+<p>This is NOT an economy/finance post, it is a technical post about the
+<strong>development</strong> of personal finance tools, do not expect full details about the
+economic part, there are plenty of other resources online. This post will focus
+on the Python implementation, in particular in the use of Streamlit,
+Streamlit-MultiPage and Altair.</p>
+<h2 id="personal-finance-tools"><a class="toclink" href="#personal-finance-tools">Personal Finance Tools</a></h2>
+<p>Finance is a subject that in many cases is not taught in the depth it should,
+meaning there is a lot of confusion, misinformation and in many topics, scams.
+That is why having open-source and free tools to help taking decisions is
+critical nowadays.</p>
+<p>This is a showcase of some of what is possible with Python, thanks to libraries
+like Streamlit that convert scripts into web apps and Altair that generate
+transparent vector plots, it is now easy to develop tools that everyone can
+use.</p>
+<h3 id="the-state-of-the-art"><a class="toclink" href="#the-state-of-the-art">The State of the Art</a></h3>
+<p>In the particular case of investing, there are already two pages that dominate
+the market <a href="https://www.investing.com/" target="_blank">Investing</a> and
+<a href="https://www.tradingview.com/" target="_blank">TradingView</a>. Both have free
+and paid plans and this post does not focus on that type of apps, but rather
+much simpler ones.</p>
+<p>For example, can someone confidently invest in stocks or crypto if they do not
+understand how inflation or compound interest work? Sure it is technically
+possible, but the decision is not informed. The apps developed help to fill
+that gap and give the first contact with terms like inflation, interest and
+Fixed/Flex Terms.</p>
+<p>At the moment on the internet there are plenty of online tools to achieve the
+same, those, however, are typically calculators that only return a single value
+and/or whose code is not available. In many cases, they "refer to the formula".
+Those apps have a main focus on computing, not teaching, if someone does not
+know how interests work, giving them the final interest at the end of the
+period might help but it is not the whole story.</p>
+<p>That does not mean that the apps developed are the best online by any means
+but, by providing the code and a more customizable UI, the user can experiment
+more and "learn while doing" instead of staring at formulas that seem cryptic
+at times.</p>
+<h3 id="the-challenge"><a class="toclink" href="#the-challenge">The Challenge</a></h3>
+<p>Making something technically sound and user-friendly at the same time is a
+challenging task. The more visual a tool is, the more likely it is for the
+reader to understand how it is working and the underlying principle behind the
+tool.</p>
+<p>Since the author has no formal education in economics or finance, it was also
+important to provide an easy way for others to contribute to fix bugs and add
+enhancements. That is why an open-source solution is a must in this case.</p>
+<p>To the best of the author's knowledge, there are no Python-based tools like the
+developed, so the added-value lies not only in the tools themselves but also
+because the project serves as a baseline for future related projects.</p>
+<p>It was also important to reduce the entry barrier as much as possible so that
+only some programming skills are needed to extend the existing apps.</p>
+<h3 id="the-result"><a class="toclink" href="#the-result">The Result</a></h3>
+<p>The result of this is having a web app that can be easily used by anyone
+with or without programming/economics knowledge and it is as easy to maintain
+and extend as possible. The app is 
+<a href="https://elc.github.io/finance-tools" target="_blank">already online</a> 
+and can be used.</p>
+<p>The next section will focus on the technology more in-depth.</p>
+<h2 id="the-python-implementation"><a class="toclink" href="#the-python-implementation">The Python Implementation</a></h2>
+<p>The project uses Python, a programming language with a mature ecosystem of
+libraries like the Scipy Stack but at the same time it is an easy-to-learn
+language which can be taught in very few time. </p>
+<p>That being said, to generate a fully working web app, web technologies should
+be used. Fortunately, there are Python libraries that allow the developer to
+bypass that step.</p>
+<h3 id="stack"><a class="toclink" href="#stack">Stack</a></h3>
+<p>The different apps within the project use the same stack which is:</p>
+<ul>
+<li><a href="https://www.python.org/" target="_blank">Python</a> as the base programming language</li>
+<li><a href="https://streamlit.io/" target="_blank">Streamlit</a> to handle the "web part"</li>
+<li><a href="https://github.com/ELC/streamlit-multipage" target="_blank">Streamlit-multipage</a> to bundle different apps together</li>
+<li>[Altair]https://altair-viz.github.io/ for plots</li>
+<li>Scipy Stack (<a href="https://numpy.org/" target="_blank">Numpy</a>, <a href="https://pandas.pydata.org/" target="_blank">Pandas</a> and <a href="https://scipy.org/" target="_blank">Scipy</a>) to run simulations faster</li>
+<li><a href="https://pypi.org/project/yfinance/" target="_blank">YFinance</a> to download ticker information</li>
+<li><a href="https://joblib.readthedocs.io/" target="_blank">Joblib</a> (optional) for the persistence of state, fallbacks to <code>pickle</code></li>
+</ul>
+<p>The choice of the dependencies and the pros and cons will be extended in the
+upcoming sections. The main objective was to keep the project simple and avoid
+lesser-known libraries when possible.</p>
+<p>All the code is 
+<a href="https://github.com/ELC/finance-tools" target="_blank">hosted on Github</a> 
+and can be starred, forked or clone right away.</p>
+<h3 id="simulation-challenges"><a class="toclink" href="#simulation-challenges">Simulation Challenges</a></h3>
+<p>The defacto standard for numerical simulations is the Scipy Stack, there have
+been some challenges though as some of the processes do not have a closed
+formula one can translate to Python.</p>
+<p>In some cases like the Inflation Simulation a 
+<a href="https://github.com/ELC/finance-tools/blob/a4a138b55fb2fa1638a1ff763038736b9db14b41/pages/inflation.py#L74-L105" target="_blank">pure numpy solution</a> 
+could be achieved, but in others like the compound interest with recurring
+deposits with a different frequency than the compounding frequency a 
+<a href="https://github.com/ELC/finance-tools/blob/a4a138b55fb2fa1638a1ff763038736b9db14b41/pages/common.py#L125-L178" target="_blank">for-loop</a> 
+approach was used.</p>
+<p>Nevertheless, even native for-loops being several orders of magnitude slower
+than NumPy, that was not the bottleneck of the app. The bottleneck was the
+plotting step, since the length of the data in these apps is usually under the
+tens of thousands which is fast enough, even when using native for-loops.</p>
+<p>Having the app running locally would be enough for personal use however many
+non-technical people would have been excluded when doing so. Therefore, having
+the app available online is just as important as it working properly.</p>
+<h3 id="deployment-process"><a class="toclink" href="#deployment-process">Deployment Process</a></h3>
+<p>To deploy Streamlit apps there are two alternatives:</p>
+<ul>
+<li>Hosted by <a href="https://share.streamlit.io/" target="_blank">Streamlit Sharing</a> (Community plan is free forever)</li>
+<li>Self-Hosted</li>
+</ul>
+<p>The self-hosted approach will involve either server or Docker configuration and
+thus will not be covered in this post.</p>
+<p>The use of Streamlit Sharing and how to deploy a streamlit app there has been
+already covered in detail in other of the posts in this Streamlit Series. That
+post also covers how to achieve Google Analytics (or any custom HTML)
+integration in the app, although that would be only relevant for the
+tech-savvy.</p>
+<h2 id="streamlit-review"><a class="toclink" href="#streamlit-review">Streamlit Review</a></h2>
+<p>Streamlit alone is a feature-rich, well-documented, and tested library,
+however, it would have been impractical to have several small streamlit apps.
+This is something also found in other online tools, they provide "Several
+calculators" each in different pages hindering accessibility and visibility.</p>
+<p>However, streamlit does not support multi-page apps by default, which could be
+achieve by using <a href="https://github.com/ELC/streamlit-multipage" target="_blank"><code>streamlit-multipage</code></a>
+, a third-party library.</p>
+<p><strong>DISCLAIMER</strong>: The author is not the original developer of
+<code>streamlit-multipage</code> but has contributed significantly to that library.</p>
+<p>In one of the other posts in this Streamlit series, there is an extended
+explanation on how to use this library and what is possible.</p>
+<p>The rest of this section will cover unresolved issues to consider when
+developing this kind of apps.</p>
+<h3 id="hot-reload-could-be-harmful"><a class="toclink" href="#hot-reload-could-be-harmful">Hot reload could be harmful</a></h3>
+<p>By default, each time there is a change in any of the Streamlit Visual
+components, it triggers the execution of the whole app. This behavior might
+deteriorate the user experience if there are many inputs and the process takes
+more than a few seconds.</p>
+<p>Having a "Run Button" is possible without any plugins but the "magic update" of
+streamlit is definitely a feature no one would want to lose.</p>
+<h3 id="lack-of-skeleton-elements"><a class="toclink" href="#lack-of-skeleton-elements">Lack of skeleton elements</a></h3>
+<p>A related issue to the previously mentioned is that when streamlit is
+"Loading" or "Processing" there is no visual hint for the user that this is the
+case. No spinners, skeletons, or anything like that. This should not be a
+problem for fast apps but in the case of taking several seconds, this might
+result in a suboptimal user experience.</p>
+<p>There is no straightforward way to mitigate this besides programming the
+loading/skeletons themselves as independent Streamlit Components.</p>
+<h3 id="lack-of-basic-html-elements"><a class="toclink" href="#lack-of-basic-html-elements">Lack of basic HTML Elements</a></h3>
+<p>Streamlit combines Python and Web Technologies (in particular React) in a
+clever way, abstracting every web-related from the Python side. That has its
+costs though, thinking of custom yet basic HTML elements like a "Click me
+Button" that redirects to a page might be non-trivial to do and might require
+either custom HTML with styling or designing a React component just for that
+which seems excesive.</p>
+<p>Streamlit is ideal for the use cases it was thought but deviating too much from
+it might increase developing time significantly and make the learning curve
+much steeper.</p>
+<h3 id="persistence-might-be-complex"><a class="toclink" href="#persistence-might-be-complex">Persistence might be complex</a></h3>
+<p>Even though the <code>streamlit-multipage</code> provides persistence mechanisms, they
+were tested in Streamlit Sharing. This is because of how streamlit works under
+the hood, it runs "the whole script" with every change, making any kind of
+"initialization code" extremely hard to avoid repeating with each change.</p>
+<p>There is support for some basic native persistence through <code>st.session_state</code>
+but it has not been optimized for multipage apps nor it provides two-way
+binding as one might be used to from Front-End frameworks.</p>
+<h3 id="streamlit-conclusion"><a class="toclink" href="#streamlit-conclusion">Streamlit Conclusion</a></h3>
+<p>Streamlit is not the only of its kind, there is Panel, Dash, Voila, and there
+might be more in the future. That being said, Streamlit was the best tool for
+the job in this case for many reasons, it does not really on other tools (dash
+is heavily tiered towards plotly and voila works on Jupyter), and it has a
+mature and responsive community (panel is lacking in this aspect.)</p>
+<p>Streamlit alone was initially not enough due to the lacking multipage support
+but using <code>streamlit-multipage</code> solved this without disrupting the streamlit
+developer experience.</p>
+<h2 id="altair-review"><a class="toclink" href="#altair-review">Altair Review</a></h2>
+<p><a href="https://altair-viz.github.io/" target="_blank">Altair</a>
+ is a plotting library that aims to provide a "declarative interface" rather
+than a "descriptive interface", in practice, this allows for simpler code and
+more code re-use.</p>
+<p>It is not the most popular tool by any means, that would be matplotlib but one
+of the main disadvantages of the latter is that there is no support for
+transparency. Transparency might be a not-so-important feature, but, since
+Streamlit has a light and a dark theme, a transparent plot is necessary to
+ensure a consistent visual design that is not compatible with Matplotlib.</p>
+<p>On the other side, matplotlib is much faster than Altair, this might change in
+the future but at least when using Altair one has to limit the number of data
+points to 5000. That being said, the interactiveness Altair provides makes it a
+perfect fit for web apps.</p>
+<p>Learning Altair requires some time but if one is already familiar with
+matplotlib the learning curve is a bit flatter. There are many good materials
+already available to learn on 
+<a href="https://pyvideo.org/search.html?q=altair" target="_blank">PyVideo</a>.</p>
+<h3 id="verbosity-and-modularity"><a class="toclink" href="#verbosity-and-modularity">Verbosity and Modularity</a></h3>
+<p>Unless using the defaults, producing highly customized plots requires many
+lines of code, regardless of the plotting library. The main difference with
+Altair is that those "extra-custom-lines" could be re-use across plots.</p>
+<p>This is an example to add a text tooltip</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="n">chart</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">selection</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">chart</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">dx</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>This function returns an Altair object given a chart, a field, and a selection,
+that means that one can add the same tooltip to many plots at the same time
+while keeping the code centralized in a separate file.</p>
+<p>This is an underrated feature that allows to re-use code and becomes critical
+when using multiple somewhat similar plots.</p>
+<h3 id="altair-is-slow"><a class="toclink" href="#altair-is-slow">Altair is slow</a></h3>
+<p>The main disadvantage of Altair is that everything that happens is handled over
+to Vega-Lite, the library Altair is built on. This means that Altair is much
+slower than other plotting libraries, this is especially true when compared
+with matplotlib. </p>
+<p>Even so, having tooltips, panning and zooming are features that are worth the
+wait and the final user will notice the difference because the quality of the
+end result is evident.</p>
+<h3 id="altair-conclusion"><a class="toclink" href="#altair-conclusion">Altair Conclusion</a></h3>
+<p>There are many options when deciding over a plotting library, the most popular
+by far is Matplotlib, however, for web apps, it is lacking the features many
+consider basic like zooming and panning. And having the possibility to re-use
+code across plots is something that makes Altair a very good fit for any large
+software project.</p>
+<p>There are drawbacks like the data point limit and the slowness, a balance
+between the two should be found and it will depend on every app.</p>
+<h2 id="overall-conclusion"><a class="toclink" href="#overall-conclusion">Overall Conclusion</a></h2>
+<p>Developing Web Apps with Python has never been easier, Python has a strong
+mathematical and computational stack that makes most computations fast and
+efficient. It also has an ecosystem that makes it suitable for most use cases
+and on top of that, it is considered one of the easiest programming languages
+to learn.</p>
+<p>Thanks to libraries like Streamlit and Altair, one can now develop web apps and
+make them available online so everyone can benefit from these amazing tools in
+more tangible ways.</p>
+<p>There are some issues but the author believes this will be solved in the middle
+term as the libraries evolve and improve themselves.</p>
+<p>The 
+<a href="https://elc.github.io/finance-tools/" target="_blank">Personal Finance Tools</a> 
+is online and ready to use, the code is 
+<a href="https://github.com/ELC/finance-tools" target="_blank">hosted in Github</a> 
+as well.</p>
+<h2 id="check-the-series"><a class="toclink" href="#check-the-series">Check the Series</a></h2>
+<p>If you liked this post, it is highly likely that you will also like the other
+in this 3 part Streamlit Series:</p>
+<ul>
+<li><strong>Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</strong> (this post)</li>
+<li><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></li>
+<li><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></li>
+</ul>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+<section class="invisible">
+    <h2 data-l10n-id="previous-next">Do not forget to check the previous and next Articles</h2>
+        <a class="article__button" href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a>
+        <a class="article__button" href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a>
+</section>
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/streamlit-lessons&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Lessons%20learnt%20After%20Developing%20Finance%20Web%20Tools%20with%20Streamlit%20and%20Altair%20%28No%20HTML/CSS/JS%29" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/streamlit-lessons&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Lessons%20learnt%20After%20Developing%20Finance%20Web%20Tools%20with%20Streamlit%20and%20Altair%20%28No%20HTML/CSS/JS%29" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="colaboration-button">Contribute</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2022-personal-finance-tools.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Find a bug? Submit a PR!
+        </a>
+    </div>
+</section>
+
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-google-analytics" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></h3>
+                
+                <p class="article-related-post-body-description">Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-multipage" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></h3>
+                
+                <p class="article-related-post-body-description">Converting a Python script to a web app has never been easier thanks to libraries such as Streamlit. This library allows to create simple and responsive web apps with minimal effort but there is one potential limitation: No multipage support. In this post, a potential solution to this problem is presented with examples and demos.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/jupyter-publishing" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage.png" src="https://elc.github.io/blog/images/jupyter-publishing/jupyter-publishing-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/jupyter-publishing">Jupyter Publishing Guide: From Embedded to Book</a></h3>
+                
+                <p class="article-related-post-body-description">Jupyter Notebooks are the lingua franca for Data Science. There is hardly any data scientist that has never used this IDE. However, in contrast to its popularity and usefulness, the process of sharing a Jupyter Notebook is not straightforward. This article presents a brief survey of the different publishing solutions available for personal and/or commercial projects.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+
+  <script src="https://utteranc.es/client.js"
+          repo="elc/elc.github.io-content"
+          issue-term="title"
+          label="Comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/posts/streamlit-lessons';  
+      this.page.identifier = 'streamlit-lessons';
+      this.page.title = 'Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> -->
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/about/" data-l10n-id="about">About</a></li>
+                <li><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">Portfolio</a></li>
+                <li><a href="https://elc.github.io/publications.html" data-l10n-id="publications">Publications</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archive</a></li>
+ 
+                    <li><a href="https://elc.github.io/disclaimer.html" data-l10n-id="disclaimer">Disclaimer</a></li>
+ 
+                    <li><a href="https://elc.github.io/donate.html" data-l10n-id="donate">Donate</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy; 2020 Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+
+
+<!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71773079-3', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+      <script>
+        var omitAds = false;
+        if (!omitAds){
+          
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+          
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+            dataType = "image"
+              
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+  </body>
+
+</html>
