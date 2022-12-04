@@ -40,6 +40,10 @@ def get_filepaths(directory, extensions=[], ignores=[]):
 
 
 def compile_scss(c, path):
+    """
+    See instalation instructions here:
+    https://sass-lang.com/install
+    """
     paths = get_filepaths(path, "scss")
     for filename in paths:
         c.run(f"sass {filename} {filename}.css -s expanded")
