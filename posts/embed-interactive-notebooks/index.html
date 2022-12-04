@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=e76c6bc">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -225,11 +225,11 @@
 <p>This is the most important part and where <strong>NBInteract</strong> comes in. For all the previous steps we used online tools such as <strong>Github Gists</strong> and <strong>MyBinder</strong>. But for this step, <code>nbinteract</code> should be install.</p>
 <h3 id="installation"><a class="toclink" href="#installation">Installation</a></h3>
 <p>These are the installation instructions:</p>
-<div class="highlight "><pre><span></span><code><span class="nv">pip</span> <span class="nv">install</span> <span class="nv">nbinteract</span>
+<div class="highlight "><pre><span></span><code><span class="nv">pip</span><span class="w"> </span><span class="nv">install</span><span class="w"> </span><span class="nv">nbinteract</span><span class="w"></span>
 
-# <span class="nv">The</span> <span class="k">next</span> <span class="nv">two</span> <span class="nv">lines</span> <span class="nv">can</span> <span class="nv">be</span> <span class="nv">skipped</span> <span class="k">for</span> <span class="nv">notebook</span> <span class="nv">version</span> <span class="mi">5</span>.<span class="mi">3</span> <span class="nv">and</span> <span class="nv">above</span>
-<span class="nv">jupyter</span> <span class="nv">nbextension</span> <span class="nv">enable</span> <span class="o">--</span><span class="nv">py</span> <span class="o">--</span><span class="nv">sys</span><span class="o">-</span><span class="nv">prefix</span> <span class="nv">widgetsnbextension</span>
-<span class="nv">jupyter</span> <span class="nv">nbextension</span> <span class="nv">enable</span> <span class="o">--</span><span class="nv">py</span> <span class="o">--</span><span class="nv">sys</span><span class="o">-</span><span class="nv">prefix</span> <span class="nv">bqplot</span>
+#<span class="w"> </span><span class="nv">The</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">two</span><span class="w"> </span><span class="nv">lines</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">skipped</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">notebook</span><span class="w"> </span><span class="nv">version</span><span class="w"> </span><span class="mi">5</span>.<span class="mi">3</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">above</span><span class="w"></span>
+<span class="nv">jupyter</span><span class="w"> </span><span class="nv">nbextension</span><span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="o">--</span><span class="nv">py</span><span class="w"> </span><span class="o">--</span><span class="nv">sys</span><span class="o">-</span><span class="nv">prefix</span><span class="w"> </span><span class="nv">widgetsnbextension</span><span class="w"></span>
+<span class="nv">jupyter</span><span class="w"> </span><span class="nv">nbextension</span><span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="o">--</span><span class="nv">py</span><span class="w"> </span><span class="o">--</span><span class="nv">sys</span><span class="o">-</span><span class="nv">prefix</span><span class="w"> </span><span class="nv">bqplot</span><span class="w"></span>
 </code></pre></div>
 
 <p>The steps for the installation could be found in its <a href="https://github.com/SamLau95/nbinteract" target="_blank">official repo</a>, make sure to check it in case there is an update.</p>
@@ -240,44 +240,44 @@
 
 <p>This will create an HTML file with the same filename of the notebook, but as mentioned earlier, the current version of NBInteract (0.2.4 when writing this) only supports Github <em>Repositories</em> and not <em>Gists</em>.</p>
 <p>To fix this problem, just open the HTML file and look for this snippet (it should be at the end of the file):</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span> <span class="mf">1000</span><span class="p">)</span>
-        <span class="k">return</span>
-        <span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="nx">setupNbinteract</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-        <span class="kd">var</span> <span class="nx">interact</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span>
-        <span class="nx">spec</span><span class="o">:</span> <span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span>
-        <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span>
-        <span class="nx">provider</span><span class="o">:</span> <span class="s1">&#39;gh&#39;</span><span class="p">,</span>
-        <span class="p">})</span>
-        <span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">interact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">spec</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">baseUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;gh&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">})</span><span class="w"></span>
+<span class="w">        </span><span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span><span class="w"></span>
 
-        <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
-    <span class="p">})()</span>
+<span class="w">        </span><span class="nb">window</span><span class="p">.</span><span class="nx">interact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">interact</span><span class="w"></span>
+<span class="w">    </span><span class="p">})()</span><span class="w"></span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <p>Only a small change is needed, change the <strong><code>provider</code></strong> from <strong><code>gh</code></strong> to <strong><code>gist</code></strong>. It should be something like this:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">(</span><span class="kd">function</span> <span class="nx">setupNbinteract</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span> <span class="mf">1000</span><span class="p">)</span>
-        <span class="k">return</span>
-        <span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="nx">setupNbinteract</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// If NbInteract hasn&#39;t loaded, wait one second and try again</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">setupNbinteract</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-        <span class="kd">var</span> <span class="nx">interact</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span>
-        <span class="nx">spec</span><span class="o">:</span> <span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span>
-        <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span>
-        <span class="nx">provider</span><span class="o">:</span> <span class="s1">&#39;gist&#39;</span><span class="p">,</span>
-        <span class="p">})</span>
-        <span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">interact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">NbInteract</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">spec</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;{GitHub_UserName}/{Gist_ID}/master&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">baseUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://mybinder.org&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;gist&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">})</span><span class="w"></span>
+<span class="w">        </span><span class="nx">interact</span><span class="p">.</span><span class="nx">prepare</span><span class="p">()</span><span class="w"></span>
 
-        <span class="nb">window</span><span class="p">.</span><span class="nx">interact</span> <span class="o">=</span> <span class="nx">interact</span>
-    <span class="p">})()</span>
+<span class="w">        </span><span class="nb">window</span><span class="p">.</span><span class="nx">interact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">interact</span><span class="w"></span>
+<span class="w">    </span><span class="p">})()</span><span class="w"></span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 
@@ -527,16 +527,18 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=7de458d" ></script>
 
 
-<!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3GBPLEV2K"></script>
 <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71773079-3', 'auto');
-    ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y3GBPLEV2K');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>

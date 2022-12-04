@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=e76c6bc">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -256,22 +256,22 @@
 <h3 id="file-contents"><a class="toclink" href="#file-contents">File contents</a></h3>
 <p>This is how your files should look like</p>
 <p>.travis.yml</p>
-<div class="highlight "><pre><span></span><code><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<div class="highlight "><pre><span></span><code><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span><span class="w"></span>
 
-<span class="nt">sudo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">sudo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-<span class="nt">script</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pelican -s conf.py -o output content</span>
+<span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pelican -s conf.py -o output content</span><span class="w"></span>
 
-<span class="nt">deploy</span><span class="p">:</span>
-    <span class="nt">provider</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pages</span>
-    <span class="l l-Scalar l-Scalar-Plain">repo:&lt;username&gt;/&lt;username&gt;.github.io</span>
-    <span class="nt">target_branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
-    <span class="nt">skip_cleanup</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">local_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">output</span>
-    <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span>
-    <span class="nt">on</span><span class="p">:</span>
-        <span class="nt">branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">repo:&lt;username&gt;/&lt;username&gt;.github.io</span><span class="w"></span>
+<span class="w">    </span><span class="nt">target_branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
+<span class="w">    </span><span class="nt">skip_cleanup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">local_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span><span class="w"></span>
+<span class="w">    </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span><span class="w"></span>
+<span class="w">    </span><span class="nt">on</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
 </code></pre></div>
 
 <p>$GITHUB_TOKEN is a public token you have associated with your GitHub account, you should <a href="https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token">set it on the Travis CI Repository settings</a></p>
@@ -475,16 +475,18 @@ markdown
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=7de458d" ></script>
 
 
-<!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3GBPLEV2K"></script>
 <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71773079-3', 'auto');
-    ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y3GBPLEV2K');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>

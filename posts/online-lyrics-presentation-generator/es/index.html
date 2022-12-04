@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=1224dfd">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=e76c6bc">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -158,77 +158,77 @@
 <p>El <code>CSS</code> está escrito dentro del <code>HTML</code> para evitar usar otra petición al servidor, esto se hace porque todo el estilo es de unas 100 líneas y toda la aplicación está contenida en un único archivo html. El <code>Javascript</code> está separado para evitar mezclar las capas de lógica y presentación.</p>
 <p>Primero mostraré todo el código y luego lo dividiré en partes y explicaré parte por parte.</p>
 <p>El código <code>Javascript</code> es el siguiente:</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">createPPT</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">pptx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PptxGenJS</span><span class="p">();</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pptx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PptxGenJS</span><span class="p">();</span><span class="w"></span>
 
-    <span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="nx">pptx</span><span class="p">.</span><span class="nx">defineSlideMaster</span><span class="p">({</span>
-        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Template&#39;</span><span class="p">,</span>
-        <span class="nx">bkgd</span><span class="o">:</span> <span class="s1">&#39;000000&#39;</span><span class="p">,</span>
-        <span class="nx">objects</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s1">&#39;placeholder&#39;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
-                    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
-                    <span class="nx">x</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-                    <span class="nx">y</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-                    <span class="nx">w</span><span class="o">:</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span>
-                    <span class="nx">h</span><span class="o">:</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span>
-                    <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-                    <span class="nx">fontSize</span><span class="o">:</span> <span class="mf">44</span><span class="p">,</span>
-                    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;FFFFFF&#39;</span><span class="p">,</span>
-                    <span class="nx">fontFace</span><span class="o">:</span> <span class="s1">&#39;Verdana&#39;</span><span class="p">,</span>
-                    <span class="nx">valign</span><span class="o">:</span> <span class="s1">&#39;middle&#39;</span><span class="p">,</span>
-                    <span class="nx">paraSpaceAfter</span><span class="o">:</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span>
-                    <span class="nx">paraSpaceBefore</span><span class="o">:</span> <span class="s1">&#39;6&#39;</span>
-                <span class="p">},</span>
-                <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
-            <span class="p">}</span>
-        <span class="p">}]</span>
-    <span class="p">});</span>
+<span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">defineSlideMaster</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Template&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">bkgd</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;000000&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">objects</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="s1">&#39;placeholder&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100%&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100%&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">align</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;FFFFFF&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">fontFace</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Verdana&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">valign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;middle&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">paraSpaceAfter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">paraSpaceBefore</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}]</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
 
-    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"></span>
 
-    <span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">verse</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">verse</span> <span class="o">===</span> <span class="s2">&quot;---&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
+<span class="w">    </span><span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;---&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-        <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="nx">verse</span><span class="p">);</span>
-    <span class="p">});</span>
+<span class="w">        </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">verse</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
 
-    <span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">function</span> <span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">function</span> <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">slide</span> <span class="o">=</span> <span class="nx">pptx</span><span class="p">.</span><span class="nx">addNewSlide</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">);</span>
-    <span class="nx">slide</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span> <span class="p">{</span>
-        <span class="nx">placeholder</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span>
-    <span class="p">});</span>
-<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">slide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">addNewSlide</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">slide</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">function</span> <span class="nx">clearText</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">clearText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">function</span> <span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;localized&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;separator&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span>
-<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;localized&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;separator&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="funcion-principal"><a class="toclink" href="#funcion-principal">Función principal</a></h3>
@@ -242,19 +242,19 @@
 <li>Guardar el archivo</li>
 </ol>
 <p>Cada una de las acciones está representada en una de las siguientes líneas. Para mantenerlo simple, las tareas más complejas se explican con más detalle a continuación. Los métodos utilizados para establecer el título y guardar son evidentes y no requieren explicación.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">createPPT</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">pptx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PptxGenJS</span><span class="p">();</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pptx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PptxGenJS</span><span class="p">();</span><span class="w"></span>
 
-    <span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Definir la plantilla</span>
+<span class="w">    </span><span class="c1">// Definir la plantilla</span><span class="w"></span>
 
-    <span class="c1">// Extraer el texto</span>
+<span class="w">    </span><span class="c1">// Extraer el texto</span><span class="w"></span>
 
-    <span class="c1">// Agregar diapositivas</span>
+<span class="w">    </span><span class="c1">// Agregar diapositivas</span><span class="w"></span>
 
-    <span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h4 id="definicion-de-plantilla"><a class="toclink" href="#definicion-de-plantilla">Definición de plantilla</a></h4>
@@ -271,96 +271,96 @@
 <li>Establezca el espacio entre párrafos: <code>paraSpaceAfter: '6', paraSpaceBefore: '6'</code></li>
 </ul>
 <p>Al combinar todo lo anterior y siguiendo la sintaxis proporcionada por la documentación oficial, el resultado es el siguiente código:</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Definición de Plantilla</span>
+<div class="highlight "><pre><span></span><code><span class="c1">// Definición de Plantilla</span><span class="w"></span>
 
-<span class="nx">pptx</span><span class="p">.</span><span class="nx">defineSlideMaster</span><span class="p">({</span>
-    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Template&#39;</span><span class="p">,</span>
-    <span class="nx">bkgd</span><span class="o">:</span> <span class="s1">&#39;000000&#39;</span><span class="p">,</span>
-    <span class="nx">objects</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s1">&#39;placeholder&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
-                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
-                <span class="nx">x</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-                <span class="nx">y</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
-                <span class="nx">w</span><span class="o">:</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span>
-                <span class="nx">h</span><span class="o">:</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span>
-                <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-                <span class="nx">fontSize</span><span class="o">:</span> <span class="mf">44</span><span class="p">,</span>
-                <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;FFFFFF&#39;</span><span class="p">,</span>
-                <span class="nx">fontFace</span><span class="o">:</span> <span class="s1">&#39;Verdana&#39;</span><span class="p">,</span>
-                <span class="nx">valign</span><span class="o">:</span> <span class="s1">&#39;middle&#39;</span><span class="p">,</span>
-                <span class="nx">paraSpaceAfter</span><span class="o">:</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span>
-                <span class="nx">paraSpaceBefore</span><span class="o">:</span> <span class="s1">&#39;6&#39;</span>
-            <span class="p">},</span>
-            <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
-        <span class="p">}</span>
-    <span class="p">}]</span>
-<span class="p">});</span>
+<span class="nx">pptx</span><span class="p">.</span><span class="nx">defineSlideMaster</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Template&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">bkgd</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;000000&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">objects</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">        </span><span class="s1">&#39;placeholder&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100%&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100%&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">align</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;FFFFFF&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">fontFace</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Verdana&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">valign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;middle&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">paraSpaceAfter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">paraSpaceBefore</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}]</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
 
 <h4 id="extraccion-de-texto"><a class="toclink" href="#extraccion-de-texto">Extracción de texto</a></h4>
 <p>Una vez definida la plantilla, se debe extraer el texto, para ello se utiliza una práctica muy común en JS. Simplemente se hace referencia al elemento mediante un ID determinado y luego se extrae su valor. En este caso el elemento es un TextArea definido en HTML5</p>
 <p>El código resultante es el siguiente:</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Extracción de Texto</span>
+<div class="highlight "><pre><span></span><code><span class="c1">// Extracción de Texto</span><span class="w"></span>
 
-<span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"></span>
 </code></pre></div>
 
 <h4 id="anadir-diapositiva"><a class="toclink" href="#anadir-diapositiva">Añadir diapositiva</a></h4>
 <p>Después de extraer el texto, debe ser analizado y luego se debe agregar una nueva diapositiva para cada verso.</p>
 <p>La función de parsing devuelve una lista de cadenas, cada una de las cuales puede ser un verso o un <code>---</code> que básicamente significa "Diapositiva vacía". Tanto la <code>parseLyrics</code> como la <code>createSlide</code> se explican a continuación.</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Añadir Diapositiva</span>
+<div class="highlight "><pre><span></span><code><span class="c1">// Añadir Diapositiva</span><span class="w"></span>
 
-<span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">verse</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">verse</span> <span class="o">===</span> <span class="s2">&quot;---&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;---&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="nx">verse</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="w">    </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">verse</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="parsing"><a class="toclink" href="#parsing">Parsing</a></h3>
 <p>Uno nunca podría saber lo que el usuario escribiría, y, para soportar varios idiomas (especialmente aquellos con caracteres especiales), es importante usar un separador que funcione universalmente, en este caso la línea en blanco separará dos versos y los tres guiones (---) separarán las canciones.</p>
 <p>Para ignorar varias líneas en blanco y luego dividirla se utiliza una expresión regular y luego se usa el método <code>split</code>.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="crear-diapositiva"><a class="toclink" href="#crear-diapositiva">Crear diapositiva</a></h3>
 <p>Cada diapositiva tendrá un texto diferente, así que para crear una diapositiva se debe proporcionar el motor de presentación (en este caso la biblioteca <code>pptx</code>) y el texto a insertar (el argumento <code>text</code>), luego se crea la nueva diapositiva usando la plantilla predefinida, después de lo cual el texto en mayúsculas se añade usando el placeholder definido en la plantilla.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">slide</span> <span class="o">=</span> <span class="nx">pptx</span><span class="p">.</span><span class="nx">addNewSlide</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">);</span>
-    <span class="nx">slide</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span> <span class="p">{</span>
-        <span class="nx">placeholder</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span>
-    <span class="p">});</span>
-<span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">slide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">addNewSlide</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">slide</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="boton-borrar-texto"><a class="toclink" href="#boton-borrar-texto">Botón Borrar texto</a></h3>
 <p>En caso de que el usuario desee eliminar todo en el Área de letras, se proporciona un botón, la funcionalidad es sobrescribir el contenido actual del Área de texto con una cadena vacía.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">clearText</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">clearText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="localizacion"><a class="toclink" href="#localizacion">Localización</a></h3>
 <p>Esta función adicional proporciona localización del lado del cliente a través de <a href="https://github.com/fabi1cazenave/webL10n" target="_blank">WebL10n</a>, cada cadena de caracteres de la aplicación web está disponible tanto en inglés como en español, pero se podrían añadir más idiomas en el futuro si fuera necesario.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span> <span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;localized&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;separator&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n\n&quot;</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span>
-<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;localized&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;separator&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse1&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
   </section>
 
@@ -507,16 +507,18 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=2dbc109" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=7de458d" ></script>
 
 
-<!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3GBPLEV2K"></script>
 <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71773079-3', 'auto');
-    ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y3GBPLEV2K');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
