@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Time Tables Visualization - Finding Patterns 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+    <title>Visualizing Math: A Guide to Creating Times Table Animations with Python 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
 
     <!-- Meta -->
     <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
@@ -24,15 +24,15 @@
       <meta property="article:published_time" content="2019-01-22" />
 
       <meta property="og:type" content="article"/>
-      <meta property="og:title" content="Time Tables Visualization - Finding Patterns"/>
-      <meta property="og:description" content="After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!"/>
+      <meta property="og:title" content="Visualizing Math: A Guide to Creating Times Table Animations with Python"/>
+      <meta property="og:description" content="Explore the mesmerizing patterns of times tables with Python! In this blog post, we present an alternative implementation to the famous Mathologer&#39;s video where beautiful patterns emerge from times tables. Burkard highlights how stunning patterns arise from these tables and utilizes Wolfram Mathematica to demonstrate these patterns in greater detail. This blog post aims to showcase a similar implementation using Python."/>
       <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
       <meta property="og:url" content="https://elc.github.io/posts/times-tables/"/>
       <meta property="og:image" content="https://elc.github.io/blog/images/times_tables/times-tables-headerimage.png"/>
 
       <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="Time Tables Visualization - Finding Patterns">
-      <meta name="twitter:description" content="After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!">
+      <meta name="twitter:title" content="Visualizing Math: A Guide to Creating Times Table Animations with Python">
+      <meta name="twitter:description" content="Explore the mesmerizing patterns of times tables with Python! In this blog post, we present an alternative implementation to the famous Mathologer&#39;s video where beautiful patterns emerge from times tables. Burkard highlights how stunning patterns arise from these tables and utilizes Wolfram Mathematica to demonstrate these patterns in greater detail. This blog post aims to showcase a similar implementation using Python.">
       <meta name="twitter:url" content="https://elc.github.io/posts/times-tables/">
       <meta name="twitter:image" content="https://elc.github.io/blog/images/times_tables/times-tables-headerimage.png">
     
@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=e76c6bc">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=a26c128">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -85,7 +85,7 @@
   
     <aside class="ethical">
     <div>
-      <div data-ea-keywords=Data Visualization|Programming|Math></div>
+      <div data-ea-keywords=Data Visualization|Matplotlib|Python|Animation></div>
     </div>
     </aside>
 
@@ -94,7 +94,7 @@
 <article class="article">
 
   <header class="article__header">
-    <h1>Time Tables Visualization - Finding Patterns</h1>
+    <h1>Visualizing Math: A Guide to Creating Times Table Animations with Python</h1>
     
 <div class="article__subheader">
 
@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>12 min <span data-l10n-id="to-read">to read</span></b>
+                <b>13 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -125,24 +125,51 @@
     <p><a class="gallery" href="/blog/images/times_tables/times-tables-headerimage.png"><img alt="Times Table Header Image" class="b-lazy" data-src="/blog/images/times_tables/times-tables-headerimage.png" src="https://elc.github.io/blog/images/times_tables/times-tables-headerimage-thumbnail.png" width="1120"></a></p>
 
 
-<p>After looking to a Mathologer Video about a beautiful pattern emerged from time tables, I decided to use it as a challenge and write a script to do the same with Python. Animations Included!</p>
+<p>Explore the mesmerizing patterns of times tables with Python! In this blog post,
+we present an alternative implementation to the famous Mathologer's video where
+beautiful patterns emerge from times tables. Burkard highlights how stunning
+patterns arise from these tables and utilizes Wolfram Mathematica to demonstrate
+these patterns in greater detail. This blog post aims to showcase a similar
+implementation using Python.</p>
 
 
-<p>First, let's introduce the video I mentioned, in this video a very nice patterns emerges in something called "Times Tables"</p>
+<p>For those unfamiliar with the concept, it is recommended to view the video that
+served as inspiration for this post. It provides a comprehensive explanation of
+what Times Tables are.</p>
 <iframe width="900" height="506" src="https://www.youtube.com/embed/qhbuKbxJsk8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>These animations were made using Wolfram Mathematica, but in Python, there are enough tools to achieve the same.</p>
-<p>This is the results built with Python:</p>
+<p>This post provides an alternative approach to generate similar animations to the
+ones seen in the video, using Python and its libraries such as Matplotlib and
+IPython.</p>
+<p>The following animations were created using Python and its supporting libraries.</p>
 <p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="613"></p>
-<p>Now I will examine the code used to produced the previous image and also how to create animations, there will be a <a href="#notebook"><strong>link to a online notebook</strong></a> in case you want to experiment yourself. In this post I will show you several scenarios:</p>
+<p>Bringing this captivating video to life with Python is made easy with the help
+of a Jupyter Notebook. Explore the examples and discover the beauty of Times
+Tables for yourself by following along. With all the necessary dependencies
+already installed, the <a href="https://elc.github.io/link/times_table_binder" target="_blank">Jupyter
+Notebook</a> is
+the perfect platform for experimentation and hands-on learning</p>
+<p>In this post, multiple examples are provided, including:</p>
 <ul>
-<li>Static Version (as the one seen above)</li>
-<li>Parametric Version: Where you can change with sliders the values and experiment by yourself.</li>
-<li>Animate Construction Line by Line: Where the factor and the number of points is fixed but each line is plot one at a time</li>
-<li>Animate Construction Point by Point: Where the factor and the lines are fixed but each frame increases the number of points</li>
+<li>A static version, as shown above An interactive, parametric version where you
+can experiment by adjusting values with sliders</li>
+<li>An animated construction, line by line, where the factor and number of points
+  remain fixed, but each line is plotted one at a time</li>
+<li>An animated construction, point by point, where the factor and lines are
+  fixed, but the number of points increases with each frame</li>
 <li>
-<p>Animate Construction Factor by Factor: Where the lines and the number of points are fixed but the factor increases (The one shown at the end of the video), first monochrome and then with the rainbow effect seen in the video.</p>
-<p><strong>Note</strong>: After each of the scenarios there will be both an <strong>interactive</strong> (Jupyter Widget) and a <strong>static</strong> (image or animation) representation of the code, the interactive is built through a backend so <strong>please be patient</strong> to see the results since each time you move the slider, the full animation is re-calculated. The <strong>static</strong> representation is useful for low-speed connections and for a faster <strong>result</strong> but it can't be changed or experimented with.</p>
+<p>An animated construction, factor by factor, where the lines and number of
+  points remain fixed, but the factor increases, first in monochrome and then
+  with a rainbow effect.n with the rainbow effect seen in the video.</p>
+<p><strong>Note</strong>: It's important to note that after exploring each scenario, both an
+interactive and a static representation of the code will be provided. The
+interactive version is built using Jupyter widgets, allowing you to adjust
+parameters and see the results in real-time. However, this also means that
+each time the sliders are moved, the full animation needs to be
+re-calculated, so some patience is required. On the other hand, the static
+representation is optimized for faster display and can be useful for
+low-speed connections. It should be noted that the static representation
+cannot be adjusted or experimented with.</p>
 </li>
 </ul>
 <p>Requirements:</p>
@@ -160,18 +187,24 @@
 <li>Export (optional)</li>
 </ul>
 <h2 id="initialization"><a class="toclink" href="#initialization">Initialization</a></h2>
-<p>It's a good practice to place all the imports at the top of the document to better trace dependencies and keep them updated, and also to know which tools are required. In this case there are General Purpose imports and Jupyter Specifics, in order to run as a script, it has to be adapted to replace the Jupyter Funtionalities</p>
+<p>It is recommended to place all imports at the beginning of the document for
+better organization and maintenance. This also helps to clearly identify the
+required tools. In this instance, there are both general purpose imports and
+those specific to Jupyter. To utilize the code outside of Jupyter, it may need
+to be modified to remove Jupyter-specific components. This ensures the code can
+run as a standalone script.</p>
 <div class="highlight "><pre><span></span><code><span class="c1"># General Purpose</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
-<span class="kn">import</span> <span class="nn">matplotlib.lines</span> <span class="k">as</span> <span class="nn">mlines</span>
 <span class="kn">import</span> <span class="nn">colorsys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
 
 <span class="c1"># Jupyter Specifics</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">ipywidgets.widgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Layout</span>
 
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -179,69 +212,66 @@
 </code></pre></div>
 
 <h2 id="basic-functions"><a class="toclink" href="#basic-functions">Basic Functions</a></h2>
-<p>Once everything is imported and ready to use, several functions must be defined, namely:</p>
+<p>With all the necessary imports in place, it's time to define a few functions
+that will bring this project to life. These functions include:</p>
 <ol>
-<li>One function to calculate the points arround a circle</li>
-<li>One function to generate each of the lines</li>
-<li>One function to plot the labels and the point in the circle</li>
-<li>One function to plot the lines in the circle</li>
+<li>A function to calculate the points around a circle</li>
+<li>A function to generate each of the lines</li>
+<li>A function to plot the labels and points on the circle</li>
+<li>A function to plot the lines on the circle</li>
 </ol>
-<p>The first function is called <code>points_arround_circle</code> and it basically uses polar coordinates to place a given number of points arround a circle of a given radius. Here numpy is needed to make the calculation performant.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">number</span><span class="p">),</span> <span class="n">number</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<p>The first function, named <code>points_around_circle</code>, uses polar coordinates to
+determine a specified number of points around a circle of radius 1. The use of
+numpy in this calculation enhances its performance.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">))</span>
 </code></pre></div>
 
-<p>Second, in order to generate the lines, the list of points is given and a new line is generated, a different approach is needed when using this function in an animation so two sets of logic are defined inside de function.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">get_lines_from_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">animated</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">animated</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
-            <span class="n">x_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span> <span class="o">%</span> <span class="n">limit</span><span class="p">])</span>
-            <span class="n">y_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span> <span class="o">%</span> <span class="n">limit</span><span class="p">])</span>
-            <span class="k">yield</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
-            <span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">i</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span> <span class="o">%</span> <span class="n">limit</span><span class="p">)</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
-            <span class="k">yield</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span>
+<p>The second function pertains to the generation of lines. Given a list of points,
+this function generates a new line.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">generate_lines_from_points</span><span class="p">(</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span> <span class="o">%</span> <span class="n">size</span>
+
+    <span class="n">line_starts</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">line_ends</span> <span class="o">=</span> <span class="n">line_starts</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">line_ends</span><span class="p">,</span> <span class="n">line_starts</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Now it's time to plot and in the <code>plot_circle_points</code>, both the circle, the points and the labels are ploted</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Points: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)):</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-</code></pre></div>
-
-<p>Finally, a function which receives the axis object plot all the lines, with the option to use a color in a HSV format (this will be used in the final animation)</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Factor: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">factor</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_lines_from_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">line_segments</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">line_segments</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">line_segments</span><span class="p">)</span>
+<p>However, the line in numpy format is not directly plotable. To translate the
+numpy array into a data structure compatible with matplotlib, a LineCollection
+is used. The function <code>generate_line_collection</code> not only generates the line
+collection, but also specifies the color based on the HSV format. This
+capability will come in handy when creating the final animation.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">generate_line_collection</span><span class="p">(</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LineCollection</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_lines_from_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+    <span class="n">color_</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span> <span class="k">if</span> <span class="n">color</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="static-version"><a class="toclink" href="#static-version">Static Version</a></h2>
-<p>After all the functions needed are defined, now plotting a static version is quite simple, just generate the axis object and invoke the functions in the logical order and you get the image. This approach is useful to quickly experiment with a fixed number of factor and points</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_static</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<p>With all the required functions defined, plotting a static version of the data
+is straightforward. Simply generate the axis object and call the functions in
+the appropriate order, and the image will be generated. This approach is useful
+for quickly experimenting with a fixed number of factors and points.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_static</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">number_of_points</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">number_of_points</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_line_collection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">points</span><span class="p">)</span>
-
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="n">number_of_points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 
 <span class="n">factor</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">points</span> <span class="o">=</span> <span class="mi">100</span>
@@ -250,22 +280,33 @@
 
 <p><img alt="times-table-2-100" class="narrow b-lazy" data-src="/blog/images/times_tables/times-tables-2-100.png" src="https://elc.github.io/blog/images/times_tables/times-tables-2-100-thumbnail.png" width="900"></p>
 <h2 id="parametric-version"><a class="toclink" href="#parametric-version">Parametric Version</a></h2>
-<p>One approach is to manually change the <code>factor</code> and <code>points</code> variables and then just execute the cell/funtion again but since Jupyter provides support for interaction, a more user friendly approach can be used through Sliders (a built in UI of IPython). Here the function <code>plot_parametric</code> is exactly the same as <code>plot_static</code> but it uses <code>plt.show()</code> at the end to plot the image. Here the image is also static but can be change moving the sliders to either side.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_parametric</span><span class="p">(</span><span class="n">Factor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<p>One method to update the factor and points variables is to manually change them
+and re-execute the cell or function. However, Jupyter offers support for
+interaction, allowing for a more user-friendly approach via Sliders, a built-in
+user interface of IPython. The function plot_parametric serves the same purpose
+as plot_static, with the addition of a call to plt.show() at the end to display
+the image. While the image is still static, the user can adjust the variables by
+moving the sliders.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">plot_parametric</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_line_collection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">Points</span><span class="p">)</span>
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Factor</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 
 <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try these Factors with different number of points:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">factors</span><span class="p">)</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">plot_parametric</span><span class="p">,</span> 
-        <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">plot_parametric</span><span class="p">,</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <div class="iframe-container" style="padding-top: 101%">
@@ -273,29 +314,62 @@
 </div>
 
 <h2 id="animate-construction-line-by-line"><a class="toclink" href="#animate-construction-line-by-line">Animate Construction Line by Line</a></h2>
-<p>Now we move to animations and in this first animation both the factor and the number of points are fixed, which changes is the lines, this animations mimics the process of drawing some of theses times tables by hand and could also give some insight about the order in which the lines are plotted instead of just seen them all at once.</p>
-<p>Animations in Matplotlib are built through an <code>animate</code> function, which basically returns the objects to be printed in each frame. That's why in this animation and the following, two functions should be defined, one for the <code>animate</code> API of matplotlib and the other to embed in the <code>interact</code> function of IPython. Here a <code>line_by_line</code> takes a given <code>Factor</code>, a number of <code>Points</code> and an <code>Interval</code>, the first two are already familiar since we used them in the previous functions and the <code>Interval</code> is just the delay between frames in miliseconds, it is tightly related to the FPS of the final animation: <code>FPS = 1000 / delay</code>.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_line_by_line</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+<p>In the next step, the focus shifts to animations. In this particular animation,
+the factor and the number of points remain constant while the lines change. This
+animation replicates the act of drawing these times tables by hand and provides
+a deeper understanding of the sequence in which the lines are plotted, instead
+of simply presenting them all together.</p>
+<p>In Matplotlib, animations are constructed using the animate function, which
+returns the objects to be displayed in each frame. As a result, two functions
+need to be defined in this and the following animations. The first is for the
+animate API of Matplotlib and the second is to be integrated into the interact
+function of IPython. In this particular case, the function line_by_line takes a
+given <code>factor</code>, a specified number of <code>max_points</code>, and an <code>interval</code>. The first
+two parameters are already familiar from previous functions, while interval
+represents the delay between frames in milliseconds. This delay is directly
+related to the animation's frames per second (FPS), which is calculated as FPS =
+1000 / delay.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_line_by_line</span><span class="p">(</span>
+    <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lines</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Line2D</span><span class="p">]:</span>
+    <span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">Line2D</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">line_by_line</span><span class="p">(</span><span class="n">Factor</span><span class="p">,</span> <span class="n">Points</span><span class="p">,</span> <span class="n">Interval</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">Points</span><span class="p">)</span>
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Factor: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Factor</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Interval: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Interval</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="n">get_lines_from_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Factor</span><span class="p">,</span> <span class="n">animated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_line_by_line</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">Interval</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">ax</span><span class="p">));</span>
+
+<span class="k">def</span> <span class="nf">line_by_line</span><span class="p">(</span>
+    <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">max_points</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_lines_from_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval: </span><span class="si">{</span><span class="n">interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="n">max_points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+        <span class="n">fig</span><span class="p">,</span>
+        <span class="n">animate_line_by_line</span><span class="p">,</span>
+        <span class="n">frames</span><span class="o">=</span><span class="n">max_points</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+        <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">ax</span><span class="p">),</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">anim</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">line_by_line</span><span class="p">,</span>
-        <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span> 
-        <span class="n">Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
+
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">line_by_line</span><span class="p">,</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">max_points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <div class="iframe-container" style="padding-top: 101%">
@@ -307,29 +381,54 @@
 </video>
 
 <h2 id="animate-construction-point-by-point"><a class="toclink" href="#animate-construction-point-by-point">Animate Construction Point by Point</a></h2>
-<p>Taking another perspective, maybe what's interesting isn't how the lines are plot but rather how the figure gets clearer when we add more points so in this animation the <code>factor</code> is fixed and the lines are plotted all at once but each frame increases the number of points from 0 to a given number of <code>MaxPoints</code>.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_point_by_point</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">Factor</span><span class="p">,</span> <span class="n">Interval</span><span class="p">):</span>
+<p>The next animation focuses on the process of how the figure becomes clearer as
+the number of points increases. The factor is fixed, and all lines are plotted
+at once, but with each frame, the number of points increases incrementally from
+0 to a specified maximum number of <code>max_points</code>. This perspective provides a
+different view on the relationship between the number of points and the clarity
+of the figure.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_point_by_point</span><span class="p">(</span>
+    <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Line2D</span><span class="p">]:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_line_collection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+
     <span class="n">ax</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Interval: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Interval</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">Factor</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval: </span><span class="si">{</span><span class="n">interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="n">max_points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">point_by_point</span><span class="p">(</span><span class="n">Factor</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_point_by_point</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">Max_Points</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">Interval</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Factor</span><span class="p">,</span> <span class="n">Interval</span><span class="p">));</span>
+
+<span class="k">def</span> <span class="nf">point_by_point</span><span class="p">(</span>
+    <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+        <span class="n">fig</span><span class="p">,</span>
+        <span class="n">animate_point_by_point</span><span class="p">,</span>
+        <span class="n">frames</span><span class="o">=</span><span class="n">max_points</span><span class="p">,</span>
+        <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+        <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">max_points</span><span class="p">),</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">anim</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">point_by_point</span><span class="p">,</span>
-        <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Max_Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
+
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">point_by_point</span><span class="p">,</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">max_points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <div class="iframe-container" style="padding-top: 101%">
@@ -341,31 +440,56 @@
 </video>
 
 <h2 id="animate-construction-factor-by-factor"><a class="toclink" href="#animate-construction-factor-by-factor">Animate Construction Factor by Factor</a></h2>
-<p>Now the animation showed in the video, which the number of points fixed and all lines are plotted at ones but the factor is increased frame by frame. When the factor is increased with a step of 1, the animation changes drastically so in for this example the factor is changed by steps of 0.1, to achieve a smoother animation. This version is monochrome, all the lines are always the same color.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_factor_by_factor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">frames</span><span class="p">):</span>
+<p>The animation displays the effect of incrementing the factor, with the number of
+points fixed and all lines plotted at once. To enhance the visual impact, the
+factor is increased in increments of 0.1 instead of 1. This results in a
+smoother animation. This version is monochromatic, with all lines appearing in
+the same color.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_factor_by_factor</span><span class="p">(</span>
+    <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Line2D</span><span class="p">]:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">max_points</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_line_collection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
     <span class="n">ax</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Interval: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Interval</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">Max_Points</span><span class="p">)</span>
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval: </span><span class="si">{</span><span class="n">interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="n">max_points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">factor_by_factor</span><span class="p">(</span><span class="n">Factor</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-    <span class="n">frames</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Factor</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_factor_by_factor</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">Interval</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">frames</span><span class="p">));</span>
+
+<span class="k">def</span> <span class="nf">factor_by_factor</span><span class="p">(</span>
+    <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+        <span class="n">fig</span><span class="p">,</span>
+        <span class="n">animate_factor_by_factor</span><span class="p">,</span>
+        <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span>
+        <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+        <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">max_points</span><span class="p">,</span> <span class="n">interval</span><span class="p">),</span>
+    <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">anim</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">factor_by_factor</span><span class="p">,</span>
-        <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Max_Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
+
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">factor_by_factor</span><span class="p">,</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">max_points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <div class="iframe-container" style="padding-top: 101%">
@@ -377,31 +501,56 @@
 </video>
 
 <h2 id="animate-construction-factor-by-factor-with-color"><a class="toclink" href="#animate-construction-factor-by-factor-with-color">Animate Construction Factor by Factor with Color</a></h2>
-<p>Just as the previous one but with color added, in this case an additional <code>frames</code> parameter is passed to the <code>animate_factor_by_factor_colored</code> function and this value is the total number of frames so the HSV system is used with fixed Saturation and Value and the Hue is changing from 0 to 1 depending on the frame. To achieved this, the current frame <code>i</code> is divided by the total number of frames <code>frames</code>, and thus ranging from 0 to 1.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_factor_by_factor_colored</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">frames</span><span class="p">):</span>
+<p>The final animation is similar to the previous one, with the difference being
+the addition of color. To achieve this, the function
+<code>animate_factor_by_factor_colored</code> is passed an additional parameter, <code>frames</code>,
+which specifies the total number of frames. The HSV color system is utilized,
+with fixed saturation and value, while the hue changes from 0 to 1 as the
+current frame (<code>i</code>) is divided by the total number of frames (<code>frames</code>),
+resulting in a range from 0 to 1.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">animate_factor_by_factor_colored</span><span class="p">(</span>
+    <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frames</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Line2D</span><span class="p">]:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points_around_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">max_points</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">generate_line_collection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">i</span> <span class="o">/</span> <span class="n">frames</span><span class="p">)</span>
+
     <span class="n">ax</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Interval: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Interval</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">points_arround_circle</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">Max_Points</span><span class="p">)</span>
-    <span class="n">plot_circle_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">i</span> <span class="o">/</span> <span class="n">frames</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval: </span><span class="si">{</span><span class="n">interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points: </span><span class="si">{</span><span class="n">max_points</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;-ko&quot;</span><span class="p">,</span> <span class="n">markevery</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">factor_by_factor_colored</span><span class="p">(</span><span class="n">Factor</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
-    <span class="n">frames</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Factor</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_factor_by_factor_colored</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">Interval</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Max_Points</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">frames</span><span class="p">));</span>
+
+<span class="k">def</span> <span class="nf">factor_by_factor_colored</span><span class="p">(</span>
+    <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_points</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">factor</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+        <span class="n">fig</span><span class="p">,</span>
+        <span class="n">animate_factor_by_factor_colored</span><span class="p">,</span>
+        <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span>
+        <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+        <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">max_points</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">frames</span><span class="p">),</span>
+    <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">anim</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">factor_by_factor_colored</span><span class="p">,</span>
-        <span class="n">Factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Max_Points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)),</span>
-        <span class="n">Interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)));</span>
+
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">factor_by_factor_colored</span><span class="p">,</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">max_points</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+    <span class="n">interval</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;99%&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <div class="iframe-container" style="padding-top: 101%">
@@ -413,17 +562,19 @@
 </video>
 
 <h2 id="export"><a class="toclink" href="#export">Export</a></h2>
-<p>Every animation generated can be exported as an mp4 file. It simply needs to call the function, store the result in a variable and then use the following snipped. Change <code>Specific_function</code> with the one you like, and place the corresponding parameters. For instance: <code>factor_by_factor_colored</code>, <code>animate_point_by_point</code></p>
-<div class="highlight "><pre><span></span><code><span class="n">anim</span> <span class="o">=</span> <span class="n">Specific_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<p>The generated animations can be exported as mp4 files by calling the appropriate
+function, storing the result in a variable and using the following code snippet.
+The function <code>specific_function</code> should be replaced with the desired animation,
+such as <code>factor_by_factor_colored</code> or <code>animate_point_by_point</code>, and the
+corresponding parameters should be included.</p>
+<div class="highlight "><pre><span></span><code><span class="n">anim</span> <span class="o">=</span> <span class="n">specific_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;my_animation.mp4&quot;</span>
 
 <span class="n">Writer</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">writers</span><span class="p">[</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">]</span>
 <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
-<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.mp4&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
 </code></pre></div>
-
-<h2 id="notebook"><a class="toclink" href="#notebook">Notebook</a></h2>
-<p>Everything showed above can be executed without installing anything just by using Binder, <a href="https://elc.github.io/link/times_table_binder" target="_blank"><strong>open the gist online</strong></a> and experiment yourself.</p>
   </section>
 
 
@@ -443,13 +594,13 @@
     <div class="share">
         
 
-        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="twitter-button"
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Visualizing%20Math%3A%20A%20Guide%20to%20Creating%20Times%20Table%20Animations%20with%20Python" target="_blank" class="twitter-button"
         onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
             <i class="fa fa-twitter"></i>
             Twitter
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Time%20Tables%20Visualization%20-%20Finding%20Patterns" target="_blank" class="linkedin-button"
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/posts/times-tables&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Visualizing%20Math%3A%20A%20Guide%20to%20Creating%20Times%20Table%20Animations%20with%20Python" target="_blank" class="linkedin-button"
         onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
             <i class="fa fa-linkedin"></i>
             LinkedIn
@@ -510,17 +661,6 @@
 <section class="article-related">
     <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
         <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage.png" src="https://elc.github.io/blog/images/elevator-simulation/elevator-simulation-headerimage-thumbnail.png">
-                    </a>
-          
-            <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/multi-floor-elevator-simulation-anylogic">Multi-Floor Elevator Simulation with AnyLogic</a></h3>
-                
-                <p class="article-related-post-body-description">In my 4th year of University I had what would become one of my favorite courses, Simulation, where, as a final project, each student (or team of students) should choose a real problematic situation and create a simulation model (with AnyLogic). I choose something I was familiar with, the never-ending queue of the elevators of the University building, I asked for the blueprints and simulate several alternatives to find which was the best.</p>
-            </div>
-        </article>
-        <article class="article-related-post">
                     <a class="article-related-post-link" href="https://elc.github.io/posts/pascal-triangle-vs-genetic-algorithm" aria-label="Related Post">
                         <img alt="Related Article Header Image" class="article-related-post-link-img" src="https://elc.github.io/blog/images/pascal_triangle/pascal_triangle_headerimage.gif">
                     </a>
@@ -532,14 +672,25 @@
             </div>
         </article>
         <article class="article-related-post">
-                    <a class="article-related-post-link" href="https://elc.github.io/posts/ordinary-differential-equations-with-python" aria-label="Related Post">
-                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage.png" src="https://elc.github.io/blog/images/ode-python/ordinary-differential-equations-with-python-headerimage-thumbnail.png">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-google-analytics" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png">
                     </a>
           
             <div class="article-related-post-body">
-                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/ordinary-differential-equations-with-python">Ordinary Differential Equations (ODE) with Python</a></h3>
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></h3>
                 
-                <p class="article-related-post-body-description">When I was at my 3rd year of University I have a complete subject about Ordinary Differential Equations and other similar topics. For that course we used Wolfram Mathematica throughout the year and I asked the teacher whether I can do it with Python, here you can see the results.</p>
+                <p class="article-related-post-body-description">Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-lessons" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></h3>
+                
+                <p class="article-related-post-body-description">There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app.</p>
             </div>
         </article>
 </section>
@@ -559,7 +710,7 @@
     var disqus_config = function () {
       this.page.url = 'https://elc.github.io/posts/times-tables';  
       this.page.identifier = 'times-tables';
-      this.page.title = 'Time Tables Visualization - Finding Patterns';
+      this.page.title = 'Visualizing Math: A Guide to Creating Times Table Animations with Python';
     };
     
     (function() {
@@ -605,7 +756,7 @@
       <i class="fa fa-arrow-up"></i>
     </a>
 
-    <script src="https://elc.github.io/theme/js/scripts.js?v=7de458d" ></script>
+    <script src="https://elc.github.io/theme/js/scripts.js?v=b24c46b" ></script>
 
 
 <!-- Google tag (gtag.js) -->
