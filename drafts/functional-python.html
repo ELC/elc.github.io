@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Python Recursion: Head to Tail, mutual and nested 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2022-10-25" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Python Recursion: Head to Tail, mutual and nested"/>
+      <meta property="og:description" content=""/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/drafts/functional-python.html/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="Python Recursion: Head to Tail, mutual and nested">
+      <meta name="twitter:description" content="">
+      <meta name="twitter:url" content="https://elc.github.io/drafts/functional-python.html/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=7257379">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">portfolio</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/publications.html" data-l10n-id="publications">publications</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-keywords=Python|Functional Programming></div>
+    </div>
+    </aside>
+
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>Python Recursion: Head to Tail, mutual and nested</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2022-10-25 00:00:00-03:00"><b>25 Oct 2022</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>38 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+            
+    </div>
+
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <p><a href="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png" width="1444"></a></p>
+<!-- PELICAN_BEGIN_SUMMARY -->
+
+<p>...</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<h2 id="disclaimer"><a class="toclink" href="#disclaimer">Disclaimer</a></h2>
+<p>Arity
+Higher Order Functions
+Closure
+Partial Application
+Currying
+Function Composition
+Pure Function
+Side effects
+Idempotent
+Point-Free Style
+Predicate
+Referential Transparency</p>
+<h2 id="sidenote-before-deep-diving"><a class="toclink" href="#sidenote-before-deep-diving">Sidenote before deep diving</a></h2>
+<p>This article is heavily inspired by <a href="https://mvanier.livejournal.com/2897.html">Mike Vanier
+post</a>, however examples there are
+written in the Scheme programming language and this posts uses Python.
+Moreover, the approach taken is different since it is mostly focused to
+programmers that have little to no background on Functional Programming (FP)
+concepts and focuses more on showing different FP concepts which ends in the Y
+combinator, instead of using it to drive the narrative.</p>
+<h2 id="an-old-friend"><a class="toclink" href="#an-old-friend">An old friend</a></h2>
+<p>Many if not all programming courses introduce the factorial function at some
+point. This function has great mathematical importance and yet it is simple
+enough to showcase how recursion works. However, the approach towards this
+function and recursion in general is superficial.</p>
+<p>Starting from some common ground, the factorial function can be defined in a
+non-recursive way with for loops or while loops.</p>
+<h3 id="sidenote"><a class="toclink" href="#sidenote">Sidenote</a></h3>
+<p>This post abuses the fact that, in Python, when a function defined multiple
+times only the last definition is used for future references. There will be
+many refinements over the definition and to avoid any confusion names will not
+be changed to reflect that, they all do the same. To further reinforce this
+idea, an assert statement will be added to show that results do not change even
+if the definition changes.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Factorial function implemented using for loops&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Factorial function implemented using while loops&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">multiplier</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">multiplier</span>
+        <span class="n">multiplier</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Between the for loop and the while loop implementation differences are clearly
+visible. The for loop approach is usually the one found in many posts online,
+it is short, uses only basic constructs and does the job. Whereas the while
+approach uses one extra variable, that being said, both are valid.</p>
+<p>Another possibility that is not as common is the functional implementation using
+reduce:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Factorial function implemented using reduce&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Since the previous implementations are non-recursive, the <a href="https://en.wikipedia.org/wiki/Call_graph" target="_blank">call
+graph</a>  consists of
+a single node:</p>
+<p><a href="/blog/images/recursion/non_recursive_factorial.png"><img alt="Non Recursive Factorial Call Graph" class="b-lazy" data-src="/blog/images/recursion/non_recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/non_recursive_factorial-thumbnail.png" width="554"></a></p>
+<h2 id="recursion"><a class="toclink" href="#recursion">Recursion</a></h2>
+<p>After introducing one of the previous two definitions of factorials, the
+"recursive form" is usually presented. A recursive function is a function that
+calls itself. There are multiple types of recursion though and understanding
+them may have a huge impact on some programming languages.</p>
+<h2 id="direct-vs-indirect-recursion"><a class="toclink" href="#direct-vs-indirect-recursion">Direct vs Indirect Recursion</a></h2>
+<p>Most commonly, when one says "recursive function", it is meant "direct recursive
+function", that is, the function calls itself. The other way a function could be
+recursive is through "indirect recursion" where, instead of calling itself, it
+calls another function (or chain of functions) that will in turn call the first
+function.</p>
+<p>There are different types of direct recursions that are worth mentioning,
+namely:</p>
+<p>Based on where the recursive call is done:</p>
+<ul>
+<li>Head Recursion</li>
+<li>Middle Recursion</li>
+<li>Tail Recursion</li>
+</ul>
+<p>Based on the number of recursive calls:</p>
+<ul>
+<li>Linear Recursion</li>
+<li>Multi Recursion (also called nonlinear or exponential recursion)<ul>
+<li>Tree Recursion (also called bifurcating recursion)</li>
+<li>Nested Recursion</li>
+<li>General Non-Linear Recursion</li>
+</ul>
+</li>
+</ul>
+<p>Based on the number of functions involved:</p>
+<ul>
+<li>Direct Recursion</li>
+<li>Indirect Recursion (also called mutual recursion)</li>
+</ul>
+<h2 id="linear-recursion"><a class="toclink" href="#linear-recursion">Linear Recursion</a></h2>
+<p>Linear recursion refers to functions where there is <strong>only one recursive call</strong>.</p>
+<p>Based on the position of the recursive call it could be further subdivided into:</p>
+<ul>
+<li>Head Recursion: recursive call is the first statement.</li>
+<li>Middle Recursion: there are other statements before and after recursive call.</li>
+<li>Tail Recursion: recursive call is the last statement.</li>
+</ul>
+<p>There is no difference between Middle Recursion and Head Recursion from an
+efficiency and algorithmic perspective. So no further exploration will be done
+on those two.</p>
+<p>When a function has more than one recursive call is called Multi Recursion,
+Nonlinear Recursion or Exponential Recursion.</p>
+<p>The following is an example of a middle recursion implementation of the
+factorial function.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+</code></pre></div>
+
+<p>It is middle recursion because the last statement is a multiplication (<code>*</code>) and
+not the recursive call itself. Dependending on the operation order it could also
+be considered head recursion but that difference is not relevant for most
+contexts.</p>
+<p>The call graph in the case of linear recursive functions is a series a nodes
+called sequentially:</p>
+<p><a href="/blog/images/recursion/recursive_factorial.png"><img alt="Recursive Factorial Call Graph" class="b-lazy" data-src="/blog/images/recursion/recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/recursive_factorial-thumbnail.png" width="554"></a></p>
+<h2 id="tail-recursion"><a class="toclink" href="#tail-recursion">Tail Recursion</a></h2>
+<p>Tail recursion is when the return statement of the function is <strong>only a
+recursive call</strong>, this means that a function call could be replace with another
+function call directly. Some languages (Python is not one of them), use a
+technique named <a href="https://en.wikipedia.org/wiki/Tail_call">Tail-Call
+Optimization</a>, which makes this
+particular type of recursion very efficient.</p>
+<p>One important clarification is that the return <strong>must not be an expression</strong>.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s2">&quot;Returns True if the given string is a palindrome. Using tail recursion.&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">string</span>
+    <span class="k">if</span> <span class="n">first</span> <span class="o">!=</span> <span class="n">last</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">palindrome</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;abca&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;tattarrattat&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_palindrome.png"><img alt="Recursive Palindrome" class="b-lazy" data-src="/blog/images/recursion/recursive_palindrome.png" src="https://elc.github.io/blog/images/recursion/recursive_palindrome-thumbnail.png" width="1604"></a></p>
+<p>To better illustrate the fact that the returning statement must be <strong>only a
+function call</strong>, the following implementation is <strong>NOT</strong> a tail recursive
+function because the last statement is not a function call, it is a boolean
+expression that requires the function call to be executed prior to returning
+because the <code>and</code> operator needs the value. This implementation is then a middle
+recursion.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s2">&quot;Returns True if the given string is a palindrome. Using middle recursion.&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">string</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="o">==</span> <span class="n">last</span> <span class="ow">and</span> <span class="n">palindrome</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;abca&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Sometimes a function that is not expressed in tail-call form can be converted
+to that form. For example the following middle recursion:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Sums all integers from zero to n. Using middle recursion&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_sum_integer_up_to_n.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/recursive_sum_integer_up_to_n.png" src="https://elc.github.io/blog/images/recursion/recursive_sum_integer_up_to_n-thumbnail.png" width="971"></a></p>
+<p>Can be rewritten into tail recursive form as:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Sums all integers from zero to n. Using Tail recursion&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+    <span class="k">return</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">n</span> <span class="o">+</span> <span class="n">total</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/tail_recursive_sum_integer_up_to_n.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/tail_recursive_sum_integer_up_to_n.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_sum_integer_up_to_n-thumbnail.png" width="1275"></a></p>
+<p>This last version uses an additional paramenter to pass the total down the call
+chain. This compromises readability for performance if the language implements
+tail-call optimization. This style of programming is widely used in languages
+like Prolog. </p>
+<p>In Python however the extra parameter can be <em>hidden</em> by using
+default values, this makes this modified implementation more similar to the
+original but it is implicitly hidding the way it truly works, which is against
+many coding styles. Use with caution.</p>
+<p>In the same way as <code>sum_integer_up_to_n</code>, the factorial function could be
+re-written into tail recursive form:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/tail_recursive_factorial.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/tail_recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_factorial-thumbnail.png" width="704"></a></p>
+<p>When comparing head/middle and tail recursion, the way each approach works can be
+illustrated by inspecting step by step: </p>
+<div class="highlight "><pre><span></span><code><span class="c1"># Head/Middle Recursion</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">1</span>
+<span class="mi">6</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Tail Recursion</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mi">6</span>
+</code></pre></div>
+
+<h2 id="multi-recursion"><a class="toclink" href="#multi-recursion">Multi Recursion</a></h2>
+<p>When there are more than one recursive call, a function is said to be multi
+recursive. Multi recursive functions can also be middle/head recursive or tail
+recursive. An special case of Multi Recursion is when the recursive call is one
+of the arguments, in this case it is referred to as nested recursive.</p>
+<h2 id="general-non-linear"><a class="toclink" href="#general-non-linear">General Non Linear</a></h2>
+<p>Many functions do not follow a precise pattern and they just use multiple
+recursive calls as part of their definition. One such example is the fibonacci
+numbers, to call the function two successive recursive calls are used.</p>
+<p>This is the traditional implementaiton of the fibonacci function that returns the nth fibonacci number:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_fibonacci.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/recursive_fibonacci-thumbnail.png" width="2750"></a></p>
+<p>In some cases, multi recursive functions can be refactor into linear tail
+recursive functions.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span><span class="o">+</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/tail_recursive_fibonacci.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/tail_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_fibonacci-thumbnail.png" width="729"></a></p>
+<h2 id="tree-recursion"><a class="toclink" href="#tree-recursion">Tree Recursion</a></h2>
+<p>In the case of multi recursive functions, it is possible to construct a tree of
+the function calls. All multi recursive functions produce a tree, however, in
+some cases the definition leverages the divide-and-conquer strategy, minimizing
+the depth of the tree. One example of this is the quicksort algorithm:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numbers</span>
+
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
+
+    <span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rest</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">first</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rest</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">first</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">first</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">quicksort</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))))</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_quicksort.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/recursive_quicksort.png" src="https://elc.github.io/blog/images/recursion/recursive_quicksort-thumbnail.png" width="2710"></a></p>
+<p>Here the function divides the input into two parts and each recursive call is
+sent one of the parts. This strategy reduces the number of recursive calls.</p>
+<h2 id="converting-non-tree-recursion-into-tree-recursion"><a class="toclink" href="#converting-non-tree-recursion-into-tree-recursion">Converting non-tree recursion into tree recursion</a></h2>
+<p>Some functions that are originally linear recursive can be converted to tree
+recursive to reduce the depth of the recursive stack. This is usually easy on
+functions that operates on arrays.</p>
+<p>Here is a linear recursive implementation of a function that returns the maximum
+value of a list:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">first</span>
+
+    <span class="n">rest_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">rest_max</span> <span class="k">else</span> <span class="n">rest_max</span>
+
+<span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_maximum.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/recursive_maximum.png" src="https://elc.github.io/blog/images/recursion/recursive_maximum-thumbnail.png" width="1033"></a></p>
+<p>This function will have as many recursive calls as elements are in the list. A
+similar approach as the quicksort algorithm can be used to reduce the number of
+calls to a base two logarithm of the length of the list. The number of total
+calls will be the same, however the recursive stack will be much shorter.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">first</span>
+
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
+    <span class="n">right_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">left_max</span> <span class="k">if</span> <span class="n">left_max</span> <span class="o">&gt;</span> <span class="n">right_max</span> <span class="k">else</span> <span class="n">right_max</span>
+
+<span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/tree_recursive_maximum.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/tree_recursive_maximum.png" src="https://elc.github.io/blog/images/recursion/tree_recursive_maximum-thumbnail.png" width="3260"></a></p>
+<p>This is not always possible, for functions like fibonacci, it is not trivial to
+use a tree approach that reduces the number of recursive calls. A known solution
+called Fast Doubling has been discovered, finding this implementation requires a
+lot of effort and mathmatical derivaiton and may not be applicable to other
+functions.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Fast Doubling Method</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="n">is_odd</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">is_odd</span>
+    <span class="n">fib_m</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">fib_m_1</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_odd</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fib_m_1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">+</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span>
+
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/fast_double_fibonacci.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/fast_double_fibonacci.png" src="https://elc.github.io/blog/images/recursion/fast_double_fibonacci-thumbnail.png" width="1508"></a></p>
+<p>It is even possible to further reduce the number of recursive calls by
+converting the multi recursive function into a linear recursive function by
+changing its structure to return two values at once:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># based on: https://www.nayuki.io/page/fast-fibonacci-algorithms</span>
+    <span class="k">def</span> <span class="nf">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">nth</span><span class="p">,</span> <span class="n">nth_plus_one</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nth</span><span class="p">,</span> <span class="n">nth_plus_one</span>
+
+    <span class="n">nth</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nth</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/efficient_recursive_fibonacci.png"><img alt="Recursive Sum Integer up to N" class="b-lazy" data-src="/blog/images/recursion/efficient_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/efficient_recursive_fibonacci-thumbnail.png" width="1004"></a></p>
+<h2 id="nested-recursion"><a class="toclink" href="#nested-recursion">Nested Recursion</a></h2>
+<p>One special case of multi recursion is when the argument of the recursive call
+is itself a recursive call. This is not usual in software development but could
+arise in mathmatical fields. One example is the Hofstadter G Sequence:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_g</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_g</span><span class="p">(</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_hofstadter_g.png"><img alt="Recursive Hofstadter G" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_g.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_g-thumbnail.png" width="3702"></a></p>
+<p>Refactoring nested recursion into non-nested multi recursion or linear recursion
+is a non-trivial task and sometimes it may be impossible.</p>
+<h2 id="triple-nested-recursion"><a class="toclink" href="#triple-nested-recursion">Triple Nested Recursion</a></h2>
+<p>The level of nesting is not limited to just two calls, the Hofstadter H Sequence
+has triple nesting recursion for example:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_h</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span>  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_hofstadter_h.png"><img alt="Recursive Hofstadter H" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_h-thumbnail.png" width="9794"></a></p>
+<h2 id="nested-recursion-with-more-than-one-argument"><a class="toclink" href="#nested-recursion-with-more-than-one-argument">Nested Recursion with more than one argument</a></h2>
+<p>Some functions can have multiple arguments and be nested recursive. The
+Ackermann function grows extremely fast due to this nested recursive definition
+and it is the simplest functions proved not to be primitive recursive, meaning
+that it cannot be expressed in iterative form with for loops.</p>
+<p>This functions is currently used to test compilers efficiency at handling really
+deep recursive functions. This is a case of a nested recursive function that is
+also tail recursive.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    
+    <span class="k">return</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">ackermann</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_ackermann.png"><img alt="Recursive Ackerman" class="b-lazy" data-src="/blog/images/recursion/recursive_ackermann.png" src="https://elc.github.io/blog/images/recursion/recursive_ackermann-thumbnail.png" width="6185"></a></p>
+<h2 id="indirect-recursion"><a class="toclink" href="#indirect-recursion">Indirect Recursion</a></h2>
+<p>So far, all the examples showed functions that called themselves, this is direct
+recursion. An alternative approach is indirect recursion, also known as mutual
+recursion. In this case the same categories could be applied (linear, tail,
+head, nested, etc.), but a recursive call now may be the same function or other
+function, with the condition that the other function must also be mutually
+recursive.</p>
+<h2 id="mutual-linear-recursion"><a class="toclink" href="#mutual-linear-recursion">Mutual Linear Recursion</a></h2>
+<p>A simple example of mutual linear tail recursion is a set of functions that
+determines if a number is odd or even:  </p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">is_odd</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_odd</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">is_even</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">is_odd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_is_even.png"><img alt="Recursive Is Even" class="b-lazy" data-src="/blog/images/recursion/recursive_is_even.png" src="https://elc.github.io/blog/images/recursion/recursive_is_even-thumbnail.png" width="538"></a></p>
+<p>Of course it is also possible to implement a function that computes the same in
+a non recursive form, however, this example does not require division or modulo
+computation, it is much slower thougn for big numbers.</p>
+<h2 id="mutual-multi-recursion"><a class="toclink" href="#mutual-multi-recursion">Mutual Multi Recursion</a></h2>
+<p>Mutual recursion can also happen in multi recursive functions. Take the
+following direct multi recursive function that computes the nth lucas number:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_lucas.png"><img alt="Recursive Lucas" class="b-lazy" data-src="/blog/images/recursion/recursive_lucas.png" src="https://elc.github.io/blog/images/recursion/recursive_lucas-thumbnail.png" width="2225"></a></p>
+<p>It is possible to write both the lucas and the fibonacci functions in a mutual
+recursive form:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/mutual_recursive_fibonacci.png"><img alt="Mutual Recursive Fibonacci" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_fibonacci-thumbnail.png" width="5365"></a></p>
+<p>This implementation is standalone and does not require any of the two funtions
+to be defined in a direct recursive way. In practical terms, there is no gain as
+it makes the whole computation slower and less efficient, it is just for
+demonstration purposes.</p>
+<p>Similarly, the sequence defined as the multiplication of the last two terms can
+be implemented in a direct multi recursive form:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/recursive_multiply_last_two.png"><img alt="Mutual Recursive Fibonacci" class="b-lazy" data-src="/blog/images/recursion/recursive_multiply_last_two.png" src="https://elc.github.io/blog/images/recursion/recursive_multiply_last_two-thumbnail.png" width="3988"></a></p>
+<p>This again can be used to implement the fibonacci and the multiply last two as
+mutually recursive functions.</p>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_fibonacci_alternative-thumbnail.png" width="3163"></a></p>
+<h2 id="mutual-mested-recursion"><a class="toclink" href="#mutual-mested-recursion">Mutual Mested Recursion</a></h2>
+<p>Mutual recursion can also appear in nested form, as it is the case of the
+Hofstadter Female and Male sequences which are mutual nested recursive.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_female</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_male</span><span class="p">(</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">hofstadter_male</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_female</span><span class="p">(</span><span class="n">hofstadter_male</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_male</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/mutual_recursive_hofstadter_female.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_hofstadter_female.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_hofstadter_female-thumbnail.png" width="5290"></a></p>
+<h2 id="mutual-triple-recursion"><a class="toclink" href="#mutual-triple-recursion">Mutual Triple Recursion</a></h2>
+<p>Indirect recursion is not limited to only two functions, the following example
+combines the lucas, fibonacci and multiply last two functions in a triple mutual
+recursive form, where each function uses at the other two and itself.</p>
+<div class="highlight "><pre><span></span><code><span class="c1"># Mutual Nonlineal bifurcating Triple Recursion</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+</code></pre></div>
+
+<p><a href="/blog/images/recursion/mutual_triple_recursive_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_triple_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/mutual_triple_recursive_fibonacci-thumbnail.png" width="6969"></a></p>
+<h2 id="recursion-related-techniques"><a class="toclink" href="#recursion-related-techniques">Recursion related techniques</a></h2>
+<p><a href="/blog/images/recursion/recursive_non_memoized_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/recursive_non_memoized_fibonacci.png" src="https://elc.github.io/blog/images/recursion/recursive_non_memoized_fibonacci-thumbnail.png" width="4106"></a></p>
+<p><a href="/blog/images/recursion/recursive_memoized_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/recursive_memoized_fibonacci.png" src="https://elc.github.io/blog/images/recursion/recursive_memoized_fibonacci-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/non_memoized_fast_double_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/non_memoized_fast_double_fibonacci.png" src="https://elc.github.io/blog/images/recursion/non_memoized_fast_double_fibonacci-thumbnail.png" width="4106"></a></p>
+<p><a href="/blog/images/recursion/memoized_fast_double_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_fast_double_fibonacci.png" src="https://elc.github.io/blog/images/recursion/memoized_fast_double_fibonacci-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/non_memoized_hofstadter_g.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/non_memoized_hofstadter_g.png" src="https://elc.github.io/blog/images/recursion/non_memoized_hofstadter_g-thumbnail.png" width="4106"></a></p>
+<p><a href="/blog/images/recursion/memoized_hofstadter_g.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_hofstadter_g.png" src="https://elc.github.io/blog/images/recursion/memoized_hofstadter_g-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/memoized_hofstadter_h.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/memoized_hofstadter_h-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/memoized_ackermann.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_ackermann.png" src="https://elc.github.io/blog/images/recursion/memoized_ackermann-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/memoized_mutual_recursive_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_mutual_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/memoized_mutual_recursive_fibonacci-thumbnail.png" width="2125"></a></p>
+<p><a href="/blog/images/recursion/memoized_hofstadter_female.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_hofstadter_female.png" src="https://elc.github.io/blog/images/recursion/memoized_hofstadter_female-thumbnail.png" width="2125"></a></p>
+<h2 id="memoization"><a class="toclink" href="#memoization">Memoization</a></h2>
+<h2 id="trampoline"><a class="toclink" href="#trampoline">Trampoline</a></h2>
+<div class="highlight "><pre><span></span><code><span class="c1"># Traditional Recursive Form</span>
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="factorial3"><a class="toclink" href="#factorial3">factorial(3)</a></h1>
+<h1 id="3-factorial3-1"><a class="toclink" href="#3-factorial3-1">3 * factorial(3 - 1)</a></h1>
+<h1 id="3-factorial2"><a class="toclink" href="#3-factorial2">3 * factorial(2)</a></h1>
+<h1 id="3-2-factorial2-1"><a class="toclink" href="#3-2-factorial2-1">3 * 2 * factorial(2 - 1)</a></h1>
+<h1 id="3-2-factorial1"><a class="toclink" href="#3-2-factorial1">3 * 2 * factorial(1)</a></h1>
+<h1 id="3-2-1-factorial1-1"><a class="toclink" href="#3-2-1-factorial1-1">3 * 2 * 1 * factorial(1 - 1)</a></h1>
+<h1 id="3-2-1-factorial0"><a class="toclink" href="#3-2-1-factorial0">3 * 2 * 1 * factorial(0)</a></h1>
+<h1 id="3-2-1-1"><a class="toclink" href="#3-2-1-1">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove direct recursion using mutual recursion</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">aux</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="factorial3_1"><a class="toclink" href="#factorial3_1">factorial(3)</a></h1>
+<h1 id="3-aux3-1"><a class="toclink" href="#3-aux3-1">3 * aux(3 - 1)</a></h1>
+<h1 id="3-aux2"><a class="toclink" href="#3-aux2">3 * aux(2)</a></h1>
+<h1 id="3-factorial2_1"><a class="toclink" href="#3-factorial2_1">3 * factorial(2)</a></h1>
+<h1 id="3-2-aux2-1"><a class="toclink" href="#3-2-aux2-1">3 * 2 * aux(2 - 1)</a></h1>
+<h1 id="3-2-aux1"><a class="toclink" href="#3-2-aux1">3 * 2 * aux(1)</a></h1>
+<h1 id="3-2-factorial1_1"><a class="toclink" href="#3-2-factorial1_1">3 * 2 * factorial(1)</a></h1>
+<h1 id="3-2-1-aux1-1"><a class="toclink" href="#3-2-1-aux1-1">3 * 2 * 1 * aux(1 - 1)</a></h1>
+<h1 id="3-2-1-aux0"><a class="toclink" href="#3-2-1-aux0">3 * 2 * 1 * aux(0)</a></h1>
+<h1 id="3-2-1-factorial0_1"><a class="toclink" href="#3-2-1-factorial0_1">3 * 2 * 1 * factorial(0)</a></h1>
+<h1 id="3-2-1-1_1"><a class="toclink" href="#3-2-1-1_1">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove hardcoded references in aux</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="factorial3_2"><a class="toclink" href="#factorial3_2">factorial(3)</a></h1>
+<h1 id="3-auxfactorial-3-1"><a class="toclink" href="#3-auxfactorial-3-1">3 * aux(factorial, 3 - 1)</a></h1>
+<h1 id="3-auxfactorial-2"><a class="toclink" href="#3-auxfactorial-2">3 * aux(factorial, 2)</a></h1>
+<h1 id="3-factorial2_2"><a class="toclink" href="#3-factorial2_2">3 * factorial(2)</a></h1>
+<h1 id="3-2-auxfactorial-2-1"><a class="toclink" href="#3-2-auxfactorial-2-1">3 * 2 * aux(factorial, 2 - 1)</a></h1>
+<h1 id="3-2-auxfactorial-1"><a class="toclink" href="#3-2-auxfactorial-1">3 * 2 * aux(factorial, 1)</a></h1>
+<h1 id="3-2-factorial1_2"><a class="toclink" href="#3-2-factorial1_2">3 * 2 * factorial(1)</a></h1>
+<h1 id="3-2-1-auxfactorial-1-1"><a class="toclink" href="#3-2-1-auxfactorial-1-1">3 * 2 * 1 * aux(factorial, 1 - 1)</a></h1>
+<h1 id="3-2-1-auxfactorial-0"><a class="toclink" href="#3-2-1-auxfactorial-0">3 * 2 * 1 * aux(factorial, 0)</a></h1>
+<h1 id="3-2-1-factorial0_2"><a class="toclink" href="#3-2-1-factorial0_2">3 * 2 * 1 * factorial(0)</a></h1>
+<h1 id="3-2-1-1_2"><a class="toclink" href="#3-2-1-1_2">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove hardcoded references in factorial</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial-3"><a class="toclink" href="#auxfactorial-3">aux(factorial, 3)</a></h1>
+<h1 id="factorialfactorial-3"><a class="toclink" href="#factorialfactorial-3">factorial(factorial, 3)</a></h1>
+<h1 id="3-factorialfactorial-3-1"><a class="toclink" href="#3-factorialfactorial-3-1">3 * factorial(factorial, 3 - 1)</a></h1>
+<h1 id="3-factorialfactorial-2"><a class="toclink" href="#3-factorialfactorial-2">3 * factorial(factorial, 2)</a></h1>
+<h1 id="3-2-factorialfactorial-2-1"><a class="toclink" href="#3-2-factorialfactorial-2-1">3 * 2 * factorial(factorial, 2 - 1)</a></h1>
+<h1 id="3-2-factorialfactorial-1"><a class="toclink" href="#3-2-factorialfactorial-1">3 * 2 * factorial(factorial, 1)</a></h1>
+<h1 id="3-2-1-factorialfactorial-1-1"><a class="toclink" href="#3-2-1-factorialfactorial-1-1">3 * 2 * 1 * factorial(factorial, 1 - 1)</a></h1>
+<h1 id="3-2-1-factorialfactorial-0"><a class="toclink" href="#3-2-1-factorialfactorial-0">3 * 2 * 1 * factorial(factorial, 0)</a></h1>
+<h1 id="3-2-1-1_3"><a class="toclink" href="#3-2-1-1_3">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Change to single parameter form</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux_2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">aux_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">aux_2</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">factorial_step</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factorial_step</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3"><a class="toclink" href="#auxfactorial3">aux(factorial)(3)</a></h1>
+<h1 id="aux_23"><a class="toclink" href="#aux_23">aux_2(3)</a></h1>
+<h1 id="factorialaux_23"><a class="toclink" href="#factorialaux_23">factorial(aux_2)(3)</a></h1>
+<h1 id="factorial_step3"><a class="toclink" href="#factorial_step3">factorial_step(3)</a></h1>
+<h1 id="3-aux_23-1"><a class="toclink" href="#3-aux_23-1">3 * aux_2(3 - 1)</a></h1>
+<h1 id="3-aux_22"><a class="toclink" href="#3-aux_22">3 * aux_2(2)</a></h1>
+<h1 id="3-factorialaux_22"><a class="toclink" href="#3-factorialaux_22">3 * factorial(aux_2)(2)</a></h1>
+<h1 id="3-factorial_step2"><a class="toclink" href="#3-factorial_step2">3 * factorial_step(2)</a></h1>
+<h1 id="3-2-aux_22-1"><a class="toclink" href="#3-2-aux_22-1">3 * 2 * aux_2(2 - 1)</a></h1>
+<h1 id="3-2-aux_21"><a class="toclink" href="#3-2-aux_21">3 * 2 * aux_2(1)</a></h1>
+<h1 id="3-2-factorialaux_21"><a class="toclink" href="#3-2-factorialaux_21">3 * 2 * factorial(aux_2)(1)</a></h1>
+<h1 id="3-2-factorial_step1"><a class="toclink" href="#3-2-factorial_step1">3 * 2 * factorial_step(1)</a></h1>
+<h1 id="3-2-1-aux_21-1"><a class="toclink" href="#3-2-1-aux_21-1">3 * 2 * 1 * aux_2(1 - 1)</a></h1>
+<h1 id="3-2-1-aux_20"><a class="toclink" href="#3-2-1-aux_20">3 * 2 * 1 * aux_2(0)</a></h1>
+<h1 id="3-2-1-factorialaux_20"><a class="toclink" href="#3-2-1-factorialaux_20">3 * 2 * 1 * factorial(aux_2)(0)</a></h1>
+<h1 id="3-2-1-factorial_step0"><a class="toclink" href="#3-2-1-factorial_step0">3 * 2 * 1 * factorial_step(0)</a></h1>
+<h1 id="3-2-1-1_4"><a class="toclink" href="#3-2-1-1_4">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove recursion from aux_2</span>
+
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="o">-</span><span class="n">factorial</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux_3</span><span class="p">(</span><span class="n">f_2</span><span class="o">=</span><span class="n">aux_3</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">aux_2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">aux_2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">aux_3</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">factorial_step</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factorial_step</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3_1"><a class="toclink" href="#auxfactorial3_1">aux(factorial)(3)</a></h1>
+<h1 id="aux_3aux_33"><a class="toclink" href="#aux_3aux_33">aux_3(aux_3)(3)</a></h1>
+<h1 id="factorialaux_24"><a class="toclink" href="#factorialaux_24">factorial(aux_2)(3)</a></h1>
+<h1 id="factorial_step3_1"><a class="toclink" href="#factorial_step3_1">factorial_step(3)</a></h1>
+<h1 id="3-aux_23-1_1"><a class="toclink" href="#3-aux_23-1_1">3 * aux_2(3 - 1)</a></h1>
+<h1 id="3-aux_23"><a class="toclink" href="#3-aux_23">3 * aux_2(2)</a></h1>
+<h1 id="3-aux_3aux_32"><a class="toclink" href="#3-aux_3aux_32">3 * aux_3(aux_3)(2)</a></h1>
+<h1 id="3-factorialaux_23"><a class="toclink" href="#3-factorialaux_23">3 * factorial(aux_2)(2)</a></h1>
+<h1 id="3-factorial_step2_1"><a class="toclink" href="#3-factorial_step2_1">3 * factorial_step(2)</a></h1>
+<h1 id="3-2-aux_22-1_1"><a class="toclink" href="#3-2-aux_22-1_1">3 * 2 * aux_2(2 - 1)</a></h1>
+<h1 id="3-2-aux_22"><a class="toclink" href="#3-2-aux_22">3 * 2 * aux_2(1)</a></h1>
+<h1 id="3-2-aux_3aux_31"><a class="toclink" href="#3-2-aux_3aux_31">3 * 2 * aux_3(aux_3)(1)</a></h1>
+<h1 id="3-2-factorialaux_22"><a class="toclink" href="#3-2-factorialaux_22">3 * 2 * factorial(aux_2)(1)</a></h1>
+<h1 id="3-2-factorial_step1_1"><a class="toclink" href="#3-2-factorial_step1_1">3 * 2 * factorial_step(1)</a></h1>
+<h1 id="3-2-1-aux_21-1_1"><a class="toclink" href="#3-2-1-aux_21-1_1">3 * 2 * 1 * aux_2(1 - 1)</a></h1>
+<h1 id="3-2-1-aux_21"><a class="toclink" href="#3-2-1-aux_21">3 * 2 * 1 * aux_2(0)</a></h1>
+<h1 id="3-2-1-aux_3aux_30"><a class="toclink" href="#3-2-1-aux_3aux_30">3 * 2 * 1 * aux_3(aux_3)(0)</a></h1>
+<h1 id="3-2-1-factorialaux_21"><a class="toclink" href="#3-2-1-factorialaux_21">3 * 2 * 1 * factorial(aux_2)(0)</a></h1>
+<h1 id="3-2-1-factorial_step0_1"><a class="toclink" href="#3-2-1-factorial_step0_1">3 * 2 * 1 * factorial_step(0)</a></h1>
+<h1 id="3-2-1-1_5"><a class="toclink" href="#3-2-1-1_5">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Change factorial_step into lambda form</span>
+
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux_3</span><span class="p">(</span><span class="n">f_2</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">aux_2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">aux_2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">aux_3</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3_2"><a class="toclink" href="#auxfactorial3_2">aux(factorial)(3)</a></h1>
+<h1 id="aux_3aux_34"><a class="toclink" href="#aux_3aux_34">aux_3(aux_3)(3)</a></h1>
+<h1 id="factorialaux_25"><a class="toclink" href="#factorialaux_25">factorial(aux_2)(3)</a></h1>
+<h1 id="lambda-n-1-if-n-0-else-n-aux_2n-13"><a class="toclink" href="#lambda-n-1-if-n-0-else-n-aux_2n-13">(lambda n: 1 if n == 0 else n * aux_2(n-1))(3)</a></h1>
+<h1 id="3-aux_23-1_2"><a class="toclink" href="#3-aux_23-1_2">3 * aux_2(3 - 1)</a></h1>
+<h1 id="3-aux_24"><a class="toclink" href="#3-aux_24">3 * aux_2(2)</a></h1>
+<h1 id="3-aux_3aux_33"><a class="toclink" href="#3-aux_3aux_33">3 * aux_3(aux_3)(2)</a></h1>
+<h1 id="3-factorialaux_24"><a class="toclink" href="#3-factorialaux_24">3 * factorial(aux_2)(2)</a></h1>
+<h1 id="3-lambda-n-1-if-n-0-else-n-aux_2n-12"><a class="toclink" href="#3-lambda-n-1-if-n-0-else-n-aux_2n-12">3 * (lambda n: 1 if n == 0 else n * aux_2(n-1))(2)</a></h1>
+<h1 id="3-2-aux_22-1_2"><a class="toclink" href="#3-2-aux_22-1_2">3 * 2 * aux_2(2 - 1)</a></h1>
+<h1 id="3-2-aux_23"><a class="toclink" href="#3-2-aux_23">3 * 2 * aux_2(1)</a></h1>
+<h1 id="3-2-aux_3aux_32"><a class="toclink" href="#3-2-aux_3aux_32">3 * 2 * aux_3(aux_3)(1)</a></h1>
+<h1 id="3-2-factorialaux_23"><a class="toclink" href="#3-2-factorialaux_23">3 * 2 * factorial(aux_2)(1)</a></h1>
+<h1 id="3-2-lambda-n-1-if-n-0-else-n-aux_2n-11"><a class="toclink" href="#3-2-lambda-n-1-if-n-0-else-n-aux_2n-11">3 * 2 * (lambda n: 1 if n == 0 else n * aux_2(n-1))(1)</a></h1>
+<h1 id="3-2-1-aux_21-1_2"><a class="toclink" href="#3-2-1-aux_21-1_2">3 * 2 * 1 * aux_2(1 - 1)</a></h1>
+<h1 id="3-2-1-aux_22"><a class="toclink" href="#3-2-1-aux_22">3 * 2 * 1 * aux_2(0)</a></h1>
+<h1 id="3-2-1-aux_3aux_31"><a class="toclink" href="#3-2-1-aux_3aux_31">3 * 2 * 1 * aux_3(aux_3)(0)</a></h1>
+<h1 id="3-2-1-factorialaux_22"><a class="toclink" href="#3-2-1-factorialaux_22">3 * 2 * 1 * factorial(aux_2)(0)</a></h1>
+<h1 id="3-2-1-lambda-n-1-if-n-0-else-n-aux_2n-10"><a class="toclink" href="#3-2-1-lambda-n-1-if-n-0-else-n-aux_2n-10">3 * 2 * 1 * (lambda n: 1 if n == 0 else n * aux_2(n-1))(0)</a></h1>
+<h1 id="3-2-1-1_6"><a class="toclink" href="#3-2-1-1_6">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Change factorial into lambda form</span>
+
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux_3</span><span class="p">(</span><span class="n">f_2</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">aux_2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">aux_2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">aux_3</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3_3"><a class="toclink" href="#auxfactorial3_3">aux(factorial)(3)</a></h1>
+<h1 id="auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13"><a class="toclink" href="#auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13">aux(lambda f: lambda n: 1 if n == 0 else n * f(n-1))(3)</a></h1>
+<h1 id="aux_3aux_35"><a class="toclink" href="#aux_3aux_35">aux_3(aux_3)(3)</a></h1>
+<h1 id="lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_23"><a class="toclink" href="#lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_23">(lambda f: lambda n: 1 if n == 0 else n * f(n-1))(aux_2)(3)</a></h1>
+<h1 id="lambda-n-1-if-n-0-else-n-aux_2n-13_1"><a class="toclink" href="#lambda-n-1-if-n-0-else-n-aux_2n-13_1">(lambda n: 1 if n == 0 else n * aux_2(n-1))(3)</a></h1>
+<h1 id="3-aux_23-1_3"><a class="toclink" href="#3-aux_23-1_3">3 * aux_2(3 - 1)</a></h1>
+<h1 id="3-aux_25"><a class="toclink" href="#3-aux_25">3 * aux_2(2)</a></h1>
+<h1 id="3-aux_3aux_34"><a class="toclink" href="#3-aux_3aux_34">3 * aux_3(aux_3)(2)</a></h1>
+<h1 id="3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_22"><a class="toclink" href="#3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_22">3 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(aux_2)(2)</a></h1>
+<h1 id="3-lambda-n-1-if-n-0-else-n-aux_2n-12_1"><a class="toclink" href="#3-lambda-n-1-if-n-0-else-n-aux_2n-12_1">3 * (lambda n: 1 if n == 0 else n * aux_2(n-1))2)</a></h1>
+<h1 id="3-2-aux_22-1_3"><a class="toclink" href="#3-2-aux_22-1_3">3 * 2 * aux_2(2 - 1)</a></h1>
+<h1 id="3-2-aux_24"><a class="toclink" href="#3-2-aux_24">3 * 2 * aux_2(1)</a></h1>
+<h1 id="3-2-aux_3aux_33"><a class="toclink" href="#3-2-aux_3aux_33">3 * 2 * aux_3(aux_3)(1)</a></h1>
+<h1 id="3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_21"><a class="toclink" href="#3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_21">3 * 2 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(aux_2)(1)</a></h1>
+<h1 id="3-2-lambda-n-1-if-n-0-else-n-aux_2n-11_1"><a class="toclink" href="#3-2-lambda-n-1-if-n-0-else-n-aux_2n-11_1">3 * 2 * (lambda n: 1 if n == 0 else n * aux_2(n-1))(1)</a></h1>
+<h1 id="3-2-1-aux_21-1_3"><a class="toclink" href="#3-2-1-aux_21-1_3">3 * 2 * 1 * aux_2(1 - 1)</a></h1>
+<h1 id="3-2-1-aux_23"><a class="toclink" href="#3-2-1-aux_23">3 * 2 * 1 * aux_2(0)</a></h1>
+<h1 id="3-2-1-aux_3aux_32"><a class="toclink" href="#3-2-1-aux_3aux_32">3 * 2 * 1 * aux_3(aux_3)(0)</a></h1>
+<h1 id="3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_20"><a class="toclink" href="#3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1aux_20">3 * 2 * 1 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(aux_2)(0)</a></h1>
+<h1 id="3-2-1-lambda-n-1-if-n-0-else-n-aux_2n-10_1"><a class="toclink" href="#3-2-1-lambda-n-1-if-n-0-else-n-aux_2n-10_1">3 * 2 * 1 * (lambda n: 1 if n == 0 else n * aux_2(n-1))(0)</a></h1>
+<h1 id="3-2-1-1_7"><a class="toclink" href="#3-2-1-1_7">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Change aux_2 into lambda form</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">aux_3</span><span class="p">(</span><span class="n">f_2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">aux_3</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3_4"><a class="toclink" href="#auxfactorial3_4">aux(factorial)(3)</a></h1>
+<h1 id="auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13_1"><a class="toclink" href="#auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13_1">aux(lambda f: lambda n: 1 if n == 0 else n * f(n-1))(3)</a></h1>
+<h1 id="aux_3aux_36"><a class="toclink" href="#aux_3aux_36">aux_3(aux_3)(3)</a></h1>
+<h1 id="lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n3"><a class="toclink" href="#lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n3">(lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: aux_3(aux_3)(n)))(3)</a></h1>
+<h1 id="lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-13"><a class="toclink" href="#lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-13">(lambda n: 1 if n == 0 else n * (lambda n: aux_3(aux_3)(n))(n-1))(3)</a></h1>
+<h1 id="3-lambda-n-aux_3aux_3n3-1"><a class="toclink" href="#3-lambda-n-aux_3aux_3n3-1">3 * (lambda n: aux_3(aux_3)(n))(3 - 1)</a></h1>
+<h1 id="3-lambda-n-aux_3aux_3n2"><a class="toclink" href="#3-lambda-n-aux_3aux_3n2">3 * (lambda n: aux_3(aux_3)(n))(2)</a></h1>
+<h1 id="3-aux_3aux_35"><a class="toclink" href="#3-aux_3aux_35">3 * aux_3(aux_3)(2)</a></h1>
+<h1 id="3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n2"><a class="toclink" href="#3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n2">3 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: aux_3(aux_3)(n)))(2)</a></h1>
+<h1 id="3-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-12"><a class="toclink" href="#3-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-12">3 * (lambda n: 1 if n == 0 else n * (lambda n: aux_3(aux_3)(n))(n-1))(2)</a></h1>
+<h1 id="3-2-lambda-n-aux_3aux_3n2-1"><a class="toclink" href="#3-2-lambda-n-aux_3aux_3n2-1">3 * 2 * (lambda n: aux_3(aux_3)(n))(2 - 1)</a></h1>
+<h1 id="3-2-lambda-n-aux_3aux_3n1"><a class="toclink" href="#3-2-lambda-n-aux_3aux_3n1">3 * 2 * (lambda n: aux_3(aux_3)(n))(1)</a></h1>
+<h1 id="3-2-aux_3aux_34"><a class="toclink" href="#3-2-aux_3aux_34">3 * 2 * aux_3(aux_3)(1)</a></h1>
+<h1 id="3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n1"><a class="toclink" href="#3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n1">3 * 2 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: aux_3(aux_3)(n)))(1)</a></h1>
+<h1 id="3-2-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-11"><a class="toclink" href="#3-2-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-11">3 * 2 * (lambda n: 1 if n == 0 else n * (lambda n: aux_3(aux_3)(n))(n-1))(1)</a></h1>
+<h1 id="3-2-1-lambda-n-aux_3aux_3n1-1"><a class="toclink" href="#3-2-1-lambda-n-aux_3aux_3n1-1">3 * 2 * 1 * (lambda n: aux_3(aux_3)(n))(1 - 1)</a></h1>
+<h1 id="3-2-1-lambda-n-aux_3aux_3n0"><a class="toclink" href="#3-2-1-lambda-n-aux_3aux_3n0">3 * 2 * 1 * (lambda n: aux_3(aux_3)(n))(0)</a></h1>
+<h1 id="3-2-1-aux_3aux_33"><a class="toclink" href="#3-2-1-aux_3aux_33">3 * 2 * 1 * aux_3(aux_3)(0)</a></h1>
+<h1 id="3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n0"><a class="toclink" href="#3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-aux_3aux_3n0">3 * 2 * 1 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: aux_3(aux_3)(n)))(0)</a></h1>
+<h1 id="3-2-1-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-10"><a class="toclink" href="#3-2-1-lambda-n-1-if-n-0-else-n-lambda-n-aux_3aux_3nn-10">3 * 2 * 1 * (lambda n: 1 if n == 0 else n * (lambda n: aux_3(aux_3)(n))(n-1))(0)</a></h1>
+<h1 id="3-2-1-1_8"><a class="toclink" href="#3-2-1-1_8">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Change aux_3 into lambda form</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">aux_3</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">aux_3</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="auxfactorial3_5"><a class="toclink" href="#auxfactorial3_5">aux(factorial)(3)</a></h1>
+<h1 id="auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13_2"><a class="toclink" href="#auxlambda-f-lambda-n-1-if-n-0-else-n-fn-13_2">aux(lambda f: lambda n: 1 if n == 0 else n * f(n-1))(3)</a></h1>
+<h1 id="aux_3aux_37"><a class="toclink" href="#aux_3aux_37">aux_3(aux_3)(3)</a></h1>
+<h1 id="lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n3"><a class="toclink" href="#lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n3">(lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))(lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))(3)</a></h1>
+<h1 id="lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn3"><a class="toclink" href="#lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn3">(lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n)))(3)</a></h1>
+<h1 id="lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-13"><a class="toclink" href="#lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-13">(lambda n: 1 if n == 0 else n * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(n-1))(3)</a></h1>
+<h1 id="3-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn3-1"><a class="toclink" href="#3-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn3-1">3 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(3 - 1)</a></h1>
+<h1 id="3-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2"><a class="toclink" href="#3-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2">3 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(2)</a></h1>
+<h1 id="3-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n2"><a class="toclink" href="#3-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n2">3 * (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(2)</a></h1>
+<h1 id="3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2"><a class="toclink" href="#3-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2">3 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n)))(2)</a></h1>
+<h1 id="3-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-12"><a class="toclink" href="#3-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-12">3 * (lambda n: 1 if n == 0 else n * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(n-1))(2)</a></h1>
+<h1 id="3-2-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2-1"><a class="toclink" href="#3-2-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn2-1">3 * 2 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(2 - 1)</a></h1>
+<h1 id="3-2-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1"><a class="toclink" href="#3-2-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1">3 * 2 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(1)</a></h1>
+<h1 id="3-2-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n1"><a class="toclink" href="#3-2-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n1">3 * 2 * (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(1)</a></h1>
+<h1 id="3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1"><a class="toclink" href="#3-2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1">3 * 2 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n)))(1)</a></h1>
+<h1 id="3-2-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-11"><a class="toclink" href="#3-2-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-11">3 * 2 * (lambda n: 1 if n == 0 else n * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(n-1))(1)</a></h1>
+<h1 id="3-2-1-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1-1"><a class="toclink" href="#3-2-1-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn1-1">3 * 2 * 1 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(1 - 1)</a></h1>
+<h1 id="3-2-1-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn0"><a class="toclink" href="#3-2-1-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn0">3 * 2 * 1 * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(0)</a></h1>
+<h1 id="3-2-1-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n0"><a class="toclink" href="#3-2-1-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2n0">3 * 2 * 1 * (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(0)</a></h1>
+<h1 id="3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn0"><a class="toclink" href="#3-2-1-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nn0">3 * 2 * 1 * (lambda f: lambda n: 1 if n == 0 else n * f(n-1))((lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n)))(0)</a></h1>
+<h1 id="3-2-1-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-10"><a class="toclink" href="#3-2-1-lambda-n-1-if-n-0-else-n-lambda-n-lambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nlambda-f_2-lambda-f-lambda-n-1-if-n-0-else-n-fn-1lambda-n-f_2f_2nnn-10">3 * 2 * 1 * (lambda n: 1 if n == 0 else n * (lambda n: (lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n)))((lambda f_2: (lambda f: lambda n: 1 if n == 0 else n * f(n-1))(lambda n: f_2(f_2)(n))))(n))(n-1))(0)</a></h1>
+<h1 id="3-2-1-1_9"><a class="toclink" href="#3-2-1-1_9">3 * 2 * 1 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove named references</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Change aux into lambda form</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Add Loop function to avoid duplicated code</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">aux_3</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loop</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Change loop into lambda form</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">aux_3</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loop</span><span class="p">(</span><span class="n">aux_3</span><span class="p">)</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Remove named references in aux</span>
+<span class="k">def</span> <span class="nf">aux</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Change aux into lambda form</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="n">n</span><span class="p">)))</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<h1 id="yfactorial3"><a class="toclink" href="#yfactorial3">Y(factorial)(3)</a></h1>
+<h1 id="self_applyself_apply3"><a class="toclink" href="#self_applyself_apply3">self_apply(self_apply)(3)</a></h1>
+<h1 id="outer_functionrecursive_step3"><a class="toclink" href="#outer_functionrecursive_step3">outer_function(recursive_step)(3)</a></h1>
+<h1 id="factorialrecursive_step3"><a class="toclink" href="#factorialrecursive_step3">factorial(recursive_step)(3)</a></h1>
+<h1 id="factorial_compute3"><a class="toclink" href="#factorial_compute3">factorial_compute(3)</a></h1>
+<h1 id="3-recursion3-1"><a class="toclink" href="#3-recursion3-1">3 * recursion(3 - 1)</a></h1>
+<h1 id="3-recursion2"><a class="toclink" href="#3-recursion2">3 * recursion(2)</a></h1>
+<h1 id="3-recursive_step2"><a class="toclink" href="#3-recursive_step2">3 * recursive_step(2)</a></h1>
+<h1 id="3-xx2"><a class="toclink" href="#3-xx2">3 * x(x)(2)</a></h1>
+<h1 id="3-self_applyself_apply2"><a class="toclink" href="#3-self_applyself_apply2">3 * self_apply(self_apply)(2)</a></h1>
+<h1 id="3-outer_functionrecursive_step2"><a class="toclink" href="#3-outer_functionrecursive_step2">3 * outer_function(recursive_step)(2)</a></h1>
+<h1 id="3-factorialrecursive_step2"><a class="toclink" href="#3-factorialrecursive_step2">3 * factorial(recursive_step)(2)</a></h1>
+<h1 id="3-factorial_compute2"><a class="toclink" href="#3-factorial_compute2">3 * factorial_compute(2)</a></h1>
+<h1 id="3-2-recursion2-1"><a class="toclink" href="#3-2-recursion2-1">3 * 2 * recursion(2 - 1)</a></h1>
+<h1 id="3-2-recursion1"><a class="toclink" href="#3-2-recursion1">3 * 2 * recursion(1)</a></h1>
+<h1 id="3-2-recursive_step1"><a class="toclink" href="#3-2-recursive_step1">3 * 2 * recursive_step(1)</a></h1>
+<h1 id="3-2-xx1"><a class="toclink" href="#3-2-xx1">3 * 2 * x(x)(1)</a></h1>
+<h1 id="3-2-self_applyself_apply1"><a class="toclink" href="#3-2-self_applyself_apply1">3 * 2 * self_apply(self_apply)(1)</a></h1>
+<h1 id="3-2-outer_functionrecursive_step1"><a class="toclink" href="#3-2-outer_functionrecursive_step1">3 * 2 * outer_function(recursive_step)(1)</a></h1>
+<h1 id="3-2-factorialrecursive_step1"><a class="toclink" href="#3-2-factorialrecursive_step1">3 * 2 * factorial(recursive_step)(1)</a></h1>
+<h1 id="3-2-factorial_compute1"><a class="toclink" href="#3-2-factorial_compute1">3 * 2 * factorial_compute(1)</a></h1>
+<h1 id="3-2-1"><a class="toclink" href="#3-2-1">3 * 2 * 1</a></h1>
+<div class="highlight "><pre><span></span><code><span class="c1"># Alternative non-pure version</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span>
+
+<span class="n">factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">720</span>
+</code></pre></div>
+
+<div class="highlight "><pre><span></span><code><span class="c1"># Alternative non-pure version compatible with multiple parameters</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">))(</span><span class="k">lambda</span> <span class="n">f_2</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">f_2</span><span class="p">(</span><span class="n">f_2</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">modified_factorial</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">factorial_step</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="n">factorial_step</span>
+
+<span class="k">assert</span> <span class="n">aux</span><span class="p">(</span><span class="n">modified_factorial</span><span class="p">)(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6905</span>
+</code></pre></div>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/functional-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Head%20to%20Tail%2C%20mutual%20and%20nested" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/functional-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Head%20to%20Tail%2C%20mutual%20and%20nested" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- Contribution -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="colaboration-button">Contribute</span></h2>
+
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2022-recursion-in-python.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Find a bug? Submit a PR!
+        </a>
+    </div>
+</section>
+
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-google-analytics" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></h3>
+                
+                <p class="article-related-post-body-description">Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-lessons" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-lessons">Lessons learnt After Developing Finance Web Tools with Streamlit and Altair (No HTML/CSS/JS)</a></h3>
+                
+                <p class="article-related-post-body-description">There are a lot of resources available online about personal finances, stocks, markets, cryptos, and many more economy-related topics. However the decisions one has to make should be informed in order to be good enough. This post covers the lessons learnt after developing similar tools using Streamlit and Altair. No HTML/CSS/JS were needed. This post will make the reader aware of some pros and cons of this libraries and also show an example app.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-multipage" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage.png" src="https://elc.github.io/blog/images/streamlit-mutipage/streamlit-mutipage_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-multipage">Multipage, State-Persistent Apps with Streamlit</a></h3>
+                
+                <p class="article-related-post-body-description">Converting a Python script to a web app has never been easier thanks to libraries such as Streamlit. This library allows to create simple and responsive web apps with minimal effort but there is one potential limitation: No multipage support. In this post, a potential solution to this problem is presented with examples and demos.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+
+  <script src="https://utteranc.es/client.js"
+          repo="elc/elc.github.io-content"
+          issue-term="title"
+          label="Comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/drafts/functional-python.html';  
+      this.page.identifier = 'functional-python';
+      this.page.title = 'Python Recursion: Head to Tail, mutual and nested';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> -->
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/about/" data-l10n-id="about">About</a></li>
+                <li><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">Portfolio</a></li>
+                <li><a href="https://elc.github.io/publications.html" data-l10n-id="publications">Publications</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archive</a></li>
+ 
+                    <li><a href="https://elc.github.io/disclaimer.html" data-l10n-id="disclaimer">Disclaimer</a></li>
+ 
+                    <li><a href="https://elc.github.io/donate.html" data-l10n-id="donate">Donate</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy; 2020 Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=eee00d2" ></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3GBPLEV2K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y3GBPLEV2K');
+</script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+      <script>
+        var omitAds = false;
+        if (!omitAds){
+          
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+          
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+            dataType = "image"
+              
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+  </body>
+
+</html>
