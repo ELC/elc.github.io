@@ -13,7 +13,7 @@
     <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">    
+<meta name="image" content="https://elc.github.io/blog/images/recursion/srecursive-python_headerimage.png">    
 
     <!-- Google Verification -->
     <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
@@ -27,14 +27,14 @@
       <meta property="og:title" content="Python Recursion: Mutual Head to Nested Tail"/>
       <meta property="og:description" content=""/>
       <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
-      <meta property="og:url" content="https://elc.github.io/drafts/functional-python.html/"/>
-      <meta property="og:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"/>
+      <meta property="og:url" content="https://elc.github.io/drafts/recursion-python.html/"/>
+      <meta property="og:image" content="https://elc.github.io/blog/images/recursion/srecursive-python_headerimage.png"/>
 
       <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="Python Recursion: Mutual Head to Nested Tail">
       <meta name="twitter:description" content="">
-      <meta name="twitter:url" content="https://elc.github.io/drafts/functional-python.html/">
-      <meta name="twitter:image" content="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png">
+      <meta name="twitter:url" content="https://elc.github.io/drafts/recursion-python.html/">
+      <meta name="twitter:image" content="https://elc.github.io/blog/images/recursion/srecursive-python_headerimage.png">
     
 
     <!-- Feed -->
@@ -122,10 +122,12 @@
 
 
   <section>
-    <p><a href="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/streamlit-lessons/streamlit-lessons_headerimage.png" src="https://elc.github.io/blog/images/streamlit-lessons/streamlit-lessons_headerimage-thumbnail.png" width="1444"></a></p>
+    <p><a href="/blog/images/recursion/srecursive-python_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/recursion/srecursive-python_headerimage.png" src="https://elc.github.io/blog/images/recursion/srecursive-python_headerimage-thumbnail.png" width="1444"></a></p>
 <!-- PELICAN_BEGIN_SUMMARY -->
 
-<p>...</p>
+<p>Recursion is a key concept of programming. However it is covered superficially
+by many courses. Here the different ways of having recursion are explored using
+Python examples, showcasing examples of head, tail, nested and mutual recursion.</p>
 <!-- PELICAN_END_SUMMARY -->
 
 <h2 id="an-old-friend-the-factorial"><a class="toclink" href="#an-old-friend-the-factorial">An old friend: The Factorial</a></h2>
@@ -216,6 +218,11 @@ namely:</p>
 <li>Direct Recursion (a single function)</li>
 <li>Indirect Recursion (multiple functions, also called mutual recursion)</li>
 </ul>
+<p>Besides the previous clasification, all recursive function must have a
+termination condition or else would enter an infinite loop. Even though it is
+not necessary that recursive functions are pure (i.e. they do not have side
+effects), it is common for recursive functions to be pure, this simplifies the
+interpretation. All the examples in this article are pure functions.</p>
 <h2 id="linear-recursion"><a class="toclink" href="#linear-recursion">Linear Recursion</a></h2>
 <p>Linear recursion refers to functions where there is <strong>only one recursive call</strong>.</p>
 <p>Based on the position of the recursive call it could be further subdivided into:</p>
@@ -465,7 +472,7 @@ use a tree approach that reduces the number of recursive calls. A known solution
 called Fast Doubling has been discovered, finding this implementation requires a
 lot of effort and mathmatical derivaiton and may not be applicable to other
 functions.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="c1"># Fast Doubling Method</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -489,9 +496,9 @@ functions.</p>
 <p>It is even possible to further reduce the number of recursive calls by
 converting the multi recursive function into a linear recursive function by
 changing its structure to return two values at once:</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="c1"># based on: https://www.nayuki.io/page/fast-fibonacci-algorithms</span>
-    <span class="k">def</span> <span class="nf">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
@@ -551,7 +558,7 @@ that it cannot be expressed in iterative form with for loops.</p>
 <p>This functions is currently used to test compilers efficiency at handling really
 deep recursive functions. This is a case of a nested recursive function that is
 also tail recursive.</p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -793,13 +800,13 @@ repeated calls, memoization has no effect.</p>
     <div class="share">
         
 
-        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/functional-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="twitter-button"
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="twitter-button"
         onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
             <i class="fa fa-twitter"></i>
             Twitter
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/functional-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="linkedin-button"
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="linkedin-button"
         onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
             <i class="fa fa-linkedin"></i>
             LinkedIn
@@ -907,8 +914,8 @@ repeated calls, memoization has no effect.</p>
   <!-- <div id="disqus_thread"></div>
   <script>    
     var disqus_config = function () {
-      this.page.url = 'https://elc.github.io/drafts/functional-python.html';  
-      this.page.identifier = 'functional-python';
+      this.page.url = 'https://elc.github.io/drafts/recursion-python.html';  
+      this.page.identifier = 'recursion-python';
       this.page.title = 'Python Recursion: Mutual Head to Nested Tail';
     };
     
