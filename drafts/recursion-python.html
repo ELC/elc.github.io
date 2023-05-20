@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>24 min <span data-l10n-id="to-read">to read</span></b>
+                <b>25 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -126,24 +126,25 @@
 <!-- PELICAN_BEGIN_SUMMARY -->
 
 <p>Recursion is a key concept of programming. However it is covered superficially
-by many courses. Here the different ways of having recursion are explored using
-Python examples, showcasing examples of head, tail, nested and mutual recursion.</p>
+by many courses. There are different ways of having recursion, this post will
+explore them by using Python examples, including cases of head, tail, nested and
+mutual recursion. For each case the call graph will be shown.</p>
 <!-- PELICAN_END_SUMMARY -->
 
 <h2 id="an-old-friend-the-factorial"><a class="toclink" href="#an-old-friend-the-factorial">An old friend: The Factorial</a></h2>
 <p>Many if not all programming courses introduce the factorial function at some
 point. This function has great mathematical importance and yet it is simple
-enough to showcase how recursion works. However, the approach towards this
-function and recursion in general is superficial.</p>
-<p>Starting from some common ground, the factorial function can be defined in a
-non-recursive way with for loops or while loops.</p>
-<h3 id="sidenote"><a class="toclink" href="#sidenote">Sidenote</a></h3>
+enough to showcase how recursion works. However, the approach towards it and
+recursion in general is usually superficial.</p>
+<p>Before digging into recursion, a procedural implementation using for loops and
+while loops will be shown.</p>
+<h3 id="side-note"><a class="toclink" href="#side-note">Side Note</a></h3>
 <p>This post abuses the fact that, in Python, when a function defined multiple
-times only the last definition is used for future references. There will be
-many refinements over the definition and to avoid any confusion names will not
-be changed to reflect that, they all do the same. To further reinforce this
-idea, an assert statement will be added to show that results do not change even
-if the definition changes.</p>
+times only the last definition is used for future references. There will be many
+refinements over the definitions and to avoid any confusion, names will not be
+changed to reflect that, they all do the same. To further reinforce this idea,
+an assert statement will be added to show that results do not change even if the
+definition changes.</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using for loops&quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
@@ -166,11 +167,12 @@ if the definition changes.</p>
 </code></pre></div>
 
 <p>Between the for loop and the while loop implementation differences are clearly
-visible. The for loop approach is usually the one found in many posts online,
+visible. The for loop approach is usually the one found in many sources online,
 it is short, uses only basic constructs and does the job. Whereas the while
-approach uses one extra variable, that being said, both are valid.</p>
-<p>Another possibility that is not as common is the functional implementation using
-reduce:</p>
+approach uses one extra variable, that being said, both are valid and share the
+same time and space complexity.</p>
+<p>Another possibility, not as common as the previous ones, is a functional
+implementation using <code>reduce</code>:</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using reduce&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
@@ -218,11 +220,11 @@ namely:</p>
 <li>Direct Recursion (a single function)</li>
 <li>Indirect Recursion (multiple functions, also called mutual recursion)</li>
 </ul>
-<p>Besides the previous clasification, all recursive function must have a
-termination condition or else would enter an infinite loop. Even though it is
-not necessary that recursive functions are pure (i.e. they do not have side
-effects), it is common for recursive functions to be pure, this simplifies the
-interpretation. All the examples in this article are pure functions.</p>
+<p>Besides the previous classification, all recursive function must have a
+termination condition or else they would enter in an infinite loop. Even though
+it is not necessary that recursive functions are pure (i.e. they do not have
+side effects), it is common for recursive functions to be pure, this simplifies
+the interpretation. All the examples in this article are pure functions.</p>
 <h2 id="linear-recursion"><a class="toclink" href="#linear-recursion">Linear Recursion</a></h2>
 <p>Linear recursion refers to functions where there is <strong>only one recursive call</strong>.</p>
 <p>Based on the position of the recursive call it could be further subdivided into:</p>
@@ -232,13 +234,15 @@ interpretation. All the examples in this article are pure functions.</p>
 <li>Tail Recursion: recursive call is the last statement.</li>
 </ul>
 <p>There is no difference between Middle Recursion and Head Recursion from an
-efficiency and algorithmic perspective. So no further exploration will be done
-on those two.</p>
+efficiency and algorithmic perspective. So no further exploration will not be
+done on those two.</p>
 <p>When a function has more than one recursive call is called Multi Recursion,
-Nonlinear Recursion or Exponential Recursion.</p>
+Nonlinear Recursion or Exponential Recursion. These case will be covered in a
+later section.</p>
 <p>The following is an example of a middle recursion implementation of the
 factorial function.</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Middle Recursion implementation of the factorial function&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -247,20 +251,38 @@ factorial function.</p>
 </code></pre></div>
 
 <p>It is middle recursion because the last statement is a multiplication (<code>*</code>) and
-not the recursive call itself. Dependending on the operation order it could also
-be considered head recursion but that difference is not relevant for most
-contexts.</p>
+not the recursive call itself. Depending on the operation order it could also be
+considered head recursion but that difference is not relevant for most contexts.</p>
+<p>Another way to better show why this is middle recursion is to use additional
+variables to store interim results:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Middle Recursion implementation of the factorial function&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="n">previous_factorial</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">current_factorial</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">previous_factorial</span>
+    <span class="k">return</span> <span class="n">current_factorial</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+</code></pre></div>
+
+<p>In this more explicit implementation it is clearer that the last logical
+statement is the multiplication <code>n * previous_factorial</code>. </p>
 <p>The call graph in the case of linear recursive functions is a series a nodes
-called sequentially:</p>
+called sequentially, hence the name:</p>
 <p><a href="/blog/images/recursion/recursive_factorial.png"><img alt="Recursive Factorial Call Graph" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/recursive_factorial-thumbnail.png" width="200"></a></p>
+<p>When the last statement is the recursive call, the function is called tail
+recursion, which will be explored in the next section.</p>
 <h2 id="tail-recursion"><a class="toclink" href="#tail-recursion">Tail Recursion</a></h2>
 <p>Tail recursion is when the return statement of the function is <strong>only a
-recursive call</strong>, this means that a function call could be replace with another
+recursive call</strong>, this means that a function call could be replaced with another
 function call directly. Some languages (Python is not one of them), use a
 technique named <a href="https://en.wikipedia.org/wiki/Tail_call" target="_blank">Tail-Call
 Optimization</a>, which
 makes this particular type of recursion very efficient.</p>
-<p>One important clarification is that the return <strong>must not be an expression</strong>.</p>
+<p>One important clarification is that the return <strong>must not be an expression</strong>. An
+example of a straightforward function that can be implemented in a tail
+recursive way is the <code>palindrome</code> function:</p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="s2">&quot;Returns True if the given string is a palindrome. Using tail recursion.&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -274,8 +296,8 @@ makes this particular type of recursion very efficient.</p>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;abca&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;tattarrattat&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;learn&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;rotator&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p><a href="/blog/images/recursion/recursive_palindrome.png"><img alt="Recursive Palindrome" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_palindrome.png" src="https://elc.github.io/blog/images/recursion/recursive_palindrome-thumbnail.png" width="600"></a></p>
@@ -285,6 +307,9 @@ function because the last statement is not a function call, it is a boolean
 expression that requires the function call to be executed prior to returning
 because the <code>and</code> operator needs the value. This implementation is then a middle
 recursion.</p>
+<div class="highlight "><pre><span></span><code>[Run Step by Step Online](https://pythontutor.com/visualize.html#code=def%20palindrome%28string%3A%20str%29%20-%3E%20bool%3A%0A%20%20%20%20%22Returns%20True%20if%20the%20given%20string%20is%20a%20palindrome.%20Using%20middle%20recursion.%22%0A%20%20%20%20if%20len%28string%29%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%20True%0A%0A%20%20%20%20first,%20*rest,%20last%20%3D%20string%0A%20%20%20%20return%20first%20%3D%3D%20last%20and%20palindrome%28rest%29%0A%0Aassert%20palindrome%28%22a%22%29%0Aassert%20palindrome%28%22aa%22%29%0Aassert%20palindrome%28%22aba%22%29%0Aassert%20not%20palindrome%28%22learn%22%29%0Aassert%20palindrome%28%22rotator%22%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false)
+</code></pre></div>
+
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="s2">&quot;Returns True if the given string is a palindrome. Using middle recursion.&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -296,7 +321,8 @@ recursion.</p>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;abca&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;learn&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;rotator&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Sometimes a function that is not expressed in tail-call form can be converted
