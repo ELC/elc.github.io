@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Python Recursion: Mutual Head to Nested Tail 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+    <title>Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
 
     <!-- Meta -->
     <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
@@ -24,14 +24,14 @@
       <meta property="article:published_time" content="2022-10-25" />
 
       <meta property="og:type" content="article"/>
-      <meta property="og:title" content="Python Recursion: Mutual Head to Nested Tail"/>
+      <meta property="og:title" content="Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail"/>
       <meta property="og:description" content=""/>
       <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
       <meta property="og:url" content="https://elc.github.io/drafts/recursion-python.html/"/>
       <meta property="og:image" content="https://elc.github.io/blog/images/recursion/recursive-python_headerimage.png"/>
 
       <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="Python Recursion: Mutual Head to Nested Tail">
+      <meta name="twitter:title" content="Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail">
       <meta name="twitter:description" content="">
       <meta name="twitter:url" content="https://elc.github.io/drafts/recursion-python.html/">
       <meta name="twitter:image" content="https://elc.github.io/blog/images/recursion/recursive-python_headerimage.png">
@@ -94,7 +94,7 @@
 <article class="article">
 
   <header class="article__header">
-    <h1>Python Recursion: Mutual Head to Nested Tail</h1>
+    <h1>Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail</h1>
     
 <div class="article__subheader">
 
@@ -491,8 +491,10 @@ the function calls. All multi-recursive functions produce a tree, that being
 said, in some cases the definition leverages the divide-and-conquer strategy,
 minimizing the depth of the tree. One example of this is the quicksort
 algorithm:</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20List%0A%0Adef%20quicksort%28numbers%3A%20List%5Bfloat%5D%29%20-%3E%20List%5Bfloat%5D%3A%0A%20%20%20%20if%20len%28numbers%29%20%3C%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20numbers%0A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20left%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3C%20first%5D%0A%20%20%20%20right%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3E%3D%20first%5D%0A%20%20%20%20return%20quicksort%28left%29%20%2B%20%5Bfirst%5D%20%2B%20quicksort%28right%29%0A%0Aassert%20quicksort%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%20list%28range%286%29%29%0Aassert%20quicksort%28list%28reversed%28range%2810%29%29%29%29%20%3D%3D%20list%28range%2810%29%29&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection,%20List%0A%0Adef%20quicksort%28numbers%3A%20Collection%5Bfloat%5D%29%20-%3E%20List%5Bfloat%5D%3A%0A%20%20%20%20if%20len%28numbers%29%20%3C%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20numbers%0A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20left%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3C%20first%5D%0A%20%20%20%20right%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3E%3D%20first%5D%0A%20%20%20%20return%20quicksort%28left%29%20%2B%20%5Bfirst%5D%20%2B%20quicksort%28right%29%0A%0Aassert%20quicksort%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%20list%28range%286%29%29%0Aassert%20quicksort%28list%28reversed%28range%2810%29%29%29%29%20%3D%3D%20list%28range%2810%29%29&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
+
+<span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">numbers</span>
 
@@ -516,8 +518,10 @@ recursive to reduce the depth of the recursive stack. This is usually easy on
 functions that operate on arrays.</p>
 <p>Here is a linear recursive implementation of a function that returns the maximum
 value of a list:</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20List%0A%0Adef%20maximum%28numbers%3A%20List%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20rest_max%20%3D%20maximum%28rest%29%0A%20%20%20%20return%20first%20if%20first%20%3E%20rest_max%20else%20rest_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Iterable%0A%0Adef%20maximum%28numbers%3A%20Iterable%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20rest_max%20%3D%20maximum%28rest%29%0A%20%20%20%20return%20first%20if%20first%20%3E%20rest_max%20else%20rest_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+
+<span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">first</span>
@@ -531,10 +535,10 @@ value of a list:</p>
 
 <p><a href="/blog/images/recursion/recursive_maximum.png"><img alt="Maximum Linear recursion" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_maximum.png" src="https://elc.github.io/blog/images/recursion/recursive_maximum-thumbnail.png" width="400"></a></p>
 <p>This holds even if re-written into a tail-recursive form:</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20List,%20Optional%0A%0Adef%20maximum%28numbers%3A%20List%5Bfloat%5D,%20max_value%3A%20Optional%5Bfloat%5D%20%3D%20None%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20if%20max_value%20is%20None%20or%20first%20%3E%20max_value%3A%0A%20%20%20%20%20%20%20%20max_value%20%3D%20first%0A%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20max_value%0A%0A%20%20%20%20return%20maximum%28rest,%20max_value%29%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Optional,%20Iterable%0A%0Adef%20maximum%28numbers%3A%20Iterable%5Bfloat%5D,%20max_value%3A%20Optional%5Bfloat%5D%20%3D%20None%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20if%20max_value%20is%20None%20or%20first%20%3E%20max_value%3A%0A%20%20%20%20%20%20%20%20max_value%20%3D%20first%0A%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20max_value%0A%0A%20%20%20%20return%20maximum%28rest,%20max_value%29%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterable</span>
 
-<span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">max_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">max_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
 
     <span class="k">if</span> <span class="n">max_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
@@ -553,8 +557,10 @@ value of a list:</p>
 the list. A similar approach to the quicksort algorithm can be used to reduce
 the number of calls, halving the length of the list each time. With this
 approach, the recursive stack will be shorter.</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20List%0A%0Adef%20maximum%28numbers%3A%20List%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20middle%20%3D%20len%28numbers%29%20//%202%0A%20%20%20%20left_max%20%3D%20maximum%28numbers%5B%3Amiddle%5D%29%0A%20%20%20%20right_max%20%3D%20maximum%28numbers%5Bmiddle%3A%5D%29%0A%20%20%20%20return%20left_max%20if%20left_max%20%3E%20right_max%20else%20right_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection%0A%0Adef%20maximum%28numbers%3A%20Collection%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20middle%20%3D%20len%28numbers%29%20//%202%0A%20%20%20%20left_max%20%3D%20maximum%28numbers%5B%3Amiddle%5D%29%0A%20%20%20%20right_max%20%3D%20maximum%28numbers%5Bmiddle%3A%5D%29%0A%20%20%20%20return%20left_max%20if%20left_max%20%3E%20right_max%20else%20right_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
+
+<span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">first</span>
@@ -664,9 +670,8 @@ has triple nesting recursion for example:</p>
 <p><a href="/blog/images/recursion/recursive_hofstadter_h.png"><img alt="Recursive Hofstadter H" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_h-thumbnail.png" width="9794"></a></p>
 <h2 id="nested-recursion-with-more-than-one-argument"><a class="toclink" href="#nested-recursion-with-more-than-one-argument">Nested Recursion with more than one argument</a></h2>
 <p>Some functions can have multiple arguments and be nested recursive. One example
-is the <a href="https://mathworld.wolfram.com/AckermannFunction.html">Ackermann
-function</a>{:
-target="_blank"} grows extremely fast due to this nested recursive definition
+is the <a href="https://mathworld.wolfram.com/AckermannFunction.html" target="_blank">Ackermann
+function</a> grows extremely fast due to this nested recursive definition
 and it is the simplest function proved not to be primitive recursive, meaning
 that it cannot be expressed in iterative form with for loops.</p>
 <p>This function is currently used to test compilers' efficiency at handling really
@@ -790,8 +795,8 @@ mutually recursive functions.</p>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
 
 
-<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
 </code></pre></div>
 
 <p><a href="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_fibonacci_alternative-thumbnail.png" width="3163"></a></p>
@@ -867,8 +872,7 @@ themselves multiple times with the same parameters in their call graph, these
 repeated calls can be cached (assuming the function is pure) to avoid (1)
 continuing traversing a recursive tree unnecessarily and (2) returning the
 result in constant time. This technique of caching previously computed results
-is called <a href="https://en.wikipedia.org/wiki/Memoization"><strong>memoization</strong></a>{:
-target="_blank"}.</p>
+is called <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank"><strong>memoization</strong></a>.</p>
 <p>Memoization is easy to implement in Python, both from scratch and using the
 standard library. </p>
 <p>The from-scratch implementation can be written using decorators:</p>
@@ -951,7 +955,7 @@ incorporating the memoized approach the results change substantially:</p>
 <li>Typical Multi Recursive Implementation: 1,146,295,688,027,634,168,203 calls ≈
   1 sextillion calls</li>
 <li>Memoized Typical Multi-Recursive Implementation: 199 calls
-  (0.00000000000000002% of the orignal)</li>
+  (0.00000000000000002% of the original)</li>
 <li>Fast Doubles: 163 calls</li>
 <li>Tail Recursive Implementation (Memoization has no effect): 100 calls</li>
 <li>Memoized Fast Doubles: 29 calls (17.79% of the original)</li>
@@ -965,17 +969,15 @@ overflow, this happens when there are too many recursive calls in the call
 stack. It is possible with minimal modifications to the original functions to
 surpass this limitation and make the language treat the recursive function as an
 iteration and thus bypass the overflow. This technique is called
-<a href="https://en.wikipedia.org/wiki/Trampoline_(computing)"><strong>trampoline</strong></a>{:
-target="_blank"} and requires the function to be implemented in
+<a href="https://en.wikipedia.org/wiki/Trampoline_(computing)" target="_blank"><strong>trampoline</strong></a> and requires the function to be implemented in
 <strong>tail-recursive</strong> form.</p>
 <p>Moreover, the function should <strong>defer the evaluation</strong> of the tail call by using
 an anonymous function (in Python called <code>lambda</code>s). This step is needed to
 simulate a lazy evaluation.</p>
 <p>The following is an example of how to implement the tail recursive Fibonacci
 using trampolining for <code>fibonacci(10000)</code> which would normally cause
-<a href="https://docs.python.org/3/library/exceptions.html#RecursionError"><code>RecursionError</code></a>{:
-target="_blank"}.</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20TypeVar,%20Callable%0A%0AT%20%3D%20TypeVar%28%22T%22%29%0ATrampolineFunction%20%3D%20%22int%20%7C%20Callable%5B%5B%5D,%20int%20%7C%20TrampolineFunction%5D%22%0A%0Adef%20trampoline%28function%3A%20TrampolineFunction%29%20-%3E%20int%3A%0A%20%20%20%20if%20not%20callable%28function%29%3A%0A%20%20%20%20%20%20%20%20return%20function%0A%0A%20%20%20%20result%20%3D%20function%28%29%0A%20%20%20%20while%20callable%28result%29%3A%0A%20%20%20%20%20%20%20%20result%20%3D%20result%28%29%0A%20%20%20%20return%20result%0A%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%20-%3E%20TrampolineFunction%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20lambda%3A%20fibonacci%28n-1,%20result,%20partial_result%2Bresult%29%0A%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040%0A&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<a href="https://docs.python.org/3/library/exceptions.html#RecursionError" target="_blank"><code>RecursionError</code></a>.</p>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20TypeVar,%20Callable%0A%0AT%20%3D%20TypeVar%28%22T%22%29%0ATrampolineFunction%20%3D%20%22int%20%7C%20Callable%5B%5B%5D,%20int%20%7C%20TrampolineFunction%5D%22%0A%0Adef%20trampoline%28function%3A%20TrampolineFunction%29%20-%3E%20int%3A%0A%20%20%20%20if%20not%20callable%28function%29%3A%0A%20%20%20%20%20%20%20%20return%20function%0A%0A%20%20%20%20result%20%3D%20function%28%29%0A%20%20%20%20while%20callable%28result%29%3A%0A%20%20%20%20%20%20%20%20result%20%3D%20result%28%29%0A%20%20%20%20return%20result%0A%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%20-%3E%20TrampolineFunction%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20lambda%3A%20fibonacci%28n-1,%20result,%20partial_result%2Bresult%29%0A%0A%23%20Python%20Tutor%20Recursion%20limit%20is%2030%20which%20is%20much%20less%20than%20%0A%23%20the%20needed%20for%20computing%20fibonacci%2830%29%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -1003,17 +1005,14 @@ target="_blank"}.</p>
 <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;3364476487&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>This way of programming has several similarities with the <a href="https://en.wikipedia.org/wiki/Continuation-passing_style">continuation passing
-style</a>{:
-target="_blank"} since instead of executing the command, the function defers the
+<p>This way of programming has several similarities with the <a href="https://en.wikipedia.org/wiki/Continuation-passing_style" target="_blank">continuation passing
+style</a> since instead of executing the command, the function defers the
 execution to another function which in the end runs the command. In Object
 Oriented Programming similar behavior could have been achieved using the
-<a href="https://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a>{:
-target="_blank"}.</p>
+<a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank">Command Pattern</a>.</p>
 <h2 id="call-by-need"><a class="toclink" href="#call-by-need">Call-By-Need</a></h2>
-<p>Some programming languages execute instructions following a <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Non-strict_binding_strategies">non-strict binding
-strategy</a>{:
-target="_blank"}, that is, the parameters of a function are not evaluated before
+<p>Some programming languages execute instructions following a <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Non-strict_binding_strategies" target="_blank">non-strict binding
+strategy</a>, that is, the parameters of a function are not evaluated before
 the function is called. One such strategy is called
 <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_need">call-by-need</a>,
 which only evaluates the parameters when needed in the body of the function and
@@ -1037,13 +1036,13 @@ functions.</p>
     <div class="share">
         
 
-        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="twitter-button"
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20a%20Trampoline%20from%20the%20Mutual%20Head%20to%20the%20Memoized%20Nested%20Tail" target="_blank" class="twitter-button"
         onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
             <i class="fa fa-twitter"></i>
             Twitter
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20Mutual%20Head%20to%20Nested%20Tail" target="_blank" class="linkedin-button"
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/recursion-python.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Python%20Recursion%3A%20a%20Trampoline%20from%20the%20Mutual%20Head%20to%20the%20Memoized%20Nested%20Tail" target="_blank" class="linkedin-button"
         onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
             <i class="fa fa-linkedin"></i>
             LinkedIn
@@ -1153,7 +1152,7 @@ functions.</p>
     var disqus_config = function () {
       this.page.url = 'https://elc.github.io/drafts/recursion-python.html';  
       this.page.identifier = 'recursion-python';
-      this.page.title = 'Python Recursion: Mutual Head to Nested Tail';
+      this.page.title = 'Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail';
     };
     
     (function() {
