@@ -21,7 +21,7 @@
     <!-- Social -->
       <meta property="article:author" content="Ezequiel Leonardo Castaño" />
       <meta property="article:section" content="Programming" />
-      <meta property="article:published_time" content="2022-10-25" />
+      <meta property="article:published_time" content="2023-05-21" />
 
       <meta property="og:type" content="article"/>
       <meta property="og:title" content="Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail"/>
@@ -101,12 +101,12 @@
     <!-- Metadata -->
     <div class="article__metadata">
         <div class="article__metadata-item">
-            <time datetime="2022-10-25 00:00:00-03:00"><b>25 Oct 2022</b></time>
+            <time datetime="2023-05-21 00:00:00-03:00"><b>21 May 2023</b></time>
         </div>
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>33 min <span data-l10n-id="to-read">to read</span></b>
+                <b>36 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -122,7 +122,7 @@
 
 
   <section>
-    <p><a href="/blog/images/recursion/recursive-python_headerimage.png"><img alt="Jupyter Publishing Header Image" class="b-lazy" data-src="/blog/images/recursion/recursive-python_headerimage.png" src="https://elc.github.io/blog/images/recursion/recursive-python_headerimage-thumbnail.png" width="1444"></a></p>
+    <p><a href="/blog/images/recursion/recursive-python_headerimage.png"><img alt="Recursion in Python" class="b-lazy" data-src="/blog/images/recursion/recursive-python_headerimage.png" src="https://elc.github.io/blog/images/recursion/recursive-python_headerimage-thumbnail.png" width="1444"></a></p>
 <!-- PELICAN_BEGIN_SUMMARY -->
 
 <p>Recursion is a key concept of programming. However, it is covered superficially
@@ -180,9 +180,11 @@ implementation using <code>reduce</code>:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20functools%20import%20reduce%0A%0Adef%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Factorial%20function%20implemented%20using%20reduce%22%22%22%0A%20%20%20%20return%20reduce%28lambda%20x,%20y%3A%20x%20*%20y,%20range%281,%20n%20%2B%201%29,%201%29%0A%0Aassert%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%20%3D%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 
+
 <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using reduce&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
 </code></pre></div>
@@ -293,6 +295,7 @@ factorial function.</p>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
+
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
 </code></pre></div>
 
@@ -309,6 +312,7 @@ variables to store interim results:</p>
     <span class="n">previous_factorial</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">current_factorial</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">previous_factorial</span>
     <span class="k">return</span> <span class="n">current_factorial</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
 </code></pre></div>
@@ -341,6 +345,7 @@ recursive way is the <code>palindrome</code> function:</p>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="n">palindrome</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
 
+
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
@@ -364,6 +369,7 @@ therefore a middle recursion.</p>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">string</span>
     <span class="k">return</span> <span class="n">first</span> <span class="o">==</span> <span class="n">last</span> <span class="ow">and</span> <span class="n">palindrome</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
 
+
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
@@ -381,6 +387,7 @@ that form. For example the following middle recursive function:</p>
 
     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
+
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
@@ -396,6 +403,7 @@ that form. For example the following middle recursive function:</p>
         <span class="k">return</span> <span class="n">total</span>
 
     <span class="k">return</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">n</span> <span class="o">+</span> <span class="n">total</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
@@ -418,6 +426,7 @@ re-written into a tail recursive form:</p>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">result</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
 </code></pre></div>
@@ -465,7 +474,8 @@ calls are used.</p>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 </code></pre></div>
@@ -479,7 +489,8 @@ recursive functions.</p>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">result</span>
-    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 </code></pre></div>
@@ -494,6 +505,7 @@ algorithm:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection,%20List%0A%0Adef%20quicksort%28numbers%3A%20Collection%5Bfloat%5D%29%20-%3E%20List%5Bfloat%5D%3A%0A%20%20%20%20if%20len%28numbers%29%20%3C%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20numbers%0A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20left%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3C%20first%5D%0A%20%20%20%20right%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3E%3D%20first%5D%0A%20%20%20%20return%20quicksort%28left%29%20%2B%20%5Bfirst%5D%20%2B%20quicksort%28right%29%0A%0Aassert%20quicksort%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%20list%28range%286%29%29%0Aassert%20quicksort%28list%28reversed%28range%2810%29%29%29%29%20%3D%3D%20list%28range%2810%29%29&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
 
+
 <span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">numbers</span>
@@ -503,6 +515,7 @@ algorithm:</p>
     <span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rest</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">first</span><span class="p">]</span>
     <span class="n">right</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rest</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">first</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">first</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">assert</span> <span class="n">quicksort</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))))</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
@@ -521,6 +534,7 @@ value of a list:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Iterable%0A%0Adef%20maximum%28numbers%3A%20Iterable%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20rest_max%20%3D%20maximum%28rest%29%0A%20%20%20%20return%20first%20if%20first%20%3E%20rest_max%20else%20rest_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
+
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
@@ -528,6 +542,7 @@ value of a list:</p>
 
     <span class="n">rest_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">first</span> <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">rest_max</span> <span class="k">else</span> <span class="n">rest_max</span>
+
 
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
@@ -537,6 +552,7 @@ value of a list:</p>
 <p>This holds even if re-written into a tail-recursive form:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Optional,%20Iterable%0A%0Adef%20maximum%28numbers%3A%20Iterable%5Bfloat%5D,%20max_value%3A%20Optional%5Bfloat%5D%20%3D%20None%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20if%20max_value%20is%20None%20or%20first%20%3E%20max_value%3A%0A%20%20%20%20%20%20%20%20max_value%20%3D%20first%0A%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20max_value%0A%0A%20%20%20%20return%20maximum%28rest,%20max_value%29%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterable</span>
+
 
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">max_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
@@ -549,6 +565,7 @@ value of a list:</p>
 
     <span class="k">return</span> <span class="n">maximum</span><span class="p">(</span><span class="n">rest</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>
 
+
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 </code></pre></div>
 
@@ -560,6 +577,7 @@ approach, the recursive stack will be shorter.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection%0A%0Adef%20maximum%28numbers%3A%20Collection%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20middle%20%3D%20len%28numbers%29%20//%202%0A%20%20%20%20left_max%20%3D%20maximum%28numbers%5B%3Amiddle%5D%29%0A%20%20%20%20right_max%20%3D%20maximum%28numbers%5Bmiddle%3A%5D%29%0A%20%20%20%20return%20left_max%20if%20left_max%20%3E%20right_max%20else%20right_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
 
+
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
@@ -569,6 +587,7 @@ approach, the recursive stack will be shorter.</p>
     <span class="n">left_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
     <span class="n">right_max</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
     <span class="k">return</span> <span class="n">left_max</span> <span class="k">if</span> <span class="n">left_max</span> <span class="o">&gt;</span> <span class="n">right_max</span> <span class="k">else</span> <span class="n">right_max</span>
+
 
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
@@ -595,8 +614,8 @@ knowledge, such an approach may not apply to other functions.</p>
     <span class="n">fib_m_1</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">is_odd</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fib_m_1</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">+</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">fib_m_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">fib_m</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">+</span> <span class="n">fib_m</span><span class="o">**</span><span class="mi">2</span>
 
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
@@ -614,8 +633,8 @@ changing its structure to return two values at once:</p>
             <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 
         <span class="n">fib_m</span><span class="p">,</span> <span class="n">fib_m_1</span> <span class="o">=</span> <span class="n">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">nth</span> <span class="o">=</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span>
-        <span class="n">nth_plus_one</span> <span class="o">=</span> <span class="n">fib_m</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">fib_m_1</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">nth</span> <span class="o">=</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">fib_m</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">nth_plus_one</span> <span class="o">=</span> <span class="n">fib_m</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">fib_m_1</span><span class="o">**</span><span class="mi">2</span>
 
         <span class="n">is_odd</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="n">is_odd</span><span class="p">:</span>
@@ -625,6 +644,7 @@ changing its structure to return two values at once:</p>
 
     <span class="n">nth</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">nth</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 </code></pre></div>
@@ -649,6 +669,7 @@ arise in mathematical fields. One example is the <a href="https://mathworld.wolf
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_g</span><span class="p">(</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
+
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
 
@@ -664,7 +685,8 @@ has triple nesting recursion for example:</p>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
 
-<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span>  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </code></pre></div>
 
 <p><a href="/blog/images/recursion/recursive_hofstadter_h.png"><img alt="Recursive Hofstadter H" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_h-thumbnail.png" width="9794"></a></p>
@@ -685,6 +707,7 @@ also tail recursive.</p>
         <span class="k">return</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    
     <span class="k">return</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
+
 <span class="k">assert</span> <span class="p">[</span><span class="n">ackermann</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 </code></pre></div>
 
@@ -704,10 +727,12 @@ determines if a number is odd or even:  </p>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="n">is_odd</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
+
 <span class="k">def</span> <span class="nf">is_odd</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="n">is_even</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">is_odd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
@@ -726,7 +751,8 @@ following direct multi-recursive function that computes the nth Lucas number:</p
         <span class="k">return</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
 </code></pre></div>
@@ -740,7 +766,7 @@ recursive form:</p>
         <span class="k">return</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -748,7 +774,8 @@ recursive form:</p>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 
@@ -780,6 +807,7 @@ mutually recursive functions.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=import%20math%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20int%28math.log2%28multiply_last_two%28n%20-%201%29%20*%20multiply_last_two%28n%20-%202%29%29%29%0A%0Adef%20multiply_last_two%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20return%202%20**%20%28fibonacci%28n-1%29%20%2B%20fibonacci%28n-2%29%29%0A%0A%0Aassert%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%20%3D%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D%0Aassert%20%5Bmultiply_last_two%28i%29%20for%20i%20in%20range%287%29%5D%20%3D%3D%20%5B1,%202,%202,%204,%208,%2032,%20256%5D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
+
 <span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -787,12 +815,13 @@ mutually recursive functions.</p>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)))</span>
 
+
 <span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
 
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
@@ -809,10 +838,12 @@ mutually recursive functions.</p>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_male</span><span class="p">(</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
+
 <span class="k">def</span> <span class="nf">hofstadter_male</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_female</span><span class="p">(</span><span class="n">hofstadter_male</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_male</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -826,6 +857,7 @@ recursive form, where each function uses the other two and itself.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=import%20math%0A%0Adef%20lucas%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28%0A%20%20%20%20%20%20%20%202%20*%20math.log2%28multiply_last_two%28n%20-%201%29%20*%20multiply_last_two%28n%20-%202%29%29%0A%20%20%20%20%20%20%20%20-%20fibonacci%28n-1%29%20%2B%20lucas%28n-2%29%0A%20%20%20%20%29%0A%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28fibonacci%28n-1%29%20%2B%20lucas%28n-1%29%29%20//%202%0A%0A%0Adef%20multiply_last_two%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20return%202%20**%20%281.5%20*%20fibonacci%28n-2%29%20%2B%200.5%20*%20lucas%28n-2%29%29%0A%0A%0Aassert%20%5Blucas%28i%29%20for%20i%20in%20range%286%29%5D%20%3D%3D%20%5B2,%201,%203,%204,%207,%2011%5D%0A%0Aassert%20%5Bfibonacci%28i%29%20for%20i%20in%20range%286%29%5D%20%3D%3D%20%5B0,%201,%201,%202,%203,%205%5D%0A%0Aassert%20%5Bmultiply_last_two%28i%29%20for%20i%20in%20range%286%29%5D%20%3D%3D%20%5B1,%202,%202,%204,%208,%2032%5D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
+
 <span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2</span>
@@ -833,7 +865,8 @@ recursive form, where each function uses the other two and itself.</p>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
-        <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="o">-</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
     <span class="p">)</span>
 
 
@@ -842,7 +875,7 @@ recursive form, where each function uses the other two and itself.</p>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
 
 
 <span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -850,7 +883,7 @@ recursive form, where each function uses the other two and itself.</p>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
 
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
@@ -881,6 +914,7 @@ standard library. </p>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
 <span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+
 
 <span class="k">def</span> <span class="nf">memoize</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]:</span>
     <span class="n">cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -977,39 +1011,148 @@ simulate a lazy evaluation.</p>
 <p>The following is an example of how to implement the tail recursive Fibonacci
 using trampolining for <code>fibonacci(10000)</code> which would normally cause
 <a href="https://docs.python.org/3/library/exceptions.html#RecursionError" target="_blank"><code>RecursionError</code></a>.</p>
-<p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20TypeVar,%20Callable%0A%0AT%20%3D%20TypeVar%28%22T%22%29%0ATrampolineFunction%20%3D%20%22int%20%7C%20Callable%5B%5B%5D,%20int%20%7C%20TrampolineFunction%5D%22%0A%0Adef%20trampoline%28function%3A%20TrampolineFunction%29%20-%3E%20int%3A%0A%20%20%20%20if%20not%20callable%28function%29%3A%0A%20%20%20%20%20%20%20%20return%20function%0A%0A%20%20%20%20result%20%3D%20function%28%29%0A%20%20%20%20while%20callable%28result%29%3A%0A%20%20%20%20%20%20%20%20result%20%3D%20result%28%29%0A%20%20%20%20return%20result%0A%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%20-%3E%20TrampolineFunction%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20lambda%3A%20fibonacci%28n-1,%20result,%20partial_result%2Bresult%29%0A%0A%23%20Python%20Tutor%20Recursion%20limit%20is%2030%20which%20is%20much%20less%20than%20%0A%23%20the%20needed%20for%20computing%20fibonacci%2830%29%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
+<p><a href="https://pythontutor.com/visualize.html#code=def%20trampoline%28function_or_result%29%3A%0A%20%20%20%20if%20not%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20return%20function_or_result%0A%0A%20%20%20%20while%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20function_or_result%20%3D%20function_or_result%28%29%0A%0A%20%20%20%20return%20function_or_result%0A%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20lambda%3A%20fibonacci%28n%20-%201,%20result,%20partial_result%20%2B%20result%29%0A%0A%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
-<span class="n">TrampolineFunction</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;int | Callable[[], int | TrampolineFunction]&quot;</span>
-
-<span class="k">def</span> <span class="nf">trampoline</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">TrampolineFunction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">function</span>
-
-    <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span>
-    <span class="k">while</span> <span class="n">callable</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">result</span>
+<span class="n">TrampolineFunction</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;Callable[[], T | TrampolineFunction[T]]&quot;</span>
 
 
-<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrampolineFunction</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">trampoline</span><span class="p">(</span><span class="n">function_or_result</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="n">TrampolineFunction</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">function_or_result</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">function_or_result</span>
+
+    <span class="k">while</span> <span class="n">callable</span><span class="p">(</span><span class="n">function_or_result</span><span class="p">):</span>
+        <span class="n">function_or_result</span> <span class="o">=</span> <span class="n">function_or_result</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">function_or_result</span>
+
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">TrampolineFunction</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">result</span>
 
-    <span class="n">continuation</span><span class="p">:</span> <span class="n">TrampolineFunction</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span><span class="o">+</span><span class="n">result</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">continuation</span>
+    <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
 
-<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;3364476487&#39;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>This way of programming has several similarities with the <a href="https://en.wikipedia.org/wiki/Continuation-passing_style" target="_blank">continuation passing
-style</a> since instead of executing the command, the function defers the
+<p>This way of programming has several similarities with the <a href="https://en.wikipedia.org/wiki/Continuation-passing_style">continuation passing
+style</a>{:
+target="_blank"} since instead of executing the command, the function defers the
 execution to another function which in the end runs the command. In Object
 Oriented Programming similar behavior could have been achieved using the
-<a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank">Command Pattern</a>.</p>
+<a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank">Command
+Pattern</a>.</p>
+<p>This particular implementation has a significant drawback, it hinders debugging
+and makes it less transparent, as can be seen in the run step-by-step example.
+This is the reason why the author of Python <a href="http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html" target="_blank">rejected the
+proposal</a>
+to incorporate tail call optimization into the language.</p>
+<p>The implementation above using <code>lambda</code>s is typical of other languages like
+Javascript. In Python, it is possible to implement it in a different way
+following <a href="http://neopythonic.blogspot.com/2009/04/final-words-on-tail-calls.html" target="_blank">Guido's
+approach</a>
+which makes debugging easier and less cryptic. On the other hand, types become a
+bit more convoluted.</p>
+<p><a href="https://pythontutor.com/visualize.html#code=def%20trampoline%28function,%20args%29%3A%0A%20%20%20%20result%20%3D%20function%28*args%29%0A%0A%20%20%20%20while%20hasattr%28result,%20%22__iter__%22%29%3A%0A%20%20%20%20%20%20%20%20function,%20args%20%3D%20result%0A%20%20%20%20%20%20%20%20result%20%3D%20function%28*args%29%0A%0A%20%20%20%20return%20result%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20fibonacci,%20%28n-1,%20result,%20partial_result%20%2B%20result%29%0A%0Aassert%20trampoline%28fibonacci,%20%2830,%20%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+
+<span class="n">TrampolineFunction</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;Callable[..., T | TrampolineResult[T] | T]&quot;</span>
+<span class="n">TrampolineArgs</span> <span class="o">=</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+<span class="n">TrampolineResult</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;tuple[TrampolineFunction[T], TrampolineArgs[T]]&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">trampoline</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">TrampolineFunction</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">args</span><span class="p">:</span> <span class="n">TrampolineArgs</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;TrampolineResult[T]&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="n">function</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">TrampolineFunction</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">|</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">,</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A combination of the previous two approaches can also be achieved by using
+<a href="https://en.wikipedia.org/wiki/Partial_evaluation?oldformat=true" target="_blank">partial
+evaluation</a>
+through <code>functools.partial</code>. This way, the code is simpler and more similar to
+what one could find in other languages while still being easy to debug:</p>
+<p><a href="https://pythontutor.com/visualize.html#code=from%20functools%20import%20partial%0A%0Adef%20trampoline%28function_or_result%29%3A%0A%20%20%20%20if%20not%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20return%20function_or_result%0A%0A%20%20%20%20while%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20function_or_result%20%3D%20function_or_result%28%29%0A%0A%20%20%20%20return%20function_or_result%0A%0Adef%20fibonacci%28n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20partial%28fibonacci,%20n%3Dn%20-%201,%20partial_result%3Dresult,%20result%3Dpartial_result%20%2B%20result%29%0A%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
+
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">TrampolineFunction</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;Callable[[], T | TrampolineFunction[T]]&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">trampoline</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="n">TrampolineFunction</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">function</span>
+
+    <span class="k">while</span> <span class="n">callable</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">function</span>
+
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">TrampolineFunction</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">partial</span><span class="p">(</span>
+        <span class="n">fibonacci</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">partial_result</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span>
+    <span class="p">)</span>
+
+
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Trampolines allow to convert of recursive function calls into iterations. There
+is no built-in support like with the memoized technique and due to technical
+limitations, it is not possible to implement them as decorators, which would
+reduce the changes needed on the original function. The different
+implementations shown should give a grasp of what is possible and how it could
+be applied to other functions.</p>
+<p>It is also possible to modify the default configuration of the interpreter to
+allow deeper recursions though. This can be done by setting a higher value to
+the
+<a href="https://docs.python.org/3/library/sys.html#sys.setrecursionlimit" target="_blank"><code>sys.setrecursionlimit</code></a>.
+This method requires however access to the <code>sys</code> module which may not be always
+available or editable.</p>
 <h2 id="call-by-need"><a class="toclink" href="#call-by-need">Call-By-Need</a></h2>
 <p>Some programming languages execute instructions following a <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Non-strict_binding_strategies" target="_blank">non-strict binding
 strategy</a>, that is, the parameters of a function are not evaluated before
