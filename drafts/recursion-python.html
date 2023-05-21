@@ -197,32 +197,31 @@ them may have a huge impact on some programming languages. Before showing what
 the recursive version of the factorial looks like, it is important to clarify
 some concepts.</p>
 <h2 id="why-recursion"><a class="toclink" href="#why-recursion">Why Recursion?</a></h2>
-<p>Recursion in and of itself is a wide field in computer science which may attract
-attention. However, it is sometimes portrayed as a difficult topic and receives
+<p>Recursion in and of itself is a wide field in computer science that may attract attention. However, it is sometimes portrayed as a difficult topic and receives
 less attention that other techniques. </p>
 <p>Although some may avoid recursion altogether, there are clear and noticeable
 benefits of using recursive functions, such as:</p>
 <ul>
-<li><strong>Declarative style</strong>: recursive functions are written by thinking <strong>what</strong>
-  the function does instead of <strong>how</strong> it does it. Iterative style usually leads
-  the programmer to think about low level details like indexes and pointers
-  whereas recursion brings the whole problem into mind.</li>
-<li><strong>Simplicity and Readability</strong>: Recursive functions can provide a more elegant and
-  concise solution for solving complex problems by breaking them down into
+<li><strong>Declarative style</strong>: Recursive functions are written by thinking <strong>what</strong>
+  the function does instead of <strong>how</strong> it does it. The iterative style usually
+  leads the programmer to think about low-level details like indexes and
+  pointers whereas recursion brings the whole problem into mind.</li>
+<li><strong>Simplicity and Readability</strong>: Recursive functions can provide a more elegant
+  and concise solution for solving complex problems by breaking them down into
   simpler subproblems. The recursive approach often closely resembles the
   problem's definition, making the code more intuitive and easier to understand.</li>
-<li><strong>Divide and Conquer</strong>: Recursive functions can leverage the divide and conquer
-  technique, where a problem is divided into smaller subproblems that are solved
-  independently. This approach simplifies the problem-solving process by
-  reducing complex tasks into manageable pieces.</li>
-<li><strong>Code Reusability</strong>: Recursive functions are often reusable. Once implemented,
-  they can be called multiple times with different inputs, allowing for
-  efficient and modular code. Recursive functions can be applied to various
+<li><strong>Divide and Conquer</strong>: Recursive functions can leverage the divide and
+  conquer technique, where a problem is divided into smaller subproblems that
+  are solved independently. This approach simplifies the problem-solving process
+  by reducing complex tasks into manageable pieces.</li>
+<li><strong>Code Reusability</strong>: Recursive functions are often reusable. Once
+  implemented, they can be called multiple times with different inputs, allowing
+  for efficient and modular code. Recursive functions can be applied to various
   instances of the same problem, enabling code reuse and promoting good software
   engineering practices.</li>
-<li><strong>Handling Recursive Structures</strong>: Recursive functions are especially useful when
-  dealing with recursive data structures, such as trees or linked lists. The
-  recursive nature of the data can be mirrored in the recursive functions,
+<li><strong>Handling Recursive Structures</strong>: Recursive functions are especially useful
+  when dealing with recursive data structures, such as trees or linked lists.
+  The recursive nature of the data can be mirrored in the recursive functions,
   making it easier to traverse, manipulate, or process such structures.</li>
 <li><strong>Mathematical and Algorithmic Modeling</strong>: Many mathematical and algorithmic
   problems are naturally defined in terms of recursion. Recursive functions
@@ -264,9 +263,9 @@ function.</p>
 </ul>
 <p>Besides the previous classification, all recursive functions must have a
 termination condition or else they would enter in an infinite loop. Even though
-it is not necessary that recursive functions are pure (i.e. they do not have
-side effects), it is common for recursive functions to be pure, this simplifies
-the interpretation. All the examples in this article are pure functions.</p>
+recursive functions do not need to be pure (i.e. they do not have side effects),
+it is common for recursive functions to be pure, this simplifies the
+interpretation. All the examples in this article are pure functions.</p>
 <h2 id="linear-recursion"><a class="toclink" href="#linear-recursion">Linear Recursion</a></h2>
 <p>Linear recursion refers to functions where there is <strong>only one recursive call</strong>.</p>
 <p>Based on the position of the recursive call it could be further subdivided into:</p>
@@ -311,9 +310,9 @@ variables to store interim results:</p>
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
 </code></pre></div>
 
-<p>In this more explicit implementation it is clearer that the last logical
+<p>In this more explicit implementation, it is clearer that the last logical
 statement is the multiplication <code>n * previous_factorial</code>. </p>
-<p>The call graph in the case of linear recursive functions is a series a nodes
+<p>The call graph in the case of linear recursive functions is a series of nodes
 called sequentially, hence the name:</p>
 <p><a href="/blog/images/recursion/recursive_factorial.png"><img alt="Recursive Factorial Call Graph" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/recursive_factorial-thumbnail.png" width="200"></a></p>
 <p>When the last statement is the recursive call, the function is called tail
@@ -386,7 +385,7 @@ that form. For example the following middle recursive function:</p>
 </code></pre></div>
 
 <p><a href="/blog/images/recursion/recursive_sum_integer_up_to_n.png"><img alt="Recursive Sum Integer up to N" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_sum_integer_up_to_n.png" src="https://elc.github.io/blog/images/recursion/recursive_sum_integer_up_to_n-thumbnail.png" width="400"></a></p>
-<p>Can be rewritten into tail recursive form as:</p>
+<p>Can be rewritten into tail-recursive form as:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20sum_integer_up_to_n%28n%3A%20int,%20total%3A%20int%20%3D%200%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Sums%20all%20integers%20from%20zero%20to%20n.%20Using%20Tail%20recursion%22%22%22%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20total%0A%0A%20%20%20%20return%20sum_integer_up_to_n%28n%20-%201,%20total%3Dn%20%2B%20total%29%0A%0Aassert%20sum_integer_up_to_n%281%29%20%3D%3D%201%0Aassert%20sum_integer_up_to_n%283%29%20%3D%3D%206&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Sums all integers from zero to n. Using Tail recursion&quot;&quot;&quot;</span>
@@ -568,7 +567,7 @@ approach, the recursive stack will be shorter.</p>
 Fibonacci, it is not trivial to use a tree approach that reduces the number of
 recursive calls. A known solution called Fast Doubling has been discovered.
 Deriving this implementation requires a lot of effort and mathematical
-knowledge, such approach may not apply to other functions.</p>
+knowledge, such an approach may not apply to other functions.</p>
 <p>The Fast Doubling Implementation is as follows:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%23%20Fast%20Doubling%20Method%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20%0A%20%20%20%20is_odd%20%3D%20n%20%25%202%0A%20%20%20%20m%20%3D%20n%20//%202%20%2B%20is_odd%0A%20%20%20%20fib_m%20%3D%20fibonacci%28m%29%0A%20%20%20%20fib_m_1%20%3D%20fibonacci%28m%20-%201%29%0A%0A%20%20%20%20if%20is_odd%3A%0A%20%20%20%20%20%20%20%20return%20fib_m_1%20**%202%20%2B%20fib_m%20**%202%0A%20%20%20%20return%202%20*%20fib_m%20*%20fib_m_1%20%2B%20fib_m%20**%202%0A%0A%20%20%20%20%0Aassert%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%20%3D%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -902,7 +901,7 @@ of <code>fibonacci(5)</code>:</p>
 15 calls to 9):</p>
 <p><a href="/blog/images/recursion/recursive_memoized_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/recursive_memoized_fibonacci.png" src="https://elc.github.io/blog/images/recursion/recursive_memoized_fibonacci-thumbnail.png" width="2125"></a></p>
 <p>Depending on the implementation, the effect of memoization is similar to
-<em>linearizing</em> the multi recursive function, as the tree has much fewer branches
+<em>linearizing</em> the multi-recursive function, as the tree has much fewer branches
 while the depth is kept the same.</p>
 <p>If considering the Fibonacci Fast Doubles implementation of <code>fibonacci(10)</code>:</p>
 <p><a href="/blog/images/recursion/non_memoized_fast_double_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/non_memoized_fast_double_fibonacci.png" src="https://elc.github.io/blog/images/recursion/non_memoized_fast_double_fibonacci-thumbnail.png" width="4106"></a></p>
@@ -917,7 +916,7 @@ while the depth is kept the same.</p>
 <p><a href="/blog/images/recursion/recursive_hofstadter_h.png"><img alt="Recursive Hofstadter H" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_h-thumbnail.png" width="9794"></a></p>
 <p>And now memoized (from 22 to 10 calls)</p>
 <p><a href="/blog/images/recursion/memoized_hofstadter_h.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/memoized_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/memoized_hofstadter_h-thumbnail.png" width="2125"></a></p>
-<p>The same applies for more complex functions like the Ackermann function with
+<p>The same applies to more complex functions like the Ackermann function with
 <code>Ackermann(2, 3)</code>:</p>
 <p><a href="/blog/images/recursion/recursive_ackermann.png"><img alt="Recursive Ackerman" class="b-lazy" data-src="/blog/images/recursion/recursive_ackermann.png" src="https://elc.github.io/blog/images/recursion/recursive_ackermann-thumbnail.png" width="6185"></a></p>
 <p>And now memoized (from 44 calls to 23):</p>
