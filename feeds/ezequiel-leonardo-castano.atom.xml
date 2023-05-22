@@ -16,6 +16,35 @@ Including cases of head, tail, nested and mutual recursion. For each case, the
 call graph will be shown.&lt;/p&gt;
 
 
+&lt;p&gt;Content covered in this post:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#an-old-friend-the-factorial"&gt;An old friend: The Factorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recursion"&gt;Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#why-recursion"&gt;Why Recursion?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#direct-vs-indirect-recursion"&gt;Direct vs Indirect Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#linear-recursion"&gt;Linear Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tail-recursion"&gt;Tail Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#multi-recursion"&gt;Multi Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#general-non-linear-recursion"&gt;General Non-Linear Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tree-recursion"&gt;Tree Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#converting-non-tree-recursion-into-tree-recursion"&gt;Converting non-tree recursion into tree recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nested-recursion"&gt;Nested Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#triple-nested-recursion"&gt;Triple Nested Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nested-recursion-with-more-than-one-argument"&gt;Nested Recursion with more than one argument&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#indirect-recursion"&gt;Indirect Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mutual-linear-recursion"&gt;Mutual Linear Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mutual-multi-recursion"&gt;Mutual Multi Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mutual-nested-recursion"&gt;Mutual Nested Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mutual-triple-recursion"&gt;Mutual Triple Recursion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recursion-related-techniques"&gt;Recursion related techniques&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#memoization"&gt;Memoization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#memoization-examples"&gt;Memoization Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#trampolining"&gt;Trampolining&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#call-by-need"&gt;Call-By-Need&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id="an-old-friend-the-factorial"&gt;&lt;a class="toclink" href="#an-old-friend-the-factorial"&gt;An old friend: The Factorial&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Many if not all programming courses introduce the factorial function at some
 point. This function has great mathematical importance and yet it is simple
