@@ -144,6 +144,7 @@ a[href*="github.com"]:after {
   color: #B8B8B8;
   font-size: 12pt;
   padding: 20px 0 20px 0;
+  margin-top: 2em;
 }
 @media only screen and (min-width: 768px) {
   .footer {
@@ -570,6 +571,7 @@ a[href*="github.com"]:after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0.5em;
 }
 .share a {
   text-decoration: none;
