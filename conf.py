@@ -21,7 +21,7 @@ else:
     SITEURL = "http://localhost:5500"
     RELATIVE_URLS = True
 
-COPYRIGHT_YEAR = 2020
+COPYRIGHT_YEAR = 2023
 AUTHOR = "Ezequiel Leonardo Castaño"
 AUTHOR_EMAIL = "castanoezequielleonardo@gmail.com"
 AUTHOR_AVATAR = r"https://i.imgur.com/6xypjCl.png"
@@ -130,7 +130,7 @@ MATH_JAX = {"responsive_align ": True, "responsive": True}
 
 # ERT
 
-ERT_WPM = 150
+ERT_WPM = 250
 ERT_FORMAT = "{time}"
 
 # Localization
