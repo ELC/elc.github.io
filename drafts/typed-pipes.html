@@ -170,7 +170,7 @@ functions and if the types are not enforced, unexpected behaviour could arise.</
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose_example.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_example.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_example-thumbnail.png" width="1724"></a></p>
 <p>When using the typed version, both MyPy and Pyright can infer the resulting type:</p>
 <p>PyRight (through Pylance)
-<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_pylance.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance-thumbnail.png" width="870"></a></p>
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_pylance.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance-thumbnail.png" width="870"></a></p>
 <p>MyPy
 <a class="gallery" href="/blog/images/til-typed-pipes/compose_mypy.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_mypy.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_mypy-thumbnail.png" width="1070"></a></p>
 <p>One important aspect of function composition is that it is not commutative, that
@@ -183,13 +183,34 @@ flag types imcompatibility. Take for example trying to <code>add_one</code> to t
 of <code>convert_to_string</code>.</p>
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_error-thumbnail.png" width="1724"></a></p>
 <p>PyRight (through Pylance)
-<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_pylance_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance_error-thumbnail.png" width="771"></a></p>
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance_error.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_pylance_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance_error-thumbnail.png" width="771"></a></p>
 <p>MyPy
-<a class="gallery" href="/blog/images/til-typed-pipes/compose_mypy_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_mypy_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_mypy_error-thumbnail.png" width="926"></a></p>
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_mypy_error.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_mypy_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_mypy_error-thumbnail.png" width="926"></a></p>
 <p>The error from MyPy may not be descriptive enough but at least points into the
 right direction. Pyright is able to identify the exact cause of the the problem:
 <code>add_one</code> takes an <code>int</code> but it is receiving a <code>str</code> as the output of
 <code>convert_to_string</code>.</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PipeEagerSameType</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">T</span>
+
+    <span class="k">def</span> <span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PipeEagerSameType</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+</code></pre></div>
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
