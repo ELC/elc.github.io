@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>TIL - Type Safe Pipes and the Compose Function 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+
+    <!-- Meta -->
+    <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
+    <meta name="description" content="Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="image" content="">    
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="UKZ1mYz9vI6xkYtBnIQL-cjCusUxX-2fKT7wdtJEdZU" />
+
+    <!-- Social -->
+      <meta property="article:author" content="Ezequiel Leonardo Castaño" />
+      <meta property="article:section" content="Programming" />
+      <meta property="article:published_time" content="2023-09-23" />
+
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="TIL - Type Safe Pipes and the Compose Function"/>
+      <meta property="og:description" content=""/>
+      <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
+      <meta property="og:url" content="https://elc.github.io/drafts/typed-pipes.html/"/>
+      <meta property="og:image" content=""/>
+
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="TIL - Type Safe Pipes and the Compose Function">
+      <meta name="twitter:description" content="">
+      <meta name="twitter:url" content="https://elc.github.io/drafts/typed-pipes.html/">
+      <meta name="twitter:image" content="">
+    
+
+    <!-- Feed -->
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/ELCWEB" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feeds/all.atom.xml" title="Ezequiel Leonardo Castaño Personal Website Atom Feed" />
+
+    <!-- Comments -->
+
+      <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=02e14a0">
+
+    <!-- Fonts -->
+    <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
+
+    <!-- Localization -->
+    <link rel="prefetch" type="application/l10n" href="https://elc.github.io/localization.ini" />
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://elc.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://elc.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://elc.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://elc.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://elc.github.io/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    
+  </head>
+
+  <body>
+
+    <a id="topbar"></a>
+
+<nav class="nav-bar">
+    <h1><a href="https://elc.github.io" class="logo" title="Home">EL</a></h1>
+    <input class="nav-menu-btn" type="checkbox" id="nav-menu-btn" />
+    <label class="nav-menu-icon" for="nav-menu-btn"><span class="nav-icon"></span></label>
+    <ul class="nav-menu">
+        <li class="nav-menu__entry" ><a href="https://elc.github.io">Home</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/about/" data-l10n-id="about">about</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">portfolio</a></li>
+                <li class="nav-menu__entry" ><a href="https://elc.github.io/publications.html" data-l10n-id="publications">publications</a></li>
+    </ul>
+</nav>
+<div class="nav-separator"></div>
+  
+    <aside class="ethical">
+    <div>
+      <div data-ea-keywords=Python|Type></div>
+    </div>
+    </aside>
+
+
+
+<article class="article">
+
+  <header class="article__header">
+    <h1>TIL - Type Safe Pipes and the Compose Function</h1>
+    
+<div class="article__subheader">
+
+    <!-- Metadata -->
+    <div class="article__metadata">
+        <div class="article__metadata-item">
+            <time datetime="2023-09-23 00:00:00-03:00"><b>23 Sep 2023</b></time>
+        </div>
+    
+        <!-- Time to Read -->
+            <div class="article__metadata-item">
+                <b>2 min <span data-l10n-id="to-read">to read</span></b>
+            </div>
+            
+    </div>
+
+</div>
+
+<!-- Translations -->
+<div class="article__translations">
+
+
+    
+</div>  </header>
+
+
+  <section>
+    <!-- PELICAN_BEGIN_SUMMARY -->
+
+<p>Different ways to type compose and pipe functionality using several Python
+Features.</p>
+<!-- PELICAN_END_SUMMARY -->
+
+<h2 id="function-composition"><a class="toclink" href="#function-composition">Function Composition</a></h2>
+<p>There are two notations for function composition one with a right to left
+direction and one with a left to right direction. Namely:</p>
+<p>Right to left:</p>
+<div class="math">$$f∘g = f(g(x))$$</div>
+<p>Left to right:</p>
+<div class="math">$$f∘g = g(f(x))$$</div>
+<p>The traditional notation in math is the right to left one. Some languages like
+Haskell have built-in syntax for both. In Haskell the usual way to do
+composition is with <code>.</code> which is right ot left, it is also possible to use <code>&gt;&gt;&gt;</code>
+for left to right composition. </p>
+<p>On the other hand, one of the most common ways to compose functions in
+programming is through Unix Pipes which use the <code>|</code> operator, which conversely
+is left to right composition.</p>
+<p>That means that when implementing a <code>compose</code> or a <code>pipe</code> function is not
+trivial which orientation to choose as they are competing notations. In the
+context of programming the left to right orientation is more common.</p>
+<p>All the examples here will use the left to right orientation.</p>
+<h2 id="the-compose-function"><a class="toclink" href="#the-compose-function">The compose function</a></h2>
+<p>The compose function is a function that takes two functions <code>f</code> and <code>g</code> and
+returns a new functions that performs <code>g</code> and then <code>f</code>. In Python a generic
+implementation looks like this:</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/compose.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose-thumbnail.png" width="1724"></a></p>
+<p>For this to work, it is necessary that the output of <code>f</code> matches the input of
+<code>g</code>, or otherwise the execution may fail. To enforced this relationship a typed
+version of composed can be written as follows:</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_typed.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_typed.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_typed-thumbnail.png" width="1724"></a></p>
+<p>This implementation uses Python 3.10's <code>ParamSpec</code>, which allows to type <code>*args</code>
+and <code>**kwargs</code>.</p>
+<p>Having a typed version is important as one typical case is composing multiple
+functions and if the types are not enforced, unexpected behaviour could arise.</p>
+<p>One example of using this compose implementation is the following:</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_example.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_example.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_example-thumbnail.png" width="1724"></a></p>
+<p>When using the typed version, both MyPy and Pyright can infer the resulting type:</p>
+<p>PyRight (through Pylance)
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_pylance.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance-thumbnail.png" width="870"></a></p>
+<p>MyPy
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_mypy.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_mypy.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_mypy-thumbnail.png" width="1070"></a></p>
+<p>One important aspect of function composition is that it is not commutative, that
+is </p>
+<div class="math">$$f∘g \neq g∘f$$</div>
+<p>. There may be cases where both are equivalent but most of
+the times it is not.</p>
+<p>And this is helpful when programming as the IDE can automatically detects and
+flag types imcompatibility. Take for example trying to <code>add_one</code> to the result
+of <code>convert_to_string</code>.</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_error-thumbnail.png" width="1724"></a></p>
+<p>PyRight (through Pylance)
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_pylance_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance_error-thumbnail.png" width="771"></a></p>
+<p>MyPy
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_mypy_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_mypy_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_mypy_error-thumbnail.png" width="926"></a></p>
+<p>The error from MyPy may not be descriptive enough but at least points into the
+right direction. Pyright is able to identify the exact cause of the the problem:
+<code>add_one</code> takes an <code>int</code> but it is receiving a <code>str</code> as the output of
+<code>convert_to_string</code>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </section>
+
+
+  <footer>
+
+<!-- Previous And Next Articles -->
+
+<!-- Share -->
+<section>
+    <h2 class="share-invitation"><span data-l10n-id="share-invitation">Did you like this article? Share it!</span></h2>
+
+    <div class="share">
+        
+
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20TIL%20-%20Type%20Safe%20Pipes%20and%20the%20Compose%20Function" target="_blank" class="twitter-button"
+        onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
+            <i class="fa fa-twitter"></i>
+            Twitter
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20TIL%20-%20Type%20Safe%20Pipes%20and%20the%20Compose%20Function" target="_blank" class="linkedin-button"
+        onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
+            <i class="fa fa-linkedin"></i>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- Contribution -->
+<section>
+    <div class="share">
+        <a target="_blank" class="contribute-button" 
+        href='https://github.com/ELC/elc.github.io-content/edit/master/blog/2023-til-typed-pipes.md'
+        onclick="ga('send', 'event', 'Contribution', 'click', 'Article Contribution'); return true" 
+        data-l10n-id="colaboration-button">
+        Found a bug or typo? Submit a PR!
+        </a>
+    </div>
+</section>
+
+
+<!-- News Letter Subscription -->
+
+<ul class="newsletter-container">
+    <li>
+        <input class="newsletter-check" type="radio" name="ac" id="a1" />
+        <label for="a1" class="newsletter-button" data-l10n-id="newsletter-button">Get notify when a new article is published! Subscribe to the Newsletter</label>
+        <section class="newsletter-content">
+            <h2>
+                <span data-l10n-id="subscribe-options">You can subscribe to the news feed via</span><strong> Feedly </strong>
+                <span data-l10n-id="or">or</span><strong> Email</strong>:
+            </h2>
+
+            <div class="share">
+                <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffeeds.feedburner.com%2FELCWEB' target='blank'
+                    onclick="ga('send', 'event', 'Feedly Subscribe Button', 'click', 'Newsletter'); return true">
+                    <img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'>
+                </a>
+
+                <a class="newsletter-button" target="popupwindow" href="https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB"
+                    onclick="window.open('https://feedburner.google.com/fb/a/mailverify?uri=ELCWEB', 'popupwindow', 'scrollbars=yes,width=550,height=450'); ga('send', 'event', 'Email Subscribe Button', 'click', 'Newsletter'); return true" >
+                    <i class="fa fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+            
+            <p>
+                <span data-l10n-id="newsletter-feedburner">In case you use another reader, check the full list in the </span>
+                <a href="http://feeds.feedburner.com/ELCWEB" target="_blank">FeedBurner Pages</a>
+            </p>
+
+        </section>
+    </li>
+</ul>
+
+<!-- Related Posts -->
+<section class="article-related">
+    <h2 class="article-related-title" data-l10n-id="related-posts">Related Posts</h2>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/angel" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage.png" src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/angel">ANGEL - An Oppinionated Guide on how to Learn Programming (focusing on Python)</a></h3>
+                
+                <p class="article-related-post-body-description">Courses and pieces of training claiming to deliver rapid results have become increasingly popular these days. Nonetheless, amidst the abundance of online resources, it can be challenging to distinguish valuable ones from the noise. Enter ANGEL, which stands for "ANGEL's Not a Guide to Effortlessly Learning." This guide presents readers with a practical approach to the programming learning experience. While the examples will be specific to Python, the reader can apply the core content to any programming language or framework.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/recursion-python" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/recursion/recursive-python_headerimage.png" src="https://elc.github.io/blog/images/recursion/recursive-python_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/recursion-python">Python Recursion: a Trampoline from the Mutual Head to the Memoized Nested Tail</a></h3>
+                
+                <p class="article-related-post-body-description">Recursion is a key concept of programming. However, it is usually only superficially explored. There are different ways of having recursion, this post will illustrate them using Python examples, call graphs and step-by-step runs. Including cases of head, tail, nested and mutual recursion. For each case, the call graph will be shown.</p>
+            </div>
+        </article>
+        <article class="article-related-post">
+                    <a class="article-related-post-link" href="https://elc.github.io/posts/streamlit-google-analytics" aria-label="Related Post">
+                        <img alt="Related Article Header Image" class="b-lazy article-related-post-link-img" data-src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage.png" src="https://elc.github.io/blog/images/streamlit-google-analytics/streamlit-google-analytics_headerimage-thumbnail.png">
+                    </a>
+          
+            <div class="article-related-post-body">
+                <h3 class="article-related-post-body-title"><a href="https://elc.github.io/posts/streamlit-google-analytics">Add Google Analytics (or any custom HTML) to Streamlit with Github Pages</a></h3>
+                
+                <p class="article-related-post-body-description">Streamlit is one of the most popular libraries for creating web apps using Python, and they also provide a service to freely host and share your apps. One of the issues with this free sharing capability is that one losses control over the app, for instance, it is no longer possible to control how the precise HTML will look like or add custom Open Graph or analytics. This post shows a simple and easy way to add all of this by using Github Pages.</p>
+            </div>
+        </article>
+</section>
+
+    <!-- Comments -->
+
+  <script src="https://utteranc.es/client.js"
+          repo="elc/elc.github.io-content"
+          issue-term="title"
+          label="Comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- <div id="disqus_thread"></div>
+  <script>    
+    var disqus_config = function () {
+      this.page.url = 'https://elc.github.io/drafts/typed-pipes.html';  
+      this.page.identifier = 'typed-pipes';
+      this.page.title = 'TIL - Type Safe Pipes and the Compose Function';
+    };
+    
+    (function() {
+      var d = document, s = d.createElement('script');
+      
+      s.src = 'https://elcgweb.disqus.com/embed.js';
+      
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> -->
+  </footer>
+
+</article>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <ul class="footer-container__column">
+                <li><a href="https://elc.github.io/about/" data-l10n-id="about">About</a></li>
+                <li><a href="https://elc.github.io/projects/" data-l10n-id="portfolio">Portfolio</a></li>
+                <li><a href="https://elc.github.io/publications.html" data-l10n-id="publications">Publications</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/categories/" data-l10n-id="categories">Categories</a></li>
+            <li><a href="https://elc.github.io/tags/" data-l10n-id="tags">Tags</a></li>
+        </ul>
+        <ul class="footer-container__column">
+            <li><a href="https://elc.github.io/archives/" data-l10n-id="archives">Archive</a></li>
+ 
+                    <li><a href="https://elc.github.io/disclaimer.html" data-l10n-id="disclaimer">Disclaimer</a></li>
+ 
+                    <li><a href="https://elc.github.io/donate.html" data-l10n-id="donate">Donate</a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>&copy; 2023 Ezequiel Leonardo Castaño</span>
+        <span>  <a href="http://feeds.feedburner.com/ELCWEB">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+    </div>
+</footer>
+    <a href="#topbar" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <script src="https://elc.github.io/theme/js/scripts.js?v=2949ee4" ></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3GBPLEV2K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y3GBPLEV2K');
+</script>
+
+
+<script id="dsq-count-scr" src="https://elcgweb.disqus.com/count.js" async></script>
+
+<script>
+
+  var options = {
+    sourceAttribute: "src",
+    showCloseButton: true
+  };
+
+  new LuminousGallery(document.querySelectorAll(".gallery"), options);
+</script>
+
+      <script>
+        var omitAds = false;
+        if (!omitAds){
+          
+          let dataType = "text";
+          let cssClasses = [];
+          let adPosition = "";
+          let adOrientation = "";
+          
+          if (window.matchMedia("(min-width: 1500px)").matches) {
+            dataType = "image"
+              
+            const position = ["fixed", "absolute"];
+            const randomPosition = Math.floor(Math.random() * position.length);
+            adPosition = position[randomPosition]
+            cssClasses.push(`ethical-image--${adPosition}`)
+            
+            const orientations = ["left", "right"];
+            const randomOrientation = Math.floor(Math.random() * orientations.length);
+            adOrientation = orientations[randomOrientation]
+            cssClasses.push(`ethical-image--${adOrientation}`)
+              
+            }
+            
+          let ethicalAd = document.querySelector('[data-ea-keywords]');
+          
+          ethicalAd.setAttribute("data-ea-publisher", "elcgithubio");
+          ethicalAd.setAttribute("data-ea-type", dataType);
+          ethicalAd.setAttribute("id", `${dataType}-${adPosition}-${adOrientation}`);
+          ethicalAd.parentElement.classList.add(`ethical-${dataType}`)
+          ethicalAd.parentElement.classList.add(...cssClasses)
+
+        }
+      </script>
+      
+      <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+
+  </body>
+
+</html>
