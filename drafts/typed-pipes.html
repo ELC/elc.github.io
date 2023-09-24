@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>TIL - Type Safe Pipes and the Compose Function 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
+    <title>Type Safe Pipelines and the Compose Function 	&#124; Ezequiel Leonardo Castaño Personal Website</title>
 
     <!-- Meta -->
     <meta name="name" content="Ezequiel Leonardo Castaño Personal Website">
@@ -24,14 +24,14 @@
       <meta property="article:published_time" content="2023-09-23" />
 
       <meta property="og:type" content="article"/>
-      <meta property="og:title" content="TIL - Type Safe Pipes and the Compose Function"/>
+      <meta property="og:title" content="Type Safe Pipelines and the Compose Function"/>
       <meta property="og:description" content=""/>
       <meta property="og:site_name" content="Ezequiel Leonardo Castaño Personal Website" />
       <meta property="og:url" content="https://elc.github.io/drafts/typed-pipes.html/"/>
       <meta property="og:image" content=""/>
 
       <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="TIL - Type Safe Pipes and the Compose Function">
+      <meta name="twitter:title" content="Type Safe Pipelines and the Compose Function">
       <meta name="twitter:description" content="">
       <meta name="twitter:url" content="https://elc.github.io/drafts/typed-pipes.html/">
       <meta name="twitter:image" content="">
@@ -94,7 +94,7 @@
 <article class="article">
 
   <header class="article__header">
-    <h1>TIL - Type Safe Pipes and the Compose Function</h1>
+    <h1>Type Safe Pipelines and the Compose Function</h1>
     
 <div class="article__subheader">
 
@@ -128,6 +128,7 @@
 Features.</p>
 <!-- PELICAN_END_SUMMARY -->
 
+<h2 id="why-types-matter"><a class="toclink" href="#why-types-matter">Why Types matter</a></h2>
 <h2 id="function-composition"><a class="toclink" href="#function-composition">Function Composition</a></h2>
 <p>There are two notations for function composition one with a right to left
 direction and one with a left to right direction. Namely:</p>
@@ -151,6 +152,12 @@ context of programming the left to right orientation is more common.</p>
 returns a new functions that performs <code>g</code> and then <code>f</code>. In Python a generic
 implementation looks like this:</p>
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose-thumbnail.png" width="1724"></a></p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">g</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</code></pre></div>
+
 <p>For this to work, it is necessary that the output of <code>f</code> matches the input of
 <code>g</code>, or otherwise the execution may fail. To enforced this relationship a typed
 version of composed can be written as follows:</p>
@@ -252,13 +259,13 @@ right direction. Pyright is able to identify the exact cause of the the problem:
     <div class="share">
         
 
-        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20TIL%20-%20Type%20Safe%20Pipes%20and%20the%20Compose%20Function" target="_blank" class="twitter-button"
+        <a href="http://twitter.com/share?url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Type%20Safe%20Pipelines%20and%20the%20Compose%20Function" target="_blank" class="twitter-button"
         onclick="ga('send', 'event', 'Twitter Share', 'click', 'Twitter Share'); return true" >
             <i class="fa fa-twitter"></i>
             Twitter
         </a>
 
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20TIL%20-%20Type%20Safe%20Pipes%20and%20the%20Compose%20Function" target="_blank" class="linkedin-button"
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//elc.github.io/drafts/typed-pipes.html&amp;text=%40ELCWeb%20wrote%20this%20interesting%20article%3A%20Type%20Safe%20Pipelines%20and%20the%20Compose%20Function" target="_blank" class="linkedin-button"
         onclick="ga('send', 'event', 'LinkedIn Share', 'click', 'LinkedIn Share'); return true" >
             <i class="fa fa-linkedin"></i>
             LinkedIn
@@ -366,7 +373,7 @@ right direction. Pyright is able to identify the exact cause of the the problem:
     var disqus_config = function () {
       this.page.url = 'https://elc.github.io/drafts/typed-pipes.html';  
       this.page.identifier = 'typed-pipes';
-      this.page.title = 'TIL - Type Safe Pipes and the Compose Function';
+      this.page.title = 'Type Safe Pipelines and the Compose Function';
     };
     
     (function() {
