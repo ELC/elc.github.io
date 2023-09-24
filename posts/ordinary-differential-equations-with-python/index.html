@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>18 min <span data-l10n-id="to-read">to read</span></b>
+                <b>19 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -148,7 +148,19 @@
 </ul>
 <h2 id="imports-and-setup"><a class="toclink" href="#imports-and-setup">Imports and setup</a></h2>
 <p>Before starting with the models themselves, we need to import some libraries, the imports are the same for all models so one can simply place this snippet at the top of the script/notebook. In this snipped the style for the sliders is also included in order to have the same look and feel in all the widgets</p>
-<div class="highlight "><pre><span></span><code><span class="c1"># General Purpose</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># General Purpose</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
@@ -161,7 +173,7 @@
 
 <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">}</span>
 <span class="n">slider_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;99%&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="economy-of-a-home"><a class="toclink" href="#economy-of-a-home">Economy of a Home</a></h2>
 <p>A home economy (family) has a fixed income at the beginning of some periodic interval (usually a month), there are also two kind of outcomes, fixed costs and extraordinary expenses, which are proportional to the money at the moment. Additionally, the family decides to set apart some proportion of the income just for fixed costs. This way, when the capital of the family is below this amount, the extraordinary expenses are 0.</p>
@@ -192,18 +204,29 @@ $$</div>
 </div>
 
 <p>If you want to embed this widget in your blog/website, just add the following HTML:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/home-economy-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/home-economy-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="code"><a class="toclink" href="#code">Code</a></h3>
 <p>Now I will comment part by part the code used, at the end of this section, I will place the full code for easy copy/paste</p>
 <h4 id="function-definition"><a class="toclink" href="#function-definition">Function Definition</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+</code></pre></div></td></tr></table></div>
 
 <p>First, we defined a function called <code>main</code> for easier use of <code>interact</code> which will produce the interactive widget. After that, all the constants are calculated, in this case <code>saving_limit</code> which is analogous to <span class="math">\(s\)</span> in the equation.</p>
 <h4 id="ode-specifics"><a class="toclink" href="#ode-specifics">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ratio</span> <span class="o">*</span> <span class="n">initial_salary</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ratio</span> <span class="o">*</span> <span class="n">initial_salary</span>
 
 <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">capital</span> <span class="o">&lt;=</span> <span class="n">saving_limit</span><span class="p">:</span>
@@ -215,7 +238,7 @@ $$</div>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_salary</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>A nested function is defined (there could be better ways to do this but I find this the simplest), this function is the differential equation, it should take two parameters and return the value of <span class="math">\(\frac{\mathrm{d} x}{\mathrm{d} t}\)</span>. The first parameter can be used as the current value of <span class="math">\(x\)</span> for a given <span class="math">\(t\)</span>. For the numerical integration <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html" target="_blank"><code>scipy.integrate.odeint</code></a> is used and that's why this format is required. Using a nested function has the advantage that its name doesn't conflict with the outer scope of the function containing it and that it has access to all the parameters the outer function has, avoiding unnecessary indirection due to reference (If you know a better way to implement this, let me know in the comments).</p>
 <p>Then the <code>time</code> variable is defined and initialized, this will be the <span class="math">\(t\)</span> steps. We have basically two options here:</p>
@@ -226,7 +249,34 @@ $$</div>
 <p><strong>Note</strong>: It is important to note that this will determined how smooth the resulting function will be. Although at first it might seem that the integration step (usually denoted with <span class="math">\(h\)</span>) is implicitly defined here, that's not the case since, as you can see in the docs of <code>scipy.integrate.odeint</code>, <span class="math">\(h\)</span> is determined by the solver in each iteration.</p>
 <p>Then the <code>scipy.integrate.odeint</code> function is called with the function defined as a first parameter, the initial conditions as the second and the window time as the third. This function returns the solution array which will be later used for the plotting.</p>
 <h4 id="graphics-specifics"><a class="toclink" href="#graphics-specifics">Graphics Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">),</span> <span class="p">(</span><span class="n">saving_limit</span><span class="p">,</span> <span class="n">saving_limit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Saving Limit&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Capital(t)&#39;</span><span class="p">)</span>
@@ -254,7 +304,7 @@ $$</div>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Next, the graphics part, here matplotlib is used and this snipped is specific to this library but I will explain it in order to be self-contained (although I might produce a matplotlib tutorial in the future).</p>
 <p><strong>Note</strong>: I know there are plenty of plotting libraries, and many even more elegant and powerful than matplotlib but for this use case, where the complexity lies in the differential equation and not in the graphic itself, I believe it is more than enough. For complex graphics such as statistics or big data, I would recommend another library such as <a href="https://github.com/bloomberg/bqplot" target="_blank"><strong>bqplot</strong></a>.</p>
@@ -262,17 +312,71 @@ $$</div>
 <p>The if-elif-else structure defines how many sticks there will be in the x-axis and if they should be place horizontal or vertically. Then the said sticks are plotted, the same occurs with the yticks. Then the limits for each axis and the labels for each axis are set and finally, the legend position is defined and the grid is added.</p>
 <p>Then when <code>plt.show()</code> is called the figure is generated and showed in the screen.</p>
 <h4 id="interaction-specifics"><a class="toclink" href="#interaction-specifics">Interaction Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">initial_salary</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Salary&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">interact</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">initial_salary</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Salary&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">savings_ration</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Savings Ratio&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">extraordinary_expenses</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Extraordinary Expenses&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">fixed_costs</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fixed Costs&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">)</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Finally, the code for the interaction, here the <code>interact</code> function from <a href="https://ipywidgets.readthedocs.io/en/stable/" target="_blank"><code>ipywidgets</code></a> is used. A separate slider is used for each parameter with the default parameters set for a nice default visualization, with a description and the style and layout is used from the initialization cells.</p>
 <h3 id="full-code"><a class="toclink" href="#full-code">Full code</a></h3>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_salary</span><span class="p">,</span> <span class="n">savings_ratio</span><span class="p">,</span> <span class="n">extraordinary_expenses</span><span class="p">,</span> <span class="n">fixed_costs</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
     <span class="n">saving_limit</span> <span class="o">=</span> <span class="n">savings_ratio</span> <span class="o">*</span> <span class="n">initial_salary</span>
 
     <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
@@ -322,7 +426,7 @@ $$</div>
                <span class="n">fixed_costs</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fixed Costs&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">)</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="sales-of-houses-and-air-conditionings"><a class="toclink" href="#sales-of-houses-and-air-conditionings">Sales of Houses and Air Conditionings</a></h2>
 <p>In a city there are houses and air conditionings (AC) for sale and it's known that these are complementary goods, which means that if the sales of one increase the sales of the other will also increase. The number of houses sales is proportional to the number of houses that weren't sold yet and the number of AC sales is proportional to the houses sold that doesn't yet have an AC.</p>
@@ -356,13 +460,23 @@ $$</div>
 </div>
 
 <p>Embed this widget in your website:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/houses-air_conditioning-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/houses-air_conditioning-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="code_1"><a class="toclink" href="#code_1">Code</a></h3>
 <p>In this scenario and the followings the code will be explain where it differs from the first example to avoid unnecesary repetition</p>
 <h4 id="ode-specifics_1"><a class="toclink" href="#ode-specifics_1">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
     <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">avg_time_house</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">total_houses</span> <span class="o">-</span> <span class="n">x</span><span class="p">),</span>    <span class="c1"># dx/dt: Change in the House sales</span>
@@ -373,18 +487,70 @@ $$</div>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">days</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">]</span>
 <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>In this case the constants <code>avg_time_house</code> and <code>avg_time_ac</code> are used directly inside the function since it is much clearer this way. To define a system of ODEs, first the initial condition should be a list, each element of the list represents the initial condition for each of the variables. The nested function also changes a bit, in order to work, the first parameter would also be a list so it is necessary to unpack it into the variables and then a variable <code>dydt</code> is used (the <code>dydt</code> name doesn't refer to the variable <code>y</code> but rather is the convention in <code>scipy</code>) to represent the system where each element is the left side of each equation (in canonical form).</p>
 <p>Although it may differ from PEP8 (Python style for coding), I prefer to split the elements one per line to improve readability. Finally the <code>dydt</code> variable is returned. The definition of <code>time</code> is the same as previously seen and the solution variable is now a nested array containing the solution for both variables. This is specially useful when plotting.</p>
 <h4 id="graphics-specifics_1"><a class="toclink" href="#graphics-specifics_1">Graphics Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Houses(t)&#39;</span><span class="p">)</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Houses(t)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Air Conditionings(t)&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>These are the only lines that differ in which instead of plotting the <code>solution</code> variable, the <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html" target="_blank">numpy indexing and slicing syntax</a> is used to easily split the results from each of the variables.</p>
 <h3 id="full-code_1"><a class="toclink" href="#full-code_1">Full code</a></h3>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">,</span> <span class="n">avg_time_house</span><span class="p">,</span> <span class="n">avg_time_ac</span><span class="p">,</span> <span class="n">total_houses</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">initial_houses</span><span class="p">,</span> <span class="n">initial_ac</span><span class="p">,</span> <span class="n">avg_time_house</span><span class="p">,</span> <span class="n">avg_time_ac</span><span class="p">,</span> <span class="n">total_houses</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
@@ -436,7 +602,7 @@ $$</div>
                <span class="n">avg_time_ac</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time for AC&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="stock-control"><a class="toclink" href="#stock-control">Stock Control</a></h2>
 <p>A company wants a desired stock, they started with an initial stock and they work with a provider which sends deliveries goods through sales orders. The company asks the provider each day a sales order proportional to the missing or surplus quantity to the desired stock and the market demand. The provider deliver the goods according to the sales order with a constant delay. Finally, the market demand is consider constant. The company wants to know how their stock and their request to the provider will behave and they will try to avoid alternating behavior (oscillation in stock).</p>
@@ -471,23 +637,80 @@ $$</div>
 </div>
 
 <p>Embed this widget in your website:</p>
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/stock-control-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/stock-control-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="code_2"><a class="toclink" href="#code_2">Code</a></h3>
 <h4 id="ode-specifics_2"><a class="toclink" href="#ode-specifics_2">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">v0</span>
     <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">market_demand</span><span class="p">,</span>                                        <span class="c1"># dx/dt: Change in Stock</span>
       <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">provider_delay</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">market_demand</span> <span class="o">+</span> <span class="n">stock_control</span> <span class="o">*</span> <span class="p">(</span><span class="n">desired_stock</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>   <span class="c1"># dy/dt: Change in Requests</span>
     <span class="p">]</span>
     <span class="k">return</span> <span class="n">dydt</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>This time the code is only changed in the variables names and the equations but it is very similar to the previous example, the particularity of this model doesn't lie in the code but rather in the behavior, since it can show the differences between an oscillation behavior and a damped one. Going through all kinds of possibilities such as underdamped, overdamped, critically damped and undamped. I encourage you to experiment with the parameters in the widget.</p>
 <h3 id="full-code_2"><a class="toclink" href="#full-code_2">Full code</a></h3>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">desired_stock</span><span class="p">,</span> <span class="n">initial_stock</span><span class="p">,</span> <span class="n">initial_orders</span><span class="p">,</span> <span class="n">stock_control</span><span class="p">,</span> <span class="n">market_demand</span><span class="p">,</span> <span class="n">provider_delay</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">desired_stock</span><span class="p">,</span> <span class="n">initial_stock</span><span class="p">,</span> <span class="n">initial_orders</span><span class="p">,</span> <span class="n">stock_control</span><span class="p">,</span> <span class="n">market_demand</span><span class="p">,</span> <span class="n">provider_delay</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">v0</span>
@@ -539,7 +762,7 @@ $$</div>
                <span class="n">provider_delay</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Provider Delay&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">days</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="useful-life"><a class="toclink" href="#useful-life">Useful Life</a></h2>
 <p>A patient takes a certain drug with a recipe, the recipe says how many milligrams the patient should have per intake, how often the intakes should be and how many. Additionally the drug itself provides information about its useful life which helps to determine the optimal interval between intakes. It's also known that the useful life of the drug follows a natural decay.</p>
@@ -567,12 +790,33 @@ $$</div>
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html"></iframe>
 </div>
 
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/useful-life-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="code_3"><a class="toclink" href="#code_3">Code</a></h3>
 <h4 id="ode-specifics_3"><a class="toclink" href="#ode-specifics_3">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">useful_life</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># dy/dt: Change of mg</span>
 
 <span class="n">intake_hours</span> <span class="o">=</span> <span class="p">[</span><span class="n">intake_interval</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">intake_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
@@ -594,7 +838,7 @@ $$</div>
 <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
 <span class="n">times</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 <span class="n">solutions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>This model doesn't introduces complexity in the ODE but rather in the way one can model the successive intakes. It is usually helpful to keep this 'iteration logic' independent from the ODE itself, that's why no particular changes are needed in the equations.</p>
 <p>There are many ways for achieving this but the one I used is the following:</p>
@@ -618,7 +862,65 @@ $$</div>
 </ol>
 <p>This approach consist in solving several ODEs, each of which receives the final solution of the previous as its initial conditions.</p>
 <h3 id="full-code_3"><a class="toclink" href="#full-code_3">Full code</a></h3>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">useful_life</span><span class="p">,</span> <span class="n">intake_mg</span><span class="p">,</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="n">intake_number</span><span class="p">,</span> <span class="n">hours</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">useful_life</span><span class="p">,</span> <span class="n">intake_mg</span><span class="p">,</span> <span class="n">intake_interval</span><span class="p">,</span> <span class="n">intake_number</span><span class="p">,</span> <span class="n">hours</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
         <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">useful_life</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># dy/dt: Change of mg</span>
@@ -677,7 +979,7 @@ $$</div>
                <span class="n">intake_number</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of Intakes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">hours</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total number of Hours&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="foxes-and-rabbits"><a class="toclink" href="#foxes-and-rabbits">Foxes and Rabbits</a></h2>
 <p>This is the model known as predator–prey or Lotka–Volterra equations. There are two species, a predator and a prey, like foxes and rabbits. Each has a certain birthrate and a deathrate. The birthrate of the prey is proportional to its current population and the birthrate of the predator is proportional to both its population and the prey population. The deathrate of the prey is proportional to both its population and the predator population and the deathrate of the predator is proportional to its population.</p>
@@ -715,12 +1017,19 @@ $$</div>
     <iframe class="b-lazy" data-src="https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html"></iframe>
 </div>
 
-<div class="highlight "><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://elc.github.io/blog/iframes/ode-python/foxes-rabbits-iframe.html&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="code_4"><a class="toclink" href="#code_4">Code</a></h3>
 <h4 id="ode-specifics_4"><a class="toclink" href="#ode-specifics_4">ODE Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
     <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">rabbits_birthrate</span> <span class="o">*</span> <span class="n">x</span>     <span class="o">-</span> <span class="n">rabbits_deathrate</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="c1"># dx/dy: Change in Rabbits</span>
@@ -728,11 +1037,22 @@ $$</div>
     <span class="p">]</span>
 
     <span class="k">return</span> <span class="n">dydt</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>In this case the equations are similar to the houses and air conditioning example but the main difference is that the equations are non-linear since they include <span class="math">\(xy\)</span>, this implies that finding an analytical solution will be much harder but for the numerical integration the problem isn't any more difficult.</p>
 <h4 id="graphics-specifics_2"><a class="toclink" href="#graphics-specifics_2">Graphics Specifics</a></h4>
-<div class="highlight "><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -744,11 +1064,76 @@ $$</div>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Foxes vs Rabbits&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>This scenario also introduces some variations in the plotting since, it is quite useful to have a parametric plot of the variables, where, instead of using the <code>time</code> as independent variables the two variables are plot. This is simply achieved with <code>ax.plot(solution[:, 0], solution[:, 1], label='Foxes vs Rabbits')</code> also, this model uses subplots and that's why the <code>axes</code> list is used to place the plots one next to the other. This parametric plot also reveals an interesting fact, since the parametric plot is a closed curve, it implies that the functions are periodic which really reflect the natural behavior of predators and preys.</p>
 <h3 id="full-code_4"><a class="toclink" href="#full-code_4">Full code</a></h3>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">rabbits_birthrate</span><span class="p">,</span> <span class="n">rabbits_deathrate</span><span class="p">,</span> <span class="n">foxes_birthrate</span><span class="p">,</span> <span class="n">foxes_deathrate</span><span class="p">,</span> <span class="n">initial_rabbits</span><span class="p">,</span> <span class="n">initial_foxes</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">rabbits_birthrate</span><span class="p">,</span> <span class="n">rabbits_deathrate</span><span class="p">,</span> <span class="n">foxes_birthrate</span><span class="p">,</span> <span class="n">foxes_deathrate</span><span class="p">,</span> <span class="n">initial_rabbits</span><span class="p">,</span> <span class="n">initial_foxes</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span>
@@ -814,7 +1199,7 @@ $$</div>
                <span class="n">initial_foxes</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Foxes&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
                <span class="n">days</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">365</span> <span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total number of Days&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">slider_layout</span><span class="p">),</span>
         <span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <div class="footnote">
 <hr>

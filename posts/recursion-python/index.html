@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>22 min <span data-l10n-id="to-read">to read</span></b>
+                <b>24 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -184,7 +184,14 @@ changed to reflect that, they all do the same. To further reinforce this idea,
 an assert statement will be added to show that results do not change even if the
 definition changes.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Factorial%20function%20implemented%20using%20for%3Dloop%22%22%22%0A%20%20%20%20result%20%3D%201%0A%20%20%20%20for%20i%20in%20range%281,%20n%20%2B%201%29%3A%0A%20%20%20%20%20%20%20%20result%20*%3D%20i%0A%20%20%20%20return%20result%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using for loops&quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
@@ -192,11 +199,20 @@ definition changes.</p>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>And next the while loop equivalent:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Factorial%20function%20using%20while-loop%22%22%22%0A%20%20%20%20result%20%3D%201%0A%20%20%20%20multiplier%20%3D%20n%0A%20%20%20%20while%20multiplier%20!%3D%200%3A%0A%20%20%20%20%20%20%20%20result%20*%3D%20multiplier%0A%20%20%20%20%20%20%20%20multiplier%20-%3D%201%0A%20%20%20%20return%20result%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using while loops&quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">multiplier</span> <span class="o">=</span> <span class="n">n</span>
@@ -206,7 +222,7 @@ definition changes.</p>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Between the for loop and the while loop implementation differences are visible.
 The for-loop approach is usually the one found in many sources online, it is
@@ -216,14 +232,20 @@ and space complexity.</p>
 <p>Another possibility, not as common as the previous ones, is a functional
 implementation using <code>reduce</code>:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20functools%20import%20reduce%0A%0Adef%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Factorial%20function%20using%20reduce%22%22%22%0A%20%20%20%20return%20reduce%28%0A%20%20%20%20%20%20%20%20lambda%20x,%20y%3A%20x%20*%20y,%0A%20%20%20%20%20%20%20%20range%281,%20n%20%2B%201%29,%0A%20%20%20%20%20%20%20%201%0A%20%20%20%20%29%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 
 <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Factorial function implemented using reduce&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Since the previous implementations are non-recursive, the <a href="https://en.wikipedia.org/wiki/Call_graph" target="_blank">call
 graph</a>  consists of
@@ -325,14 +347,20 @@ later section.</p>
 <p>The following is an example of a middle recursion implementation of the
 factorial function.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Middle%20Recursion%20of%20the%20factorial%20function%22%22%22%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20n%20*%20factorial%28n%20-%201%29%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Middle Recursion implementation of the factorial function&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>It is middle recursion because the last statement is a multiplication (<code>*</code>) and
 not the recursive call itself. Depending on the operation order it could also be
@@ -340,7 +368,15 @@ considered head recursion but that difference is not relevant for most contexts.
 <p>Another way to better show why this is middle recursion is to use additional
 variables to store interim results:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20factorial%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Middle%20Recursion%20of%20the%20factorial%20function%22%22%22%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20previous_factorial%20%3D%20factorial%28n%20-%201%29%0A%20%20%20%20current_factorial%20%3D%20n%20*%20previous_factorial%0A%20%20%20%20return%20current_factorial%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Middle Recursion implementation of the factorial function&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
@@ -349,7 +385,7 @@ variables to store interim results:</p>
     <span class="k">return</span> <span class="n">current_factorial</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>In this more explicit implementation, it is clearer that the last logical
 statement is the multiplication <code>n * previous_factorial</code>. </p>
@@ -369,7 +405,21 @@ makes this particular type of recursion very efficient.</p>
 example of a straightforward function that can be implemented in a tail
 recursive way is the <code>palindrome</code> function:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20palindrome%28string%3A%20str%29%20-%3E%20bool%3A%0A%20%20%20%20%22%22%22Returns%20True%20if%20the%20given%20string%20is%20a%20%0A%20%20%20%20palindrome.%20Using%20tail%20recursion.%22%22%22%0A%20%20%20%20if%20len%28string%29%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%20True%0A%0A%20%20%20%20first,%20*rest,%20last%20%3D%20string%0A%20%20%20%20if%20first%20!%3D%20last%3A%0A%20%20%20%20%20%20%20%20return%20False%0A%20%20%20%20return%20palindrome%28rest%29%0A%0Aassert%20palindrome%28%22a%22%29%0Aassert%20palindrome%28%22aa%22%29%0Aassert%20palindrome%28%22aba%22%29%0Aassert%20not%20palindrome%28%22learn%22%29%0Aassert%20palindrome%28%22rotator%22%29&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="s2">&quot;Returns True if the given string is a palindrome. Using tail recursion.&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
@@ -384,7 +434,7 @@ recursive way is the <code>palindrome</code> function:</p>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;learn&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;rotator&quot;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_palindrome.png"><img alt="Recursive Palindrome" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_palindrome.png" src="https://elc.github.io/blog/images/recursion/recursive_palindrome-thumbnail.png" width="600"></a></p>
 <p>To better illustrate the fact that the returning statement must be <strong>only a
@@ -394,7 +444,19 @@ expression that requires the function call to be executed before returning. The
 reason is the <code>and</code> operator which needs a value. This implementation is
 therefore a middle recursion.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20palindrome%28string%3A%20str%29%20-%3E%20bool%3A%0A%20%20%20%20%22%22%22Returns%20True%20if%20the%20given%20string%20is%20%0A%20%20%20%20a%20palindrome.%20Using%20middle%20recursion.%22%22%22%0A%20%20%20%20if%20len%28string%29%20%3C%202%3A%0A%20%20%20%20%20%20%20%20return%20True%0A%0A%20%20%20%20first,%20*rest,%20last%20%3D%20string%0A%20%20%20%20return%20first%20%3D%3D%20last%20and%20palindrome%28rest%29%0A%0Aassert%20palindrome%28%22a%22%29%0Aassert%20palindrome%28%22aa%22%29%0Aassert%20palindrome%28%22aba%22%29%0Aassert%20not%20palindrome%28%22learn%22%29%0Aassert%20palindrome%28%22rotator%22%29&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">palindrome</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="s2">&quot;Returns True if the given string is a palindrome. Using middle recursion.&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
@@ -407,12 +469,20 @@ therefore a middle recursion.</p>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;aba&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="ow">not</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;learn&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">palindrome</span><span class="p">(</span><span class="s2">&quot;rotator&quot;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Sometimes a function that is not expressed in tail-call form can be converted to
 that form. For example the following middle recursive function:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20sum_integer_up_to_n%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Sums%20all%20integers%20from%20zero%20to%20n.%20%0A%20%20%20%20Using%20middle%20recursion%22%22%22%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20%0A%20%20%20%20return%20n%20%2B%20sum_integer_up_to_n%28n%20-%201%29%0A%0Aassert%20sum_integer_up_to_n%281%29%20%3D%3D%201%0Aassert%20sum_integer_up_to_n%283%29%20%3D%3D%206&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Sums all integers from zero to n. Using middle recursion&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -421,12 +491,20 @@ that form. For example the following middle recursive function:</p>
 
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_sum_integer_up_to_n.png"><img alt="Recursive Sum Integer up to N" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_sum_integer_up_to_n.png" src="https://elc.github.io/blog/images/recursion/recursive_sum_integer_up_to_n-thumbnail.png" width="400"></a></p>
 <p>Can be rewritten into tail-recursive form as:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20sum_integer_up_to_n%28n%3A%20int,%20total%3A%20int%20%3D%200%29%20-%3E%20int%3A%0A%20%20%20%20%22%22%22Sums%20all%20integers%20from%20zero%20to%20n.%20%0A%20%20%20%20Using%20Tail%20recursion%22%22%22%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20total%0A%0A%20%20%20%20return%20sum_integer_up_to_n%28n%20-%201,%20total%3Dn%20%2B%20total%29%0A%0Aassert%20sum_integer_up_to_n%281%29%20%3D%3D%201%0Aassert%20sum_integer_up_to_n%283%29%20%3D%3D%206&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sum_integer_up_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Sums all integers from zero to n. Using Tail recursion&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">total</span>
@@ -435,7 +513,7 @@ that form. For example the following middle recursive function:</p>
 
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">sum_integer_up_to_n</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/tail_recursive_sum_integer_up_to_n.png"><img alt="Recursive Sum Integer up to N" class="narrow b-lazy" data-src="/blog/images/recursion/tail_recursive_sum_integer_up_to_n.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_sum_integer_up_to_n-thumbnail.png" width="400"></a></p>
 <p>This last version uses an additional parameter to pass the total down the call
@@ -449,19 +527,34 @@ caution.</p>
 <p>In the same way as <code>sum_integer_up_to_n</code>, the factorial function could be
 re-written into a tail recursive form:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20factorial%28n%3A%20int,%20result%3A%20int%20%3D%201%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20factorial%28n%20-%201,%20n%20*%20result%29%0A%0Aactual%20%3D%20%5Bfactorial%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%201,%202,%206,%2024,%20120,%20720%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">result</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/tail_recursive_factorial.png"><img alt="Tail Recursive Factorial" class="narrow b-lazy" data-src="/blog/images/recursion/tail_recursive_factorial.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_factorial-thumbnail.png" width="300"></a></p>
 <p>When comparing head/middle with tail recursion, the way each approach works
 differs and can be illustrated by inspecting the execution step by step: </p>
-<div class="highlight "><pre><span></span><code><span class="c1"># Head/Middle Recursion</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Head/Middle Recursion</span>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="mi">3</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <span class="mi">3</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -471,9 +564,17 @@ differs and can be illustrated by inspecting the execution step by step: </p>
 <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">1</span>
 <span class="mi">6</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
-<div class="highlight "><pre><span></span><code><span class="c1"># Tail Recursion</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Tail Recursion</span>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -482,7 +583,7 @@ differs and can be illustrated by inspecting the execution step by step: </p>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="mi">6</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h2 id="multi-recursion"><a class="toclink" href="#multi-recursion">Multi Recursion</a></h2>
 <p>When there is more than one recursive call, a function is said to be
@@ -496,7 +597,14 @@ returns the nth Fibonacci number, to call the function two successive recursive
 calls are used.</p>
 <p>This is the traditional implementation:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20fibonacci%28n-1%29%20%2B%20fibonacci%28n-2%29%0A%0Aactual%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -504,13 +612,20 @@ calls are used.</p>
     <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_fibonacci.png"><img alt="Multi Recursive Fibonacci" class="b-lazy" data-src="/blog/images/recursion/recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/recursive_fibonacci-thumbnail.png" width="2750"></a></p>
 <p>In some cases, multi-recursive functions can be refactored into linear tail
 recursive functions.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20fibonacci%28%0A%20%20%20%20n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%0A%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%20%20%20%20return%20fibonacci%28%0A%20%20%20%20%20%20%20%20n%3Dn%20-%201,%0A%20%20%20%20%20%20%20%20partial_result%3Dresult,%0A%20%20%20%20%20%20%20%20result%3Dpartial_result%20%2B%20result%0A%20%20%20%20%29%0A%0Aactual%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">partial_result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -518,7 +633,7 @@ recursive functions.</p>
     <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/tail_recursive_fibonacci.png"><img alt="Fibonacci Tail Recursive" class="narrow b-lazy" data-src="/blog/images/recursion/tail_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/tail_recursive_fibonacci-thumbnail.png" width="300"></a></p>
 <h2 id="tree-recursion"><a class="toclink" href="#tree-recursion">Tree Recursion</a></h2>
@@ -528,7 +643,20 @@ said, in some cases the definition leverages the divide-and-conquer strategy,
 minimizing the depth of the tree. One example of this is the quicksort
 algorithm:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection,%20List%0A%0Adef%20quicksort%28%0A%20%20%20%20numbers%3A%20Collection%5Bfloat%5D%0A%29%20-%3E%20List%5Bfloat%5D%3A%0A%20%20%20%20if%20len%28numbers%29%20%3C%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20numbers%0A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20left%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3C%20first%5D%0A%20%20%20%20right%20%3D%20%5Bx%20for%20x%20in%20rest%20if%20x%20%3E%3D%20first%5D%0A%20%20%20%20return%20quicksort%28left%29%20%2B%20%5Bfirst%5D%20%2B%20quicksort%28right%29%0A%0Aactual%20%3D%20quicksort%28%5B2,%204,%203,%205,%200,%201%5D%29%0Aexpected%20%3D%20list%28range%286%29%29%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
 
 <span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -542,7 +670,7 @@ algorithm:</p>
 
 <span class="k">assert</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">assert</span> <span class="n">quicksort</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))))</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_quicksort.png"><img alt="Tree recursive quicksort" class="b-lazy" data-src="/blog/images/recursion/recursive_quicksort.png" src="https://elc.github.io/blog/images/recursion/recursive_quicksort-thumbnail.png" width="2710"></a></p>
 <p>Here the function divides the input into two parts and each recursive call gets
@@ -555,7 +683,18 @@ functions that operate on arrays.</p>
 <p>Here is a linear recursive implementation of a function that returns the maximum
 value of a list:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Iterable%0A%0Adef%20maximum%28numbers%3A%20Iterable%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20rest_max%20%3D%20maximum%28rest%29%0A%20%20%20%20return%20first%20if%20first%20%3E%20rest_max%20else%20rest_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
@@ -567,12 +706,25 @@ value of a list:</p>
 
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_maximum.png"><img alt="Maximum Linear recursion" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_maximum.png" src="https://elc.github.io/blog/images/recursion/recursive_maximum-thumbnail.png" width="400"></a></p>
 <p>This holds even if re-written into a tail-recursive form:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Optional,%20Iterable%0A%0Adef%20maximum%28%0A%20%20%20%20numbers%3A%20Iterable%5Bfloat%5D,%0A%20%20%20%20max_value%3A%20Optional%5Bfloat%5D%20%3D%20None%0A%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%0A%20%20%20%20if%20max_value%20is%20None%20or%20first%20%3E%20max_value%3A%0A%20%20%20%20%20%20%20%20max_value%20%3D%20first%0A%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20max_value%0A%0A%20%20%20%20return%20maximum%28rest,%20max_value%29%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterable</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterable</span>
 
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">max_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
@@ -586,7 +738,7 @@ value of a list:</p>
     <span class="k">return</span> <span class="n">maximum</span><span class="p">(</span><span class="n">rest</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_maximum_tail.png"><img alt="Maximum Linear tail recursion" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_maximum_tail.png" src="https://elc.github.io/blog/images/recursion/recursive_maximum_tail-thumbnail.png" width="400"></a></p>
 <p>Both implementations will have as many recursive calls as there are elements in
@@ -594,7 +746,20 @@ the list. A similar approach to the quicksort algorithm can be used to reduce
 the number of calls, halving the length of the list each time. With this
 approach, the recursive stack will be shorter.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Collection%0A%0Adef%20maximum%28numbers%3A%20Collection%5Bfloat%5D%29%20-%3E%20float%3A%0A%20%20%20%20first,%20*rest%20%3D%20numbers%0A%20%20%20%20if%20not%20rest%3A%0A%20%20%20%20%20%20%20%20return%20first%0A%0A%20%20%20%20middle%20%3D%20len%28numbers%29%20//%202%0A%20%20%20%20left_max%20%3D%20maximum%28numbers%5B%3Amiddle%5D%29%0A%20%20%20%20right_max%20%3D%20maximum%28numbers%5Bmiddle%3A%5D%29%0A%20%20%20%20%0A%20%20%20%20if%20left_max%20%3E%20right_max%3A%0A%20%20%20%20%20%20%20%20return%20left_max%0A%20%20%20%20return%20right_max%0A%0Aassert%20maximum%28%5B2,%204,%203,%205,%200,%201%5D%29%20%3D%3D%205%0Aassert%20maximum%28list%28range%2810%29%29%29%20%3D%3D%209&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
 
 <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">numbers</span>
@@ -608,7 +773,7 @@ approach, the recursive stack will be shorter.</p>
 
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="k">assert</span> <span class="n">maximum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">9</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/tree_recursive_maximum.png"><img alt="Maximum Tree Recursion" class="b-lazy" data-src="/blog/images/recursion/tree_recursive_maximum.png" src="https://elc.github.io/blog/images/recursion/tree_recursive_maximum-thumbnail.png" width="3260"></a></p>
 <p>Refactoring functions this way is not always possible, for functions like nth
@@ -618,7 +783,23 @@ Deriving this implementation requires a lot of effort and mathematical
 knowledge, such an approach may not apply to other functions.</p>
 <p>The Fast Doubling Implementation is as follows:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20%23%20Fast%20Doubling%20Method%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20%0A%20%20%20%20is_odd%20%3D%20n%20%25%202%0A%20%20%20%20m%20%3D%20n%20//%202%20%2B%20is_odd%0A%20%20%20%20fib_m%20%3D%20fibonacci%28m%29%0A%20%20%20%20fib_m_1%20%3D%20fibonacci%28m%20-%201%29%0A%0A%20%20%20%20if%20is_odd%3A%0A%20%20%20%20%20%20%20%20return%20fib_m_1%20**%202%20%2B%20fib_m%20**%202%0A%20%20%20%20return%202%20*%20fib_m%20*%20fib_m_1%20%2B%20fib_m%20**%202%0A%0Aactual%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="c1"># Fast Doubling Method</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -635,14 +816,33 @@ knowledge, such an approach may not apply to other functions.</p>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fib_m</span> <span class="o">*</span> <span class="n">fib_m_1</span> <span class="o">+</span> <span class="n">fib_m</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/fast_double_fibonacci.png"><img alt="Fast Double Fibonacci" class="narrow b-lazy" data-src="/blog/images/recursion/fast_double_fibonacci.png" src="https://elc.github.io/blog/images/recursion/fast_double_fibonacci-thumbnail.png" width="700"></a></p>
 <p>It is even possible to further reduce the number of recursive calls by
 converting the multi-recursive function into a linear recursive function by
 changing its structure to return two values at once:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20typing%20import%20Tuple%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20def%20nth_and_nth_plus_one%28%0A%20%20%20%20%20%20%20%20n%3A%20int%0A%20%20%20%20%29%20-%3E%20Tuple%5Bint,%20int%5D%3A%0A%20%20%20%20%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%200,%201%0A%0A%20%20%20%20%20%20%20%20fib_m,%20fib_m_1%20%3D%20nth_and_nth_plus_one%28n%20//%202%29%0A%20%20%20%20%20%20%20%20nth%20%3D%20fib_m%20*%20fib_m_1%20*%202%20-%20fib_m%20**%202%0A%20%20%20%20%20%20%20%20nth_plus_one%20%3D%20fib_m%20**%202%20%2B%20fib_m_1%20**%202%0A%0A%20%20%20%20%20%20%20%20is_odd%20%3D%20n%20%25%202%0A%20%20%20%20%20%20%20%20if%20is_odd%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20nth_plus_two%20%3D%20nth%20%2B%20nth_plus_one%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20nth_plus_one,%20nth_plus_two%0A%20%20%20%20%20%20%20%20return%20nth,%20nth_plus_one%0A%0A%20%20%20%20nth,%20_%20%3D%20nth_and_nth_plus_one%28n%29%0A%20%20%20%20return%20nth%0A%0Aactual%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%205,%208%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="c1"># based on: https://www.nayuki.io/page/fast-fibonacci-algorithms</span>
     <span class="k">def</span> <span class="nf">nth_and_nth_plus_one</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -662,7 +862,7 @@ changing its structure to return two values at once:</p>
     <span class="k">return</span> <span class="n">nth</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/efficient_recursive_fibonacci.png"><img alt="Linear Recursive Fibonacci" class="narrow b-lazy" data-src="/blog/images/recursion/efficient_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/efficient_recursive_fibonacci-thumbnail.png" width="400"></a></p>
 <p>Even though in these examples with <code>fibonacci(4)</code> the difference is not drastic,
@@ -679,13 +879,18 @@ for each implementation, take for example <code>fibonacci(100)</code>:</p>
 is itself a recursive call. This is not usual in software development but could
 arise in mathematical fields. One example is the <a href="https://mathworld.wolfram.com/HofstadterG-Sequence.html" target="_blank">Hofstadter G Sequence</a>:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20hofstadter_g%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20return%20n%20-%20hofstadter_g%28hofstadter_g%28n%20-%201%29%29%0A%0Aactual%20%3D%20%5Bhofstadter_g%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%203,%204%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_g</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_g</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_g</span><span class="p">(</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_g</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_hofstadter_g.png"><img alt="Recursive Hofstadter G" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_g.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_g-thumbnail.png" width="3702"></a></p>
 <p>Refactoring nested recursion into non-nested multi-recursion or linear recursion
@@ -694,13 +899,18 @@ is a non-trivial task and sometimes it may be impossible.</p>
 <p>The level of nesting is not limited to just two calls, the <a href="https://mathworld.wolfram.com/HofstadterH-Sequence.html" target="_blank">Hofstadter H Sequence</a>
 has triple nesting recursion for example:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20hofstadter_h%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20return%20n%20-%20hofstadter_h%28%0A%20%20%20%20%20%20%20%20hofstadter_h%28%0A%20%20%20%20%20%20%20%20%20%20%20%20hofstadter_h%28n%20-%201%29%0A%20%20%20%20%20%20%20%20%29%0A%20%20%20%20%29%0A%0Aactual%20%3D%20%5Bhofstadter_h%28i%29%20for%20i%20in%20range%286%29%5D%0Aexpected%20%3D%20%5B0,%201,%201,%202,%203,%204%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_h</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_h</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_hofstadter_h.png"><img alt="Recursive Hofstadter H" class="b-lazy" data-src="/blog/images/recursion/recursive_hofstadter_h.png" src="https://elc.github.io/blog/images/recursion/recursive_hofstadter_h-thumbnail.png" width="9794"></a></p>
 <h2 id="nested-recursion-with-more-than-one-argument"><a class="toclink" href="#nested-recursion-with-more-than-one-argument">Nested Recursion with more than one argument</a></h2>
@@ -713,7 +923,14 @@ that it cannot be expressed in iterative form with for loops.</p>
 deep recursive functions. This is a case of a nested recursive function that is
 also tail recursive.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20ackermann%28m%3A%20int,%20n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20m%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20n%20%2B%201%0A%20%20%20%20if%20m%20%3E%200%20and%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20ackermann%28m%20-%201,%201%29%20%20%20%20%0A%20%20%20%20return%20ackermann%28m%20-%201,%20ackermann%28m,%20n%20-%201%29%29%0A%0Aactual%20%3D%20%5B%0A%20%20%20%20ackermann%28i,%20j%29%20%0A%20%20%20%20for%20i%20in%20range%283%29%20%0A%20%20%20%20for%20j%20in%20range%283%29%0A%5D%0Aexpected%20%3D%20%5B1,%202,%203,%202,%203,%204,%203,%205,%207%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -721,7 +938,7 @@ also tail recursive.</p>
     <span class="k">return</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ackermann</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">ackermann</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_ackermann.png"><img alt="Recursive Ackerman" class="b-lazy" data-src="/blog/images/recursion/recursive_ackermann.png" src="https://elc.github.io/blog/images/recursion/recursive_ackermann-thumbnail.png" width="6185"></a></p>
 <h2 id="indirect-recursion"><a class="toclink" href="#indirect-recursion">Indirect Recursion</a></h2>
@@ -734,7 +951,18 @@ other function will, in turn, call the original one.</p>
 <p>A simple example of mutual linear tail recursion is a set of functions that
 determines if a number is odd or even:  </p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20is_even%28n%3A%20int%29%20-%3E%20bool%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20True%0A%20%20%20%20return%20is_odd%28n%20-%201%29%0A%0Adef%20is_odd%28n%3A%20int%29%20-%3E%20bool%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%20False%0A%20%20%20%20return%20is_even%28n%20-%201%29%0A%0Aactual_even%20%3D%20%5Bis_even%28i%29%20for%20i%20in%20range%286%29%5D%0Aexpected_even%20%3D%20%5BTrue,%20False,%20True,%20False,%20True,%20False%5D%0Aassert%20actual_even%20%3D%3D%20expected_even%0A%0Aactual_odd%20%3D%20%5Bis_odd%28i%29%20for%20i%20in%20range%286%29%5D%0Aexpected_odd%20%3D%20%5BFalse,%20True,%20False,%20True,%20False,%20True%5D%0Aassert%20actual_odd%20%3D%3D%20expected_odd&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="n">is_odd</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -746,7 +974,7 @@ determines if a number is odd or even:  </p>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">is_odd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_is_even.png"><img alt="Recursive Is Even" class="narrow b-lazy" data-src="/blog/images/recursion/recursive_is_even.png" src="https://elc.github.io/blog/images/recursion/recursive_is_even-thumbnail.png" width="200"></a></p>
 <p>Of course, it is also possible to implement a function that computes the same in
@@ -756,7 +984,14 @@ computation, it is much slower for big numbers.</p>
 <p>Mutual recursion can also happen in multi-recursive functions. Take the
 following direct multi-recursive function that computes the nth Lucas number:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20lucas%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20lucas%28n-1%29%20%2B%20lucas%28n-2%29%0A%0Aactual%20%3D%20%5Blucas%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B2,%201,%203,%204,%207,%2011,%2018%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -764,13 +999,28 @@ following direct multi-recursive function that computes the nth Lucas number:</p
     <span class="k">return</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_lucas.png"><img alt="Recursive Lucas" class="b-lazy" data-src="/blog/images/recursion/recursive_lucas.png" src="https://elc.github.io/blog/images/recursion/recursive_lucas-thumbnail.png" width="2225"></a></p>
 <p>It is possible to write both the Lucas and the Fibonacci functions in a mutual
 recursive form:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20lucas%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28%0A%20%20%20%20%20%20%20%202%20*%20fibonacci%28n%29%0A%20%20%20%20%20%20%20%20-%20fibonacci%28n-1%29%0A%20%20%20%20%20%20%20%20%2B%20lucas%28n-2%29%0A%20%20%20%20%29%0A%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28fibonacci%28n-1%29%20%2B%20lucas%28n-1%29%29%20//%202%0A%0Aactual_lucas%20%3D%20%5Blucas%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected_lucas%20%3D%20%5B2,%201,%203,%204,%207%5D%0Aassert%20actual_lucas%20%3D%3D%20expected_lucas%0A%0Aactual_fibonacci%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected_fibonacci%20%3D%20%5B0,%201,%201,%202,%203%5D%0Aassert%20actual_fibonacci%20%3D%3D%20expected_fibonacci&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -786,7 +1036,7 @@ recursive form:</p>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/mutual_recursive_fibonacci.png"><img alt="Mutual Recursive Fibonacci" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_fibonacci-thumbnail.png" width="5365"></a></p>
 <p>This implementation is standalone and does not require any of the two functions
@@ -796,7 +1046,14 @@ demonstration purposes.</p>
 <p>Similarly, the sequence defined as the multiplication of the last two terms can
 be implemented in a direct multi-recursive form:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20multiply_last_two%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20return%20%28%0A%20%20%20%20%20%20%20%20multiply_last_two%28n%20-%201%29%0A%20%20%20%20%20%20%20%20*%20multiply_last_two%28n%20-%202%29%0A%20%20%20%20%29%0A%0Aactual%20%3D%20%5Bmultiply_last_two%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%202,%202,%204,%208,%2032,%20256%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">multiply_last_two</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -804,13 +1061,30 @@ be implemented in a direct multi-recursive form:</p>
     <span class="k">return</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">multiply_last_two</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/recursive_multiply_last_two.png"><img alt="Mutual Recursive Fibonacci" class="b-lazy" data-src="/blog/images/recursion/recursive_multiply_last_two.png" src="https://elc.github.io/blog/images/recursion/recursive_multiply_last_two-thumbnail.png" width="3988"></a></p>
 <p>This again can be used to implement the Fibonacci and the multiply last two as
 mutually recursive functions.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=import%20math%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20int%28%0A%20%20%20%20%20%20%20%20math.log2%28multiply_last_two%28n%20-%201%29%0A%20%20%20%20%20%20%20%20*%20multiply_last_two%28n%20-%202%29%0A%20%20%20%20%20%20%20%20%29%0A%20%20%20%20%29%0A%0Adef%20multiply_last_two%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20return%202%20**%20%28fibonacci%28n-1%29%20%2B%20fibonacci%28n-2%29%29%0A%0A%0Aactual_fibonacci%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected_fibonacci%20%3D%20%5B0,%201,%201,%202,%203%5D%0Aassert%20actual_fibonacci%20%3D%3D%20expected_fibonacci%0A%0Aactual%20%3D%20%5Bmultiply_last_two%28i%29%20for%20i%20in%20range%287%29%5D%0Aexpected%20%3D%20%5B1,%202,%202,%204,%208,%2032,%20256%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -828,14 +1102,25 @@ mutually recursive functions.</p>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_fibonacci_alternative.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_fibonacci_alternative-thumbnail.png" width="3163"></a></p>
 <h2 id="mutual-nested-recursion"><a class="toclink" href="#mutual-nested-recursion">Mutual Nested Recursion</a></h2>
 <p>Mutual recursion can also appear in a nested form, as is the case of the
 <a href="https://mathworld.wolfram.com/HofstadterMale-FemaleSequences.html#:~:text=are%201%2C%201%2C%202%2C,(OEIS%20A005378)." target="_blank">Hofstadter Female and Male sequences</a> which are mutually nested recursive.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20hofstadter_f%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20n%20-%20hofstadter_m%28hofstadter_f%28n%20-%201%29%29%0A%0Adef%20hofstadter_m%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20return%20n%20-%20hofstadter_f%28hofstadter_m%28n%20-%201%29%29%0A%0Aactual_female%20%3D%20%5Bhofstadter_f%28i%29%20for%20i%20in%20range%286%29%5D%0Aexpected_female%20%3D%20%5B1,%201,%202,%202,%203,%203%5D%0Aassert%20actual_female%20%3D%3D%20expected_female%0A%0Aactual_male%20%3D%20%5Bhofstadter_m%28i%29%20for%20i%20in%20range%286%29%5D%0Aexpected_male%20%3D%20%5B0,%200,%201,%202,%202,%203%5D%0Aassert%20actual_male%20%3D%3D%20expected_male&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_female</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hofstadter_female</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">hofstadter_male</span><span class="p">(</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
@@ -847,7 +1132,7 @@ mutually recursive functions.</p>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_female</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">hofstadter_male</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/mutual_recursive_hofstadter_female.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_recursive_hofstadter_female.png" src="https://elc.github.io/blog/images/recursion/mutual_recursive_hofstadter_female-thumbnail.png" width="5290"></a></p>
 <h2 id="mutual-triple-recursion"><a class="toclink" href="#mutual-triple-recursion">Mutual Triple Recursion</a></h2>
@@ -855,7 +1140,36 @@ mutually recursive functions.</p>
 combines the Lucas, Fibonacci and multiply last two functions in a triple mutual
 recursive form, where each function uses the other two and itself.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=import%20math%0A%0Adef%20lucas%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28%0A%20%20%20%20%20%20%20%202%20*%20math.log2%28multiply_last_two%28n%20-%201%29%20%0A%20%20%20%20%20%20%20%20*%20multiply_last_two%28n%20-%202%29%29%0A%20%20%20%20%20%20%20%20-%20fibonacci%28n-1%29%20%2B%20lucas%28n-2%29%0A%20%20%20%20%29%0A%0A%0Adef%20fibonacci%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20%28fibonacci%28n-1%29%20%2B%20lucas%28n-1%29%29%20//%202%0A%0A%0Adef%20multiply_last_two%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%202%0A%20%20%20%20return%202%20**%20%28%0A%20%20%20%20%20%20%20%201.5%20*%20fibonacci%28n-2%29%20%2B%200.5%20*%20lucas%28n-2%29%0A%20%20%20%20%29%0A%0A%0Aactual_lucas%20%3D%20%5Blucas%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected_lucas%20%3D%20%5B2,%201,%203,%204,%207%5D%0Aassert%20actual_lucas%20%3D%3D%20expected_lucas%0A%0Aactual_fibonacci%20%3D%20%5Bfibonacci%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected_fibonacci%20%3D%20%5B0,%201,%201,%202,%203%5D%0Aassert%20actual_fibonacci%20%3D%3D%20expected_fibonacci%0A%0Aactual%20%3D%20%5Bmultiply_last_two%28i%29%20for%20i%20in%20range%285%29%5D%0Aexpected%20%3D%20%5B1,%202,%202,%204,%208%5D%0Aassert%20actual%20%3D%3D%20expected&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="k">def</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -885,7 +1199,7 @@ recursive form, where each function uses the other two and itself.</p>
 <span class="k">assert</span> <span class="p">[</span><span class="n">lucas</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">fibonacci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="k">assert</span> <span class="p">[</span><span class="n">multiply_last_two</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">32</span><span class="p">]</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p><a class="gallery" href="/blog/images/recursion/mutual_triple_recursive_fibonacci.png"><img alt="Mutual Recursive Fibonacci Alternative" class="b-lazy" data-src="/blog/images/recursion/mutual_triple_recursive_fibonacci.png" src="https://elc.github.io/blog/images/recursion/mutual_triple_recursive_fibonacci-thumbnail.png" width="6969"></a></p>
 <h2 id="recursion-related-techniques"><a class="toclink" href="#recursion-related-techniques">Recursion related techniques</a></h2>
@@ -903,7 +1217,25 @@ is called <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank"><s
 <p>Memoization is easy to implement in Python, both from scratch and using the
 standard library. </p>
 <p>The from-scratch implementation can be written using decorators:</p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">ParamSpec</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -922,7 +1254,7 @@ standard library. </p>
         <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">cacheable_args</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">wrapper</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Another possibility is to use the standard library, which has support for
 memoization through <code>functools.cache</code>, this function is available in Python 3.9
@@ -1005,7 +1337,33 @@ simulate a lazy evaluation.</p>
 using trampolining for <code>fibonacci(10000)</code> which would normally cause
 <a href="https://docs.python.org/3/library/exceptions.html#RecursionError" target="_blank"><code>RecursionError</code></a>.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20trampoline%28function_or_result%29%3A%0A%20%20%20%20if%20not%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20return%20function_or_result%0A%0A%20%20%20%20while%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20function_or_result%20%3D%20function_or_result%28%29%0A%0A%20%20%20%20return%20function_or_result%0A%0A%0Adef%20fibonacci%28%0A%20%20%20%20n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%0A%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20lambda%3A%20fibonacci%28n%20-%201,%20result,%20partial_result%20%2B%20result%29%0A%0A%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
 
@@ -1032,7 +1390,7 @@ using trampolining for <code>fibonacci(10000)</code> which would normally cause
     <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>This way of programming has several similarities with the <a href="https://en.wikipedia.org/wiki/Continuation-passing_style" target="_blank">continuation passing
 style</a>
@@ -1052,7 +1410,37 @@ approach</a>
 which makes debugging easier and less cryptic. On the other hand, types become a
 bit more convoluted.</p>
 <p><a href="https://pythontutor.com/visualize.html#code=def%20trampoline%28function,%20args%29%3A%0A%20%20%20%20result%20%3D%20function%28*args%29%0A%0A%20%20%20%20while%20hasattr%28result,%20%22__iter__%22%29%3A%0A%20%20%20%20%20%20%20%20function,%20args%20%3D%20result%0A%20%20%20%20%20%20%20%20result%20%3D%20function%28*args%29%0A%0A%20%20%20%20return%20result%0A%0Adef%20fibonacci%28%0A%20%20%20%20n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%0A%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%20%20%20%20%0A%20%20%20%20args%20%3D%20%28n-1,%20result,%20partial_result%20%2B%20result%29%0A%20%20%20%20return%20fibonacci,%20args%0A%0Aassert%20trampoline%28fibonacci,%20%2830,%20%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">cast</span>
 
@@ -1083,7 +1471,7 @@ bit more convoluted.</p>
     <span class="k">return</span> <span class="n">fibonacci</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">result</span><span class="p">)</span>
 
 <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">,</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>A combination of the previous two approaches can also be achieved by using
 <a href="https://en.wikipedia.org/wiki/Partial_evaluation?oldformat=true" target="_blank">partial
@@ -1091,7 +1479,36 @@ evaluation</a>
 through <code>functools.partial</code>. This way, the code is simpler and more similar to
 what one could find in other languages while still being easy to debug:</p>
 <p><a href="https://pythontutor.com/visualize.html#code=from%20functools%20import%20partial%0A%0Adef%20trampoline%28function_or_result%29%3A%0A%20%20%20%20if%20not%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20return%20function_or_result%0A%0A%20%20%20%20while%20callable%28function_or_result%29%3A%0A%20%20%20%20%20%20%20%20function_or_result%20%3D%20function_or_result%28%29%0A%0A%20%20%20%20return%20function_or_result%0A%0Adef%20fibonacci%28%0A%20%20%20%20n%3A%20int,%20partial_result%3A%20int%20%3D%200,%20result%3A%20int%20%3D%201%0A%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20if%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20result%0A%0A%20%20%20%20return%20partial%28%0A%20%20%20%20%20%20%20%20fibonacci,%0A%20%20%20%20%20%20%20%20n%3Dn%20-%201,%0A%20%20%20%20%20%20%20%20partial_result%3Dresult,%0A%20%20%20%20%20%20%20%20result%3Dpartial_result%20%2B%20result%0A%20%20%20%20%29%0A%0Aassert%20trampoline%28fibonacci%2830%29%29%20%3D%3D%20832040&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank">Run Step by Step Online</a></p>
-<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeAlias</span>
@@ -1121,7 +1538,7 @@ what one could find in other languages while still being easy to debug:</p>
     <span class="p">)</span>
 
 <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">trampoline</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10000</span><span class="p">)))</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3364476487&quot;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Trampolines allow to convert of recursive function calls into iterations. There
 is no built-in support like with the memoized technique and due to technical

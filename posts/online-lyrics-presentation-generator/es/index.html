@@ -158,7 +158,77 @@
 <p>El <code>CSS</code> está escrito dentro del <code>HTML</code> para evitar usar otra petición al servidor, esto se hace porque todo el estilo es de unas 100 líneas y toda la aplicación está contenida en un único archivo html. El <code>Javascript</code> está separado para evitar mezclar las capas de lógica y presentación.</p>
 <p>Primero mostraré todo el código y luego lo dividiré en partes y explicaré parte por parte.</p>
 <p>El código <code>Javascript</code> es el siguiente:</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pptx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PptxGenJS</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
@@ -229,7 +299,7 @@
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="funcion-principal"><a class="toclink" href="#funcion-principal">Función principal</a></h3>
 <p>La función <code>createPPT</code> es la función principal que se llama cada vez que se hace clic en el botón "Generar presentación". Realiza las siguientes acciones:</p>
@@ -242,7 +312,19 @@
 <li>Guardar el archivo</li>
 </ol>
 <p>Cada una de las acciones está representada en una de las siguientes líneas. Para mantenerlo simple, las tareas más complejas se explican con más detalle a continuación. Los métodos utilizados para establecer el título y guardar son evidentes y no requieren explicación.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createPPT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pptx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PptxGenJS</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Presentation created with ELC&#39;s Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
@@ -255,7 +337,7 @@
 
 <span class="w">    </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s2">&quot;Presentation - Created with ELCs Presentation Generator&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h4 id="definicion-de-plantilla"><a class="toclink" href="#definicion-de-plantilla">Definición de plantilla</a></h4>
 <p>Para lograr un estilo consistente, se debe utilizar una plantilla. Según mi propia experiencia, el fondo negro con letras blancas da los mejores resultados. Para definir una Plantilla se utiliza el método <code>defineSlideMaster</code>. Sus parámetros corresponden a la obtención de diapositivas con las siguientes características:</p>
@@ -271,7 +353,32 @@
 <li>Establezca el espacio entre párrafos: <code>paraSpaceAfter: '6', paraSpaceBefore: '6'</code></li>
 </ul>
 <p>Al combinar todo lo anterior y siguiendo la sintaxis proporcionada por la documentación oficial, el resultado es el siguiente código:</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Definición de Plantilla</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Definición de Plantilla</span><span class="w"></span>
 
 <span class="nx">pptx</span><span class="p">.</span><span class="nx">defineSlideMaster</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Template&#39;</span><span class="p">,</span><span class="w"></span>
@@ -297,20 +404,31 @@
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}]</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h4 id="extraccion-de-texto"><a class="toclink" href="#extraccion-de-texto">Extracción de texto</a></h4>
 <p>Una vez definida la plantilla, se debe extraer el texto, para ello se utiliza una práctica muy común en JS. Simplemente se hace referencia al elemento mediante un ID determinado y luego se extrae su valor. En este caso el elemento es un TextArea definido en HTML5</p>
 <p>El código resultante es el siguiente:</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Extracción de Texto</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Extracción de Texto</span><span class="w"></span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h4 id="anadir-diapositiva"><a class="toclink" href="#anadir-diapositiva">Añadir diapositiva</a></h4>
 <p>Después de extraer el texto, debe ser analizado y luego se debe agregar una nueva diapositiva para cada verso.</p>
 <p>La función de parsing devuelve una lista de cadenas, cada una de las cuales puede ser un verso o un <code>---</code> que básicamente significa "Diapositiva vacía". Tanto la <code>parseLyrics</code> como la <code>createSlide</code> se explican a continuación.</p>
-<div class="highlight "><pre><span></span><code><span class="c1">// Añadir Diapositiva</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Añadir Diapositiva</span><span class="w"></span>
 
 <span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">verse</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;---&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -320,36 +438,56 @@
 
 <span class="w">    </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">verse</span><span class="p">);</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="parsing"><a class="toclink" href="#parsing">Parsing</a></h3>
 <p>Uno nunca podría saber lo que el usuario escribiría, y, para soportar varios idiomas (especialmente aquellos con caracteres especiales), es importante usar un separador que funcione universalmente, en este caso la línea en blanco separará dos versos y los tres guiones (---) separarán las canciones.</p>
 <p>Para ignorar varias líneas en blanco y luego dividirla se utiliza una expresión regular y luego se usa el método <code>split</code>.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">parseLyrics</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\r\n]{3,}/</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n\n&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="crear-diapositiva"><a class="toclink" href="#crear-diapositiva">Crear diapositiva</a></h3>
 <p>Cada diapositiva tendrá un texto diferente, así que para crear una diapositiva se debe proporcionar el motor de presentación (en este caso la biblioteca <code>pptx</code>) y el texto a insertar (el argumento <code>text</code>), luego se crea la nueva diapositiva usando la plantilla predefinida, después de lo cual el texto en mayúsculas se añade usando el placeholder definido en la plantilla.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createSlide</span><span class="p">(</span><span class="nx">pptx</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">slide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pptx</span><span class="p">.</span><span class="nx">addNewSlide</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="nx">slide</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;body&#39;</span><span class="w"></span>
 <span class="w">    </span><span class="p">});</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="boton-borrar-texto"><a class="toclink" href="#boton-borrar-texto">Botón Borrar texto</a></h3>
 <p>En caso de que el usuario desee eliminar todo en el Área de letras, se proporciona un botón, la funcionalidad es sobrescribir el contenido actual del Área de texto con una cadena vacía.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">clearText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">clearText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <h3 id="localizacion"><a class="toclink" href="#localizacion">Localización</a></h3>
 <p>Esta función adicional proporciona localización del lado del cliente a través de <a href="https://github.com/fabi1cazenave/webL10n" target="_blank">WebL10n</a>, cada cadena de caracteres de la aplicación web está disponible tanto en inglés como en español, pero se podrían añadir más idiomas en el futuro si fuera necesario.</p>
-<div class="highlight "><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">changeLang</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -361,7 +499,7 @@
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse2&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n\n&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lyrics&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">webL10n</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;verse3&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
   </section>
 
 

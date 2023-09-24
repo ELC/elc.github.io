@@ -216,18 +216,31 @@
 <p>Use your favourite text editor (notepad or similar, NOT MS Word) and open these files</p>
 <p>.travis.yml</p>
 <p>In this file you should change the following line and replace /<username> with your github username:</p>
-<div class="highlight "><pre><span></span><code>...
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>...
 
 deploy:
     ...
     repo:&lt;username&gt;/&lt;username&gt;.github.io
     ...
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Now you should open this file</p>
 <p>conf.py</p>
 <p>And change these lines with the data of your website</p>
-<div class="highlight "><pre><span></span><code>...
+<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>...
 SITEURL = &#39;https://&lt;username&gt;.github.io/&#39;
 ...
 AUTHOR = &#39;&lt;Your name&gt;&#39;
@@ -236,7 +249,7 @@ SITENAME = &#39;&lt;Your site name&gt;&#39;
 TIMEZONE = &#39;&lt;Your TimeZone&gt;&#39;
 # find it here:  https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 ...
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 
 <p>Addicionally we should configure TravisCI</p>
 <p>$GITHUB_TOKEN is a public token you have associated with your GitHub account, you should <a href="https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token">set it on the Travis CI Repository settings</a></p>
