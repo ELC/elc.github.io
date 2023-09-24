@@ -343,18 +343,13 @@ already available to learn on
 lines of code, regardless of the plotting library. The main difference with
 Altair is that those "extra-custom-lines" could be re-use across plots.</p>
 <p>This is an example to add a text tooltip</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="n">chart</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">selection</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="n">chart</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">selection</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">chart</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">dx</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
         <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
         <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
     <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>This function returns an Altair object given a chart, a field, and a selection,
 that means that one can add the same tooltip to many plots at the same time

@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>6 min <span data-l10n-id="to-read">to read</span></b>
+                <b>5 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -217,14 +217,7 @@
 <h4 id="directory-structure"><a class="toclink" href="#directory-structure">Directory Structure</a></h4>
 <p>Some tutorials use the pelican-quickstart command but personally I think it's much easier to define the structure yourself:</p>
 <p>Minimal structure</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>.
+<div class="highlight "><pre><span></span><code>.
 ├── .travis.yml
 ├── conf.py
 ├── requirements.txt
@@ -232,7 +225,7 @@
     ├── article1.md
     └── pages
         └── page1.md
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Each of the files has a specific function:
 - .travis.yml allows us to automatically deploy our source and put it online in no time
@@ -240,18 +233,7 @@
 - requirements.txt tells the interpreter which software is needed, it will be used by Travis and here you will write all your dependences (if none, just pelican and markdown)
 - Content is the folder where all the files will be stored, is you put a markdown file inside it will become an article and if it's inside the page subfolder, a page</p>
 <p>Complete structure</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>.
+<div class="highlight "><pre><span></span><code>.
 ├── .travis.yml
 ├── .pyup.yml
 ├── .gitignore
@@ -263,7 +245,7 @@
     ├── article1.md
     └── pages
         └── page1.md
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>The main differences with the minimal structure are:
 - .pyup.yml allows us to keep our dependences updated
@@ -274,22 +256,7 @@
 <h3 id="file-contents"><a class="toclink" href="#file-contents">File contents</a></h3>
 <p>This is how your files should look like</p>
 <p>.travis.yml</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span><span class="w"></span>
+<div class="highlight "><pre><span></span><code><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span><span class="w"></span>
 
 <span class="nt">sudo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
@@ -305,39 +272,16 @@
 <span class="w">    </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span><span class="w"></span>
 <span class="w">    </span><span class="nt">on</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>$GITHUB_TOKEN is a public token you have associated with your GitHub account, you should <a href="https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token">set it on the Travis CI Repository settings</a></p>
 <p>.requirements.txt</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>pelican
+<div class="highlight "><pre><span></span><code>pelican
 markdown
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>conf.py</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
 
@@ -360,7 +304,7 @@ markdown
 <span class="c1"># Pagination</span>
 
 <span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">10</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>For more options you can check the <a href="http://docs.getpelican.com/en/stable/settings.html">official docs of Pelican</a></p>
 <h2 id="keeping-it-updated"><a class="toclink" href="#keeping-it-updated">Keeping it updated</a></h2>

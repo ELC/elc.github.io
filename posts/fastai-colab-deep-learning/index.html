@@ -158,22 +158,7 @@
 <p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-edit.png"><img alt="Colab Edit" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-edit.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/colab-edit-thumbnail.png" width="484"></a></p>
 <p><a class="gallery" href="/blog/images/fast-colab-deep-learning/colab-gpu.png"><img alt="Colab GPU" class="narrow b-lazy" data-src="/blog/images/fast-colab-deep-learning/colab-gpu.png" src="https://elc.github.io/blog/images/fast-colab-deep-learning/colab-gpu-thumbnail.png" width="532"></a></p>
 <p>Since Fastai is not built in Colaboratory, we have to install it manually, the best way is by source since it's in rapid development and the realeses found via pip could be outdated. Additionally we can install PyTorch 3.1 with CUDA 9.1 in the same cell.</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>%%bash
+<div class="highlight "><pre><span></span><code>%%bash
 
 <span class="k">if</span> ! <span class="o">[</span> -d fastai <span class="o">]</span>
 <span class="k">then</span>
@@ -189,46 +174,24 @@ pip -q install .
 pip -q install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
 
 pip -q install torchvision
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Now we can import fastai with all its modules</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">fastai.imports</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.transforms</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.conv_learner</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.model</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.dataset</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.sgdr</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">fastai.plots</span> <span class="kn">import</span> <span class="o">*</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>And we are ready to go! You can check that the GPU is enabled with the following command:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="sa">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">enabled</span><span class="si">}</span><span class="s1">&#39;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code><span class="sa">f</span><span class="s1">&#39;Is CUDA and CUDNN enabled: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">enabled</span><span class="si">}</span><span class="s1">&#39;</span>
+</code></pre></div>
 
 <p>And if you want to check exactly how much Video RAM you have you can run the following snippet:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+<div class="highlight "><pre><span></span><code><span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">gputil</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">psutil</span>
 <span class="err">!</span><span class="n">pip3</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">humanize</span>
@@ -245,7 +208,7 @@ pip -q install torchvision
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of GPUs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">GPUs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gen RAM Free: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">available</span> <span class="p">)</span><span class="si">}</span><span class="s2"> | Proc size: </span><span class="si">{</span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span> <span class="n">process</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU RAM Free: </span><span class="si">{0:.0f}</span><span class="s2">MB | Used: </span><span class="si">{1:.0f}</span><span class="s2">MB | Util </span><span class="si">{2:3.0f}</span><span class="s2">% | Total </span><span class="si">{3:.0f}</span><span class="s2">MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gpu</span><span class="o">.</span><span class="n">memoryFree</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUsed</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryUtil</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">gpu</span><span class="o">.</span><span class="n">memoryTotal</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <h2 id="conclusion"><a class="toclink" href="#conclusion">Conclusion</a></h2>
 <p>It is indeed possible to do Deep Learning with GPU without paying nothing, we just have to wait until the right set of technologies is available.</p>

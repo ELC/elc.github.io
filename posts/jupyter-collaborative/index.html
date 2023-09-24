@@ -210,28 +210,22 @@ container or a virtual machine).</p>
 <a href="https://www.quora.com/What-is-the-most-dangerous-Python-line-of-code/answer/Ribaka-Nazmara" target="_blank">showed in Quora</a>
 some dangerous yet simple code a malicious user might run:</p>
 <p>Fill up disk:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> 
     <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span> 
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Delete all files:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
 
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;rm -rf /&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Crash the system:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span> 
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;%0|%0&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>From Python, one can even run processes in the background with the <code>subprocess</code>
 module. These examples should illustrate why not using adequate security
@@ -246,26 +240,25 @@ by CalmCode.</p>
 July 2021</a> so if Jupyterlab was not
 installed recently, an update will be needed.</p>
 <p>To check your Jupyter Lab version simply run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter lab --version
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>jupyter lab --version
+</code></pre></div>
 
 <h3 id="jupyter-lab-update-instructions"><a class="toclink" href="#jupyter-lab-update-instructions">Jupyter Lab Update Instructions</a></h3>
 <p>If using Anaconda, run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>conda update anaconda
+<div class="highlight "><pre><span></span><code>conda update anaconda
 conda update jupyterlab
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>For traditional pip installations, run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install jupyterlab&gt;=3.1.0
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>pip install jupyterlab&gt;=3.1.0
+</code></pre></div>
 
 <h2 id="use-case-1-collaborative-work-inside-lan-or-vpn"><a class="toclink" href="#use-case-1-collaborative-work-inside-lan-or-vpn">Use Case 1: Collaborative work inside LAN or VPN</a></h2>
 <p><a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_1.png"><img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_1.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_1-thumbnail.png" width="826"></a></p>
 <p>Once Jupyterlab 3.1.0 or newer is installed, it is possible to enable the
 collaborative feature by running:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter lab --collaborative
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>jupyter lab --collaborative
+</code></pre></div>
 
 <p>This will create a normal session available at http://localhost:8888. However,
 this URL is only accessible inside your local network. To access from another
@@ -275,12 +268,12 @@ is not attached to specific hardware (as the MAC address), which means that
 each time the PC is turned on, it might have a different private IP.</p>
 <p>To know your private IP simply run this command in a terminal</p>
 <p>On Linux/Mac:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ifconfig -a
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ifconfig -a
+</code></pre></div>
 
 <p>On Windows:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ipconfig
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ipconfig
+</code></pre></div>
 
 <p>Private IPs are the ones following these formats:</p>
 <ul>
@@ -304,10 +297,9 @@ password.</p>
 <p><a class="gallery" href="/blog/images/jupyter-collaborative/network_diagram_2.png"><img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/network_diagram_2.png" src="https://elc.github.io/blog/images/jupyter-collaborative/network_diagram_2-thumbnail.png" width="826"></a></p>
 <p>The Jupyter CLI provides a straightforward way to set a global password by
 running:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter lab --generate-config
+<div class="highlight "><pre><span></span><code>jupyter lab --generate-config
 jupyter lab password
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>The first command generates a default config file, if already run before, it
 can be omitted. The second one will prompt the user to write a password and
@@ -354,8 +346,8 @@ should be installed independently. Using Anaconda is however the easiest way
 for Windows users.</p>
 <p>Once OpenSSL is installed, navigate to the folder where Jupyter will be started
 and run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+</code></pre></div>
 
 <p><strong>Note</strong>: if the error: "Can't open {some_path}ssl/openssl.cnf for reading, No
 such file or directory" is thrown, see the next section to configure it using
@@ -364,8 +356,8 @@ Anaconda.</p>
 of which should be added to source control</strong>. These two files will enable the
 Jupyter server to use HTTPS for its connections, to do so, run the following
 command:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter lab --collaborative --certfile=mycert.pem --keyfile mykey.key
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>jupyter lab --collaborative --certfile=mycert.pem --keyfile mykey.key
+</code></pre></div>
 
 <p>This setup should suffice but, the user should be instructed to use
 https://localhost:8888 (with HTTPS) explicitly because there might not be an
@@ -386,8 +378,8 @@ networks (i.e. internet). Hence additional security measures should be taken.</p
 <h3 id="config-file-missing"><a class="toclink" href="#config-file-missing">Config file Missing</a></h3>
 <p>The configuration file for OpenSSL is not configured by default therefore one
 has to run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>set OPENSSL_CONF={AnacondaPath}/pkgs/openssl-1.1.1k-{some_hash}/Library/ssl/openssl.cnf
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>set OPENSSL_CONF={AnacondaPath}/pkgs/openssl-1.1.1k-{some_hash}/Library/ssl/openssl.cnf
+</code></pre></div>
 
 <h2 id="use-case-2-collaborative-work-outside-the-local-network"><a class="toclink" href="#use-case-2-collaborative-work-outside-the-local-network">Use Case 2: Collaborative work outside the local network</a></h2>
 <p>It is not the most common to have multiple users in the same local network, for
@@ -404,8 +396,8 @@ started in as little time as possible.</p>
 <p>To set up an open connection to our computer, ngrok is a good solution. After
 installing it, and adding it to the Path, and providing the auth token, one can
 simply open connections in a single command:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ngrok http 8888
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ngrok http 8888
+</code></pre></div>
 
 <p>This command is enough to open the connection, and since our Jupyter
 environment is password-protected, there is no immediate threat. And this
@@ -420,8 +412,8 @@ displayed:</p>
 <p>To allow non-local connections the <code>ServerApp.allow_remote_access</code> should be
 enabled. This can be done from the Jupyter Config file created with the
 <code>--generate-config</code> command. Simply append this line to the end of the file:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">ServerApp</span><span class="o">.</span><span class="n">allow_remote_access</span> <span class="o">=</span> <span class="kc">True</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">ServerApp</span><span class="o">.</span><span class="n">allow_remote_access</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
 
 <p>Now after restarting the Jupyter instance, the URL provided by ngrok should be
 accessible:</p>
@@ -436,8 +428,8 @@ Jupyter is either not running or is being served on another port.</p>
 as in http://localhost. However, when using the second layer of security and
 implementing local TLS the above command should be rewritten to explicitly
 target https://localhost as follows:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ngrok http https://localhost:8888
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ngrok http https://localhost:8888
+</code></pre></div>
 
 <p><a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_http_to_https.png"><img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_http_to_https.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_http_to_https-thumbnail.png" width="1373"></a></p>
 <p>This is an optional extra step, only needed when the local network is not
@@ -450,8 +442,8 @@ connection. One might think this is a disadvantage or a limited feature of the
 free plan (since the paid plan support custom subdomains) but, having a
 hard-to-guess sequence at the beginning is similar to a password, since both
 parties should know it beforehand to establish the connection.</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>https://7b42-201-212-74-100.ngrok.io
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>https://7b42-201-212-74-100.ngrok.io
+</code></pre></div>
 
 <p>Another advantage of this approach is that if a given URL is compromised, one
 can simply re-run the ngrok command and get a new one with practically no
@@ -479,8 +471,8 @@ of the free plan. However, the default behavior is to allow both HTTP (without
 certificates) and HTTPS (with certificates).</p>
 <p><a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_with_without.png"><img alt="Ngrok HTTP" class="b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_with_without.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_with_without-thumbnail.png" width="1296"></a></p>
 <p>To enforce the use of HTTPS simply run:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ngrok http -bind-tls=true 8888
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ngrok http -bind-tls=true 8888
+</code></pre></div>
 
 <p>The console output now shows only one forwarding connection from HTTPS and all
 attempts to connect to HTTP will be forwarded to HTTPS.</p>
@@ -502,8 +494,8 @@ is already configured to only accept HTTPS, the username and password will
 travel through the internet encrypted.</p>
 <p>The free plan of ngrok also includes support for this authentication method and
 can be enabled by adding <code>username:password</code> to the command:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ngrok http -bind-tls=true -auth=&quot;any_username:sesion_password&quot; 8888
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ngrok http -bind-tls=true -auth=&quot;any_username:sesion_password&quot; 8888
+</code></pre></div>
 
 <p>These credentials will be asked upon connecting to the ngrok URL</p>
 <p><a class="gallery" href="/blog/images/jupyter-collaborative/ngrok_basic_auth.png"><img alt="Ngrok HTTP" class="narrow b-lazy" data-src="/blog/images/jupyter-collaborative/ngrok_basic_auth.png" src="https://elc.github.io/blog/images/jupyter-collaborative/ngrok_basic_auth-thumbnail.png" width="603"></a></p>
@@ -540,26 +532,24 @@ mentioned to avoid potential security risks.</p>
 <h2 id="summary-quick-steps-to-follow"><a class="toclink" href="#summary-quick-steps-to-follow">Summary: Quick steps to follow</a></h2>
 <h3 id="1-update-jupyter-lab"><a class="toclink" href="#1-update-jupyter-lab">1. <strong>Update Jupyter Lab</strong></a></h3>
 <p>Update Jupyter Lab to a 3.1.0 o newer with:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>conda update anaconda
+<div class="highlight "><pre><span></span><code>conda update anaconda
 conda update jupyterlab
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <h3 id="2-set-a-password"><a class="toclink" href="#2-set-a-password">2. <strong>Set a Password</strong></a></h3>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter lab --generate-config
+<div class="highlight "><pre><span></span><code>jupyter lab --generate-config
 jupyter lab password
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <h3 id="3-enable-non-local-connections"><a class="toclink" href="#3-enable-non-local-connections">3. <strong>Enable non-local connections</strong></a></h3>
 <p>Append this line to the config file generated in the previous step:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">ServerApp</span><span class="o">.</span><span class="n">allow_remote_access</span> <span class="o">=</span> <span class="kc">True</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">ServerApp</span><span class="o">.</span><span class="n">allow_remote_access</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
 
 <h3 id="4-run-ngrok"><a class="toclink" href="#4-run-ngrok">4. <strong>Run Ngrok</strong></a></h3>
 <p>Run Ngrok with HTTPS only and providing username and password credentials</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ngrok http -bind-tls=true -auth=&quot;any_username:sesion_password&quot; 8888
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>ngrok http -bind-tls=true -auth=&quot;any_username:sesion_password&quot; 8888
+</code></pre></div>
 
 <p>To avoid manually writing this file every time, a config file can be used to
 automate the process. Steps to follow are shown in this 

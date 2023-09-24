@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>10 min <span data-l10n-id="to-read">to read</span></b>
+                <b>9 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -143,8 +143,8 @@ can be read in any order and the three are built around the same demo app:</p>
 <p>There is a pip installable plugin called <code>streamlit-multipage</code>, this post is an
 extension of the README of the <a href="https://github.com/ELC/streamlit-multipage" target="_blank">Github Repository</a>.</p>
 <p>Try it yourself by doing</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install streamlit-multipage
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>pip install streamlit-multipage
+</code></pre></div>
 
 <p>An <a href="https://github.com/ELC/finance-tools" target="_blank">example Github Repo</a> 
 is available for inspiration, there is also a 
@@ -184,8 +184,8 @@ idioms. It is not as feature-rich as Hydralit but has a much more friendly
 learning curve.</p>
 <p>In this post, the <code>streamlit-multipage</code> will be used and covered in depth.</p>
 <p>To start working with this library one can simply install it via pip:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install streamlit-multipage
-</code></pre></div></td></tr></table></div>
+<div class="highlight "><pre><span></span><code>pip install streamlit-multipage
+</code></pre></div>
 
 <p><strong>DISCLAIMER</strong>: The original development of <code>streamlit-multipage</code> was done by
 Yan Almeida, however, this blog's author contributed significantly to the
@@ -197,34 +197,15 @@ users.</p>
 <h2 id="simplicity"><a class="toclink" href="#simplicity">Simplicity</a></h2>
 <p>Using <code>streamlit-multipage</code> is as simple as writing a native streamlit like
 this:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 
 <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;My Amazing App&quot;</span><span class="p">)</span>
 <span class="n">name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;Your Name: &quot;</span><span class="p">)</span>
 <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>And refactoring in a function like this</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
 
 
@@ -240,7 +221,7 @@ this:</p>
 <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">my_page</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>The function has to take one positional argument, ideally called <code>st</code>, that is
 the streamlit object. The function also needs to take arbitrary keyword
@@ -264,43 +245,7 @@ the native streamlit experience.</p>
 persistence that allows saving variables from one page to the other but it
 also allows saving the state after restarting the app.</p>
 <p>Here is an example of this feature:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
 
 
@@ -337,7 +282,7 @@ also allows saving the state after restarting the app.</p>
 <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;BMI Result&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Here the app "Input Page" can pass variables to the "BMI Result" page by
 calling the <code>MultiPage.save</code> method. By default, all the variables are saved in
@@ -348,10 +293,9 @@ Python dictionary, simply checking if the necessary keys are present should be
 enough. It is recommended to add warning messages if there are missing keys.</p>
 <p>If default values are desired for when the variables are not present the <code>get</code>
 method can be used as well.</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">my_app</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">my_app</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
     <span class="n">my_variable</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Internally the state is persisted in a pickle file which uses
 <a href="https://joblib.readthedocs.io/en/latest/" target="_blank"><code>joblib</code></a> 
@@ -369,51 +313,7 @@ important for large NumPy arrays or tensors).</p>
 <p>When using namespaces it is a good practice to add a <code>namespace</code> variable at
 the very top of the function for easy reference.</p>
 <p>The example below illustrates this feature</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
 
 
@@ -458,7 +358,7 @@ the very top of the function for easy reference.</p>
 <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>When using custom namespaces, it is important to access <code>state[namespace]</code>,
 instead of the <code>state</code> alone, because <code>state</code> will contain all namespaces,
@@ -473,47 +373,7 @@ That is if the namespace is the same as the name used in the <code>add_app</code
 <p><strong>Note:</strong> The namespace should be explicitly specified in the <code>MultiPage.save</code>
 method.</p>
 <p>This is an example of automatic namespaces</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
 
 
@@ -554,26 +414,20 @@ method.</p>
 <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <h2 id="extensibility"><a class="toclink" href="#extensibility">Extensibility</a></h2>
 <p>When using <code>streamlit-multipage</code> projects can grow easily within a directory
 structure.</p>
 <p>Consider the following directory structure</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>.
+<div class="highlight "><pre><span></span><code>.
 └── root/
     ├── pages/
     │   ├── __init__.py
     │   ├── input_data.py
     │   └── result.py
     └── main.py/
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Here the <code>main.py</code> is the entry point, it imports both <code>streamlit</code> and
 <code>streamlit-multipage</code>, it instantiates the <code>MultiPage</code> object and loads the
@@ -584,25 +438,7 @@ abstracted as well.</p>
 point to the <code>pages</code> module.</p>
 <p>These could be the content of the files:</p>
 <p><strong><code>input_data.py</code></strong></p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
 
 
 <span class="k">def</span> <span class="nf">input_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
@@ -621,19 +457,10 @@ point to the <code>pages</code> module.</p>
 
     <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
         <span class="n">MultiPage</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">},</span> <span class="n">namespaces</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Net Salary&quot;</span><span class="p">])</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p><strong><code>results.py</code></strong></p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">compute_page</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="o">**</span><span class="n">state</span><span class="p">):</span>
     <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Your Salary After Taxes&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s2">&quot;total&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
@@ -643,37 +470,20 @@ point to the <code>pages</code> module.</p>
     <span class="n">total</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
 
     <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p><strong><code>__init__.py</code></strong></p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">.input_data</span> <span class="kn">import</span> <span class="n">input_page</span>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">.input_data</span> <span class="kn">import</span> <span class="n">input_page</span>
 <span class="kn">from</span> <span class="nn">.result</span> <span class="kn">import</span> <span class="n">compute_page</span>
 
 <span class="n">pages</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Input Page&quot;</span><span class="p">:</span> <span class="n">input_page</span><span class="p">,</span>
     <span class="s2">&quot;Net Salary&quot;</span><span class="p">:</span> <span class="n">compute_page</span><span class="p">,</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p><strong><code>main.py</code></strong></p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pages</span> <span class="kn">import</span> <span class="n">pages</span>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">pages</span> <span class="kn">import</span> <span class="n">pages</span>
 
 <span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span>
@@ -685,7 +495,7 @@ point to the <code>pages</code> module.</p>
     <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">app_function</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <p>Structuring the application this way makes all the files much shorter and with
 a single responsibility. This could have been done with just <code>streamlit</code> but
@@ -696,51 +506,7 @@ experience such as adding a header, a footer, additional sidebar elements,
 hiding the hamburger menu and customizing the default text (e.g. for
 localization)</p>
 <p>This code shows how these customizations can be used:</p>
-<div class="highlight "><table class="highlight table"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight "><pre><span></span><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">from</span> <span class="nn">streamlit_multipage</span> <span class="kn">import</span> <span class="n">MultiPage</span><span class="p">,</span> <span class="n">save</span>
 
 
@@ -785,7 +551,7 @@ localization)</p>
 <span class="n">app</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;BMI Result&quot;</span><span class="p">,</span> <span class="n">compute_page</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 <h2 id="non-functional-features"><a class="toclink" href="#non-functional-features">Non-Functional Features</a></h2>
 <p>In addition to the previous functional features, there are some non-functional
