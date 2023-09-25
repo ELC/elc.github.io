@@ -162,12 +162,33 @@ implementation looks like this:</p>
 <code>g</code>, or otherwise the execution may fail. To enforced this relationship a typed
 version of composed can be written as follows:</p>
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose_typed.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_typed.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_typed-thumbnail.png" width="1724"></a></p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">g</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">U</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">U</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">g</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</code></pre></div>
+
 <p>This implementation uses Python 3.10's <code>ParamSpec</code>, which allows to type <code>*args</code>
 and <code>**kwargs</code>.</p>
 <p>Having a typed version is important as one typical case is composing multiple
 functions and if the types are not enforced, unexpected behaviour could arise.</p>
 <p>One example of using this compose implementation is the following:</p>
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose_example.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_example.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_example-thumbnail.png" width="1724"></a></p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">add_one</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">convert_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">composed_functions</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span><span class="n">add_one</span><span class="p">,</span> <span class="n">convert_to_string</span><span class="p">)</span>
+</code></pre></div>
+
 <p>When using the typed version, both MyPy and Pyright can infer the resulting type:</p>
 <p>PyRight (through Pylance)
 <a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_pylance.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance-thumbnail.png" width="870"></a></p>
@@ -182,6 +203,9 @@ the times it is not.</p>
 flag types imcompatibility. Take for example trying to <code>add_one</code> to the result
 of <code>convert_to_string</code>.</p>
 <p><a class="gallery" href="/blog/images/til-typed-pipes/compose_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_error-thumbnail.png" width="1724"></a></p>
+<div class="highlight "><pre><span></span><code><span class="n">composed_incorrect</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">,</span> <span class="n">add_one</span><span class="p">)</span>
+</code></pre></div>
+
 <p>PyRight (through Pylance)
 <a class="gallery" href="/blog/images/til-typed-pipes/compose_pylance_error.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_pylance_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_pylance_error-thumbnail.png" width="771"></a></p>
 <p>MyPy
