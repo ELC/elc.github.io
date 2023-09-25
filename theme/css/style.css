@@ -245,11 +245,14 @@
 }
 @media screen and (min-width: 950px) {
   .highlight {
-    margin-left: -4vw;
-    width: calc(100% + 8vw);
+    margin-left: -5vw;
+    width: calc(100% + 10vw);
     padding: 0 2vw;
-    font-size: 14pt;
+    font-size: 15pt;
   }
+}
+.highlight * {
+  font-family: "Jetbrains Mono", monospace;
 }
 .highlight .hll {
   background-color: #ffffcc;
@@ -513,6 +516,7 @@ table div {
 
 p > code {
   background: #EAEAEA;
+  padding: 0 0.1em;
 }
 
 /*# sourceMappingURL=gruvbox.scss.css.map */

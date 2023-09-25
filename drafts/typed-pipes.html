@@ -46,7 +46,7 @@
       <link rel="alternate" type="application/rss+xml" href="http://elcgweb.disqus.com/latest.rss" title="Ezequiel Leonardo Castaño Personal Website Comments RSS Feed">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=974855e">
+    <link rel="stylesheet" type="text/css" href="https://elc.github.io/theme/css/style.css?v=0ae51f1">
 
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/6af5d1a69f.js" async></script>
@@ -106,7 +106,7 @@
     
         <!-- Time to Read -->
             <div class="article__metadata-item">
-                <b>2 min <span data-l10n-id="to-read">to read</span></b>
+                <b>10 min <span data-l10n-id="to-read">to read</span></b>
             </div>
             
     </div>
@@ -151,7 +151,6 @@ context of programming the left to right orientation is more common.</p>
 <p>The compose function is a function that takes two functions <code>f</code> and <code>g</code> and
 returns a new functions that performs <code>g</code> and then <code>f</code>. In Python a generic
 implementation looks like this:</p>
-<p><a class="gallery" href="/blog/images/til-typed-pipes/compose.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose-thumbnail.png" width="1724"></a></p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">g</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
@@ -161,7 +160,6 @@ implementation looks like this:</p>
 <p>For this to work, it is necessary that the output of <code>f</code> matches the input of
 <code>g</code>, or otherwise the execution may fail. To enforced this relationship a typed
 version of composed can be written as follows:</p>
-<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_typed.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_typed.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_typed-thumbnail.png" width="1724"></a></p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -179,7 +177,6 @@ and <code>**kwargs</code>.</p>
 <p>Having a typed version is important as one typical case is composing multiple
 functions and if the types are not enforced, unexpected behaviour could arise.</p>
 <p>One example of using this compose implementation is the following:</p>
-<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_example.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_example.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_example-thumbnail.png" width="1724"></a></p>
 <div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">add_one</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 
@@ -202,7 +199,6 @@ the times it is not.</p>
 <p>And this is helpful when programming as the IDE can automatically detects and
 flag types imcompatibility. Take for example trying to <code>add_one</code> to the result
 of <code>convert_to_string</code>.</p>
-<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_error.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_error.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_error-thumbnail.png" width="1724"></a></p>
 <div class="highlight "><pre><span></span><code><span class="n">composed_incorrect</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">,</span> <span class="n">add_one</span><span class="p">)</span>
 </code></pre></div>
 
@@ -214,6 +210,175 @@ of <code>convert_to_string</code>.</p>
 right direction. Pyright is able to identify the exact cause of the the problem:
 <code>add_one</code> takes an <code>int</code> but it is receiving a <code>str</code> as the output of
 <code>convert_to_string</code>.</p>
+<h2 id="extension-to-multiple-functions"><a class="toclink" href="#extension-to-multiple-functions">Extension to multiple functions</a></h2>
+<p>With that generic <code>compose</code> function, it is possible to compose any number of
+functions, however the syntax is a little convoluted. These are the three sample
+functions to compose, one is <code>int</code> to <code>int</code>, another one is <code>int</code> to <code>str</code> and
+the last one is <code>str</code> to <code>str</code>, it is also interesting to use built-in functions
+such as <code>len</code> and <code>str</code> instead of user defined ones.</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">add_one</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">convert_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sort_characters</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The composition of interest is the one that would be equivalent to doing:</p>
+<div class="highlight "><pre><span></span><code><span class="k">def</span> <span class="nf">user_defined_composition</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">(</span><span class="n">add_one</span><span class="p">(</span><span class="n">x</span><span class="p">)))))</span>
+</code></pre></div>
+
+<p>It is valid Python to create a function like that, but, it is difficult to read
+and to change since the "application order" as well as the final "type mapping"
+is hardcoded. Any variation would require a different signature and invocation
+order.</p>
+<p>To leverage the generic <code>compose</code>, one alternative would be to write:</p>
+<div class="highlight "><pre><span></span><code><span class="n">user_defined_composition</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span>
+    <span class="n">compose</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="n">add_one</span><span class="p">,</span> <span class="n">convert_to_string</span><span class="p">),</span> <span class="n">sort_characters</span><span class="p">),</span> <span class="nb">len</span><span class="p">),</span> <span class="nb">str</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>Or equivalently:</p>
+<div class="highlight "><pre><span></span><code><span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">compose</span><span class="p">(</span>
+        <span class="n">compose</span><span class="p">(</span>
+            <span class="n">compose</span><span class="p">(</span>
+                <span class="n">compose</span><span class="p">(</span><span class="n">add_one</span><span class="p">,</span> <span class="n">convert_to_string</span><span class="p">),</span>
+                <span class="n">sort_characters</span>
+            <span class="p">),</span>
+            <span class="nb">len</span>
+        <span class="p">),</span>
+        <span class="nb">str</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p><strong>Note</strong>: both approaches are valid and through no errors when scanned with
+MyPy, however PyRight is not able to fully detect the types.</p>
+<p>PyRight:
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_test_pyright_problems.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_test_pyright_problems.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_test_pyright_problems-thumbnail.png" width="1095"></a></p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/compose_test_pyright_types.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/compose_test_pyright_types.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_test_pyright_types-thumbnail.png" width="795"></a></p>
+<p>MyPy:
+<a class="gallery" href="/blog/images/til-typed-pipes/compose_test_mypy_type.png"><img alt="Alt Text" class="b-lazy" data-src="/blog/images/til-typed-pipes/compose_test_mypy_type.png" src="https://elc.github.io/blog/images/til-typed-pipes/compose_test_mypy_type-thumbnail.png" width="1072"></a></p>
+<p>Neither of the previous is any easier to read that the original one. Some
+languages do have a compact syntax for this use case. Haskell's <code>.</code> is an
+example of clear and consice syntax (Haskell has right to left application):</p>
+<div class="highlight "><pre><span></span><code><span class="nf">user_defined_composition</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">sort_characters</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">convert_to_string</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">add_one</span><span class="w"></span>
+</code></pre></div>
+
+<p>This by no means implies that Python is not a good fit for composing functions,
+it just lacks built-in syntax to make it more approachable. Even though the
+previous example would work without issues, in the following sections easier and
+more practical alternatives will be introduced.</p>
+<h2 id="naive-iterative-pipe"><a class="toclink" href="#naive-iterative-pipe">Naive Iterative Pipe</a></h2>
+<p>The simplest evolution of <code>compose</code> to multiple functions in a cleaner way would
+be to wrap it in a for-loop:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+
+<span class="k">def</span> <span class="nf">pipe_iterative</span><span class="p">(</span><span class="o">*</span><span class="n">functions</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="n">composed_function</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="n">functions</span>
+    <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">rest</span><span class="p">:</span>
+        <span class="n">composed_function</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span><span class="n">composed_function</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">composed_function</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="n">pipe_iterative</span><span class="p">(</span>
+    <span class="n">add_one</span><span class="p">,</span>
+    <span class="n">convert_to_string</span><span class="p">,</span>
+    <span class="n">sort_characters</span><span class="p">,</span>
+    <span class="nb">len</span><span class="p">,</span>
+    <span class="nb">str</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>This approach, albeit it will work, it loses all the type information.</p>
+<p>PyRight:
+<a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_pyright_types.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_pyright_types.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_pyright_types-thumbnail.png" width="691"></a></p>
+<p>MyPy:
+<a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_mypy_types.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_mypy_types.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_mypy_types-thumbnail.png" width="823"></a></p>
+<p>At the moment, it is not possible to type <code>*functions</code> so that Python infers
+that each of the functions will have an output type that will match the next
+functions's input type.</p>
+<p>It is possible though to type the <code>pipe_iterative</code> function if we assume that
+all input and output types will be the same:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pipe_iterative</span><span class="p">(</span><span class="o">*</span><span class="n">functions</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">]:</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<p>This signature is only applicable to a small subset of the possible function
+compositions and will throw several errors with the functions used in the
+previous examples.</p>
+<p>PyRight:</p>
+<p>In this case the types are compatible with <code>pipe_iterative</code> signature but are
+not what the function will actually expect.</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_pyright_types.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_pyright_types.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_same_type_pyright_types-thumbnail.png" width="691"></a></p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_pyright_problems.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_pyright_problems.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_same_type_pyright_problems-thumbnail.png" width="691"></a></p>
+<p>MyPy</p>
+<p>MyPy detects the conflicting types and assumes <code>Any</code> will be the input and
+output types.</p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_types.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_types.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_types-thumbnail.png" width="823"></a></p>
+<p><a class="gallery" href="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_problems.png"><img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_problems.png" src="https://elc.github.io/blog/images/til-typed-pipes/pipe_iterative_test_same_type_mypy_problems-thumbnail.png" width="823"></a></p>
+<p>Having a disagreement between two typing tools like this may be misleading and
+can cause issues down the line. Pylance's error message is much more detailed
+and helpful in this instance.</p>
+<p>If this type of composition is required though, there is a cleaner way using the
+<code>functools</code> module.</p>
+<h2 id="reduced-pipe"><a class="toclink" href="#reduced-pipe">Reduced Pipe</a></h2>
+<p>When a function takes an input type <code>T</code>, returns the same type, and has one
+identity element, it is said to be a <em>Monoid</em>. It is a common word in the
+Functional Programming jargon. The last signature of <code>pipe_iterative</code> follows
+this pattern since it always keeps its outputs and inputs within the type <code>T</code>.</p>
+<p><strong>Note</strong>: The definition of a <em>Monoid</em> includes the identity element, since
+pipes operates over functions, the identity element is a function that can be
+composed without altering the result. This is trivially doable in Python:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+
+<p>There is a function that achieves the same and is built-in, the
+<code>functools.reduce</code>. The pipe function can then be rewritten as follows:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+
+<span class="k">def</span> <span class="nf">pipe</span><span class="p">(</span><span class="o">*</span><span class="n">functions</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">compose</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="n">add_one</span><span class="p">,</span>
+    <span class="n">convert_to_string</span><span class="p">,</span>
+    <span class="n">sort_characters</span><span class="p">,</span>
+    <span class="nb">len</span><span class="p">,</span>
+    <span class="nb">str</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>The same considerations could be made about the signature, this implementation
+can either be type safe and only operate on a single type <code>T</code> or it could be
+used more generically as the previous <code>pipe_iterative</code> while losing type
+information.</p>
+<p>Since the signature is the same, MyPy and PyRight show the same messages.</p>
+<p>There is a way to circunvent this issue and that is through the use of
+<code>Generic</code>s. Where types become an additional parameter. In Python, <code>Generic</code>s
+can only be used in classes, therefore the next sections will migrate to an
+object-oriented programming style.</p>
+<h2 id="eager-monoidal-pipe"><a class="toclink" href="#eager-monoidal-pipe">Eager Monoidal Pipe</a></h2>
+<p>Before diving too deep into different alternatives, the first step would be to
+replicate what the previous <code>pipe</code> function achieved but now supporting
+different types.</p>
 <div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -221,7 +386,6 @@ right direction. Pyright is able to identify the exact cause of the the problem:
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
-
 
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PipeEagerSameType</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
@@ -233,8 +397,253 @@ right direction. Pyright is able to identify the exact cause of the the problem:
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PipeEagerSameType</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">add_one</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
 </code></pre></div>
 
+<p>The implementation is straightforwad, the class stores the initial value <code>x</code> and
+then when <code>then</code> is called, that value is transformed and saved. This method
+returns <code>self</code> to provide a <a href="MISSING">Fluent Interface</a> that makes the code
+easier to read. </p>
+<p>The result at the end could be obtain by either calling the instance, and thus
+executing <code>__call__</code> or by simply accessing <code>x</code>. The former approach makes the
+instance behave like a function and the latter like a plain object.</p>
+<p>This first implemenation using object oriented programming produces similar yet different messages from both PyRight and MyPy:</p>
+<p>Pyright:</p>
+<p>Type</p>
+<p>Problems</p>
+<p>MyPy:</p>
+<p>Type</p>
+<p>Problems</p>
+<p>The next step would be to try to keep the same easy to read syntax while at the
+same time being able to pass functions with different signatures.</p>
+<p>The <code>Eager</code> in the class name is no coincidence, the previous examples using
+<code>compose</code> were not eagerly evaluated, they had a lazy evaluation strategy. This
+implementation though transforms the value at each step. In the case of lazy
+evaluation, all the transformations are defined first and evaluated only at the
+end. Lazy implementations for this Pipe class will be introduced later on.</p>
+<h2 id="eager-multitype-pipe"><a class="toclink" href="#eager-multitype-pipe">Eager Multitype Pipe</a></h2>
+<p>Due to the way <code>Generic</code>s work, each instance can only hold reference to a
+single type <code>T</code>. To support multiple types there are two possible solutions,
+either use as many <code>TypeVar</code>s as types needed or us as many instances as types
+needed. The latter is simpler and more straightforward. The implementaiton looks
+like the following:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PipeEager</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">T</span>
+
+    <span class="k">def</span> <span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">U</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PipeEager</span><span class="p">[</span><span class="n">U</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">PipeEager</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PipeEager</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">add_one</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>This time, instead of returning <code>self</code>, a new instance is created, with the
+updated value. Each instance now has information of the current step (through
+<code>T</code>), and the following step (through <code>U</code>). The following step is not defined at
+instantiation and therefore it is not needed to add <code>U</code> to the <code>Generic</code>.</p>
+<p>From the outside, the API is preserved, with the additional support for
+functions with different types.</p>
+<p>Both Pyright and MyPy reflect types are properly inferred:</p>
+<p>Pyright</p>
+<p>Types</p>
+<p>Problems</p>
+<p>MyPy</p>
+<p>Types</p>
+<p>Problems</p>
+<p>The next step is to make a Lazy implementation to resemble the first ones built
+with <code>compose</code>.</p>
+<h2 id="lazy-pipe-with-start"><a class="toclink" href="#lazy-pipe-with-start">Lazy Pipe with Start</a></h2>
+<p>In order to make a lazy implementation, the value should not be stored and
+transformed, it will be provided last. Therefore what needs to be stored and
+mapped are the transformations.</p>
+<p>To achieve this, a similar approach to the Eager classes can be used, but
+replacing the value <code>x</code> with a function <code>f</code>:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PipeLazyWithStart</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]):</span>
+    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">U</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PipeLazyWithStart</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">U</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">PipeLazyWithStart</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PipeLazyWithStart</span><span class="p">(</span><span class="n">add_one</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>In this case, rather than applying a transformation to the value and storing the
+transformed result, an instance is created with a new transformation which is
+the current and the next one composed. This allows the creation of new instances
+each composing on the previous ones.</p>
+<p>The API is kept somewhat similar, it now resembles more the approach with
+<code>pipe_iterative</code>, where all the functions are passed first and then evaluated on
+a particular value.</p>
+<p>Pyright</p>
+<p>Type</p>
+<p>Problems</p>
+<p>MyPy</p>
+<p>Type</p>
+<p>Problems</p>
+<p>In case the advantages of lazy evaluation are unclear, a following section will
+explain pros and cons.</p>
+<p>The next step now would be to simplify the class so that it can be instantiated
+without an initial function, this could be helpful for many reasons, one example
+is testing.</p>
+<h2 id="lazy-pipe"><a class="toclink" href="#lazy-pipe">Lazy Pipe</a></h2>
+<p>To remove the initial function, the first impression would be to mark <code>f</code> as
+<code>Optional</code>, however that has a lots of caveats and MyPy and PyRight will
+complain. A simple alternative is to create a helper class that surrogates the
+initial creation of the LazyPipeline.</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PipeLazy</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PipeLazyWithStart</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">PipeLazyWithStart</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PipeLazy</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]()</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">add_one</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">convert_to_string</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>This modification makes the implementation easily generalizable, being able to
+pass yet uninstantiated pipelines down the line. It also forces the user to
+specifies the first input and output types of a given pipeline rather than
+infering it which could help prevent bugs as things are more explicit now.</p>
+<p>Pyright</p>
+<p>Type</p>
+<p>Problems</p>
+<p>MyPy</p>
+<p>Type</p>
+<p>Problems</p>
+<p>So far this implementation checks all the boxes, however, there is yet another
+way to implement similar behavior leveraging less common Python fatures. The
+next section will evolve this implementation to add support for decorators and
+operator overloading.</p>
+<h2 id="composable-objects"><a class="toclink" href="#composable-objects">Composable Objects</a></h2>
+<p>This section is kept to showcase some of the features of the language, but it
+may result in code that is harder to read.</p>
+<p>Classes as decorators is an intermediate-advanced concept in Python, in fact,
+<code>PipeLazyWithStart</code> can already be used as a decorator since it only takes <code>f</code>
+which is a function.</p>
+<p>The other feature of the language that can be used is operator overloading, in
+this case the <code>&gt;&gt;</code> operator (also known as right shift) which resembles the
+<code>&gt;&gt;&gt;</code> in Haskell for left to right composition. Other valid alternatives could
+have been the <code>|</code> or the <code>&amp;</code> (bitwise or and bitwise and respectively). Python
+does not support the definition of custom operators so having a new <code>&gt;&gt;&gt;</code>
+operator is not feasible.</p>
+<p>To overload the <code>&gt;&gt;</code> operator one needs to define a <code>__rshift__</code> method, which
+in this case will have the same functionality as the <code>then</code> method. The only
+difference would be that it would need to handle functions and objects of the
+same class.</p>
+<p>The implementation looks like the following:</p>
+<div class="highlight "><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Composable</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]):</span>
+    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">Q</span><span class="p">,</span> <span class="n">U</span><span class="p">]</span> <span class="o">|</span> <span class="n">Composable</span><span class="p">[</span><span class="n">Q</span><span class="p">,</span> <span class="n">U</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Composable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">U</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="n">other</span> <span class="o">=</span> <span class="n">Composable</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Composable</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nd">@Composable</span>
+<span class="k">def</span> <span class="nf">convert_to_string_decorated</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">user_defined_composition</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Composable</span><span class="p">(</span><span class="n">add_one</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">convert_to_string_decorated</span>
+    <span class="o">&gt;&gt;</span> <span class="n">Composable</span><span class="p">(</span><span class="n">sort_characters</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="nb">len</span>
+    <span class="o">&gt;&gt;</span> <span class="nb">str</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">user_defined_composition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</code></pre></div>
+
+<p>The resulting syntax with <code>&gt;&gt;</code> is something <em>new</em>, in some cases, like when
+building a framework or an SDK, introducing new syntax like this could have
+great benefit. One project that does this is Apache Airflow. However, most often
+it results in niche uses that, without proper documentation could make the code
+harder to read and mantain.</p>
+<p>Pyright</p>
+<p>Type</p>
+<p>Problems</p>
+<p>MyPy</p>
+<p>Type</p>
+<p>Problems</p>
+<h2 id="why-lazy-evaluation-matters"><a class="toclink" href="#why-lazy-evaluation-matters">Why Lazy Evaluation matters?</a></h2>
+<p>The previous examples introduced lazy evaluated Pipelines.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
