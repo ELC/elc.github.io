@@ -511,6 +511,10 @@ table div {
   }
 }
 
+p > code {
+  background: #EAEAEA;
+}
+
 /*# sourceMappingURL=gruvbox.scss.css.map */
 
 
