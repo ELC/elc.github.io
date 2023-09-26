@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Ezequiel Leonardo Castaño Personal Website - Ezequiel Leonardo Castaño</title><link>https://elc.github.io/</link><description>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</description><lastBuildDate>Sun, 30 Jul 2023 00:00:00 -0300</lastBuildDate><item><title>ANGEL - An Oppinionated Guide on how to Learn Programming (focusing on Python)</title><link>https://elc.github.io/posts/angel</link><description>&lt;p&gt;&lt;a href="/blog/images/angel-guide/angel-guide-headerimage.png"&gt;&lt;img alt="Article Header Image" class="b-lazy" data-src="/blog/images/angel-guide/angel-guide-headerimage.png" src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage-thumbnail.png" width="1280"&gt;&lt;/a&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>Ezequiel Leonardo Castaño Personal Website - Ezequiel Leonardo Castaño</title><link>https://elc.github.io/</link><description>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</description><lastBuildDate>Sat, 23 Sep 2023 00:00:00 -0300</lastBuildDate><item><title>Type-Safe Pipelines and Compose</title><link>https://elc.github.io/posts/typed-pipes</link><description>&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/type_pipes_headerimage.png"&gt;&lt;img alt="Typed Pipes in Python" class="b-lazy" data-src="/blog/images/typed-pipes/type_pipes_headerimage.png" src="https://elc.github.io/blog/images/typed-pipes/type_pipes_headerimage-thumbnail.png" width="1683"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;When dealing with multiple transformations that run sequentially, one could
+leverage the compose function to create pipelines. This article shows different
+way to implement them in a type-safe way. All the code was written using pure
+Python 3.11 and MyPy 1.5.1 and PyLance v2023.9.20&lt;/p&gt;
+
+
+&lt;h2 id="function-composition"&gt;&lt;a class="toclink" href="#function-composition"&gt;Function …&lt;/a&gt;&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ezequiel Leonardo Castaño</dc:creator><pubDate>Sat, 23 Sep 2023 00:00:00 -0300</pubDate><guid isPermaLink="false">tag:elc.github.io,2023-09-23:/posts/typed-pipes</guid><category>Programming</category><category>Python</category><category>Types</category><category>Pipelines</category></item><item><title>ANGEL - An Oppinionated Guide on how to Learn Programming (focusing on Python)</title><link>https://elc.github.io/posts/angel</link><description>&lt;p&gt;&lt;a href="/blog/images/angel-guide/angel-guide-headerimage.png"&gt;&lt;img alt="Article Header Image" class="b-lazy" data-src="/blog/images/angel-guide/angel-guide-headerimage.png" src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage-thumbnail.png" width="1280"&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Courses and pieces of training claiming to deliver rapid results have become

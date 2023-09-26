@@ -1,5 +1,663 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/feeds/all-en.atom.xml" rel="self"></link><id>https://elc.github.io/</id><updated>2023-07-30T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>ANGEL - An Oppinionated Guide on how to Learn Programming (focusing on Python)</title><link href="https://elc.github.io/posts/angel" rel="alternate"></link><published>2023-07-30T00:00:00-03:00</published><updated>2023-07-30T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2023-07-30:/posts/angel</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/angel-guide/angel-guide-headerimage.png"&gt;&lt;img alt="Article Header Image" class="b-lazy" data-src="/blog/images/angel-guide/angel-guide-headerimage.png" src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage-thumbnail.png" width="1280"&gt;&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Ezequiel Leonardo Castaño Personal Website</title><link href="https://elc.github.io/" rel="alternate"></link><link href="http://feeds.feedburner.com/feeds/all-en.atom.xml" rel="self"></link><id>https://elc.github.io/</id><updated>2023-09-23T00:00:00-03:00</updated><subtitle>Ezequiel Leonardo Castaño Personal Website - In this website you will find post about christianity, programming and math</subtitle><entry><title>Type-Safe Pipelines and Compose</title><link href="https://elc.github.io/posts/typed-pipes" rel="alternate"></link><published>2023-09-23T00:00:00-03:00</published><updated>2023-09-23T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2023-09-23:/posts/typed-pipes</id><summary type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/type_pipes_headerimage.png"&gt;&lt;img alt="Typed Pipes in Python" class="b-lazy" data-src="/blog/images/typed-pipes/type_pipes_headerimage.png" src="https://elc.github.io/blog/images/typed-pipes/type_pipes_headerimage-thumbnail.png" width="1683"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;When dealing with multiple transformations that run sequentially, one could
+leverage the compose function to create pipelines. This article shows different
+way to implement them in a type-safe way. All the code was written using pure
+Python 3.11 and MyPy 1.5.1 and PyLance v2023.9.20&lt;/p&gt;
+
+
+&lt;h2 id="function-composition"&gt;&lt;a class="toclink" href="#function-composition"&gt;Function …&lt;/a&gt;&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/type_pipes_headerimage.png"&gt;&lt;img alt="Typed Pipes in Python" class="b-lazy" data-src="/blog/images/typed-pipes/type_pipes_headerimage.png" src="https://elc.github.io/blog/images/typed-pipes/type_pipes_headerimage-thumbnail.png" width="1683"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;When dealing with multiple transformations that run sequentially, one could
+leverage the compose function to create pipelines. This article shows different
+way to implement them in a type-safe way. All the code was written using pure
+Python 3.11 and MyPy 1.5.1 and PyLance v2023.9.20&lt;/p&gt;
+
+
+&lt;h2 id="function-composition"&gt;&lt;a class="toclink" href="#function-composition"&gt;Function Composition&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are two notations for function composition one with a right-to-left
+direction and one with a left-to-right direction. Namely:&lt;/p&gt;
+&lt;p&gt;Right to left:&lt;/p&gt;
+&lt;div class="math"&gt;$$f∘g = f(g(x))$$&lt;/div&gt;
+&lt;p&gt;Left to right:&lt;/p&gt;
+&lt;div class="math"&gt;$$f∘g = g(f(x))$$&lt;/div&gt;
+&lt;p&gt;The traditional notation in math is the right-to-left one. Some languages like
+Haskell has built-in syntax for both. In Haskell the usual way to do composition
+is with &lt;code&gt;.&lt;/code&gt; which is right-to-left, it is also possible to use &lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; for
+left-to-right composition. &lt;/p&gt;
+&lt;p&gt;On the other hand, one of the most common ways to compose functions in
+programming is through Unix Pipes which use the &lt;code&gt;|&lt;/code&gt; operator, which conversely
+is left-to-right composition.&lt;/p&gt;
+&lt;p&gt;That means that when implementing a &lt;code&gt;compose&lt;/code&gt; or a &lt;code&gt;pipe&lt;/code&gt; function is not
+trivial which orientation to choose as they are competing notations. In the
+context of programming the left to right orientation is more common.&lt;/p&gt;
+&lt;p&gt;All the examples here will use the left-to-right orientation.&lt;/p&gt;
+&lt;h2 id="the-compose-function"&gt;&lt;a class="toclink" href="#the-compose-function"&gt;The compose function&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The compose function is a function that takes two functions &lt;code&gt;f&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt; and
+returns a new function that performs &lt;code&gt;g&lt;/code&gt; and then &lt;code&gt;f&lt;/code&gt;. In Python, a generic
+implementation looks like this:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;For this to work, it is necessary that the output of &lt;code&gt;f&lt;/code&gt; matches the input of
+&lt;code&gt;g&lt;/code&gt;, or otherwise the execution may fail. To enforce this relationship a typed
+version of the composed can be written as follows:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;P&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;P&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This implementation uses Python 3.10's &lt;code&gt;ParamSpec&lt;/code&gt;, which allows typing &lt;code&gt;*args&lt;/code&gt;
+and &lt;code&gt;**kwargs&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Having a typed version is important as one typical case is composing multiple
+functions and if the types are not enforced, unexpected behavior could arise.&lt;/p&gt;
+&lt;p&gt;One example of using this compose implementation is the following:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;composed_functions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When using the typed version, both MyPy and Pyright can infer the resulting type:&lt;/p&gt;
+&lt;p&gt;Pyright (through Pylance)&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_pylance.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/compose_pylance.png" src="https://elc.github.io/blog/images/typed-pipes/compose_pylance-thumbnail.png" width="870"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_mypy.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/compose_mypy.png" src="https://elc.github.io/blog/images/typed-pipes/compose_mypy-thumbnail.png" width="1070"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;One important aspect of function composition is that it is not commutative, that
+is &lt;/p&gt;
+&lt;div class="math"&gt;$$f∘g \neq g∘f$$&lt;/div&gt;
+&lt;p&gt;. There may be cases where both are equivalent but most of
+the time it is not.&lt;/p&gt;
+&lt;p&gt;This is helpful when programming as the IDE can automatically detect and flag
+types' incompatibility. Take for example trying to &lt;code&gt;add_one&lt;/code&gt; to the result of
+&lt;code&gt;convert_to_string&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;composed_incorrect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pyright (through Pylance)&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_pylance_error.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/compose_pylance_error.png" src="https://elc.github.io/blog/images/typed-pipes/compose_pylance_error-thumbnail.png" width="771"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_mypy_error.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/compose_mypy_error.png" src="https://elc.github.io/blog/images/typed-pipes/compose_mypy_error-thumbnail.png" width="926"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The error from MyPy may not be descriptive enough but it at least points in the
+right direction. Pyright can identify the exact cause of the problem:
+&lt;code&gt;add_one&lt;/code&gt; takes an &lt;code&gt;int&lt;/code&gt; but it receives an &lt;code&gt;str&lt;/code&gt; as the output of
+&lt;code&gt;convert_to_string&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="extension-to-multiple-functions"&gt;&lt;a class="toclink" href="#extension-to-multiple-functions"&gt;Extension to multiple functions&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;With that generic &lt;code&gt;compose&lt;/code&gt; function, it is possible to compose any number of
+functions, however, the syntax is a little convoluted. These are the three
+sample functions to compose, one is &lt;code&gt;int&lt;/code&gt; to &lt;code&gt;int&lt;/code&gt;, another one is &lt;code&gt;int&lt;/code&gt; to
+&lt;code&gt;str&lt;/code&gt; and the last one is &lt;code&gt;str&lt;/code&gt; to &lt;code&gt;str&lt;/code&gt;, it is also interesting to use built-in
+functions such as &lt;code&gt;len&lt;/code&gt; and &lt;code&gt;str&lt;/code&gt; instead of user-defined ones.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The composition of interest is the one that would be equivalent to doing:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It is valid Python to create a function like that, but, it is difficult to read
+and to change since the "application order" as well as the final "type mapping"
+is hardcoded. Any variation would require a different signature and invocation
+order.&lt;/p&gt;
+&lt;p&gt;To leverage the generic &lt;code&gt;compose&lt;/code&gt;, one alternative would be to write:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Or equivalently:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;sort_characters&lt;/span&gt;
+            &lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="nb"&gt;len&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="nb"&gt;str&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: both approaches are valid and threw no errors when scanned with MyPy,
+nevertheless, Pyright is not able to fully detect the types.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_test_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/compose_test_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/compose_test_pyright_types-thumbnail.png" width="795"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_test_pyright_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/compose_test_pyright_problems.png" src="https://elc.github.io/blog/images/typed-pipes/compose_test_pyright_problems-thumbnail.png" width="1095"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/compose_test_mypy_type.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/compose_test_mypy_type.png" src="https://elc.github.io/blog/images/typed-pipes/compose_test_mypy_type-thumbnail.png" width="1072"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Neither of the previous is any easier to read than the original one. Some
+languages do have a compact syntax for this use case. Haskell's &lt;code&gt;.&lt;/code&gt; is an
+example of clear and concise syntax (Haskell has right to left application):&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;user_defined_composition&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;len&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This by no means implies that Python is not a good fit for composing functions,
+it just lacks built-in syntax to make it more approachable. Even though the
+previous example would work without issues, in the following sections easier and
+more practical alternatives will be introduced.&lt;/p&gt;
+&lt;h2 id="naive-iterative-pipe"&gt;&lt;a class="toclink" href="#naive-iterative-pipe"&gt;Naive Iterative Pipe&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The simplest evolution of &lt;code&gt;compose&lt;/code&gt; to multiple functions in a cleaner way would
+be to wrap it in a for-loop:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pipe_iterative&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;composed_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;functions&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;composed_function&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;composed_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;composed_function&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pipe_iterative&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nb"&gt;str&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This approach, albeit it will work, loses all the type information.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_iterative_test_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_pyright_types-thumbnail.png" width="691"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:
+&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_iterative_test_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_mypy_types-thumbnail.png" width="825"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;At the moment, it is not possible to type &lt;code&gt;*functions&lt;/code&gt; so that Python infers
+that each of the functions will have an output type that will match the next
+functions's input type.&lt;/p&gt;
+&lt;p&gt;It is possible though to type the &lt;code&gt;pipe_iterative&lt;/code&gt; function if we assume that
+all input and output types will be the same:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pipe_iterative&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This signature is only applicable to a small subset of the possible function
+compositions and will throw several errors with the functions used in the
+previous examples.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;In this case, the types are compatible with the &lt;code&gt;pipe_iterative&lt;/code&gt; signature but
+are not what the function will expect.&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_types-thumbnail.png" width="707"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_problems.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_same_type_pyright_problems-thumbnail.png" width="938"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy&lt;/p&gt;
+&lt;p&gt;MyPy detects the conflicting types and assumes &lt;code&gt;Any&lt;/code&gt; will be the input and
+output types.&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_types-thumbnail.png" width="1074"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_problems.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_iterative_test_same_type_mypy_problems-thumbnail.png" width="924"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Disagreeing two typing tools like this may be misleading and can cause issues
+down the line. Pylance's error message is much more detailed and helpful in this
+instance.&lt;/p&gt;
+&lt;p&gt;If this type of composition is required though, there is a cleaner way of using
+the &lt;code&gt;functools&lt;/code&gt; module.&lt;/p&gt;
+&lt;h2 id="reduced-pipe"&gt;&lt;a class="toclink" href="#reduced-pipe"&gt;Reduced Pipe&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When a function takes an input type &lt;code&gt;T&lt;/code&gt;, returns the same type, and has one
+identity element, it is said to be a &lt;em&gt;Monoid&lt;/em&gt;. It is a common word in the
+Functional Programming jargon. The last signature of &lt;code&gt;pipe_iterative&lt;/code&gt; follows
+this pattern since it always keeps its outputs and inputs within the type &lt;code&gt;T&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The definition of a &lt;em&gt;Monoid&lt;/em&gt; includes the identity element, since
+pipes operate over functions, the identity element is a function that can be
+composed without altering the result. This is trivially doable in Python:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;identity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;There is a function that achieves the same and is built-in, the
+&lt;code&gt;functools.reduce&lt;/code&gt;. The pipe function can then be rewritten as follows:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reduce&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pipe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Any&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pipe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nb"&gt;str&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The same considerations could be made about the signature, this implementation
+can either be type-safe and only operate on a single type &lt;code&gt;T&lt;/code&gt; or it could be
+used more generically as the previous &lt;code&gt;pipe_iterative&lt;/code&gt; while losing type
+information.&lt;/p&gt;
+&lt;p&gt;Since the signature is the same, MyPy and Pyright show the same messages.&lt;/p&gt;
+&lt;p&gt;There is a way to circumvent this issue and that is through the use of
+&lt;code&gt;Generic&lt;/code&gt;s. Where types become an additional parameter. In Python, &lt;code&gt;Generic&lt;/code&gt;s
+can only be used in classes, therefore the next sections will migrate to an
+object-oriented programming style.&lt;/p&gt;
+&lt;h2 id="why-types-matter"&gt;&lt;a class="toclink" href="#why-types-matter"&gt;Why Types matter&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If the previous is a working implementation, why bother with adding types? There
+is a rising number of articles and online material arguing in favor of adding
+types. A summary could be the following.&lt;/p&gt;
+&lt;p&gt;Reasons to add types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Typed code produces fewer bugs&lt;/li&gt;
+&lt;li&gt;Typed code enables enforcement of input and output compatibility &lt;/li&gt;
+&lt;li&gt;Typed code can be checked statically, i.e. without running the code&lt;/li&gt;
+&lt;li&gt;Typed code is easier to test comprehensively&lt;/li&gt;
+&lt;li&gt;Typed code is easier to validate. See Pydantic for example&lt;/li&gt;
+&lt;li&gt;Typed code is less ambiguous&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are also some reasons not to add types, namely:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Types make the code more verbose&lt;/li&gt;
+&lt;li&gt;Types make the learning curve for a codebase steeper&lt;/li&gt;
+&lt;li&gt;&lt;strike&gt;Types are not supported in all versions&lt;/strike&gt;. All stable versions support types
+  (3.8+).&lt;/li&gt;
+&lt;li&gt;&lt;strike&gt;Some Type constructs, like ParamSpec are not available in old versions&lt;/strike&gt;.
+  Use &lt;code&gt;typing_extensions&lt;/code&gt; if something is not supported&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And it is also important to clarify some myths&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Types will not make the code slower, they are ignored at runtime&lt;/li&gt;
+&lt;li&gt;Types are not checked at runtime, they are just used by tools like IDEs and
+  Linters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="eager-monoidal-pipe"&gt;&lt;a class="toclink" href="#eager-monoidal-pipe"&gt;Eager Monoidal Pipe&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Before diving too deep into different alternatives, the first step would be to
+replicate what the previous &lt;code&gt;pipe&lt;/code&gt; function achieved but now supporting
+different types.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PipeEagerSameType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PipeEagerSameType&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;PipeEagerSameType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The implementation is straightforward, the class stores the initial value &lt;code&gt;x&lt;/code&gt;,
+and then when &lt;code&gt;then&lt;/code&gt; is called, that value is transformed and saved. This method
+returns &lt;code&gt;self&lt;/code&gt; to provide a 
+&lt;a href="https://en.wikipedia.org/wiki/Fluent_interface" target="_blank"&gt;&lt;strong&gt;Fluent Interface&lt;/strong&gt;&lt;/a&gt;.
+that makes the code easier to read. &lt;/p&gt;
+&lt;p&gt;The result at the end could be obtained by either calling the instance and thus
+executing &lt;code&gt;__call__&lt;/code&gt; or by simply accessing &lt;code&gt;x&lt;/code&gt;. The former approach makes the
+instance behave like a function and the latter like a plain object.&lt;/p&gt;
+&lt;p&gt;This first implementation using object-oriented programming produces similar yet
+different messages from both Pyright and MyPy:&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;The errors are analogous to the implementation using &lt;code&gt;reduce&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_same_type_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_eager_same_type_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_same_type_pyright_types-thumbnail.png" width="793"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_same_type_pyright_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_eager_same_type_pyright_problems.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_same_type_pyright_problems-thumbnail.png" width="679"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;This time the errors are much more descriptive and resemble those produced by
+Pyright.&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_same_type_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_eager_same_type_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_same_type_mypy_types-thumbnail.png" width="1064"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_same_type_mypy_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_eager_same_type_mypy_problems.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_same_type_mypy_problems-thumbnail.png" width="1357"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, whenever we inspect the type, both pyright and Mypy will output the class
+name and the type will be encoded in the &lt;code&gt;Generic&lt;/code&gt;, i.e. the type now is
+&lt;code&gt;PipeEagerSameType[int]&lt;/code&gt; and it is the &lt;code&gt;[int]&lt;/code&gt; part which tells the actual type.
+In this case, it is the final return type which is inaccurate because the
+assumption that all functions return the same type and the first one returns
+&lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The next step would be to try to keep the same easy-to-read syntax while at the
+same time being able to pass functions with different signatures.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;Eager&lt;/code&gt; in the class name is no coincidence, the previous examples using
+&lt;code&gt;compose&lt;/code&gt; were not eagerly evaluated, they had a lazy evaluation strategy. This
+implementation though transforms the value at each step. In the case of lazy
+evaluation, all the transformations are defined first and evaluated only at the
+end. Lazy implementations for this Pipe class will be introduced later on.&lt;/p&gt;
+&lt;h2 id="eager-multitype-pipe"&gt;&lt;a class="toclink" href="#eager-multitype-pipe"&gt;Eager Multitype Pipe&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Due to the way &lt;code&gt;Generic&lt;/code&gt;s work, each instance can only hold a reference to a
+single type &lt;code&gt;T&lt;/code&gt;. To support multiple types there are two possible solutions,
+either use as many &lt;code&gt;TypeVar&lt;/code&gt;s as types needed or use as many instances as types
+needed. The latter is more straightforward. The implementation looks like the
+following:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PipeEager&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PipeEager&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;PipeEager&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;PipeEager&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This time, instead of returning &lt;code&gt;self&lt;/code&gt;, a new instance is created, with the
+updated value. Each instance now has information on the current step (through
+&lt;code&gt;T&lt;/code&gt;), and the following step (through &lt;code&gt;U&lt;/code&gt;). The following step is not defined at
+instantiation and therefore it is not needed to add &lt;code&gt;U&lt;/code&gt; to the &lt;code&gt;Generic&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;From the outside, the API is preserved, with the additional support for
+functions with different types.&lt;/p&gt;
+&lt;p&gt;Both Pyright and MyPy reflect types are properly inferred:&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/pipe_eager_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_pyright_types-thumbnail.png" width="858"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_eager_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_eager_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_eager_mypy_types-thumbnail.png" width="1019"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, with a compatible implementation, the type has become &lt;code&gt;PipeEager[str]&lt;/code&gt;,
+correctly inferring that calling the instance will return a &lt;code&gt;str&lt;/code&gt; object.&lt;/p&gt;
+&lt;p&gt;The next step is to make a Lazy implementation resemble the first ones built
+with &lt;code&gt;compose&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="lazy-pipe-with-start"&gt;&lt;a class="toclink" href="#lazy-pipe-with-start"&gt;Lazy Pipe with Start&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To make a lazy implementation, the value should not be stored and
+transformed, it will be provided last. Therefore what needs to be stored and
+mapped are the transformations.&lt;/p&gt;
+&lt;p&gt;To achieve this, a similar approach to the Eager classes can be used, but
+replacing the value &lt;code&gt;x&lt;/code&gt; with a function &lt;code&gt;f&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;P&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;P&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case, rather than applying a transformation to the value and storing the
+transformed result, an instance is created with a new transformation which is
+the current and the next one composed. This allows the creation of new instances
+each composing on the previous ones.&lt;/p&gt;
+&lt;p&gt;The API is kept somewhat similar, it now resembles the approach with
+&lt;code&gt;pipe_iterative&lt;/code&gt;, where all the functions are passed first and then evaluated on
+a particular value.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_lazy_with_start_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_lazy_with_start_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_lazy_with_start_pyright_types-thumbnail.png" width="1143"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_lazy_with_start_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_lazy_with_start_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_lazy_with_start_mypy_types-thumbnail.png" width="1445"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With the lazy implementation, the types have changed slightly, now the type is
+&lt;code&gt;PipeLazyWithStart[(x: int), str]&lt;/code&gt;, which means that it takes a single parameter
+called &lt;code&gt;x&lt;/code&gt; of type &lt;code&gt;int&lt;/code&gt; and returns a single value of type &lt;code&gt;str&lt;/code&gt;. The &lt;code&gt;x&lt;/code&gt; name
+comes from the instance variable with the same name in the class.&lt;/p&gt;
+&lt;p&gt;In case the advantages of lazy evaluation are unclear, one of the following
+sections will explain the pros and cons succinctly.&lt;/p&gt;
+&lt;p&gt;The next step would be to simplify the class so that it can be instantiated
+without an initial function, this could be helpful for many reasons, one example
+is testing.&lt;/p&gt;
+&lt;h2 id="lazy-pipe"&gt;&lt;a class="toclink" href="#lazy-pipe"&gt;Lazy Pipe&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To remove the initial function, the first impression would be to mark &lt;code&gt;f&lt;/code&gt; as
+&lt;code&gt;Optional&lt;/code&gt;, however,  has lots of caveats, and MyPy and Pyright will complain. A
+simple alternative is to create a helper class that surrogates the initial
+creation of the LazyPipeline.&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;P&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;P&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PipeLazy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;PipeLazyWithStart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;PipeLazy&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]()&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;convert_to_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This modification makes the implementation easily generalizable, being able to
+pass yet uninstantiated pipelines down the line. It also forces the user to
+specify the first input and output types of a given pipeline rather than
+infering it which could help prevent bugs as things are more explicit now.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_lazy_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_lazy_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_lazy_pyright_types-thumbnail.png" width="1095"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/pipe_lazy_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/pipe_lazy_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/pipe_lazy_mypy_types-thumbnail.png" width="1398"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now the type is identical to the previous one but without specifying the &lt;code&gt;x&lt;/code&gt;,
+that is because, at the moment of instantiation, the &lt;code&gt;PipeLazy&lt;/code&gt; object takes no
+arguments. And even after being initialized with &lt;code&gt;[[int], int]&lt;/code&gt; it accurately
+updated the return type to &lt;code&gt;str&lt;/code&gt; by following the chain of compositions.&lt;/p&gt;
+&lt;p&gt;So far this implementation checks all the boxes, however, there is yet another
+way to implement similar behavior leveraging less common Python features. The
+next section will evolve this implementation to add support for decorators and
+operator overloading.&lt;/p&gt;
+&lt;h2 id="composable-objects"&gt;&lt;a class="toclink" href="#composable-objects"&gt;Composable Objects&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This section is kept to showcase some of the features of the language, but it
+may result in code that is harder to read.&lt;/p&gt;
+&lt;p&gt;Classes as decorators is an intermediate-advanced concept in Python, in fact,
+&lt;code&gt;PipeLazyWithStart&lt;/code&gt; can already be used as a decorator since it only takes &lt;code&gt;f&lt;/code&gt;
+which is a function.&lt;/p&gt;
+&lt;p&gt;The other feature of the language that can be used is operator overloading, in
+this case, the &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operator (also known as right shift) which resembles the
+&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; in Haskell for left-to-right composition. Other valid alternatives could
+have been the &lt;code&gt;|&lt;/code&gt; or the &lt;code&gt;&amp;amp;&lt;/code&gt; (bitwise or and bitwise and respectively). Python
+does not support the definition of custom operators so having a new &lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;
+operator is not feasible.&lt;/p&gt;
+&lt;p&gt;To overload the &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operator one needs to define a &lt;code&gt;__rshift__&lt;/code&gt; method, which
+in this case will have the same functionality as the &lt;code&gt;then&lt;/code&gt; method. The only
+difference would be that it would need to handle functions and objects of the
+same class.&lt;/p&gt;
+&lt;p&gt;The implementation looks like the following:&lt;/p&gt;
+&lt;div class="highlight "&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;annotations&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dataclasses&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dataclass&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;
+
+&lt;span class="n"&gt;T&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;T&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TypeVar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;P&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;P&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Q&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ParamSpec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Q&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@dataclass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Generic&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__rshift__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Callable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Q&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;other&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;compose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Composable&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;convert_to_string_decorated&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;user_defined_composition&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;convert_to_string_decorated&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Composable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;user_defined_composition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The resulting syntax with &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; is something &lt;em&gt;new&lt;/em&gt;, in some cases, like when
+building a framework or an SDK, introducing new syntax like this could have
+great benefit. One project that does this is Apache Airflow. However, most often
+it results in niche uses that, without proper documentation could make the code
+harder to read and maintain.&lt;/p&gt;
+&lt;p&gt;Pyright:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/composable_pyright_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/composable_pyright_types.png" src="https://elc.github.io/blog/images/typed-pipes/composable_pyright_types-thumbnail.png" width="1033"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MyPy:&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/composable_mypy_types.png"&gt;&lt;img alt="Alt Text" class="b-lazy" data-src="/blog/images/typed-pipes/composable_mypy_types.png" src="https://elc.github.io/blog/images/typed-pipes/composable_mypy_types-thumbnail.png" width="1174"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="gallery" href="/blog/images/typed-pipes/composable_mypy_problems.png"&gt;&lt;img alt="Alt Text" class="b-lazy narrow" data-src="/blog/images/typed-pipes/composable_mypy_problems.png" src="https://elc.github.io/blog/images/typed-pipes/composable_mypy_problems-thumbnail.png" width="787"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The types are identical to those of &lt;code&gt;PipeLazyWithStart&lt;/code&gt;, however, Mypy complains
+about not being able to infer the type of the first parameter of &lt;code&gt;compose&lt;/code&gt;,
+which is unexpected. This may have been due to the interaction between
+&lt;code&gt;ParamSpec&lt;/code&gt;s and &lt;code&gt;TypeVars&lt;/code&gt; in an edge case.&lt;/p&gt;
+&lt;h2 id="why-does-lazy-evaluation-matter"&gt;&lt;a class="toclink" href="#why-does-lazy-evaluation-matter"&gt;Why does Lazy Evaluation matter?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Eager vs. Lazy evaluation is a topic that would deserve an article on its own.
+There are tools like &lt;code&gt;polars&lt;/code&gt; and &lt;code&gt;pandas&lt;/code&gt; that use eager evaluation and at the
+same time other tools like &lt;code&gt;pyspark&lt;/code&gt; use lazy evaluation.&lt;/p&gt;
+&lt;p&gt;The following are some key questions to help decide which is better for each
+case:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Speed - Either&lt;/li&gt;
+&lt;li&gt;Easy to read code - Either&lt;/li&gt;
+&lt;li&gt;Easy to test code - Either&lt;/li&gt;
+&lt;li&gt;Easy to debug code / interactive programming - Eager&lt;/li&gt;
+&lt;li&gt;Optimized transformations - Lazy&lt;/li&gt;
+&lt;li&gt;Flexibility - Lazy&lt;/li&gt;
+&lt;li&gt;Separation of transformations from data - Lazy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conclusion"&gt;&lt;a class="toclink" href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are scenarios where certain operations need to be applied sequentially,
+that is a hint for the pipeline pattern which can be implemented with either an
+Eager or a Lazy evaluation approach.&lt;/p&gt;
+&lt;p&gt;Knowing when to use which depends on the scenario but the key aspect is to
+structure the code so that the final result is easy to read, easy to test and
+easy to maintain.&lt;/p&gt;
+&lt;p&gt;On a personal note, I believe that unless required, the LazyPipe would suffice
+most of the time, and in case it doesn't switching to the Eager version is a
+minor change that should not introduce any breaks down the line.&lt;/p&gt;
+&lt;p&gt;If dealing with a lot of error handling, these pipelines could be combined with
+Railway Oriented Programming to streamline processes end to end.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (true) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Programming"></category><category term="Python"></category><category term="Types"></category><category term="Pipelines"></category></entry><entry><title>ANGEL - An Oppinionated Guide on how to Learn Programming (focusing on Python)</title><link href="https://elc.github.io/posts/angel" rel="alternate"></link><published>2023-07-30T00:00:00-03:00</published><updated>2023-07-30T00:00:00-03:00</updated><author><name>Ezequiel Leonardo Castaño</name></author><id>tag:elc.github.io,2023-07-30:/posts/angel</id><summary type="html">&lt;p&gt;&lt;a href="/blog/images/angel-guide/angel-guide-headerimage.png"&gt;&lt;img alt="Article Header Image" class="b-lazy" data-src="/blog/images/angel-guide/angel-guide-headerimage.png" src="https://elc.github.io/blog/images/angel-guide/angel-guide-headerimage-thumbnail.png" width="1280"&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Courses and pieces of training claiming to deliver rapid results have become
