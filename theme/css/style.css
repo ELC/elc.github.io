@@ -501,7 +501,7 @@ table div {
 }
 @media screen and (min-width: 950px) {
   table {
-    width: calc(100% + 8vw) !important;
+    width: calc(100% + 10vw) !important;
   }
 }
 
@@ -784,8 +784,8 @@ a[href*="github.com"]:after {
 @media only screen and (min-width: 1024px) {
   .article img,
   .page img {
-    margin-left: -4vw;
-    max-width: calc(100% + 8vw);
+    margin-left: -5vw;
+    max-width: calc(100% + 10vw);
   }
 }
 .article video,
@@ -797,8 +797,8 @@ a[href*="github.com"]:after {
 @media only screen and (min-width: 1024px) {
   .article video,
   .page video {
-    margin-left: -4vw;
-    max-width: calc(100% + 8vw);
+    margin-left: -5vw;
+    max-width: calc(100% + 10vw);
   }
 }
 .article .headerimage-article img,
